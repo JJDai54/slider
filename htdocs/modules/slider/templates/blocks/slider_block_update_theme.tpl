@@ -24,8 +24,8 @@ jQuery(document).ready(function(){
             <tr class='head'>
                 <th>&nbsp;</th>
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_SHORT_NAME}></th>
-                <th class='center'><{$smarty.const._MB_SLIDER_SLD_TITLE}></th>
-                <th class='center'><{$smarty.const._MB_SLIDER_SLD_DESCRIPTION}></th>
+                <{* <th class='center'><{$smarty.const._MB_SLIDER_SLD_TITLE}></th> *}>
+                <{* <th class='center'><{$smarty.const._MB_SLIDER_SLD_DESCRIPTION}></th> *}>
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_WEIGHT}></th>
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_DATE_BEGIN}></th>
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_DATE_END}></th>
@@ -41,8 +41,8 @@ jQuery(document).ready(function(){
             <tr class='<{cycle values="odd, even"}>'>
                 <td class='center'><{$slide.id}></td>
                 <td class='center'><{$slide.short_name}></td>
-                <td class='center'><{$slide.title}></td>
-                <td class='center'><{$slide.description}></td>
+                <{* <td class='center'><{$slide.title}></td> *}>
+                <{* <td class='center'><{$slide.description}></td> *}>
                 <td class='center'><{$slide.weight}></td>
                 <td class='center'><{$slide.date_begin}></td>
                 <td class='center'><{$slide.date_end}></td>

@@ -102,6 +102,7 @@ switch ($op) {
         $slidesObj->setVar('sld_short_name', Request::getString('sld_short_name', ''));
         $slidesObj->setVar('sld_title', Request::getText('sld_title', ''));
         $slidesObj->setVar('sld_description', Request::getText('sld_description', ''));
+        $slidesObj->setVar('sld_read_more', Request::getString('sld_read_more', ''));
         $slidesObj->setVar('sld_weight', Request::getInt('sld_weight', 0));
         $slideDate_beginArr = Request::getArray('sld_date_begin');
         $slideDate_beginObj = \DateTime::createFromFormat(_SHORTDATESTRING, $slideDate_beginArr['date']);

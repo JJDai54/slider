@@ -17,8 +17,10 @@
                   <h1><{$slide.title}></h1>
   
                   <p><{$slide.description}></p>
-  
-                  <p><a href="javascript:;" class="btn btn-large btn-primary"><{$smarty.const.THEME_READMORE}></a></p>
+                  
+                  <{if $slide.read_more != ''}>
+                  <p><a href="javascript:location.href='<{$slide.read_more}>';" class="btn btn-large btn-primary" target='blank'><{$smarty.const.THEME_READMORE}></a></p>
+                  <{/if}>                             
               </div>
           </div>
           <{assign var=index value=$index+1}>

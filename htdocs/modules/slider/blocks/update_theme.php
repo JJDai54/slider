@@ -85,6 +85,7 @@ global $xoopsConfig;
             $slides[$i]['title'] = $slidesAll[$i]->getVar('sld_title');
             //$slides[$i]['description'] = \strip_tags($slidesAll[$i]->getVar('sld_description'));
             $slides[$i]['description'] = $slidesAll[$i]->getVar('sld_description');
+            $slides[$i]['read_more'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_read_more'));
             $slides[$i]['weight'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_weight'));
 //             $slides[$i]['date_begin'] = $slidesAll[$i]->getVar('sld_date_begin');
 //             $slides[$i]['date_end'] = $slidesAll[$i]->getVar('sld_date_end');

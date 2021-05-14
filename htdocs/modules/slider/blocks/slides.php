@@ -86,6 +86,7 @@ function b_slider_slides_show($options)
             $block[$i]['sld_short_name'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_short_name'));
             $block[$i]['title'] =  $slidesAll[$i]->getVar('sld_title');
             $block[$i]['description'] = $slidesAll[$i]->getVar('sld_description');
+            $block[$i]['read_more'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_read_more'));
             $block[$i]['weight'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_weight'));
             $block[$i]['date_begin'] = $slidesAll[$i]->getVar('sld_date_begin');
             $block[$i]['date_end'] = $slidesAll[$i]->getVar('sld_date_end');

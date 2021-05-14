@@ -43,6 +43,7 @@ class Slides extends \XoopsObject
         $this->initVar('sld_short_name', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_title', XOBJ_DTYPE_OTHER);
         $this->initVar('sld_description', XOBJ_DTYPE_OTHER);
+        $this->initVar('sld_read_more', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_weight', XOBJ_DTYPE_INT);
         $this->initVar('sld_date_begin', XOBJ_DTYPE_INT);
         $this->initVar('sld_date_end', XOBJ_DTYPE_INT);
@@ -98,8 +99,6 @@ class Slides extends \XoopsObject
         // Form Text sld_short_name
         $form->addElement(new \XoopsFormText(_AM_SLIDER_SLIDE_SHORT_NAME, 'sld_short_name', 50, 255, $this->getVar('sld_short_name')), true);
         
-        
-        
         // Form Text sldTitle
         // Form Editor DhtmlTextArea sldDescription
         $editorConfigs = [];
@@ -132,6 +131,12 @@ class Slides extends \XoopsObject
         $inputDescription = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_description', $editorConfigs2);
         $inputDescription->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
         $form->addElement($inputDescription);
+        
+        
+        // Form Text sld_read_more
+        $inpurReadMore = new \XoopsFormText(_AM_SLIDER_SLIDE_READ_MORE, 'sld_read_more', 80, 255, $this->getVar('sld_read_more'));
+        $inpurReadMore->setDescription(_AM_SLIDER_SLIDE_READ_MORE_DESC);
+        $form->addElement($inpurReadMore, false);
         
         // Form Image sldImage
         // Form Image sldImage: Select Uploaded Image 
@@ -214,7 +219,8 @@ $upload_size = $helper->getConfig('maxsize_image');
         $ret['title']              = $this->getVar('sld_title');
         $ret['description']        = $this->getVar('sld_description', 'e');
         $editorMaxchar             = $helper->getConfig('editor_maxchar');
-        $ret['description_short']  = $utility::truncateHtml($ret['description'], $editorMaxchar);
+        $ret['read_more']          = $utility::truncateHtml($ret['sld_read_more'], $editorMaxchar);
+        $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['weight']             = $this->getVar('sld_weight');
         $ret['date_begin']         = \formatTimestamp($this->getVar('sld_date_begin'), 'm');
         $ret['date_end']           = \formatTimestamp($this->getVar('sld_date_end'), 'm');
