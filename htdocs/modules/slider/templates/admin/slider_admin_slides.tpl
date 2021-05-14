@@ -10,7 +10,8 @@
             <tr class='head'>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_ID}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_THEME}></th>
-                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_TITLE}></th>
+                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_SHORT_NAME}></th>
+                <{* <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_TITLE}></th> *}>
                 <{* <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DESCRIPTION}></th> *}>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_WEIGHT}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_ACTIF}></th>
@@ -27,8 +28,9 @@
             <tr class='<{cycle values='odd, even'}>'>
                 <td class='center'><{$slide.id}></td>
                 <td class='left'><{$slide.theme}></td>
-                <td class='left'><{$slide.title}></td>
-                <{* <td class='center'><{$slide.description_short}></td> *}>
+                <td class='left'><{$slide.short_name}></td>
+                <{* <td class='left'><{$slide.title}></td> *}>
+                <{* <td class='center'><{$slide.description}></td> *}>
                 
                 <td class='center'>
                     <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=asc&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">

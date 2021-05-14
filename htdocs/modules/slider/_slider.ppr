@@ -170,6 +170,7 @@ _slider
 10=class\SlidesHandler.php
 11=class\Slides.php
 12=blocks\update_theme.php
+13=templates\admin\slider_admin_slides.tpl
 [Selected Project Files]
 Main=
 Selected=class\Slides.php
@@ -183,8 +184,8 @@ Caret=15,38
 TopLine=1
 Caret=1,1
 [admin\slides.php]
-TopLine=34
-Caret=123,52
+TopLine=85
+Caret=1,103
 [..\copie to github.bat]
 TopLine=1
 Caret=6,3
@@ -192,14 +193,14 @@ Caret=6,3
 TopLine=1
 Caret=13,17
 [templates\blocks\slider_block_update_theme.tpl]
-TopLine=8
-Caret=77,26
+TopLine=11
+Caret=67,27
 [templates\blocks\slider_block_slides.tpl]
 TopLine=1
-Caret=41,27
+Caret=57,28
 [language\french\blocks.php]
-TopLine=12
-Caret=36,30
+TopLine=13
+Caret=1,31
 [language\english\blocks.php]
 TopLine=12
 Caret=45,30
@@ -207,8 +208,11 @@ Caret=45,30
 TopLine=23
 Caret=1,41
 [class\Slides.php]
-TopLine=105
-Caret=144,135
+TopLine=103
+Caret=59,113
 [blocks\update_theme.php]
 TopLine=57
 Caret=51,75
+[templates\admin\slider_admin_slides.tpl]
+TopLine=9
+Caret=53,31

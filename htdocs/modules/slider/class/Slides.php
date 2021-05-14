@@ -108,6 +108,17 @@ class Slides extends \XoopsObject
         } else {
             $editor = $helper->getConfig('editor_user');
         }
+        
+        $editorConfigs['name'] = 'sld_description';
+        $editorConfigs['value'] = $this->getVar('sld_title', 'e');
+        $editorConfigs['rows'] = 5;
+        $editorConfigs['cols'] = 40;
+        $editorConfigs['width'] = '60%';
+        $editorConfigs['height'] = '200px';
+        $editorConfigs['editor'] = $editor;
+        $form->addElement(new \XoopsFormEditor(_AM_SLIDER_SLIDE_TITLE, 'sld_title', $editorConfigs));
+        
+        
         $editorConfigs['name'] = 'sld_description';
         $editorConfigs['value'] = $this->getVar('sld_description', 'e');
         $editorConfigs['rows'] = 5;
@@ -115,10 +126,6 @@ class Slides extends \XoopsObject
         $editorConfigs['width'] = '60%';
         $editorConfigs['height'] = '200px';
         $editorConfigs['editor'] = $editor;
-        
-        
-        
-        $form->addElement(new \XoopsFormEditor(_AM_SLIDER_SLIDE_TITLE, 'sld_title', $editorConfigs));
         $form->addElement(new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_description', $editorConfigs));
         
         // Form Image sldImage
