@@ -170,7 +170,6 @@ _slider
 10=class\SlidesHandler.php
 11=class\Slides.php
 12=blocks\update_theme.php
-13=blocks\slides.php
 [Selected Project Files]
 Main=
 Selected=class\Slides.php
@@ -208,11 +207,8 @@ Caret=45,30
 TopLine=23
 Caret=1,41
 [class\Slides.php]
-TopLine=97
-Caret=32,121
+TopLine=105
+Caret=144,135
 [blocks\update_theme.php]
 TopLine=57
 Caret=51,75
-[blocks\slides.php]
-TopLine=68
-Caret=81,88

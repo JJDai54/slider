@@ -89,6 +89,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_BLOCK', "Slider Block");
 \define('_AM_SLIDER_BLOCK_DESC', "Active le block qui permet la mise à jour des slides");
 \define('_AM_SLIDER_TRAITEMENTS', "Traitements");
+\define('_AM_SLIDER_SLIDE_SHORT_NAME', "Nom court");
 
 
 

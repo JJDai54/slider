@@ -112,8 +112,8 @@ class Slides extends \XoopsObject
         $editorConfigs['value'] = $this->getVar('sld_description', 'e');
         $editorConfigs['rows'] = 5;
         $editorConfigs['cols'] = 40;
-        $editorConfigs['width'] = '100%';
-        $editorConfigs['height'] = '400px';
+        $editorConfigs['width'] = '60%';
+        $editorConfigs['height'] = '200px';
         $editorConfigs['editor'] = $editor;
         
         
@@ -132,7 +132,7 @@ class Slides extends \XoopsObject
 $upload_size = $helper->getConfig('maxsize_image'); 
 
         $imageTray  = new \XoopsFormElementTray(_AM_SLIDER_SLIDE . '<br><br>' . sprintf(_AM_SLIDER_UPLOADSIZE, $upload_size / 1024), '<br>'); 
-        $imageTray->addElement(new \XoopsFormLabel('', "<br><img src='{$urlImg}'  name='image_img2' id='image_img2' alt='' style='max-width:400px'>")); 
+        $imageTray->addElement(new \XoopsFormLabel('', "<br><img src='{$urlImg}'  name='image_img2' id='image_img2' alt='' style='max-width:60%'>")); 
 //echo "{$urlImg}<br>"; 
         $imageTray->addElement(new \XoopsFormFile(_AM_SLIDER_SLIDE_TO_LOAD, 'sld_image', $upload_size), false);
         
