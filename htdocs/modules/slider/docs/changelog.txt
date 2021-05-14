@@ -14,5 +14,5 @@
          Il peut être placé n'import ou, il est invisible.
          Ne pas modifier les paramètres du bloc
          
-Pour plus d'informations voir le fichier "help.html" dans l'admin du module.
+
  

@@ -167,9 +167,11 @@ _slider
 7=language\french\admin.php
 8=class\Slides.php
 9=docs\changelog.txt
+10=language\english\help\help.html
+11=language\french\help\help.html
 [Selected Project Files]
 Main=
-Selected=docs\changelog.txt
+Selected=language\french\help\help.html
 [templates\admin\slider_admin_slides.tpl]
 TopLine=18
 Caret=118,34
@@ -199,4 +201,10 @@ TopLine=96
 Caret=1,129
 [docs\changelog.txt]
 TopLine=1
-Caret=25,17
+Caret=1,17
+[language\english\help\help.html]
+TopLine=1
+Caret=1533,1
+[language\french\help\help.html]
+TopLine=1
+Caret=59,3
