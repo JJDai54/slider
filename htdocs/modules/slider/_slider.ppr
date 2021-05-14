@@ -159,12 +159,20 @@ _slider
 [Open project files]
 0=templates\admin\slider_slider.tpl
 1=blocks\update_theme.php
+2=sql\mysql.sql
+3=xoops_version.php
 [Selected Project Files]
 Main=
-Selected=templates\admin\slider_slider.tpl
+Selected=xoops_version.php
 [templates\admin\slider_slider.tpl]
 TopLine=1
 Caret=128,22
 [blocks\update_theme.php]
 TopLine=22
 Caret=1,34
+[sql\mysql.sql]
+TopLine=1
+Caret=6,26
+[xoops_version.php]
+TopLine=19
+Caret=41,41

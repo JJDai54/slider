@@ -26,7 +26,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 1.0,
+    'version'             => 1.2,
     'description'         => _MI_SLIDER_DESC,
     'author'              => 'JJDai',
     'author_mail'         => 'jjdelalandre@orange.fr',
@@ -38,7 +38,7 @@ $modversion = [
     'help'                => 'page=help',
     'release_info'        => 'release_info',
     'release_file'        => XOOPS_URL . '/modules/slider/docs/release_info file',
-    'release_date'        => '2021/05/11',
+    'release_date'        => '2021/05/14',
     'manual'              => 'link to manual file',
     'manual_file'         => XOOPS_URL . '/modules/slider/docs/install.txt',
     'min_php'             => '5.5',
