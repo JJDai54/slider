@@ -5,8 +5,8 @@ module "slider" pour Xoops:
 -----------------------------------
 
 Fonctionnalités : 
-- Ajout, Supprimer de slides à la page d'accueil
-- Activation, désactivation des slide, sans suppression
+- Ajout, Suppression de slides sur la page d'accueil
+- Activation, désactivation des slides, sans suppression
 - Défini le type d'affichage: avec ou sans période d'affichage
 - Définition de l'ordre d'affichage des slides
 - Définition d'une période d'affichage pour anticiper un évènement
