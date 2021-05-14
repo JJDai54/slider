@@ -1,0 +1,18 @@
+==============================================================
+1.0 [2021/05/11 19:16:51]
+==============================================================
+ - Original release slider (JJDai)
+ - Création du module
+ - Ce module permet de définir les slides du thèmes
+ - Pour chaque slide
+       Définition d'une période
+       Ordre d'affichage
+       Activaion désactivation
+ 
+ - IMPORTANT:
+ Block : pour fonctioner correctement le bloc du module dot être activé.
+         Il peut être placé n'import ou, il est invisible.
+         Ne pas modifier les paramètres du bloc
+         
+Pour plus d'informations voir le fichier "help.html" dans l'admin du module.
+ 

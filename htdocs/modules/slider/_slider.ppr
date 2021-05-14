@@ -1,0 +1,202 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.CompileOnBackground=0
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+DefaultDir=J:\Xoops\_Xoops\modules-JJD\slider\slider
+DefaultCP=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+HTServer=localhost
+Extensions=*.*
+[Project tree]
+_slider
+	+slider
+		+admin
+			admin\about.php
+			admin\feedback.php
+			admin\footer.php
+			admin\header.php
+			admin\index.html
+			admin\index.php
+			admin\menu.php
+			admin\slides.php
+			admin\traitements.php
+		-assets
+			-css
+				-admin
+					assets\css\admin\index.html
+					assets\css\admin\style.css
+				assets\css\index.html
+				assets\css\style.css
+			-icons
+				-16
+					assets\icons\16\index.html
+					assets\icons\16\status0.png
+					assets\icons\16\status1.png
+					assets\icons\16\status2.png
+					assets\icons\16\status3.png
+					assets\icons\16\status4.png
+				-32
+					assets\icons\32\broken.png
+					assets\icons\32\dashboard.png
+					assets\icons\32\index.html
+				assets\icons\index.html
+			-images
+				assets\images\blank.gif
+				assets\images\blank.png
+				assets\images\index.html
+				assets\images\logoModule.png
+			-js
+				assets\js\functions.js
+				assets\js\index.html
+			assets\index.html
+		+blocks
+			blocks\index.html
+			blocks\slides.php
+			blocks\update_theme.php
+		+class
+			-Common
+				class\Common\Breadcrumb.php
+				class\Common\Configurator.php
+				class\Common\FilesManagement.php
+				class\Common\index.html
+				class\Common\Migrate.php
+				class\Common\ModuleFeedback.php
+				class\Common\ModuleStats.php
+				class\Common\Resizer.php
+				class\Common\ServerStats.php
+				class\Common\VersionChecks.php
+				class\Common\XoopsConfirm.php
+			class\Constants.php
+			class\Helper.php
+			class\index.html
+			class\Slides.php
+			class\SlidesHandler.php
+			class\Utility.php
+		+config
+			config\admin.yml
+			config\config.php
+			config\icons.php
+			config\index.html
+			config\paths.php
+		+docs
+			docs\changelog.txt
+			docs\credits.txt
+			docs\index.html
+			docs\install.txt
+			docs\lang.diff
+			docs\license.txt
+			docs\readme.txt
+		+include
+			include\common.php
+			include\fnc-slider.php
+			include\functions.php
+			include\index.html
+			include\install.php
+			include\uninstall.php
+			include\update.php
+			include\xoops_version.inc.php
+		+language
+			+english
+				+help
+					language\english\help\help.html
+					language\english\help\index.html
+				language\english\admin.php
+				language\english\blocks.php
+				language\english\common.php
+				language\english\feedback.php
+				language\english\index.html
+				language\english\modinfo.php
+			+french
+				+help
+					language\french\help\help.html
+					language\french\help\index.html
+				language\french\admin.php
+				language\french\blocks.php
+				language\french\common.php
+				language\french\feedback.php
+				language\french\index.html
+				language\french\modinfo.php
+			language\index.html
+		-preloads
+			preloads\autoloader.php
+			preloads\core.php
+			preloads\index.html
+		+sql
+			sql\index.html
+			sql\mysql.sql
+		+templates
+			+admin
+				templates\admin\index.html
+				templates\admin\slider_admin_about.tpl
+				templates\admin\slider_admin_footer.tpl
+				templates\admin\slider_admin_header.tpl
+				templates\admin\slider_admin_index.tpl
+				templates\admin\slider_admin_slides.tpl
+				templates\admin\slider_slider.tpl
+			+blocks
+				templates\blocks\index.html
+				templates\blocks\slider_block_slides.tpl
+				templates\blocks\slider_block_update_theme.tpl
+			templates\index.html
+		-testdata
+			-english
+				testdata\english\index.html
+			-french
+			-images
+				testdata\images\blank.gif
+				testdata\images\blank.png
+				testdata\images\index.html
+			testdata\index.html
+			testdata\index.php
+		xoops_version.php
+[Open project files]
+0=templates\admin\slider_admin_slides.tpl
+1=admin\header.php
+2=include\install.php
+3=include\uninstall.php
+4=templates\admin\slider_admin_index.tpl
+5=blocks\update_theme.php
+6=templates\blocks\slider_block_update_theme.tpl
+7=language\french\admin.php
+8=class\Slides.php
+9=docs\changelog.txt
+[Selected Project Files]
+Main=
+Selected=docs\changelog.txt
+[templates\admin\slider_admin_slides.tpl]
+TopLine=18
+Caret=118,34
+[admin\header.php]
+TopLine=15
+Caret=1,25
+[include\install.php]
+TopLine=1
+Caret=1,1
+[include\uninstall.php]
+TopLine=27
+Caret=1,49
+[templates\admin\slider_admin_index.tpl]
+TopLine=1
+Caret=1,1
+[blocks\update_theme.php]
+TopLine=162
+Caret=27,192
+[templates\blocks\slider_block_update_theme.tpl]
+TopLine=1
+Caret=3,14
+[language\french\admin.php]
+TopLine=86
+Caret=1,96
+[class\Slides.php]
+TopLine=96
+Caret=1,129
+[docs\changelog.txt]
+TopLine=1
+Caret=25,17
