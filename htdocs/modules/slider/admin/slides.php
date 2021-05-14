@@ -49,7 +49,7 @@ switch ($op) {
         $slidesCount = $slidesHandler->getCountSlides();
         
         $criteria = new \Criteria('sld_theme', $select_theme);
-        $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit,'sld_theme ASC, sld_weight ASC, sld_title');
+        $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit,'sld_theme ASC, sld_weight ASC, sld_short_name');
         $GLOBALS['xoopsTpl']->assign('slides_count', $slidesCount);
         $GLOBALS['xoopsTpl']->assign('slider_url', SLIDER_URL);
         $GLOBALS['xoopsTpl']->assign('slider_upload_url', SLIDER_UPLOAD_URL);
@@ -99,7 +99,8 @@ switch ($op) {
             $slidesObj = $slidesHandler->create();
         }
         // Set Vars
-        $slidesObj->setVar('sld_title', Request::getString('sld_title', ''));
+        $slidesObj->setVar('sld_short_name', Request::getString('sld_short_name', ''));
+        $slidesObj->setVar('sld_title', Request::getText('sld_title', ''));
         $slidesObj->setVar('sld_description', Request::getText('sld_description', ''));
         $slidesObj->setVar('sld_weight', Request::getInt('sld_weight', 0));
         $slideDate_beginArr = Request::getArray('sld_date_begin');
@@ -120,7 +121,7 @@ switch ($op) {
         include_once XOOPS_ROOT_PATH . '/class/uploader.php';
         $filename       = $_FILES['sld_image']['name'];
         $imgMimetype    = $_FILES['sld_image']['type'];
-        $imgNameDef     = Request::getString('sld_title');
+        $imgNameDef     = Request::getString('sld_short_name');
         $uploaderErrors = '';
         $uploader = new \XoopsMediaUploader(SLIDER_UPLOAD_IMAGE_PATH . '/slides/', 
                                                     $helper->getConfig('mimetypes_image'), 
@@ -193,7 +194,7 @@ switch ($op) {
         $templateMain = 'slider_admin_slides.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('slides.php'));
         $slidesObj = $slidesHandler->get($sldId);
-        $sldTitle = $slidesObj->getVar('sld_title');
+        $sldTitle = $slidesObj->getVar('sld_short_name');
         if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
                 \redirect_header('slides.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -207,7 +208,7 @@ switch ($op) {
             $xoopsconfirm = new Common\XoopsConfirm(
                 ['ok' => 1, 'sld_id' => $sldId, 'op' => 'delete'],
                 $_SERVER['REQUEST_URI'],
-                \sprintf(_AM_SLIDER_FORM_SURE_DELETE, $slidesObj->getVar('sld_title')));
+                \sprintf(_AM_SLIDER_FORM_SURE_DELETE, $slidesObj->getVar('sld_short_name')));
             $form = $xoopsconfirm->getFormXoopsConfirm();
             $GLOBALS['xoopsTpl']->assign('form', $form->render());
         }
@@ -254,7 +255,7 @@ switch ($op) {
         $criteria->add(new \Criteria('sld_theme', $select_theme));
         $criteria->add(new \Criteria('sld_weight', $sld_weight, $sens));
         $limit = 0;
-        $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit, "sld_weight {$ordre}, sld_title {$ordre}, sld_id");
+        $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit, "sld_weight {$ordre}, sld_short_name {$ordre}, sld_id");
         if(count($slidesAll) > 0  ){
             $key = array_key_first($slidesAll);
 //            echo "===> count = " . count($slidesAll) . "<br>key={$key}"; 

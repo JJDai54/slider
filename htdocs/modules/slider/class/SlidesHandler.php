@@ -38,7 +38,7 @@ class SlidesHandler extends \XoopsPersistableObjectHandler
      */
     public function __construct(\XoopsDatabase $db)
     {
-        parent::__construct($db, 'slider_slides', Slides::class, 'sld_id', 'sld_title');
+        parent::__construct($db, 'slider_slides', Slides::class, 'sld_id', 'sld_short_name');
     }
 
     /**
@@ -82,7 +82,7 @@ class SlidesHandler extends \XoopsPersistableObjectHandler
      * @param string $order
      * @return int
      */
-    public function getCountSlides($start = 0, $limit = 0, $sort = 'sld_id ASC, sld_title', $order = 'ASC')
+    public function getCountSlides($start = 0, $limit = 0, $sort = 'sld_id ASC, sld_short_name', $order = 'ASC')
     {
         $crCountSlides = new \CriteriaCompo();
         $crCountSlides = $this->getSlidesCriteria($crCountSlides, $start, $limit, $sort, $order);
@@ -97,7 +97,7 @@ class SlidesHandler extends \XoopsPersistableObjectHandler
      * @param string $order
      * @return array
      */
-    public function getAllSlides($criteria, $start = 0, $limit = 0, $sort = 'sld_id ASC, sld_title', $order = 'ASC')
+    public function getAllSlides($criteria, $start = 0, $limit = 0, $sort = 'sld_id ASC, sld_short_name', $order = 'ASC')
     {
         $crAllSlides = $this->getSlidesCriteria($criteria, $start, $limit, $sort, $order);
         return $this->getAll($crAllSlides);

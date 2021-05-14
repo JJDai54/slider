@@ -13,7 +13,8 @@
 
 CREATE TABLE `slider_slides` (
   `sld_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `sld_title` VARCHAR(80) NOT NULL DEFAULT '',
+  `sld_short_name` VARCHAR(80) NOT NULL DEFAULT '',
+  `sld_title` TEXT  NOT NULL DEFAULT '',
   `sld_description` TEXT NOT NULL ,
   `sld_weight` INT(10) NOT NULL DEFAULT '0',
   `sld_date_begin` INT(10) NOT NULL DEFAULT '0',

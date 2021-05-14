@@ -27,6 +27,7 @@
 // Slides
 \define('_MB_SLIDER_SLIDES_TO_DISPLAY', 'Slides à afficher');
 \define('_MB_SLIDER_ALL_SLIDES', 'Tous les Slides');
+\define('_MB_SLIDER_SLD_SHORT_NAME', 'Nom court');
 \define('_MB_SLIDER_SLD_TITLE', 'Titre');
 \define('_MB_SLIDER_SLD_DESCRIPTION', 'Description');
 \define('_MB_SLIDER_SLD_WEIGHT', 'poids');

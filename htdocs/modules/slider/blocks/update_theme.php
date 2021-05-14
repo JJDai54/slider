@@ -72,7 +72,7 @@ global $xoopsConfig;
     $crSlides0 = new \CriteriaCompo();    
     $crSlides0->add($crSlidesTheme);    
     $crSlides0->add($crSlidesAP, "AND");    
-    $crSlides0->setSort('sld_weight,sld_title');
+    $crSlides0->setSort('sld_weight,sld_short_name');
     $crSlides0->setOrder('ASC');
 
     $slidesAll = $slidesHandler->getAll($crSlides0);
@@ -81,7 +81,8 @@ global $xoopsConfig;
     $Slide_Ids = [];
     if (\count($slidesAll) > 0) {
         foreach (\array_keys($slidesAll) as $i) {
-            $slides[$i]['title'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_title'));
+            $slides[$i]['sld_short_name'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_short_name'));
+            $slides[$i]['title'] = $slidesAll[$i]->getVar('sld_title');
             //$slides[$i]['description'] = \strip_tags($slidesAll[$i]->getVar('sld_description'));
             $slides[$i]['description'] = $slidesAll[$i]->getVar('sld_description');
             $slides[$i]['weight'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_weight'));

@@ -83,8 +83,9 @@ function b_slider_slides_show($options)
     unset($crSlides);
     if (\count($slidesAll) > 0) {
         foreach (\array_keys($slidesAll) as $i) {
-            $block[$i]['title'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_title'));
-            $block[$i]['description'] = \strip_tags($slidesAll[$i]->getVar('sld_description'));
+            $block[$i]['sld_short_name'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_short_name'));
+            $block[$i]['title'] =  $slidesAll[$i]->getVar('sld_title');
+            $block[$i]['description'] = $slidesAll[$i]->getVar('sld_description');
             $block[$i]['weight'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_weight'));
             $block[$i]['date_begin'] = $slidesAll[$i]->getVar('sld_date_begin');
             $block[$i]['date_end'] = $slidesAll[$i]->getVar('sld_date_end');
@@ -128,7 +129,7 @@ function b_slider_slides_edit($options)
     $form .= "<option value='0' " . (\in_array(0, $options) == false ? '' : "selected='selected'") . '>' . _MB_SLIDER_ALL_SLIDES . '</option>';
     foreach (\array_keys($slidesAll) as $i) {
         $sld_id = $slidesAll[$i]->getVar('sld_id');
-        $form .= "<option value='" . $sld_id . "' " . (\in_array($sld_id, $options) == false ? '' : "selected='selected'") . '>' . $slidesAll[$i]->getVar('sld_title') . '</option>';
+        $form .= "<option value='" . $sld_id . "' " . (\in_array($sld_id, $options) == false ? '' : "selected='selected'") . '>' . $slidesAll[$i]->getVar('sld_short_name') . '</option>';
     }
     $form .= '</select>';
 

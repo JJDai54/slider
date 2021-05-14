@@ -162,9 +162,18 @@ _slider
 2=admin\index.php
 3=admin\slides.php
 4=..\copie to github.bat
+5=sql\mysql.sql
+6=templates\blocks\slider_block_update_theme.tpl
+7=templates\blocks\slider_block_slides.tpl
+8=language\french\blocks.php
+9=language\english\blocks.php
+10=class\SlidesHandler.php
+11=class\Slides.php
+12=blocks\update_theme.php
+13=blocks\slides.php
 [Selected Project Files]
 Main=
-Selected=..\copie to github.bat
+Selected=class\Slides.php
 [include\fnc-slider.php]
 TopLine=51
 Caret=31,59
@@ -175,8 +184,35 @@ Caret=15,38
 TopLine=1
 Caret=1,1
 [admin\slides.php]
-TopLine=243
-Caret=2,275
+TopLine=34
+Caret=123,52
 [..\copie to github.bat]
 TopLine=1
 Caret=6,3
+[sql\mysql.sql]
+TopLine=1
+Caret=13,17
+[templates\blocks\slider_block_update_theme.tpl]
+TopLine=8
+Caret=77,26
+[templates\blocks\slider_block_slides.tpl]
+TopLine=1
+Caret=41,27
+[language\french\blocks.php]
+TopLine=12
+Caret=36,30
+[language\english\blocks.php]
+TopLine=12
+Caret=45,30
+[class\SlidesHandler.php]
+TopLine=23
+Caret=1,41
+[class\Slides.php]
+TopLine=97
+Caret=32,121
+[blocks\update_theme.php]
+TopLine=57
+Caret=51,75
+[blocks\slides.php]
+TopLine=68
+Caret=81,88

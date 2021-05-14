@@ -40,7 +40,8 @@ class Slides extends \XoopsObject
     public function __construct()
     {
         $this->initVar('sld_id', XOBJ_DTYPE_INT);
-        $this->initVar('sld_title', XOBJ_DTYPE_TXTBOX);
+        $this->initVar('sld_short_name', XOBJ_DTYPE_TXTBOX);
+        $this->initVar('sld_title', XOBJ_DTYPE_OTHER);
         $this->initVar('sld_description', XOBJ_DTYPE_OTHER);
         $this->initVar('sld_weight', XOBJ_DTYPE_INT);
         $this->initVar('sld_date_begin', XOBJ_DTYPE_INT);
@@ -92,8 +93,14 @@ class Slides extends \XoopsObject
         \xoops_load('XoopsFormLoader');
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
+        
+        
+        // Form Text sld_short_name
+        $form->addElement(new \XoopsFormText(_AM_SLIDER_SLIDE_SHORT_NAME, 'sld_short_name', 50, 255, $this->getVar('sld_short_name')), true);
+        
+        
+        
         // Form Text sldTitle
-        $form->addElement(new \XoopsFormText(_AM_SLIDER_SLIDE_TITLE, 'sld_title', 50, 255, $this->getVar('sld_title')), true);
         // Form Editor DhtmlTextArea sldDescription
         $editorConfigs = [];
         if ($isAdmin) {
@@ -108,6 +115,10 @@ class Slides extends \XoopsObject
         $editorConfigs['width'] = '100%';
         $editorConfigs['height'] = '400px';
         $editorConfigs['editor'] = $editor;
+        
+        
+        
+        $form->addElement(new \XoopsFormEditor(_AM_SLIDER_SLIDE_TITLE, 'sld_title', $editorConfigs));
         $form->addElement(new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_description', $editorConfigs));
         
         // Form Image sldImage
@@ -187,6 +198,7 @@ $upload_size = $helper->getConfig('maxsize_image');
         $utility = new \XoopsModules\Slider\Utility();
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']                 = $this->getVar('sld_id');
+        $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['title']              = $this->getVar('sld_title');
         $ret['description']        = $this->getVar('sld_description', 'e');
         $editorMaxchar             = $helper->getConfig('editor_maxchar');
