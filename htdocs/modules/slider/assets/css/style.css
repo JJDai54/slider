@@ -20,13 +20,13 @@
  * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 ul.menu {
-	list-style: none;
-	background-color: #f5f5f5;
-	border-radius: 4px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
 }
 
 ul.menu > li {
-	display: inline-block;
+    display: inline-block;
 }
 
 ul.menu > li + li:before {  
@@ -34,9 +34,9 @@ ul.menu > li + li:before {
 }
 
 .printOnly {
-	display: none;
+    display: none;
 }
 
 img {
-	max-width: 300px;
+    max-width: 300px;
 }

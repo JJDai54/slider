@@ -27,22 +27,22 @@ $moduleInfo    = $moduleHandler->get($xoopsModule->getVar('mid'));
 $sysPathIcon32 = $moduleInfo->getInfo('sysicons32');
 
 $adminmenu[] = [
-	'title' => _MI_SLIDER_ADMENU1,
-	'link' => 'admin/index.php',
-	'icon' => $sysPathIcon32.'/dashboard.png',
+    'title' => _MI_SLIDER_ADMENU1,
+    'link' => 'admin/index.php',
+    'icon' => $sysPathIcon32.'/dashboard.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_SLIDER_ADMENU2,
-	'link' => 'admin/slides.php',
-	'icon' => 'assets/icons/32/dashboard.png',
+    'title' => _MI_SLIDER_ADMENU2,
+    'link' => 'admin/slides.php',
+    'icon' => 'assets/icons/32/dashboard.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_SLIDER_ADMENU3,
-	'link' => 'admin/feedback.php',
-	'icon' => $sysPathIcon32.'/mail_foward.png',
+    'title' => _MI_SLIDER_ADMENU3,
+    'link' => 'admin/feedback.php',
+    'icon' => $sysPathIcon32.'/mail_foward.png',
 ];
 $adminmenu[] = [
-	'title' => _MI_SLIDER_ABOUT,
-	'link' => 'admin/about.php',
-	'icon' => $sysPathIcon32.'/about.png',
+    'title' => _MI_SLIDER_ABOUT,
+    'link' => 'admin/about.php',
+    'icon' => $sysPathIcon32.'/about.png',
 ];

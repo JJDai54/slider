@@ -28,16 +28,16 @@
  */
 function slider_block_addCatSelect($cats)
 {
-	$cat_sql = '(';
-	if (\is_array($cats)) {
-		$cat_sql .= current($cats);
-		array_shift($cats);
-		foreach ($cats as $cat) {
-			$cat_sql .= ',' . $cat;
-		}
-	}
-	$cat_sql .= ')';
-	return $cat_sql;
+    $cat_sql = '(';
+    if (\is_array($cats)) {
+        $cat_sql .= current($cats);
+        array_shift($cats);
+        foreach ($cats as $cat) {
+            $cat_sql .= ',' . $cat;
+        }
+    }
+    $cat_sql .= ')';
+    return $cat_sql;
 }
 
 /**
@@ -185,7 +185,7 @@ function slider_Filter($url, $type = '') {
     $url .= htmlentities($url, ENT_COMPAT, 'utf-8');
     $url .= \preg_replace('`&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig);`i', "\1", $url);
     $url .= \preg_replace(array($regular_expression, '`[-]+`'), '-', $url);
-    $url = ($url == '') ? $type : strtolower(	rim($url, '-'));
+    $url = ($url == '') ? $type : strtolower(    rim($url, '-'));
     return $url;
 }
 

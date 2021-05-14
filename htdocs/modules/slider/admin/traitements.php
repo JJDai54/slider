@@ -36,19 +36,19 @@ $theme = Request::getString('sld_theme',  $xoopsConfig['theme_set']);
 
 //-------------------------------------------------------        
 switch ($op) {
-	case 'clean_themes_dir':
+    case 'clean_themes_dir':
         \cleanAllThemesFolder();
     break;
     
-	case 'activate_block':
+    case 'activate_block':
         \setBlockSliderVisible(true);
     break;
     
-	case 'deactivate_block':
+    case 'deactivate_block':
         \setBlockSliderVisible(true);
     break;
     
-	default:
+    default:
 
 }
 

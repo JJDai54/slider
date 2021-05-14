@@ -161,9 +161,10 @@ _slider
 1=admin\traitements.php
 2=admin\index.php
 3=admin\slides.php
+4=..\copie to github.bat
 [Selected Project Files]
 Main=
-Selected=admin\slides.php
+Selected=..\copie to github.bat
 [include\fnc-slider.php]
 TopLine=51
 Caret=31,59
@@ -174,5 +175,8 @@ Caret=15,38
 TopLine=1
 Caret=1,1
 [admin\slides.php]
-TopLine=188
-Caret=1,217
+TopLine=243
+Caret=2,275
+[..\copie to github.bat]
+TopLine=1
+Caret=6,3

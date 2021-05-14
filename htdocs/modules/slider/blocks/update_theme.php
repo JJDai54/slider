@@ -37,74 +37,74 @@ global $xoopsConfig;
     $block = array();
 // echo "<hr><pre>" . print_r($xoopsConfig, true ). "</pre><hr>";
 
-	include_once XOOPS_ROOT_PATH . '/modules/slider/class/Slides.php';
-	$myts = MyTextSanitizer::getInstance();
+    include_once XOOPS_ROOT_PATH . '/modules/slider/class/Slides.php';
+    $myts = MyTextSanitizer::getInstance();
 
     $helper      = Helper::getInstance();
-	$slidesHandler = $helper->getHandler('Slides');
+    $slidesHandler = $helper->getHandler('Slides');
     
     //recupe du theme actif
     $theme = $xoopsConfig['theme_set'];
                 
-	// selection des slides actifs
+    // selection des slides actifs
     $now = time();
     
     
-// 	$crSlides->add(new \Criteria('sld_date_end', \DateTime::createFromFormat(_SHORTDATESTRING), '>='));
-// 	$crSlides->add(new \Criteria('sld_date_begin', \DateTime::createFromFormat(_SHORTDATESTRING) + 86400, '<='));
+//     $crSlides->add(new \Criteria('sld_date_end', \DateTime::createFromFormat(_SHORTDATESTRING), '>='));
+//     $crSlides->add(new \Criteria('sld_date_begin', \DateTime::createFromFormat(_SHORTDATESTRING) + 86400, '<='));
     
-	$crSlidesTheme = new \CriteriaCompo();    
-	$crSlidesTheme->add(new \Criteria('sld_theme', $theme, '='));
-	$crSlidesTheme->add(new \Criteria('sld_actif', 1, '='));
+    $crSlidesTheme = new \CriteriaCompo();    
+    $crSlidesTheme->add(new \Criteria('sld_theme', $theme, '='));
+    $crSlidesTheme->add(new \Criteria('sld_actif', 1, '='));
     
-	$crSlidesActif = new \CriteriaCompo();
-	$crSlidesActif->add(new \Criteria('sld_always_visible', 1, '='));
+    $crSlidesActif = new \CriteriaCompo();
+    $crSlidesActif->add(new \Criteria('sld_always_visible', 1, '='));
     
- 	$crSlidesperiode = new \CriteriaCompo();    
-	$crSlidesperiode->add(new \Criteria('sld_date_end', $now, '>='));
-	$crSlidesperiode->add(new \Criteria('sld_date_begin', $now, '<='));
-	//$crSlidesperiode->add(new \Criteria('sld_date_begin', $now + 86400, '<='));
+     $crSlidesperiode = new \CriteriaCompo();    
+    $crSlidesperiode->add(new \Criteria('sld_date_end', $now, '>='));
+    $crSlidesperiode->add(new \Criteria('sld_date_begin', $now, '<='));
+    //$crSlidesperiode->add(new \Criteria('sld_date_begin', $now + 86400, '<='));
    
-	$crSlidesAP = new \CriteriaCompo();    
-	$crSlidesAP->add($crSlidesActif);    
-	$crSlidesAP->add($crSlidesperiode, "OR");    
+    $crSlidesAP = new \CriteriaCompo();    
+    $crSlidesAP->add($crSlidesActif);    
+    $crSlidesAP->add($crSlidesperiode, "OR");    
     
-	$crSlides0 = new \CriteriaCompo();    
-	$crSlides0->add($crSlidesTheme);    
-	$crSlides0->add($crSlidesAP, "AND");    
-	$crSlides0->setSort('sld_weight,sld_title');
-	$crSlides0->setOrder('ASC');
+    $crSlides0 = new \CriteriaCompo();    
+    $crSlides0->add($crSlidesTheme);    
+    $crSlides0->add($crSlidesAP, "AND");    
+    $crSlides0->setSort('sld_weight,sld_title');
+    $crSlides0->setOrder('ASC');
 
-	$slidesAll = $slidesHandler->getAll($crSlides0);
-	unset($crSlides);
+    $slidesAll = $slidesHandler->getAll($crSlides0);
+    unset($crSlides);
     $slides = array();
     $Slide_Ids = [];
-	if (\count($slidesAll) > 0) {
-		foreach (\array_keys($slidesAll) as $i) {
-			$slides[$i]['title'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_title'));
-			//$slides[$i]['description'] = \strip_tags($slidesAll[$i]->getVar('sld_description'));
-			$slides[$i]['description'] = $slidesAll[$i]->getVar('sld_description');
+    if (\count($slidesAll) > 0) {
+        foreach (\array_keys($slidesAll) as $i) {
+            $slides[$i]['title'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_title'));
+            //$slides[$i]['description'] = \strip_tags($slidesAll[$i]->getVar('sld_description'));
+            $slides[$i]['description'] = $slidesAll[$i]->getVar('sld_description');
             $slides[$i]['weight'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_weight'));
-// 			$slides[$i]['date_begin'] = $slidesAll[$i]->getVar('sld_date_begin');
-// 			$slides[$i]['date_end'] = $slidesAll[$i]->getVar('sld_date_end');
-	    	$slides[$i]['date_begin']  = \formatTimestamp($slidesAll[$i]->getVar('sld_date_begin'), 'm');
-	    	$slides[$i]['date_end']    = \formatTimestamp($slidesAll[$i]->getVar('sld_date_end'), 'm');
+//             $slides[$i]['date_begin'] = $slidesAll[$i]->getVar('sld_date_begin');
+//             $slides[$i]['date_end'] = $slidesAll[$i]->getVar('sld_date_end');
+            $slides[$i]['date_begin']  = \formatTimestamp($slidesAll[$i]->getVar('sld_date_begin'), 'm');
+            $slides[$i]['date_end']    = \formatTimestamp($slidesAll[$i]->getVar('sld_date_end'), 'm');
             
-			$slides[$i]['actif'] = $slidesAll[$i]->getVar('sld_actif');
-			$slides[$i]['always_visible'] = $slidesAll[$i]->getVar('sld_always_visible');
-			$slides[$i]['theme'] = $slidesAll[$i]->getVar('sld_theme');
-			$slides[$i]['image'] = $slidesAll[$i]->getVar('sld_image');
-			$slides[$i]['image_fullName'] = XOOPS_URL . "/uploads/slider/images/slides/" . $slidesAll[$i]->getVar('sld_image');
+            $slides[$i]['actif'] = $slidesAll[$i]->getVar('sld_actif');
+            $slides[$i]['always_visible'] = $slidesAll[$i]->getVar('sld_always_visible');
+            $slides[$i]['theme'] = $slidesAll[$i]->getVar('sld_theme');
+            $slides[$i]['image'] = $slidesAll[$i]->getVar('sld_image');
+            $slides[$i]['image_fullName'] = XOOPS_URL . "/uploads/slider/images/slides/" . $slidesAll[$i]->getVar('sld_image');
             
             $Slide_Ids[$slidesAll[$i]->getVar('sld_id')] = $slidesAll[$i]->getVar('sld_id');
 
-		}
-	}
+        }
+    }
     
     
         
     //--------------------------------------------------------------
-	$GLOBALS['xoopsTpl']->assign('slider_upload_url', SLIDER_UPLOAD_URL);
+    $GLOBALS['xoopsTpl']->assign('slider_upload_url', SLIDER_UPLOAD_URL);
     //echo "<hrt><pre>" . print_r($options, true) . "</pre><hr>";
     $block['hide'] = ($options[0]==0) ? 1 : 0;
     $block['slides'] = $slides;    
@@ -124,7 +124,7 @@ global $xoopsConfig;
     }
    
     $block['now'] = sprintf(_MB_SLIDER_TPL_HEURE_COURANTE, date("Y-m-d H:i:s", $now));    
-	return $block;
+    return $block;
 
 }
 
@@ -136,22 +136,22 @@ global $xoopsConfig;
 function b_slider_update_theme_edit($options)
 {
 
-	include_once XOOPS_ROOT_PATH . '/modules/slider/class/slides.php';
-	$helper = Helper::getInstance();
-	$slidesHandler = $helper->getHandler('Slides');
-	$GLOBALS['xoopsTpl']->assign('slider_upload_url', SLIDER_UPLOAD_URL);
+    include_once XOOPS_ROOT_PATH . '/modules/slider/class/slides.php';
+    $helper = Helper::getInstance();
+    $slidesHandler = $helper->getHandler('Slides');
+    $GLOBALS['xoopsTpl']->assign('slider_upload_url', SLIDER_UPLOAD_URL);
     
     
-		$form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
-		$form->setExtra('enctype="multipart/form-data"');
+        $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
+        $form->setExtra('enctype="multipart/form-data"');
 
         $showBlock = (isset($options[0])) ? $options[0]: 0; 
         $radShowBlock = new \XoopsFormRadioYN(_BL_SLIDER_SHOW_BLOCK, 'options[0]', $showBlock);
         $radShowBlock->SetDescription(_BL_SLIDER_SHOW_BLOCK_DESC);
-		$form->addElement($radShowBlock);
+        $form->addElement($radShowBlock);
         
         
-	return $form->render();
+    return $form->render();
 
 
 }
@@ -170,7 +170,7 @@ function build_new_tpl($slides, $theme){
     }
     //---------------------------------------------------
 
-			
+            
     $tpl = new \XoopsTpl();
     $tpl->assign('slides', $slides);
 

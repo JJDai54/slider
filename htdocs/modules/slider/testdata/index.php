@@ -67,14 +67,14 @@ function loadSampleData()
         $language = $xoopsConfig['language'] . '/';
     }
 
-	// load module tables
+    // load module tables
     foreach ($tables as $table) {
         $tabledata = \Xmf\Yaml::readWrapped($language . $table . '.yml');
         \Xmf\Database\TableLoad::truncateTable($table);
         \Xmf\Database\TableLoad::loadTableFromArray($table, $tabledata);
     }
-	
-	// load permissions
+    
+    // load permissions
     $table     = 'group_permission';
     $tabledata = \Xmf\Yaml::readWrapped($language . $table . '.yml');
     $mid       = \Xmf\Module\Helper::getHelper($moduleDirName)->getModule()->getVar('mid');
@@ -110,13 +110,13 @@ function saveSampleData()
     $exportFolder = $languageFolder . '/Exports-' . date('Y-m-d-H-i-s') . '/';
     Utility::createFolder($exportFolder);
 
-	// save module tables
+    // save module tables
     foreach ($tables as $table) {
         \Xmf\Database\TableLoad::saveTableToYamlFile($table, $exportFolder . $table . '.yml');
     }
-	
-	// save permissions
-	$criteria = new \CriteriaCompo();
+    
+    // save permissions
+    $criteria = new \CriteriaCompo();
     $criteria->add(new \Criteria('gperm_modid', \Xmf\Module\Helper::getHelper($moduleDirName)->getModule()->getVar('mid')));
     $skipColumns[] = 'gperm_id';
     \Xmf\Database\TableLoad::saveTableToYamlFile('group_permission', $exportFolder . 'group_permission.yml', $criteria, $skipColumns);
