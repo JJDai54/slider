@@ -51,7 +51,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_SLIDE_DATE_BEGIN', 'Date de début');
 \define('_AM_SLIDER_SLIDE_DATE_END', 'Date de fin');
 \define('_AM_SLIDER_SLIDE_ACTIF', 'Actif');
-\define('_AM_SLIDER_SLIDE_ACTIF_DESC', 'Active ou non le slide quelque soit les options suivantes. Cela évite de la supprimer pour le réutiliser plus tard');
+\define('_AM_SLIDER_SLIDE_ACTIF_DESC', 'Active ou non le slide quelque soit les options suivantes.<br>Cela évite de la supprimer pour le réutiliser plus tard');
 \define('_AM_SLIDER_SLIDE_SELECT_THEME', "Selectioner le thème à modifier");
 \define('_AM_SLIDER_SLIDE_SELECT_THEME_DESC', "Le fichier original 'slide.tlp' sera sauvegardé avec l'extension '_old'");
 \define('_AM_SLIDER_SLIDE_IMAGE', 'Image');
@@ -90,6 +90,8 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_BLOCK_DESC', "Active le block qui permet la mise à jour des slides");
 \define('_AM_SLIDER_TRAITEMENTS', "Traitements");
 \define('_AM_SLIDER_SLIDE_SHORT_NAME', "Nom court");
+\define('_AM_SLIDER_SLIDE_TITLE_DESC', "Titre principal affiché sur le slide");
+\define('_AM_SLIDER_SLIDE_DESCRIPTION_DESC', "Texte ou sous-titre afficher sur le slide");
 
 
 

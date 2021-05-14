@@ -116,17 +116,22 @@ class Slides extends \XoopsObject
         $editorConfigs['width'] = '60%';
         $editorConfigs['height'] = '200px';
         $editorConfigs['editor'] = $editor;
-        $form->addElement(new \XoopsFormEditor(_AM_SLIDER_SLIDE_TITLE, 'sld_title', $editorConfigs));
+        $inputTitle = new \XoopsFormEditor(_AM_SLIDER_SLIDE_TITLE, 'sld_title', $editorConfigs);
+        $inputTitle->setDescription(_AM_SLIDER_SLIDE_TITLE_DESC);
+        $form->addElement($inputTitle);
         
         
-        $editorConfigs['name'] = 'sld_description';
-        $editorConfigs['value'] = $this->getVar('sld_description', 'e');
-        $editorConfigs['rows'] = 5;
-        $editorConfigs['cols'] = 40;
-        $editorConfigs['width'] = '60%';
-        $editorConfigs['height'] = '200px';
-        $editorConfigs['editor'] = $editor;
-        $form->addElement(new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_description', $editorConfigs));
+        $editorConfigs2 = [];
+        $editorConfigs2['name'] = 'sld_description';
+        $editorConfigs2['value'] = $this->getVar('sld_description', 'e');
+        $editorConfigs2['rows'] = 5;
+        $editorConfigs2['cols'] = 40;
+        $editorConfigs2['width'] = '60%';
+        $editorConfigs2['height'] = '200px';
+        $editorConfigs2['editor'] = $editor;
+        $inputDescription = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_description', $editorConfigs2);
+        $inputDescription->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
+        $form->addElement($inputDescription);
         
         // Form Image sldImage
         // Form Image sldImage: Select Uploaded Image 

@@ -171,9 +171,12 @@ _slider
 11=class\Slides.php
 12=blocks\update_theme.php
 13=templates\admin\slider_admin_slides.tpl
+14=language\french\admin.php
+15=language\english\help\help.html
+16=language\french\help\help.html
 [Selected Project Files]
 Main=
-Selected=class\Slides.php
+Selected=language\french\help\help.html
 [include\fnc-slider.php]
 TopLine=51
 Caret=31,59
@@ -209,10 +212,19 @@ TopLine=23
 Caret=1,41
 [class\Slides.php]
 TopLine=103
-Caret=59,113
+Caret=31,136
 [blocks\update_theme.php]
 TopLine=57
 Caret=51,75
 [templates\admin\slider_admin_slides.tpl]
 TopLine=9
 Caret=53,31
+[language\french\admin.php]
+TopLine=36
+Caret=102,54
+[language\english\help\help.html]
+TopLine=12
+Caret=1,30
+[language\french\help\help.html]
+TopLine=17
+Caret=1,34

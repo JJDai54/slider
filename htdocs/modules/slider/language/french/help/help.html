@@ -1,17 +1,26 @@
-<p><strong>Help: <a href="http://xmodules.jubile.fr/modules/slider/admin/%3C%7B$xoops_url%7D%3E/modules/slider/admin/index.php" title="Back to the administration of slider - Slides management">slider - Slides management </a><a href="http://xmodules.jubile.fr/modules/slider/admin/%3C%7B$xoops_url%7D%3E/modules/slider/admin/index.php"></a></strong></p>
+<p><strong>Help: <span style="text-decoration: underline;"><a href="http://xmodules.jubile.fr/modules/slider/admin/%3C%7B$xoops_url%7D%3E/modules/slider/admin/index.php" title="Back to the administration of slider - Slides management">slider - Slides management </a><a href="http://xmodules.jubile.fr/modules/slider/admin/%3c%7b$xoops_url%7d%3e/modules/slider/admin/index.php"></a></span></strong></p>
 <p><strong>Description</strong></p>
-<p>Ce module permet de g&eacute;rer les slides de la page d'accueil des th&egrave;mes utilis&eacute;s<br /> Il ne fonctionne qu'avec les th&egrave;mes de type "xbootstrap".<br /> Le fichier "<strong>tpl/slider.tpl</strong>" doit exister.<br /> Il sera peut-&ecirc;tre n&eacute;cessaire de la mettre en &eacute;criture pour permettre sa modification.</p>
+<p>Ce module permet de g&eacute;rer les slides de la page d'accueil des th&egrave;mes utilis&eacute;s<br /> Il ne fonctionne qu'avec les th&egrave;me de type "xbootstrap".<br /> Le fichier "<strong>tpl/slider.tpl</strong>" doit exister.<br /> Il sera peut &ecirc;tre n&eacute;c&eacute;ssaire de la mettre en &eacute;criture pour permettre sa modification.</p>
 <p><strong>Fonctionalit&eacute;s</strong> :</p>
 <ul type="disc"><li>Ajout, Supprimer de slides &agrave; la page d'accueil</li><li>Activation, d&eacute;sactivation des slide, sans supression</li><li>D&eacute;fini le type d'affichage: avec ou sans p&eacute;riode d'affichage</li><li>D&eacute;finition de l'ordre d'affichage des slides</li><li>D&eacute;finition d'une p&eacute;riode d'affichage pour anticiper un &eacute;v&eacute;nnement</li></ul><p>&nbsp;</p>
-<p><strong>Installation / D&eacute;sinstallation</strong></p>
-<p>Aucune mesure particuli&egrave;re n'est n&eacute;cessaire, suivez le processus d'installation standard et extrayez le dossier du curseur dans le r&eacute;pertoire../modules. Installez le module via Admin -&gt; Module syst&egrave;me -&gt; Modules. <br /> Des instructions d&eacute;taill&eacute;es sur l'installation des modules sont disponibles dans le <a href="http://goo.gl/adT2i">XOOPS Operations Manual</a></p>
+<p><strong>Install/uninstall</strong></p>
+<p>Aucune mesure particuli&egrave;re n'est n&eacute;cessaire, suivez le processus d'installation standard et extrayez le dossier du curseur dans le r&eacute;pertoire ../modules. Installez le module via Admin -&gt; Module syst&egrave;me -&gt; Modules. <br /> Des instructions d&eacute;taill&eacute;es sur l'installation des modules sont disponibles dans le <span style="text-decoration: underline;"><a href="http://goo.gl/adT2i">XOOPS Operations Manual</a></span></p>
 <p>&nbsp;</p>
-<p><strong>Caract&eacute;ristiques</strong></p>
+<p><strong>Carat&eacute;ristiques</strong></p>
 <p>Le module &laquo;&nbsp;slider&nbsp;&raquo; continue d&rsquo;&eacute;voluer. Pour cette raison, j'invite tous les d&eacute;veloppeurs &agrave; signaler et envoyer sur le SVN tout changement ou ajout &agrave; ce module, afin que nous puissions contribuer conjointement au d&eacute;veloppement</p>
 <p><strong>Tutorial</strong></p>
 <p>Une fois install&eacute;, actions &agrave; effectuer :</p>
 <ul type="disc"><li>Installation standard&nbsp; de module</li><li>Ajouter des slides au th&egrave;mes utilis&eacute;s (voir "Ajout d'un nouveau slide)""</li><li>Activer le block du module, peu importe sa place il restera invisible<br /> <strong>Important</strong> : l'option "Afficher le block" du block Permet de lister les slides s&eacute;lectionn&eacute;s<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &agrave; utiliser en mode d&eacute;bogage uniquement<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; laisser la sur "Non" en production</li></ul><p><strong>Ajout d'un nouveau slide</strong></p>
-<p>Titre : message affich&eacute; sur le slide.<br /> Description : Message affich&eacute; sous le titre sur le slide.<br /> Image : Image du slide. Attention v&eacute;rifiez la taille des fichiers (1920 px x 500 px pour xbootstrap).<br /> Actif : non = Le slide ne sera jamais afficher. Permet d&rsquo;activer un slide pour une utilisation ult&eacute;rieure sans le supprimer, par exemple pour les f&ecirc;tes r&eacute;currentes.<br /> Visible : oui = le slide est toujours affich&eacute; -&nbsp; non = il faut d&eacute;finir la p&eacute;riode d'affichage.<br /> Date de d&eacute;but : date et heure de d&eacute;but d'affichage du slide.<br /> Date de fin : date de fin d'affichage du slide.<br /> Poids : d&eacute;fini l'ordre d'affichage des slides. Si plusieurs slides ont le m&ecirc;me poids l'ordre alphab&eacute;tique des titres est appliqu&eacute;.</p>
+<p><strong>Nom court</strong> : Expression pour affichage dans l&rsquo;admin. Utilis&eacute; pour les tris, mais inutilis&eacute; pour l&rsquo;affichage sur les slides.</p>
+<p><strong>Titre</strong> : message affich&eacute; sur le slide. Avec TinyMCE il est possible de rendre le titre plus visible sur certains slide.</p>
+<p><strong>Description</strong> : Message affich&eacute; sous le titre sur le slide. Avec TinyMCE il est possible de rendre la description plus visible sur certains slide.</p>
+<p><strong>Image</strong> : Image du slide. Attention v&eacute;rifiez la taille des fichiers (1920 px x 500 px pour xbootstrap).</p>
+<p><strong>Actif</strong> : non = Le slide ne sera jamais afficher. Permet d&rsquo;activer un slide pour une utilisation ult&eacute;rieure sans le supprimer, par exemple pour les f&ecirc;tes r&eacute;currentes.</p>
+<p><strong>Visible</strong> : oui = le slide est toujours affich&eacute; -&nbsp; non = il faut d&eacute;finir la p&eacute;riode d'affichage.</p>
+<p><strong>Date de d&eacute;but</strong> : date et heure de d&eacute;but d'affichage du slide.</p>
+<p><strong>Date de fin</strong> : date de fin d'affichage du slide.</p>
+<p><strong>Poids</strong> : d&eacute;fini l'ordre d'affichage des slides. Si plusieurs slides ont le m&ecirc;me poids l'ordre alphab&eacute;tique des titres est appliqu&eacute;.</p>
+<p><strong>&nbsp;</strong></p>
 <p><strong>Traitements</strong></p>
 <p>Sur la page d'index plusieurs traitements sont&nbsp; possibles.</p>
 <ul type="disc"><li>R&eacute;initialise les fichiers 'tpl/slider.tpl' d'origine de chaque th&egrave;me.<br /> D&eacute;sactive le block du module slider pour permettre l'affichage des slides d'origine<br /> Supprime les caches pour actualiser l'affichage imm&eacute;diatement</li></ul><p>&nbsp;</p>
@@ -19,4 +28,6 @@
 <p><strong>Block -&gt; slider_update_tpl</strong></p>
 <p>Quand le block est activ&eacute;, le block modifie le fichier "tpl/slider.tpl" avec les slides qui ont &eacute;t&eacute; ajout&eacute;s.</p>
 <p>La mise &agrave; jour n'est effectu&eacute; que dans le cas un des slides a &eacute;t&eacute; modifi&eacute; ajout&eacute; ou supprim&eacute;.<br /> Le fichier d'origine est sauvegard&eacute; avec le le suffixe "-old" -&gt; "tlp/slider-old.tpl"<br /> Il sera r&eacute;install&eacute; lors de la d&eacute;sinstallation du module.</p>
-<p>&nbsp;</p><p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
