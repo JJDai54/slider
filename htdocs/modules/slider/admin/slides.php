@@ -211,6 +211,9 @@ switch ($op) {
 			$form = $xoopsconfirm->getFormXoopsConfirm();
 			$GLOBALS['xoopsTpl']->assign('form', $form->render());
 		}
+        
+        //permet le rafraissement de la page d'accueil    
+        deleteSliderthemeFlag($sld_theme);
 		break;
         
 	case 'bascule_actif':
@@ -219,6 +222,9 @@ switch ($op) {
         $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_actif={$newValue} WHERE sld_id={$sld_id}";
         $xoopsDB->queryf($sql);
 		\redirect_header("slides.php?op=list&sld_theme={$select_theme}", 0, "");
+
+        //permet le rafraissement de la page d'accueil    
+        deleteSliderthemeFlag($sld_theme);
 		break;
         
 	case 'bascule_always_visible':
@@ -226,12 +232,16 @@ switch ($op) {
 		$newValue = Request::getInt('value', 0);
         $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_always_visible={$newValue} WHERE sld_id={$sld_id}";
         $xoopsDB->queryf($sql);
+
+        //permet le rafraissement de la page d'accueil    
+        deleteSliderthemeFlag($sld_theme);
 		\redirect_header("slides.php?op=list&sld_theme={$select_theme}", 0, "");
 		break;
         
 	case 'weight':
     	$sld_id = Request::getInt('sld_id', 0);
  		$sld_weight = Request::getInt('sld_weight', 0);
+ 		$sld_theme = Request::getString('sld_theme', '');
         if (Request::getString('sens', "asc") == 'asc'){
  		     $sens =  '<';
              $ordre = "DESC";
@@ -258,8 +268,9 @@ switch ($op) {
             $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_weight={$sld_weight} WHERE sld_id={$sld_id2}";
             $xoopsDB->queryf($sql);
         }
-            
         
+        //permet le rafraissement de la page d'accueil    
+        deleteSliderthemeFlag($sld_theme);
 		\redirect_header("slides.php?op=list&sld_theme={$select_theme}", 0, "");
 		break;
 }
