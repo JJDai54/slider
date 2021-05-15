@@ -17,7 +17,7 @@ Extensions=*.*
 [Project tree]
 _slider
 	+slider
-		-admin
+		+admin
 			admin\about.php
 			admin\feedback.php
 			admin\footer.php
@@ -56,7 +56,7 @@ _slider
 				assets\js\functions.js
 				assets\js\index.html
 			assets\index.html
-		-blocks
+		+blocks
 			blocks\index.html
 			blocks\slides.php
 			blocks\update_theme.php
@@ -102,7 +102,7 @@ _slider
 			include\uninstall.php
 			include\update.php
 			include\xoops_version.inc.php
-		-language
+		+language
 			+english
 				+help
 					language\english\help\help.html
@@ -131,7 +131,7 @@ _slider
 		+sql
 			sql\index.html
 			sql\mysql.sql
-		-templates
+		+templates
 			+admin
 				templates\admin\index.html
 				templates\admin\slider_admin_about.tpl
@@ -159,40 +159,52 @@ _slider
 [Open project files]
 0=sql\mysql.sql
 1=language\french\modinfo.php
-2=admin\traitements.php
-3=xoops_version.php
-4=include\fnc-slider.php
+2=admin\about.php
+3=admin\feedback.php
+4=templates\admin\slider_slider-old.tpl
 5=blocks\update_theme.php
-6=include\functions.php
-7=admin\header.php
-8=admin\about.php
+6=include\fnc-slider.php
+7=templates\admin\slider_slider.tpl
+8=templates\admin\slider_main-01.tpl
+9=templates\admin\slider_main-02.tpl
+10=admin\traitements.php
+11=admin\index.php
 [Selected Project Files]
 Main=
-Selected=sql\mysql.sql
+Selected=admin\index.php
 [sql\mysql.sql]
 TopLine=7
-Caret=1,25
+Caret=2,10
 [language\french\modinfo.php]
 TopLine=29
 Caret=24,52
-[admin\traitements.php]
-TopLine=21
-Caret=31,36
-[xoops_version.php]
-TopLine=21
-Caret=33,29
-[include\fnc-slider.php]
-TopLine=73
-Caret=3,110
-[blocks\update_theme.php]
-TopLine=43
-Caret=12,51
-[include\functions.php]
-TopLine=7
-Caret=2,29
-[admin\header.php]
-TopLine=19
-Caret=1,1
 [admin\about.php]
 TopLine=6
 Caret=1,23
+[admin\feedback.php]
+TopLine=71
+Caret=1,89
+[templates\admin\slider_slider-old.tpl]
+TopLine=1
+Caret=1,30
+[blocks\update_theme.php]
+TopLine=33
+Caret=52,61
+[include\fnc-slider.php]
+TopLine=13
+Caret=98,29
+[templates\admin\slider_slider.tpl]
+TopLine=1
+Caret=1,17
+[templates\admin\slider_main-01.tpl]
+TopLine=1
+Caret=1,1
+[templates\admin\slider_main-02.tpl]
+TopLine=27
+Caret=1,60
+[admin\traitements.php]
+TopLine=18
+Caret=31,35
+[admin\index.php]
+TopLine=35
+Caret=1,49

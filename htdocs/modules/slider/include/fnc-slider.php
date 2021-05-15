@@ -25,10 +25,15 @@ use XoopsModules\Slider\Helper;
 use XoopsModules\Slider\Constants;
 
 /**
- * réinitialise chaque theme avec le fichier slider.tpl d'originel
+ * réinitialise chaque theme avec le fichier slider.tpl d'origine
+ * er active le block du module pour forcer la reconstruction dues sliders de chaque theme utlisé
  *
  */
-function forceslidesManagement() {
+function force_rebuild_slider() {
+    
+        \cleanAllThemesFolder();
+        \setBlockSliderVisible(true);
+    
 }
 
 
@@ -124,37 +129,61 @@ global $xoopsConfig, $helper;
 /**********************************************************************
  * 
  **********************************************************************/
-function build_new_tpl($slides, $theme){
+function build_new_tpl($slides, $theme, $forceRebuild = false){
+
+
+    // generation du fichier de flag pour eviter de reconstruire à chaque connexion utilisateur   
+    //construction d'un tableu des id trié par ordre croissant
+    $slide_Ids = array_keys($slides);
+    sort($slide_Ids);
+    $newFlag = implode("|", $slide_Ids);
+    
+    //chargement du fichier en court
+    $fFlag = XOOPS_ROOT_PATH . "/uploads/slider/images/slides/" . $theme . ".txt";
+    $oldflag = slider_loadTextFile($fFlag);
+    
+    //si le nouveau fichier est diffrent de l'ancien on continu
+    if ($newFlag == $oldflag && !$forceRebuild) return false;   
+    
+    //sauvegarde du nouveau fichier d'id
+    saveTexte2File($fFlag, $newFlag);
+
+    //---------------------------------------------
+    //rebuild du tpl
 //     $block['msg'] = "Mise à jour des slides du theme";
 //     $block['theme'] = $xoopsConfig['theme_set'];
     $fullName = XOOPS_ROOT_PATH . "/themes/" . $theme. '/tpl/slider.tpl';
     $fullName_old = str_replace(".tpl","-old.tpl",$fullName);   
     //echo "<hr>===>{$fullName}<br>===>{$fullName_old}<hr>";
+    //Sauvegarde du slides.tpl d'origine si ce n'est déjà fait
     if (!is_readable($fullName_old)){
         rename($fullName, $fullName_old);
     }
     //---------------------------------------------------
-
-            
+    //génération de la liste des slides et indicators
+    $template = 'db:slider_slider.tpl';
     $tpl = new \XoopsTpl();
     $tpl->assign('slides', $slides);
+    $content = $tpl->fetch($template);
 
-//$template = XOOPS_ROOT_PATH . "/modules/slider/templates/admin/slider_slider.tpl";
-//    $content = $tpl->fetch($template);
-    $template = 'db:slider_slider.tpl';
-
-    $content = '<{if $xoops_page == "index"}>' ."\n"
-             . $tpl->fetch($template)
-             . "\n" . '<{/if}>' ."\n";
- 
-
+    $fSlide = XOOPS_ROOT_PATH . "/modules/slider/templates/admin/slider_main-02.tpl";
+                           
+    if (!is_readable($fSlide)) return false;
+    //-------------------------------------------------------
+    $tplOrg = slider_loadTextFile($fSlide);
     
-
-//    echo "<hr><pre>{$content}</pre><hr>";
-    //$content = "togodo";
-    saveTexte2File($fullName, $content, $mod = 0777);
+    // sauvegarde du nouveau tpl/slide.tpl
+    $tplOrg = str_replace ("__Slides__", $content, $tplOrg);
+    saveTexte2File($fullName, $tplOrg, $mod = 0777);
+    
+    //nettoyage des cachepour un rafraichissement immediat
     cleanThemeCache($theme, 'smarty_cache');
     cleanThemeCache($theme, 'smarty_compile');
+
+
+    
+//    echo "<hr><pre>{$content}</pre><hr>";
+    //$content = "togodo";
             
     return true;        
 }

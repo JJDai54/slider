@@ -42,10 +42,14 @@ $adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_SLIDER_THEREARE_SLIDES . 
 // traitements
 $adminObject->addInfoBox(_AM_SLIDER_TRAITEMENTS);
 // Info elements
+
+$traitement = sprintf("<label>%s</label> : <a href='%s'>%s</a>", _AM_SLIDER_BLOCK, "traitements.php?op=activate_block", _AM_SLIDER_BLOCK_DESC);
+$adminObject->addInfoBoxLine($traitement);
+
 $traitement = sprintf("<label>%s</label> : <a href='%s'>%s</a>", _AM_SLIDER_CLEAN_DIR, "traitements.php?op=clean_themes_dir", _AM_SLIDER_CLEAN_DIR_DESC);
 $adminObject->addInfoBoxLine($traitement);
 
-$traitement = sprintf("<label>%s</label> : <a href='%s'>%s</a>", _AM_SLIDER_BLOCK, "traitements.php?op=activate_block", _AM_SLIDER_BLOCK_DESC);
+$traitement = sprintf("<label>%s</label> : <a href='%s'>%s</a>", _AM_SLIDER_REFRESH_SLIDERS, "traitements.php?op=force_rebuild_slider", _AM_SLIDER_REFRESH_SLIDERS_DESC);
 $adminObject->addInfoBoxLine($traitement);
 /***********************************************/
 

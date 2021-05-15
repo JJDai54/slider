@@ -58,18 +58,8 @@ global $xoopsConfig;
     
     
     //--------------------------------------------------------------
-    $slide_Ids = array_keys($slides);
-    sort($slide_Ids);
-    $fFlag = XOOPS_ROOT_PATH . "/uploads/slider/images/slides/" . $theme . ".txt";
-    $oldflag = slider_loadTextFile($fFlag);
-    $newFlag = implode("|", $slide_Ids);
-    if ($newFlag != $oldflag){
-        saveTexte2File($fFlag, $newFlag);
-        build_new_tpl($slides, $theme);
-        $block['generation'] = _MB_SLIDER_TPL_OK;
-    }else{
-        $block['generation'] = _MB_SLIDER_TPL_NOT_OK;
-    }
+    $bolOk = build_new_tpl($slides, $theme, false);
+    $block['generation'] = ($bolOk) ? _MB_SLIDER_TPL_OK : _MB_SLIDER_TPL_NOT_OK;
    
     $block['now'] = sprintf(_MB_SLIDER_TPL_HEURE_COURANTE, date("Y-m-d H:i:s", $now));    
     return $block;

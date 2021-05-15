@@ -32,8 +32,8 @@ $op = Request::getCmd('op', '');
 
 //-------------------------------------------------------        
 switch ($op) {
-    case 'force_slides_management' :
-        \forceslidesManagement();
+    case 'force_rebuild_slider' :
+        \force_rebuild_slider();
     break;
     
     case 'clean_themes_dir':
