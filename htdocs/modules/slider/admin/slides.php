@@ -115,7 +115,7 @@ switch ($op) {
         $slideDate_end = $slideDate_endObj->getTimestamp() + (int)$slideDate_endArr['time'];
         $slidesObj->setVar('sld_date_end', $slideDate_end);
         $slidesObj->setVar('sld_actif', Request::getInt('sld_actif', 0));
-        $slidesObj->setVar('sld_always_visible', Request::getInt('sld_always_visible', 0));
+        $slidesObj->setVar('sld_has_periode', Request::getInt('sld_has_periode', 0));
         $slidesObj->setVar('sld_theme', Request::getString('sld_theme', ''));
         // Set Var sld_image
         $theme = Request::getString('sld_theme', '');
@@ -229,10 +229,10 @@ switch ($op) {
         deleteSliderthemeFlag($sld_theme);
         break;
         
-    case 'bascule_always_visible':
+    case 'bascule_has_periode':
         $sld_id = Request::getInt('sld_id', 0);
         $newValue = Request::getInt('value', 0);
-        $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_always_visible={$newValue} WHERE sld_id={$sld_id}";
+        $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_has_periode={$newValue} WHERE sld_id={$sld_id}";
         $xoopsDB->queryf($sql);
 
         //permet le rafraissement de la page d'accueil    

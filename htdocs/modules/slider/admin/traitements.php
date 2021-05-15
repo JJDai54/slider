@@ -27,15 +27,15 @@ use XoopsModules\Slider\Common;
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
-$op = Request::getCmd('op', 'list');
-// Request sld_id
-$sldId = Request::getInt('sld_id');
+$op = Request::getCmd('op', '');
 
-global $xoopsConfig;
-$theme = Request::getString('sld_theme',  $xoopsConfig['theme_set']);
 
 //-------------------------------------------------------        
 switch ($op) {
+    case 'force_slides_management' :
+        \forceslidesManagement();
+    break;
+    
     case 'clean_themes_dir':
         \cleanAllThemesFolder();
     break;
@@ -52,5 +52,5 @@ switch ($op) {
 
 }
 
-\redirect_header("index.php?", 3, "Traitement effectué");
-//require __DIR__ . '/footer.php';
+require __DIR__ . '/footer.php';
+\redirect_header("index.php", 3, _AM_SLIDER_SLIDE_PROCESSING_OK);

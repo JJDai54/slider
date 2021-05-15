@@ -91,7 +91,7 @@ function b_slider_slides_show($options)
             $block[$i]['date_begin'] = $slidesAll[$i]->getVar('sld_date_begin');
             $block[$i]['date_end'] = $slidesAll[$i]->getVar('sld_date_end');
             $block[$i]['actif'] = $slidesAll[$i]->getVar('sld_actif');
-            $block[$i]['always_visible'] = $slidesAll[$i]->getVar('sld_always_visible');
+            $block[$i]['has_periode'] = $slidesAll[$i]->getVar('sld_has_periode');
             $block[$i]['theme'] = $slidesAll[$i]->getVar('sld_theme');
             $block[$i]['image'] = $slidesAll[$i]->getVar('sld_image');
         }

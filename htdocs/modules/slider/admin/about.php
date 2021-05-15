@@ -20,7 +20,7 @@ namespace XoopsModules\Slider;
  * @min_xoops      2.5.9
  * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
- use XoopsModules\Slider;
+use XoopsModules\Slider;
 use XoopsModules\Slider\Helper;
 use XoopsModules\Slider\Constants;
 

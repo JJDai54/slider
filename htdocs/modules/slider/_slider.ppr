@@ -60,7 +60,7 @@ _slider
 			blocks\index.html
 			blocks\slides.php
 			blocks\update_theme.php
-		-class
+		+class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -102,7 +102,7 @@ _slider
 			include\uninstall.php
 			include\update.php
 			include\xoops_version.inc.php
-		+language
+		-language
 			+english
 				+help
 					language\english\help\help.html
@@ -128,10 +128,10 @@ _slider
 			preloads\autoloader.php
 			preloads\core.php
 			preloads\index.html
-		+sql
+		-sql
 			sql\index.html
 			sql\mysql.sql
-		+templates
+		-templates
 			+admin
 				templates\admin\index.html
 				templates\admin\slider_admin_about.tpl
@@ -157,18 +157,42 @@ _slider
 			testdata\index.php
 		xoops_version.php
 [Open project files]
-0=language\french\help\help.html
-1=sql\mysql.sql
-2=language\french\modinfo.php
+0=sql\mysql.sql
+1=language\french\modinfo.php
+2=admin\traitements.php
+3=xoops_version.php
+4=include\fnc-slider.php
+5=blocks\update_theme.php
+6=include\functions.php
+7=admin\header.php
+8=admin\about.php
 [Selected Project Files]
 Main=
-Selected=language\french\modinfo.php
-[language\french\help\help.html]
-TopLine=17
-Caret=1,35
+Selected=blocks\update_theme.php
 [sql\mysql.sql]
 TopLine=1
 Caret=1,30
 [language\french\modinfo.php]
 TopLine=29
-Caret=108,57
+Caret=24,52
+[admin\traitements.php]
+TopLine=21
+Caret=31,36
+[xoops_version.php]
+TopLine=41
+Caret=41,41
+[include\fnc-slider.php]
+TopLine=73
+Caret=3,110
+[blocks\update_theme.php]
+TopLine=43
+Caret=12,51
+[include\functions.php]
+TopLine=7
+Caret=2,29
+[admin\header.php]
+TopLine=19
+Caret=1,1
+[admin\about.php]
+TopLine=6
+Caret=1,23

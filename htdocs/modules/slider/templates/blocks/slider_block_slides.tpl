@@ -11,10 +11,10 @@ sfklsjfh sdkjfh klsh fklsfh lskjdfh klsdjfh slkjfh skljdfh ksdf<br>
             <{* <<th class='center'><{$smarty.const._MB_SLIDER_SLD_TITLE}></th></th> *}>
             <{* <th class='center'><{$smarty.const._MB_SLIDER_SLD_DESCRIPTION}></th> *}>
             <th class='center'><{$smarty.const._MB_SLIDER_SLD_WEIGHT}></th>
+            <th class='center'><{$smarty.const._MB_SLIDER_SLD_ACTIF}></th>
+            <th class='center'><{$smarty.const._MB_SLIDER_SLD_HAS_PERIODE}></th>
             <th class='center'><{$smarty.const._MB_SLIDER_SLD_DATE_BEGIN}></th>
             <th class='center'><{$smarty.const._MB_SLIDER_SLD_DATE_END}></th>
-            <th class='center'><{$smarty.const._MB_SLIDER_SLD_ACTIF}></th>
-            <th class='center'><{$smarty.const._MB_SLIDER_SLD_ALWAYS_VISIBLE}></th>
             <th class='center'><{$smarty.const._MB_SLIDER_SLD_THEME}></th>
             <th class='center'><{$smarty.const._MB_SLIDER_SLD_IMAGE}></th>
         </tr>
@@ -27,11 +27,11 @@ sfklsjfh sdkjfh klsh fklsfh lskjdfh klsdjfh slkjfh skljdfh ksdf<br>
             <td class='center'><{$slide.short_name}></td>
             <{* <td class='center'><{$slide.title}></td> *}>
             <{* <td class='center'><{$slide.description}></td> *}>
+            <td class='center'><{$slide.actif}></td>
+            <td class='center'><{$slide.has_periode></td>
             <td class='center'><{$slide.weight}></td>
             <td class='center'><{$slide.date_begin}></td>
             <td class='center'><{$slide.date_end}></td>
-            <td class='center'><{$slide.actif}></td>
-            <td class='center'><{$slide.always_visible}></td>
             <td class='center'><{$slide.theme}></td>
             <td class='center'><img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" /></td>
         </tr>

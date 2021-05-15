@@ -34,7 +34,7 @@
 \define('_MB_SLIDER_SLD_DATE_BEGIN', 'Date de début');
 \define('_MB_SLIDER_SLD_DATE_END', 'Date de fin');
 \define('_MB_SLIDER_SLD_ACTIF', 'Actif');
-\define('_MB_SLIDER_SLD_ALWAYS_VISIBLE', 'Toujours visible');
+\define('_MB_SLIDER_SLD_HAS_PERIODE', 'Une période est définie');
 \define('_MB_SLIDER_SLD_THEME', 'Theme');
 \define('_MB_SLIDER_SLD_IMAGE', 'Image');
 

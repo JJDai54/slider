@@ -20,7 +20,210 @@
  * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
+use XoopsModules\Slider;
+use XoopsModules\Slider\Helper;
+use XoopsModules\Slider\Constants;
 
+/**
+ * réinitialise chaque theme avec le fichier slider.tpl d'originel
+ *
+ */
+function forceslidesManagement() {
+}
+
+
+
+/**
+ * Renvoioe un tableau des slides actif pour le theme courant
+ *
+ */
+function getSlidesActifs($theme = '') {
+global $xoopsConfig, $helper;
+
+    $helper      = Helper::getInstance();
+        $myts = MyTextSanitizer::getInstance();
+    $slidesHandler = $helper->getHandler('Slides');
+    
+    //recupe du theme actif
+    if ($theme == '') $theme = $xoopsConfig['theme_set'];
+                
+    // selection des slides actifs
+    $now = time();
+    
+    
+    $crSlidesTheme = new \CriteriaCompo();    
+    $crSlidesTheme->add(new \Criteria('sld_theme', $theme, '='));
+    $crSlidesTheme->add(new \Criteria('sld_actif', 1, '='));
+    
+    //-------------------------------------------------------------------------
+    $crSlidesHasPeriode = new \CriteriaCompo();
+    $crSlidesHasPeriode->add(new \Criteria('sld_has_periode', 0, '='));
+    
+    $crSlidesperiode = new \CriteriaCompo();    
+    $crSlidesperiode->add(new \Criteria('sld_has_periode', 1, '='));
+    $crSlidesperiode->add(new \Criteria('sld_date_end', $now, '>='));
+    $crSlidesperiode->add(new \Criteria('sld_date_begin', $now, '<='));
+    //$crSlidesperiode->add(new \Criteria('sld_date_begin', $now + 86400, '<='));
+    
+    $crSlidesAP = new \CriteriaCompo();    
+    $crSlidesAP->add($crSlidesHasPeriode);    
+    $crSlidesAP->add($crSlidesperiode, "OR");    
+    //-------------------------------------------------------------------------
+    
+    $crSlides0 = new \CriteriaCompo();    
+    $crSlides0->add($crSlidesTheme);    
+    $crSlides0->add($crSlidesAP, "AND");  
+      
+    $crSlides0->setSort('sld_weight,sld_short_name');
+    $crSlides0->setOrder('ASC');
+
+    $slidesAll = $slidesHandler->getAll($crSlides0);
+    unset($crSlides);
+    $slides = array();
+    $Slide_Ids = [];
+    
+    if (\count($slidesAll) > 0) {
+        foreach (\array_keys($slidesAll) as $i) {
+            $id = $slidesAll[$i]->getVar('sld_id'); // pas utile mais il y a vait un doute sur la clé du rcordset
+            $slides[$id]['sld_short_name'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_short_name'));
+            $slides[$id]['title'] = $slidesAll[$i]->getVar('sld_title');
+            //$slides[$id]['description'] = \strip_tags($slidesAll[$i]->getVar('sld_description'));
+            $slides[$id]['description'] = $slidesAll[$i]->getVar('sld_description');
+            $slides[$id]['read_more'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_read_more'));
+            $slides[$id]['weight'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_weight'));
+//             $slides[$id]['date_begin'] = $slidesAll[$i]->getVar('sld_date_begin');
+//             $slides[$id]['date_end'] = $slidesAll[$i]->getVar('sld_date_end');
+            $slides[$id]['date_begin']  = \formatTimestamp($slidesAll[$i]->getVar('sld_date_begin'), 'm');
+            $slides[$id]['date_end']    = \formatTimestamp($slidesAll[$i]->getVar('sld_date_end'), 'm');
+            
+            $slides[$id]['actif'] = $slidesAll[$i]->getVar('sld_actif');
+            $slides[$id]['has_periode'] = $slidesAll[$i]->getVar('sld_has_periode');
+            $slides[$id]['theme'] = $slidesAll[$i]->getVar('sld_theme');
+            $slides[$id]['image'] = $slidesAll[$i]->getVar('sld_image');
+            $slides[$id]['image_fullName'] = XOOPS_URL . "/uploads/slider/images/slides/" . $slidesAll[$i]->getVar('sld_image');
+            
+           // $Slide_Ids[$slidesAll[$i]->getVar('sld_id')] = $slidesAll[$i]->getVar('sld_id');
+
+        }
+    }
+//echo "<hr><pre>" . print_r ($slidesAll, true). "</pre><hr>";
+//echo "<hr><pre>" . print_r ($slides, true). "</pre><hr>";
+    
+    return $slides;
+}
+
+
+
+
+
+
+
+
+
+
+/**********************************************************************
+ * 
+ **********************************************************************/
+function build_new_tpl($slides, $theme){
+//     $block['msg'] = "Mise à jour des slides du theme";
+//     $block['theme'] = $xoopsConfig['theme_set'];
+    $fullName = XOOPS_ROOT_PATH . "/themes/" . $theme. '/tpl/slider.tpl';
+    $fullName_old = str_replace(".tpl","-old.tpl",$fullName);   
+    //echo "<hr>===>{$fullName}<br>===>{$fullName_old}<hr>";
+    if (!is_readable($fullName_old)){
+        rename($fullName, $fullName_old);
+    }
+    //---------------------------------------------------
+
+            
+    $tpl = new \XoopsTpl();
+    $tpl->assign('slides', $slides);
+
+//$template = XOOPS_ROOT_PATH . "/modules/slider/templates/admin/slider_slider.tpl";
+//    $content = $tpl->fetch($template);
+    $template = 'db:slider_slider.tpl';
+
+    $content = '<{if $xoops_page == "index"}>' ."\n"
+             . $tpl->fetch($template)
+             . "\n" . '<{/if}>' ."\n";
+ 
+
+    
+
+//    echo "<hr><pre>{$content}</pre><hr>";
+    //$content = "togodo";
+    saveTexte2File($fullName, $content, $mod = 0777);
+    cleanThemeCache($theme, 'smarty_cache');
+    cleanThemeCache($theme, 'smarty_compile');
+            
+    return true;        
+}
+
+/**********************************************************************
+ * 
+ **********************************************************************/
+function saveTexte2File($fullName, $content, $mod = 0777){
+  $fullName = str_replace('//', '/', $fullName);  
+  
+  //echo "\n<hr>saveTexte2File mode :{$mod}<br>{$fullName}<hr>\n";
+  //buildPath(dirname($fullName));
+  
+  
+      $fp = fopen ($fullName, "w");  
+      fwrite ($fp, $content);
+      fclose ($fp);
+      if ($mod <> 0000) {
+        //echo "<hr>saveTexte2File mode :{$mod}<br>{$fullName}<hr>";
+        chmod($fullName, $mod);
+      }
+  
+  
+/*
+  if (isFolder(dirname($fullName), true)){
+      if (file_exists($fullName)){
+        chmod($fullName, 0777);
+      }
+      
+      $fp = fopen ($fullName, "w");  
+      fwrite ($fp, $content);
+      fclose ($fp);
+      if ($mod <> 0000) {
+        //echo "<hr>saveTexte2File mode :{$mod}<br>{$fullName}<hr>";
+        chmod($fullName, $mod);
+      }
+    }else{
+      return false;
+    }
+*/  
+  
+
+}
+
+/**********************************************************************
+ * 
+ **********************************************************************/
+function slider_loadTextFile ($fullName){
+
+
+  if (!is_readable($fullName)){return '';}
+  
+  $fp = fopen($fullName,'rb');
+  $taille = filesize($fullName);
+  $content = fread($fp, $taille);
+  fclose($fp);
+  
+  return $content;
+
+}
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////
 
 /**
  * réinitialise chaque theme avec le fichier slider.tpl d'originel

@@ -48,7 +48,7 @@ class Slides extends \XoopsObject
         $this->initVar('sld_date_begin', XOBJ_DTYPE_INT);
         $this->initVar('sld_date_end', XOBJ_DTYPE_INT);
         $this->initVar('sld_actif', XOBJ_DTYPE_INT);
-        $this->initVar('sld_always_visible', XOBJ_DTYPE_INT);
+        $this->initVar('sld_has_periode', XOBJ_DTYPE_INT);
         $this->initVar('sld_theme', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_image', XOBJ_DTYPE_TXTBOX);
     }
@@ -181,11 +181,11 @@ $upload_size = $helper->getConfig('maxsize_image');
         $sldInputActif = new \XoopsFormRadioYN(_AM_SLIDER_SLIDE_ACTIF, 'sld_actif', $sldActif);
         $sldInputActif->setdescription(_AM_SLIDER_SLIDE_ACTIF_DESC);
         $form->addElement($sldInputActif);
-        // Form Radio Yes/No sldAlwaysActif
-        $sldAlwaysVisible = $this->isNew() ?: $this->getVar('sld_always_visible');
-        $sldinputAlwaysVisible = new \XoopsFormRadioYN(_AM_SLIDER_SLIDE_ALWAYS_VISIBLE, 'sld_always_visible', $sldAlwaysVisible);
-        $sldinputAlwaysVisible->setDescription(_AM_SLIDER_SLIDE_ALWAYS_VISIBLE_DESC);
-        $form->addElement($sldinputAlwaysVisible);
+        // Form Radio Yes/No sldHasPeriode
+        $sldHasPeriode = $this->isNew() ? 0 : $this->getVar('sld_has_periode');
+        $sldHasPeriode = new \XoopsFormRadioYN(_AM_SLIDER_SLIDE_HAS_PERIODE, 'sld_has_periode', $sldHasPeriode);
+        $sldHasPeriode->setDescription(_AM_SLIDER_SLIDE_HAS_PERIODE_DESC);
+        $form->addElement($sldHasPeriode);
         // Form Text Date Select sldDate_begin
         $sldDate_begin = $this->isNew() ? time() : $this->getVar('sld_date_begin');
         $form->addElement(new \XoopsFormDateTime(_AM_SLIDER_SLIDE_DATE_BEGIN, 'sld_date_begin', '', $sldDate_begin));
@@ -226,8 +226,8 @@ $upload_size = $helper->getConfig('maxsize_image');
         $ret['date_end']           = \formatTimestamp($this->getVar('sld_date_end'), 'm');
         $ret['sld_actif']          = (int)$this->getVar('sld_actif');
         $ret['actif']              = (int)$this->getVar('sld_actif') > 0 ? _YES : _NO;
-        $ret['sld_always_visible'] = (int)$this->getVar('sld_always_visible');
-        $ret['always_visible']     = (int)$this->getVar('sld_always_visible') > 0 ? _YES : _NO;
+        $ret['sld_has_periode'] = (int)$this->getVar('sld_has_periode');
+        $ret['has_periode']     = (int)$this->getVar('sld_has_periode') > 0 ? _YES : _NO;
         $ret['theme']              = $this->getVar('sld_theme');
         $ret['image']              = $this->getVar('sld_image');
         return $ret;

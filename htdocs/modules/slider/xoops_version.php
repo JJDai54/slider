@@ -26,7 +26,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 1.2,
+    'version'             => 1.4,
     'description'         => _MI_SLIDER_DESC,
     'author'              => 'JJDai',
     'author_mail'         => 'jjdelalandre@orange.fr',
@@ -38,7 +38,7 @@ $modversion = [
     'help'                => 'page=help',
     'release_info'        => 'release_info',
     'release_file'        => XOOPS_URL . '/modules/slider/docs/release_info file',
-    'release_date'        => '2021/05/14',
+    'release_date'        => '2021/05/15',
     'manual'              => 'link to manual file',
     'manual_file'         => XOOPS_URL . '/modules/slider/docs/install.txt',
     'min_php'             => '5.5',
@@ -124,6 +124,7 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 50,
 ];
+/*
 // Keywords
 $modversion['config'][] = [
     'name'        => 'keywords',
@@ -133,6 +134,8 @@ $modversion['config'][] = [
     'valuetype'   => 'text',
     'default'     => 'slider, slides',
 ];
+*/
+
 // create increment steps for file size
 include_once __DIR__ . '/include/xoops_version.inc.php';
 $iniPostMaxSize       = sliderReturnBytes(\ini_get('post_max_size'));

@@ -68,8 +68,8 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_FORM_EDIT', 'Modification');
 \define('_AM_SLIDER_FORM_DELETE', 'Suppprimer');
 // ---------------- Admin Others ----------------
-\define('_AM_SLIDER_SLIDE_ALWAYS_VISIBLE', 'Toujours visible');
-\define('_AM_SLIDER_SLIDE_ALWAYS_VISIBLE_DESC', 'Visible quelque soit la période définie et si "actif" est vrai');
+\define('_AM_SLIDER_SLIDE_HAS_PERIODE', 'Définir une période');
+\define('_AM_SLIDER_SLIDE_HAS_PERIODE_DESC', 'Non : Visible quelque soit la période définie si "actif" est oui');
 \define('_AM_SLIDER_ABOUT_MAKE_DONATION', 'Faire une donation');
 \define('_AM_SLIDER_SUPPORT_FORUM', 'Support Forum');
 \define('_AM_SLIDER_DONATION_AMOUNT', 'Montant de donation');
@@ -94,5 +94,6 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_SLIDE_DESCRIPTION_DESC', "Texte ou sous-titre afficher sur le slide");
 \define('_AM_SLIDER_SLIDE_READ_MORE', "En savoir plus");
 \define('_AM_SLIDER_SLIDE_READ_MORE_DESC', "URL sur un article ouune page avec plus d'informations");
+\define('_AM_SLIDER_SLIDE_PROCESSING_OK', "Traitement effectué");
 
 // ---------------- End ----------------

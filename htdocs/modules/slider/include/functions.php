@@ -26,6 +26,7 @@
  * @param  $cats
  * @return string
  */
+ 
 function slider_block_addCatSelect($cats)
 {
     $cat_sql = '(';

@@ -15,7 +15,7 @@
                 <{* <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DESCRIPTION}></th> *}>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_WEIGHT}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_ACTIF}></th>
-                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_ALWAYS_VISIBLE}></th>
+                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_HAS_PERIODE}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DATE_BEGIN}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DATE_END}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_IMAGE}></th>
@@ -55,14 +55,14 @@
                 <{/if}>
                 </td>
                 
-                <{* <td class='center'><{$slide.always_visible}></td> *}>
+                <{* <td class='center'><{$slide.has_periode}></td> *}>
                 <td class='center'>
-                <{if $slide.sld_always_visible == 1}>
-                    <a href="slides.php?op=bascule_always_visible&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
+                <{if $slide.sld_has_periode == 1}>
+                    <a href="slides.php?op=bascule_has_periode&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
                     <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>">
                     </a>
                 <{else}>
-                    <a href="slides.php?op=bascule_always_visible&sld_id=<{$slide.id}>&value=1&sld_theme=<{$slide.theme}>">
+                    <a href="slides.php?op=bascule_has_periode&sld_id=<{$slide.id}>&value=1&sld_theme=<{$slide.theme}>">
                     <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_ACTIVATE}>">
                     </a>
                 <{/if}>
