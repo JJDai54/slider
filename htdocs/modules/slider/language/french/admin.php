@@ -97,6 +97,8 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_SLIDE_PROCESSING_OK', "Traitement effectué");
 \define('_AM_SLIDER_REFRESH_SLIDERS', "Rafraichier les sliders");
 \define('_AM_SLIDER_REFRESH_SLIDERS_DESC', "Réinitialise tous les thèmes et force la reconstruction des sliders");
-\define('_AM_SLIDER_SLIDE_CURRENT_STATUS', "Current");
+\define('_AM_SLIDER_SLIDE_CURRENT_STATUS', "Courrant");
+\define('_AM_SLIDER_UP', "Monter");
+\define('_AM_SLIDER_DOWN', "Descendre");
 
 // ---------------- End ----------------

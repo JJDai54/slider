@@ -256,13 +256,14 @@ switch ($op) {
         $criteria->add(new \Criteria('sld_theme', $select_theme));
         $criteria->add(new \Criteria('sld_weight', $sld_weight, $sens));
         $limit = 0;
+        $start = 0;
         $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit, "sld_weight {$ordre}, sld_short_name {$ordre}, sld_id");
         if(count($slidesAll) > 0  ){
             $key = array_key_first($slidesAll);
 //            echo "===> count = " . count($slidesAll) . "<br>key={$key}"; 
             $slide = $slidesAll[$key]->getValuesSlides();
-            $sld_id2 = $slide['sld_id'];
-            $sld_weight2 = $slide['sld_weight'];
+            $sld_id2 = $slide['id'];
+            $sld_weight2 = $slide['weight'];
             
             $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_weight={$sld_weight2} WHERE sld_id={$sld_id}";
             $xoopsDB->queryf($sql);
@@ -270,7 +271,7 @@ switch ($op) {
             $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_weight={$sld_weight} WHERE sld_id={$sld_id2}";
             $xoopsDB->queryf($sql);
         }
-        
+
         //permet le rafraissement de la page d'accueil    
         deleteSliderthemeFlag($sld_theme);
         \redirect_header("slides.php?op=list&sld_theme={$select_theme}", 0, "");

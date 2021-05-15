@@ -29,17 +29,17 @@
             <tr class='<{cycle values='odd, even'}>'>
                 <td class='center'><{$slide.id}></td>
                 <td class='left'><{$slide.theme}></td>
-                <td class='left'><{$slide.short_name}></td>
+                <td class='left'> <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>"><{$slide.short_name}></a></td>
                 <{* <td class='left'><{$slide.title}></td> *}>
                 <{* <td class='center'><{$slide.description}></td> *}>
                 
                 <td class='center'>
                     <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=asc&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
-                    <img src="<{$sysPathIcon16}>/ASC.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>&sld_weight=<{$slide.weight}>">
+                    <img src="<{$sysPathIcon16}>/ASC.png" title="<{$smarty.const._AM_SLIDER_UP}>">
                     </a>
                     <{$slide.weight}>
                     <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=desc&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
-                    <img src="<{$sysPathIcon16}>/DESC.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>&sld_weight=<{$slide.weight}>">
+                    <img src="<{$sysPathIcon16}>/DESC.png" title="<{$smarty.const._AM_SLIDER_DOWN}>">
                     </a>
                 </td>
                 
@@ -83,8 +83,10 @@
                 
                 <td class='center'><img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" style="max-width:100px" /></td>
                 <td class="center  width5">
-                    <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> slides" /></a>
-                    <a href="slides.php?op=delete&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> slides" /></a>
+                    <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>">
+                       <img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> slides" /></a>
+                    <a href="slides.php?op=delete&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._DELETE}>">
+                       <img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> slides" /></a>
                 </td>
             </tr>
             <{/foreach}>
