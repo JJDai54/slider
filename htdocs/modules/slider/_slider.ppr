@@ -168,7 +168,7 @@ _slider
 8=admin\about.php
 [Selected Project Files]
 Main=
-Selected=blocks\update_theme.php
+Selected=xoops_version.php
 [sql\mysql.sql]
 TopLine=1
 Caret=1,30
@@ -179,8 +179,8 @@ Caret=24,52
 TopLine=21
 Caret=31,36
 [xoops_version.php]
-TopLine=41
-Caret=41,41
+TopLine=21
+Caret=33,29
 [include\fnc-slider.php]
 TopLine=73
 Caret=3,110
