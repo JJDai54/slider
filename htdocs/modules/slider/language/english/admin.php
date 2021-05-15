@@ -84,5 +84,15 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_ACTIVATE', "Activation");
 \define('_AM_SLIDER_DESACTIVATE', "Désactivation");
 
-// ---------------- End ----------------
+\define('_AM_SLIDER_CLEAN_DIR', "Themes");
+\define('_AM_SLIDER_CLEAN_DIR_DESC', "Reset the 'slider.tpl' files for each theme");
+\define('_AM_SLIDER_BLOCK', "Slider Block");
+\define('_AM_SLIDER_BLOCK_DESC', "Activate the block which allows the update of the slides");
+\define('_AM_SLIDER_TRAITEMENTS', "Treatments");
+\define('_AM_SLIDER_SLIDE_SHORT_NAME', "Short name");
+\define('_AM_SLIDER_SLIDE_TITLE_DESC', "Main title displayed on the slide");
+\define('_AM_SLIDER_SLIDE_DESCRIPTION_DESC', "Text or subtitle displayed on the slide");
+\define('_AM_SLIDER_SLIDE_READ_MORE', "Learn more");
+\define('_AM_SLIDER_SLIDE_READ_MORE_DESC', "URL on an article or a page with more information");
 
+// ---------------- End ----------------

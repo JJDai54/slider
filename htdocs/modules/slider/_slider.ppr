@@ -17,7 +17,7 @@ Extensions=*.*
 [Project tree]
 _slider
 	+slider
-		+admin
+		-admin
 			admin\about.php
 			admin\feedback.php
 			admin\footer.php
@@ -56,11 +56,11 @@ _slider
 				assets\js\functions.js
 				assets\js\index.html
 			assets\index.html
-		+blocks
+		-blocks
 			blocks\index.html
 			blocks\slides.php
 			blocks\update_theme.php
-		+class
+		-class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -79,13 +79,13 @@ _slider
 			class\Slides.php
 			class\SlidesHandler.php
 			class\Utility.php
-		+config
+		-config
 			config\admin.yml
 			config\config.php
 			config\icons.php
 			config\index.html
 			config\paths.php
-		+docs
+		-docs
 			docs\changelog.txt
 			docs\credits.txt
 			docs\index.html
@@ -93,7 +93,7 @@ _slider
 			docs\lang.diff
 			docs\license.txt
 			docs\readme.txt
-		+include
+		-include
 			include\common.php
 			include\fnc-slider.php
 			include\functions.php
@@ -157,22 +157,22 @@ _slider
 			testdata\index.php
 		xoops_version.php
 [Open project files]
-0=templates\admin\slider_slider.tpl
-1=blocks\update_theme.php
-2=sql\mysql.sql
-3=xoops_version.php
+0=language\french\help\help.html
+1=sql\mysql.sql
+2=xoops_version.php
+3=language\english\help\help.html
 [Selected Project Files]
 Main=
-Selected=xoops_version.php
-[templates\admin\slider_slider.tpl]
-TopLine=1
-Caret=128,22
-[blocks\update_theme.php]
-TopLine=22
-Caret=1,34
+Selected=language\english\help\help.html
+[language\french\help\help.html]
+TopLine=17
+Caret=1,35
 [sql\mysql.sql]
 TopLine=1
-Caret=6,26
+Caret=1,30
 [xoops_version.php]
-TopLine=19
-Caret=41,41
+TopLine=203
+Caret=1,219
+[language\english\help\help.html]
+TopLine=13
+Caret=1,31

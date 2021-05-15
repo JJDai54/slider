@@ -44,4 +44,7 @@
 \define('_MB_SLIDER_TPL_HEURE_COURANTE', "Il est %s");
 \define('_BL_SLIDER_SHOW_BLOCK', "Afficher le block");
 \define('_BL_SLIDER_SHOW_BLOCK_DESC', "Laisser <b><span style='color : Red;'>Non</span></b> en production, <b><span style='color : Red;'>à n'utiliser qu'à des fins de debugage</span></b>");
+\define('_BL_SLIDER_RED_MORE', "Read more");
+\define('_BL_SLIDER_RED_MORE_DESC', "URL to an article or a page with more information");
+
 // ---------------- End ----------------

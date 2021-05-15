@@ -36,7 +36,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 \define('CO_' . $moduleDirNameUpper . '_' . 'FB_TYPE_TESTIMONIAL', 'Témoignages');
 \define('CO_' . $moduleDirNameUpper . '_' . 'FB_TYPE_FEATURES', 'Caractéristiques');
 \define('CO_' . $moduleDirNameUpper . '_' . 'FB_TYPE_OTHERS', 'miscellaneous');
-\define('CO_' . $moduleDirNameUpper . '_' . 'FB_TYPE_CONTENT', 'Contenu du retour');
+\define('CO_' . $moduleDirNameUpper . '_' . 'FB_TYPE_CONTENT', 'Votre du retour');
 \define('CO_' . $moduleDirNameUpper . '_' . 'FB_SEND_FOR', 'Retour pour le module ');
 \define('CO_' . $moduleDirNameUpper . '_' . 'FB_SEND_SUCCESS', 'Retour correctement envoyé');
 \define('CO_' . $moduleDirNameUpper . '_' . 'FB_SEND_ERROR', 'Une erreur est survenue lors de l\'envoi du retour!');

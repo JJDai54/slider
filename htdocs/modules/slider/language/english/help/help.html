@@ -1,29 +1,30 @@
 <p><strong>Help: <span style="text-decoration: underline;"><a href="http://xmodules.jubile.fr/modules/slider/admin/%3C%7B$xoops_url%7D%3E/modules/slider/admin/index.php" title="Back to the administration of slider - Slides management">slider - Slides management </a></span></strong></p>
 <p><strong>Description</strong></p>
-<p>This module allows you to manage ; rer the slides of the home page of the themes used <br /> It only works with the "xbootstrap" type themes. <br /> The file "<strong> tpl / slider .tpl </strong>"must exist. <br /> It may be necessary to write to it to allow modification.</p>
+<p>This module allows you to manage ; the slides of the home page of the themes used <br /> It only works with the "xbootstrap" type themes. <br /> The file "<strong> tpl / slider .tpl </strong>"must exist. <br /> It may be necessary to write to it to allow modification.</p>
 <p><strong>Functionality &lt; / strong&gt;: </strong></p>
 <ul type="disc"><li>Adding, Removing slides &amp; agrave; the home page</li><li>Activation, deactivation of slides, without deletion</li><li>Defines the type of display: with or without display period</li><li>Defining the display order of slides</li><li>Defining a display period to anticipate an event</li></ul><p><br /> <strong>Installation / Uninstallation </strong></p>
-<p>No special measures are necessary, follow the installation process standard and extract the cursor folder to the ../ modules directory. Install the module through Admin - &amp; gt; System module - &amp; gt; Modules. <br /> Detailed instructions on installing modules are available in <span style="text-decoration: underline;"><a href="http://goo.gl/adT2i">XOOPS Operations Manual </a></span></p>
+<p>No special measures are necessary, follow the installation process standard and extract the cursor folder to the ../ modules directory. Install the module through Admin =&gt; System module =&gt; Modules. <br /> Detailed instructions on installing modules are available in <span style="text-decoration: underline;"><a href="http://goo.gl/adT2i">XOOPS Operations Manual </a></span></p>
 <p>&nbsp;</p>
 <p><strong>Features </strong></p>
 <p>The module "slider" continues to evolve. For this reason, I invite all developers to report and send to the SVN any changes or additions in this module, so that we can jointly contribute to the development</p>
 <p><strong>Tutorial </strong></p>
 <p>Once installed, actions to perform:</p>
 <ul><li>Standard installation of module</li><li>Add slides to the themes used (see "Adding a new slide)" "</li><li>Activate the module block, regardless of its place it will remain invisible <br /> <strong>Important </strong>: the "Show block" option of the block Allows you to list the selected slides <br /> leave it on "No" in production</li></ul><p><strong>Adding a new slide </strong></p>
-<p><strong>Short name</strong>: Phrase for display in admin. Used for sorts, but not used for display on slides.</p>
-<p><strong>Title</strong>: message displayed on the slide. With TinyMCE it is possible to make the title more visible on certain slides.</p>
-<p><strong>Description</strong>: Message displayed under the title on the slide. With TinyMCE it is possible to make the description more visible on certain slides.</p>
-<p><strong>Image</strong>: Image of slide. Please check the size of the files (1920 px x 500 px for xbootstrap).</p>
-<p><strong>Active</strong>: no = The slide will never be displayed. Allows you to activate a slide for later use without deleting it, for example for recurring holidays.</p>
-<p><strong>Visible</strong>: yes = the slide is always displayed - no = the display period must be defined.</p>
-<p><strong>Start date</strong>: start date and time of slide display.</p>
-<p><strong>End date</strong>: end date of slide display.</p>
-<p><strong>Weight</strong>: defines the display order of the slides. If several slides have the same weight, the alphabetical order of the titles is applied.</p>
-<p>&nbsp;</p>
+<p><strong>Short name (sld_short_name) </strong>: Phrase for display in admin. Used for sorts, but not used for display on slides.</p>
+<p><strong>Title (sld_title) </strong>: message displayed on the slide. With TinyMCE it is possible to make the title more visible on certain slides.</p>
+<p><strong>Description (sld_description) </strong>: Message displayed under the title on the slide. With TinyMCE it is possible to make the description more visible on certain slides.</p>
+<p><strong>Read more (sld_read_more) </strong>: URL accessible on the button displayed on the slide. Optional, it provides access to an article or an information page.</p>
+<p><strong>Image (sld_image) </strong>: Image of slide. Please check the size of the files (1920 px x 500 px for xbootstrap).</p>
+<p><strong>Active (sld_actif) </strong>: no = The slide will never be displayed. Allows you to activate a slide for later use without deleting it, for example for recurring holidays.</p>
+<p><strong>Visible (sld_always_visible) </strong>: <strong>yes</strong> = the slide is always displayed regardless of the display period / <strong>no</strong> = the display period must be defined.</p>
+<p><strong>Start date (sld_date_begin) </strong>: start date and time of slide display.</p>
+<p><strong>End date (sld_date_end) </strong>: end date of slide display.</p>
+<p><strong>Weight (sld_weight) </strong>: defines the display order of the slides. If several slides have the same weight, the alphabetical order of the titles is applied.</p>
+<p><strong>Theme (sld_theme)</strong> : Name of the theme on which the slides will be displayed. The "tpl / slides.tpl" file will be modified.</p>
 <p><strong>Treatments </strong></p>
-<p>On the index page several treatments are &nbsp;&nbsp;possible.</p>
+<p>On the index page several treatments are&nbsp;&nbsp; possible.</p>
 <ul><li>Resets the original 'tpl / slider.tpl' files for each theme. <br /> Disable the slider module block to allow display of original slides <br /> Remove caches to refresh display immediately</li></ul><p>&nbsp;</p>
 <ul><li>Activate the block that allows the setting a day of slides <br /> Equivalent to display the block in the block manager</li></ul><p>&nbsp;</p>
-<p><strong>Block - &gt; slider_update_tpl </strong></p>
+<p><strong>Block =&gt; slider_update_tpl </strong></p>
 <p>When the block is activated, the block modifies the "tpl/slider.tpl" file with the slides that have been used.</p>
-<p>The setting day is done that in the case one of the slides has been modified added or deleted. <br /> The original file is saved; with the suffix "-old" -&gt; "tlp / slider-old.tpl" <br /> It will be re-installed; when uninstalling the module.</p>
+<p>The setting day is done that in the case one of the slides has been modified added or deleted. <br /> The original file is saved; with the suffix "-old" =&gt; "tlp / slider-old.tpl" <br /> It will be re-installed; when uninstalling the module.</p>

@@ -95,6 +95,4 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_SLIDE_READ_MORE', "En savoir plus");
 \define('_AM_SLIDER_SLIDE_READ_MORE_DESC', "URL sur un article ouune page avec plus d'informations");
 
-
-
 // ---------------- End ----------------

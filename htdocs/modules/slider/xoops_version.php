@@ -216,6 +216,7 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 10,
 ];
+/*
 // Number column
 $modversion['config'][] = [
     'name'        => 'numb_col',
@@ -292,3 +293,6 @@ $modversion['config'][] = [
     'valuetype'   => 'text',
     'default'     => 'https://xoops.org/modules/newbb',
 ];
+
+
+*/
