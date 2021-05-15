@@ -18,6 +18,7 @@
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_HAS_PERIODE}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DATE_BEGIN}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DATE_END}></th>
+                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_CURRENT_STATUS}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_IMAGE}></th>
                 <th class="center width5"><{$smarty.const._AM_SLIDER_FORM_ACTION}></th>
             </tr>
@@ -44,7 +45,7 @@
                 
                 <{* <td class='center'><{$slide.actif}></td> *}>
                 <td class='center'>
-                <{if $slide.sld_actif == 1}>
+                <{if $slide.actif == 1}>
                     <a href="slides.php?op=bascule_actif&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
                     <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>">
                     </a>
@@ -57,7 +58,7 @@
                 
                 <{* <td class='center'><{$slide.has_periode}></td> *}>
                 <td class='center'>
-                <{if $slide.sld_has_periode == 1}>
+                <{if $slide.has_periode == 1}>
                     <a href="slides.php?op=bascule_has_periode&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
                     <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>">
                     </a>
@@ -70,6 +71,16 @@
                 
                 <td class='center'><{$slide.date_begin}></td>
                 <td class='center'><{$slide.date_end}></td>
+                
+                <td class='center'>
+                <{if $slide.current_status}>
+                    <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_ACTIF}>">
+                <{else}>
+
+                    <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_NON_ACTIF}>">
+                <{/if}>
+                </td>
+                
                 <td class='center'><img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" style="max-width:100px" /></td>
                 <td class="center  width5">
                     <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> slides" /></a>

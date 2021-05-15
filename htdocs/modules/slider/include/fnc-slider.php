@@ -89,42 +89,17 @@ global $xoopsConfig, $helper;
     
     if (\count($slidesAll) > 0) {
         foreach (\array_keys($slidesAll) as $i) {
-            $id = $slidesAll[$i]->getVar('sld_id'); // pas utile mais il y a vait un doute sur la clé du rcordset
-            $slides[$id]['sld_short_name'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_short_name'));
-            $slides[$id]['title'] = $slidesAll[$i]->getVar('sld_title');
-            //$slides[$id]['description'] = \strip_tags($slidesAll[$i]->getVar('sld_description'));
-            $slides[$id]['description'] = $slidesAll[$i]->getVar('sld_description');
-            $slides[$id]['read_more'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_read_more'));
-            $slides[$id]['weight'] = $myts->htmlSpecialChars($slidesAll[$i]->getVar('sld_weight'));
-//             $slides[$id]['date_begin'] = $slidesAll[$i]->getVar('sld_date_begin');
-//             $slides[$id]['date_end'] = $slidesAll[$i]->getVar('sld_date_end');
-            $slides[$id]['date_begin']  = \formatTimestamp($slidesAll[$i]->getVar('sld_date_begin'), 'm');
-            $slides[$id]['date_end']    = \formatTimestamp($slidesAll[$i]->getVar('sld_date_end'), 'm');
-            
-            $slides[$id]['actif'] = $slidesAll[$i]->getVar('sld_actif');
-            $slides[$id]['has_periode'] = $slidesAll[$i]->getVar('sld_has_periode');
-            $slides[$id]['theme'] = $slidesAll[$i]->getVar('sld_theme');
-            $slides[$id]['image'] = $slidesAll[$i]->getVar('sld_image');
-            $slides[$id]['image_fullName'] = XOOPS_URL . "/uploads/slider/images/slides/" . $slidesAll[$i]->getVar('sld_image');
-            
-           // $Slide_Ids[$slidesAll[$i]->getVar('sld_id')] = $slidesAll[$i]->getVar('sld_id');
+            $id = $slidesAll[$i]->getVar('sld_id'); // pas utile mais il y avait un doute sur la clé du recordset a verifier
+            $slides[$id] = $slidesAll[$i]->getValuesSlides();
 
         }
     }
+
 //echo "<hr><pre>" . print_r ($slidesAll, true). "</pre><hr>";
 //echo "<hr><pre>" . print_r ($slides, true). "</pre><hr>";
     
     return $slides;
 }
-
-
-
-
-
-
-
-
-
 
 /**********************************************************************
  * 
@@ -381,6 +356,25 @@ global $xoopsDB;
     $t = $xoopsDB->fetchArray($rst);
  
     return $t['nextWeight'];
+}
+
+
+/**
+ * renvoi l'état actuel d'un slide
+ * 
+ * @param bool $visible  nouveau status visible pour les blocks du module 
+ * @return bool 
+*/
+function getCurrentStatusOfSlide(&$slide) {
+
+   if (!$slide['actif']) return false;
+   if (!$slide['has_periode']) return true;
+   
+   $now = time();
+   if (($slide['date_begin'] < $now) && ($slide['date_end'] > $now)) return true;
+   
+   return false;
+
 }
 
 

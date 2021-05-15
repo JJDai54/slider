@@ -44,8 +44,8 @@ jQuery(document).ready(function(){
                 <{* <td class='center'><{$slide.title}></td> *}>
                 <{* <td class='center'><{$slide.description}></td> *}>
                 <td class='center'><{$slide.weight}></td>
-                <td class='center'><{$slide.actif}></td>
-                <td class='center'><{$slide.has_periode}></td>
+                <td class='center'><{$slide.actif_yn}></td>
+                <td class='center'><{$slide.has_periode_yn}></td>
                 <td class='center'><{$slide.date_begin}></td>
                 <td class='center'><{$slide.date_end}></td>
                 <td class='center'><{$slide.theme}></td>

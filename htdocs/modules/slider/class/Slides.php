@@ -213,7 +213,7 @@ $upload_size = $helper->getConfig('maxsize_image');
     {
         $helper  = \XoopsModules\Slider\Helper::getInstance();
         $utility = new \XoopsModules\Slider\Utility();
-        $ret = $this->getValues($keys, $format, $maxDepth);
+        //$ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']                 = $this->getVar('sld_id');
         $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['title']              = $this->getVar('sld_title');
@@ -224,12 +224,15 @@ $upload_size = $helper->getConfig('maxsize_image');
         $ret['weight']             = $this->getVar('sld_weight');
         $ret['date_begin']         = \formatTimestamp($this->getVar('sld_date_begin'), 'm');
         $ret['date_end']           = \formatTimestamp($this->getVar('sld_date_end'), 'm');
-        $ret['sld_actif']          = (int)$this->getVar('sld_actif');
-        $ret['actif']              = (int)$this->getVar('sld_actif') > 0 ? _YES : _NO;
-        $ret['sld_has_periode'] = (int)$this->getVar('sld_has_periode');
-        $ret['has_periode']     = (int)$this->getVar('sld_has_periode') > 0 ? _YES : _NO;
+        $ret['actif']              = (int)$this->getVar('sld_actif');
+        $ret['actif_yn']           = (int)$this->getVar('sld_actif') > 0 ? _YES : _NO;
+        $ret['has_periode']        = (int)$this->getVar('sld_has_periode');
+        $ret['has_periode_yn']     = (int)$this->getVar('sld_has_periode') > 0 ? _YES : _NO;
         $ret['theme']              = $this->getVar('sld_theme');
         $ret['image']              = $this->getVar('sld_image');
+        $ret['image_fullName']     = XOOPS_URL . "/uploads/slider/images/slides/" . $this->getVar('sld_image');
+        
+        $ret['current_status'] = getCurrentStatusOfSlide($ret);
         return $ret;
     }
 
