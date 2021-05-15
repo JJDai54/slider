@@ -22,7 +22,6 @@ CREATE TABLE `slider_slides` (
   `sld_date_begin` INT(10) NOT NULL DEFAULT '0',
   `sld_date_end` INT(10) NOT NULL DEFAULT '0',
   `sld_actif` INT(1) NOT NULL DEFAULT '0',
-  `sld_always_visible` INT(1) NOT NULL DEFAULT '0',
   `sld_theme` VARCHAR(100) NOT NULL DEFAULT '',
   `sld_image` VARCHAR(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`sld_id`)

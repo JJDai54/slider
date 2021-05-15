@@ -128,7 +128,7 @@ _slider
 			preloads\autoloader.php
 			preloads\core.php
 			preloads\index.html
-		-sql
+		+sql
 			sql\index.html
 			sql\mysql.sql
 		-templates
@@ -168,10 +168,10 @@ _slider
 8=admin\about.php
 [Selected Project Files]
 Main=
-Selected=xoops_version.php
+Selected=sql\mysql.sql
 [sql\mysql.sql]
-TopLine=1
-Caret=1,30
+TopLine=7
+Caret=1,25
 [language\french\modinfo.php]
 TopLine=29
 Caret=24,52
