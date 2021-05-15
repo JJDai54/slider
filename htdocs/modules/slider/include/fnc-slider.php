@@ -130,7 +130,8 @@ global $xoopsConfig, $helper;
  * 
  **********************************************************************/
 function build_new_tpl($slides, $theme, $forceRebuild = false){
-
+    
+    $tpl_main = "slider_main-02.tpl";
 
     // generation du fichier de flag pour eviter de reconstruire à chaque connexion utilisateur   
     //construction d'un tableu des id trié par ordre croissant
@@ -166,7 +167,7 @@ function build_new_tpl($slides, $theme, $forceRebuild = false){
     $tpl->assign('slides', $slides);
     $content = $tpl->fetch($template);
 
-    $fSlide = XOOPS_ROOT_PATH . "/modules/slider/templates/admin/slider_main-02.tpl";
+    $fSlide = XOOPS_ROOT_PATH . "/modules/slider/templates/admin/{$tpl_main}";
                            
     if (!is_readable($fSlide)) return false;
     //-------------------------------------------------------

@@ -33,7 +33,7 @@ include_once XOOPS_ROOT_PATH . '/modules/slider/include/common.php';
  */
 function b_slider_update_theme_show($options)
 {
-global $xoopsConfig;
+global $xoopsConfig, $helper;
     $block = array();
 // echo "<hr><pre>" . print_r($xoopsConfig, true ). "</pre><hr>";
 
