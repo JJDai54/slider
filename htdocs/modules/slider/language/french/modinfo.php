@@ -54,7 +54,7 @@ include_once 'common.php';
 \define('_MI_SLIDER_EDITOR_USER', 'Utilisateur de l\'éditeur');
 \define('_MI_SLIDER_EDITOR_USER_DESC', 'Sélectionnez l\'éditeur qui doit être utilisé dans la zone utilisateur pour les champs de zone de texte');
 \define('_MI_SLIDER_EDITOR_MAXCHAR', 'Texte max caractères');
-\define('_MI_SLIDER_EDITOR_MAXCHAR_DESC', 'Max caractères pour afficher le texte d'une zone de texte ou d'un champ d'éditeur dans la zone d'administration');
+\define('_MI_SLIDER_EDITOR_MAXCHAR_DESC', 'Max caractères pour afficher le texte d\'une zone de texte ou d\'un champ d\'éditeur dans la zone d\'administration');
 \define('_MI_SLIDER_KEYWORDS', 'Mots-clés');
 \define('_MI_SLIDER_KEYWORDS_DESC', 'Insérez ici les mots-clés (séparés par une virgule)');
 \define('_MI_SLIDER_SIZE_MB', 'MB');

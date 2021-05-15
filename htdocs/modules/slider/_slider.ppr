@@ -159,20 +159,16 @@ _slider
 [Open project files]
 0=language\french\help\help.html
 1=sql\mysql.sql
-2=xoops_version.php
-3=language\english\help\help.html
+2=language\french\modinfo.php
 [Selected Project Files]
 Main=
-Selected=language\english\help\help.html
+Selected=language\french\modinfo.php
 [language\french\help\help.html]
 TopLine=17
 Caret=1,35
 [sql\mysql.sql]
 TopLine=1
 Caret=1,30
-[xoops_version.php]
-TopLine=203
-Caret=1,219
-[language\english\help\help.html]
-TopLine=13
-Caret=1,31
+[language\french\modinfo.php]
+TopLine=29
+Caret=108,57
