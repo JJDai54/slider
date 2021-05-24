@@ -252,4 +252,62 @@ var hasSelected = false; var selectBox = myform.item[A][amount];for (i = 0; i < 
     {
         return \ucfirst(\mb_strtolower(\trim($str)));
     }
+    
+
+/****************************************************************************
+ * 
+ ****************************************************************************/
+public static function include_highslide($options = null){
+  Global $xoTheme,$helper;
+
+  //$xoTheme->addScript('browse.php?jquery/jquery.js');
+//	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');  
+  
+//   $xoTheme->addStylesheet('browse.php?Frameworks/zoom/highslide.css');
+//   $xoTheme->addScript('browse.php?Frameworks/zoom/highslide.js');
+$fldHighSlide = $helper->getConfig('highslide'); // "highslide-5.0.0";  
+
+  $xoTheme->addStylesheet(XOOPS_URL . "/Frameworks/{$fldHighSlide}/highslide.css");
+  $xoTheme->addScript(XOOPS_URL . "/Frameworks/{$fldHighSlide}/highslide.js");
+
+  $xoTheme->addScript('browse.php?modules/slider/assets/js/highslide.js');
+
+  if (!is_array($options))$options = array();
+  $options['graphicsDir'] = XOOPS_URL . '/Frameworks/zoom/graphics/';
+  self::array2js('hs', $options, false, true);
+//exit ("include_highslide");
 }
+/****************************************************************************
+Genere la declaration d'un tableau en javascript
+$name : nom du ta&bleau javascript
+$options : tableau associatif. les clefs seront les m^me en javascript
+$bolEcho : si true envoie directement la chaine générée dans le flus html
+retour : string a envoyer dans le flus html
+note : la balise script est ajoutée automatiquement
+ ****************************************************************************/
+public static function array2js($name, $options, $isNew = false, $bolEcho = false){
+
+  $t = array();
+  $t[] = "\n<script type='text/javascript'>"; 
+  
+  if ($isNew){
+    $t[] = "{$name} = new Array()"; 
+  }
+  
+  foreach($options as $key=>$value){
+    if (is_numeric($value)){
+      $t[] = "{$name}.{$key} = {$value};"; 
+    }else{
+      $t[] = "{$name}.{$key} = '{$value}';"; 
+    }
+  }
+  
+  $t[] = "</script>\n"; 
+  
+  $js = implode("\n", $t);
+  if ($bolEcho) echo $js;
+  
+  return $js;
+}
+    
+} // Fin de la Class

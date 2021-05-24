@@ -90,4 +90,7 @@ include_once 'common.php';
 \define('_MI_SLIDER_UPDATE_THEME', 'slider_update_tpl');
 \define('_MI_SLIDER_UPDATE_THEME_DESC', 'Block de mise jour de slider.tpl du thème en cours');
 
+\define('_MI_SLIDER_HIGHSLIDE', 'Framework "highslide"');
+\define('_MI_SLIDER_HIGHSLIDE_DESC', "Dossier d'installation du framework <a href=\"http://highslide.com/\">Highslide</a>");
+
 // ---------------- End ----------------

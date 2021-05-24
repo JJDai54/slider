@@ -66,6 +66,16 @@ foreach (\array_keys($folder) as $i) {
     $adminObject->addConfigBoxLine(array($folder[$i], '777'), 'chmod');
 }
 
+$adminObject->addConfigBoxLine('');
+$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $helper->getConfig('highslide');  
+                           
+    $adminObject->addConfigBoxLine($highslide, 'folder');
+if (is_dir($highslide)){
+    $adminObject->addConfigBoxLine(_AM_CARTOUCHES_HIGHSLIDE_1, '');
+}else{
+    $adminObject->addConfigBoxLine(_AM_CARTOUCHES_HIGHSLIDE_0, '');
+}
+
 // Render Index
 $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('index.php'));
 // Test Data

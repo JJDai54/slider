@@ -81,7 +81,26 @@
                 <{/if}>
                 </td>
                 
-                <td class='center'><img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" style="max-width:100px" /></td>
+                <td class='center'>
+<{*
+                    <img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" style="max-width:100px" />
+*}>
+                    <div class='highslide-gallery'>
+                        <a href='<{$slider_upload_url}>/images/slides/<{$slide.image}>' class='highslide' onclick='return hs.expand(this);' >
+                            <img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" style="max-width:100px" />
+                        </a>
+                        <div class='highslide-heading'></div>
+                    </div>
+                </td>
+
+
+                      
+
+
+
+
+
+                
                 <td class="center  width5">
                     <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>">
                        <img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> slides" /></a>

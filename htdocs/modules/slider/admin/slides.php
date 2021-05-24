@@ -24,6 +24,7 @@ use Xmf\Request;
 use XoopsModules\Slider;
 use XoopsModules\Slider\Constants;
 use XoopsModules\Slider\Common;
+use XoopsModules\Slider\Utility;
 
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
@@ -70,6 +71,7 @@ switch ($op) {
             $GLOBALS['xoopsTpl']->assign('error', _AM_SLIDER_THEREARENT_SLIDES);
         }
         
+Utility::include_highslide(array('allowMultipleInstances'=>false));        
         /* --------- selection du theme ----------------*/
         // Get Theme Form
         \xoops_load('XoopsFormLoader');

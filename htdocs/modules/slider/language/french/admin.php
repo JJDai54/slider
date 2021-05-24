@@ -100,5 +100,7 @@ include_once __DIR__ . '/main.php';
 \define('_AM_SLIDER_SLIDE_CURRENT_STATUS', "Courrant");
 \define('_AM_SLIDER_UP', "Monter");
 \define('_AM_SLIDER_DOWN', "Descendre");
+\define('_AM_CARTOUCHES_HIGHSLIDE_0', "<span style=\"color:red;\">Le framework \"<a href=\"http://highslide.com/\">Highslide</a>\" n'est pas installé.</span>");
+\define('_AM_CARTOUCHES_HIGHSLIDE_1', "<span style=\"color:green;\">Le framework \"<a href=\"http://highslide.com/\">Highslide</a>\" est installé.</span>");
 
 // ---------------- End ----------------

@@ -219,6 +219,15 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 10,
 ];
+// Admin pager
+$modversion['config'][] = [
+    'name'        => 'highslide',
+    'title'       => '_MI_SLIDER_HIGHSLIDE',
+    'description' => '_MI_SLIDER_HIGHSLIDE_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'text',
+    'default'     => 'highslide-5.0.0',
+];
 /*
 // Number column
 $modversion['config'][] = [

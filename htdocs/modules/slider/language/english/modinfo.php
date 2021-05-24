@@ -89,7 +89,9 @@ include_once 'common.php';
 
 // JJDai
 \define('_MI_SLIDER_UPDATE_THEME', 'slider_update_tpl');
-\define('_MI_SLIDER_UPDATE_THEME_DESC', 'Block de mise jour de slider.tpl du thème en cours');
+\define ('_ MI_SLIDER_UPDATE_THEME_DESC', 'Slider.tpl update block for the current theme');
 
+\define ('_ MI_SLIDER_HIGHSLIDE', 'Framework "highslide"');
+\define ('_ MI_SLIDER_HIGHSLIDE_DESC', "Framework installation folder <a href=\"http://highslide.com/\">Highslide</a>");
 // ---------------- End ----------------
 
