@@ -225,7 +225,7 @@ $modversion['config'][] = [
     'title'       => '_MI_SLIDER_HIGHSLIDE',
     'description' => '_MI_SLIDER_HIGHSLIDE_DESC',
     'formtype'    => 'textbox',
-    'valuetype'   => 'text',
+    'valuetype'   => 'string',
     'default'     => 'highslide-5.0.0',
 ];
 /*

@@ -32,6 +32,7 @@ $modPathIcon32   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons
 $helper = \XoopsModules\Slider\Helper::getInstance();
 $slidesHandler = $helper->getHandler('Slides');
 $myts = MyTextSanitizer::getInstance();
+echo "<hr>"  . $helper->getConfig('highslide') . "<he>";
 // 
 if (!isset($xoopsTpl) || !\is_object($xoopsTpl)) {
     include_once XOOPS_ROOT_PATH . '/class/template.php';

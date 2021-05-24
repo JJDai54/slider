@@ -21,7 +21,7 @@
  */
 
 include_once __DIR__ . '/common.php';
-include_once __DIR__ . '/main.php';
+//include_once __DIR__ . '/main.php';
 
 // ---------------- Admin Index ----------------
 \define('_AM_SLIDER_STATISTICS', 'Statistics');
