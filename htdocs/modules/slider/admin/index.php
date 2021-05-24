@@ -70,7 +70,7 @@ $adminObject->addConfigBoxLine('');
 global $xoopsModuleConfig;
 //$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $helper->getConfig('highslide');  
 $highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $xoopsModuleConfig['highslide'];  
-echo "===>highslide : <hr>{$highslide}<hr>";                           
+//echo "===>highslide : <hr>{$highslide}<hr>";                           
     $adminObject->addConfigBoxLine($highslide, 'folder');
 if (is_dir($highslide)){
     $adminObject->addConfigBoxLine(_AM_CARTOUCHES_HIGHSLIDE_1, '');

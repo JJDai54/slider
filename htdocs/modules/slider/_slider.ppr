@@ -173,10 +173,10 @@ _slider
 10=templates\admin\slider_admin_slides.tpl
 [Selected Project Files]
 Main=
-Selected=class\Utility.php
+Selected=admin\header.php
 [admin\header.php]
-TopLine=25
-Caret=54,35
+TopLine=17
+Caret=3,35
 [admin\about.php]
 TopLine=233
 Caret=1,257
@@ -185,7 +185,7 @@ TopLine=1
 Caret=1,1
 [class\Utility.php]
 TopLine=256
-Caret=41,280
+Caret=40,271
 [class\Constants.php]
 TopLine=11
 Caret=23,32
@@ -194,7 +194,7 @@ TopLine=110
 Caret=1,134
 [admin\index.php]
 TopLine=47
-Caret=1,72
+Caret=3,73
 [language\french\admin.php]
 TopLine=15
 Caret=3,24
@@ -203,7 +203,7 @@ TopLine=79
 Caret=1,95
 [xoops_version.php]
 TopLine=211
-Caret=32,224
+Caret=1,229
 [templates\admin\slider_admin_slides.tpl]
 TopLine=69
 Caret=42,88

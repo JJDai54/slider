@@ -268,7 +268,7 @@ public static function include_highslide($options = null){
 global $xoopsModuleConfig;
 //$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $helper->getConfig('highslide');  
 $highslide = XOOPS_URL . "/Frameworks/" . $xoopsModuleConfig['highslide'];  
-echo "===>highslide : <hr>{$highslide}<hr>";  
+//echo "===>highslide : <hr>{$highslide}<hr>";  
 
   $xoTheme->addStylesheet("$highslide}/highslide.css");
   $xoTheme->addScript("{$highslide}/highslide.js");
