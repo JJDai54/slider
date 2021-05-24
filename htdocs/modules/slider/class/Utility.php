@@ -267,16 +267,17 @@ public static function include_highslide($options = null){
 //   $xoTheme->addScript('browse.php?Frameworks/zoom/highslide.js');
 global $xoopsModuleConfig;
 //$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $helper->getConfig('highslide');  
-$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $xoopsModuleConfig['highslide'];  
+$highslide = XOOPS_URL . "/Frameworks/" . $xoopsModuleConfig['highslide'];  
 echo "===>highslide : <hr>{$highslide}<hr>";  
 
-  $xoTheme->addStylesheet(XOOPS_URL . "/Frameworks/{$highslide}/highslide.css");
-  $xoTheme->addScript(XOOPS_URL . "/Frameworks/{$highslide}/highslide.js");
+  $xoTheme->addStylesheet("$highslide}/highslide.css");
+  $xoTheme->addScript("{$highslide}/highslide.js");
 
-  $xoTheme->addScript('browse.php?modules/slider/assets/js/highslide.js');
+  //$xoTheme->addScript('browse.php?modules/slider/assets/js/highslide.js');
+  $xoTheme->addScript(XOOPS_URL . '/modules/slider/assets/js/highslide.js');
 
   if (!is_array($options))$options = array();
-  $options['graphicsDir'] = XOOPS_URL . "/Frameworks/{$highslide}/graphics/";
+  $options['graphicsDir'] = "{$highslide}/graphics/";
   self::array2js('hs', $options, false, true);
 //exit ("include_highslide");
 }
