@@ -43,6 +43,7 @@ class Slides extends \XoopsObject
         $this->initVar('sld_short_name', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_title', XOBJ_DTYPE_OTHER);
         $this->initVar('sld_description', XOBJ_DTYPE_OTHER);
+        $this->initVar('sld_button_title', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_read_more', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_weight', XOBJ_DTYPE_INT);
         $this->initVar('sld_date_begin', XOBJ_DTYPE_INT);
@@ -51,6 +52,9 @@ class Slides extends \XoopsObject
         $this->initVar('sld_has_periode', XOBJ_DTYPE_INT);
         $this->initVar('sld_theme', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_image', XOBJ_DTYPE_TXTBOX);
+        $this->initVar('sld_style_title', XOBJ_DTYPE_OTHER);
+        $this->initVar('sld_style_description', XOBJ_DTYPE_OTHER);
+        $this->initVar('sld_style_button', XOBJ_DTYPE_OTHER);
     }
 
     /**
@@ -99,6 +103,21 @@ class Slides extends \XoopsObject
         // Form Text sld_short_name
         $form->addElement(new \XoopsFormText(_AM_SLIDER_SLIDE_SHORT_NAME, 'sld_short_name', 50, 255, $this->getVar('sld_short_name')), true);
         
+        // Form Image sldImage
+        // Form Image sldImage: Select Uploaded Image 
+        $getSldImage = $this->getVar('sld_image');
+        $urlImg =  SLIDER_UPLOAD_IMAGE_URL . '/slides/' . $getSldImage;        
+        //$uploadirectory      = XOOPS_ROOT_PATH . "/uploads/slider";        
+$upload_size = $helper->getConfig('maxsize_image'); 
+
+        $imageTray  = new \XoopsFormElementTray(_AM_SLIDER_SLIDE . '<br><br>' . sprintf(_AM_SLIDER_UPLOADSIZE, $upload_size / 1024), '<br>'); 
+        $imageTray->addElement(new \XoopsFormLabel('', "<br><img src='{$urlImg}'  name='image_img2' id='image_img2' alt='' style='max-width:60%'>")); 
+//echo "{$urlImg}<br>"; 
+        $imageTray->addElement(new \XoopsFormFile(_AM_SLIDER_SLIDE_TO_LOAD, 'sld_image', $upload_size), false);
+        
+        $form->addElement($imageTray, true);
+        
+        
         // Form Text sldTitle
         // Form Editor DhtmlTextArea sldDescription
         $editorConfigs = [];
@@ -133,6 +152,11 @@ class Slides extends \XoopsObject
         $form->addElement($inputDescription);
         
         
+        // Form Text sld_button_title
+        $inpurReadMore = new \XoopsFormText(_AM_SLIDER_SLIDE_BUTTON_CAPTION, 'sld_button_title', 80, 255, $this->getVar('sld_button_title'));
+        $inpurReadMore->setDescription(_AM_SLIDER_SLIDE_BUTTON_CAPTION_DESC);
+        $form->addElement($inpurReadMore, false);
+        
         // Form Text sld_read_more
         $inpurReadMore = new \XoopsFormText(_AM_SLIDER_SLIDE_READ_MORE, 'sld_read_more', 80, 255, $this->getVar('sld_read_more'));
         $inpurReadMore->setDescription(_AM_SLIDER_SLIDE_READ_MORE_DESC);
@@ -140,20 +164,6 @@ class Slides extends \XoopsObject
         
         // Form Image sldImage
         // Form Image sldImage: Select Uploaded Image 
-        
-        // Form Image sldImage
-        // Form Image sldImage: Select Uploaded Image 
-        $getSldImage = $this->getVar('sld_image');
-        $urlImg =  SLIDER_UPLOAD_IMAGE_URL . '/slides/' . $getSldImage;        
-        //$uploadirectory      = XOOPS_ROOT_PATH . "/uploads/slider";        
-$upload_size = $helper->getConfig('maxsize_image'); 
-
-        $imageTray  = new \XoopsFormElementTray(_AM_SLIDER_SLIDE . '<br><br>' . sprintf(_AM_SLIDER_UPLOADSIZE, $upload_size / 1024), '<br>'); 
-        $imageTray->addElement(new \XoopsFormLabel('', "<br><img src='{$urlImg}'  name='image_img2' id='image_img2' alt='' style='max-width:60%'>")); 
-//echo "{$urlImg}<br>"; 
-        $imageTray->addElement(new \XoopsFormFile(_AM_SLIDER_SLIDE_TO_LOAD, 'sld_image', $upload_size), false);
-        
-        $form->addElement($imageTray, true);
         
         
         
@@ -194,7 +204,47 @@ $upload_size = $helper->getConfig('maxsize_image');
         $form->addElement(new \XoopsFormDateTime(_AM_SLIDER_SLIDE_DATE_END, 'sld_date_end', '', $sldDate_end));
         
         
+//------------ STYLES -------------------------------
+        $editor = $helper->getConfig('text_array');
+        $editorConfigsStyleTitle = [];
+        $editorConfigsStyleTitle['name'] = 'sld_style_title';
+        $editorConfigsStyleTitle['value'] = $this->getVar('sld_style_title', 'e');
+        $editorConfigsStyleTitle['rows'] = 5;
+        $editorConfigsStyleTitle['cols'] = 40;
+        $editorConfigsStyleTitle['width'] = '60%';
+        $editorConfigsStyleTitle['height'] = '200px';
+        $editorConfigsStyleTitle['editor'] = $editor;
+        $inputStyleTitle = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_style_title', $editorConfigsStyleTitle);
+        $inputStyleTitle->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
+        $form->addElement($inputStyleTitle);
         
+//------------ STYLES -------------------------------
+        $editor = $helper->getConfig('text_array');
+        $editorConfigsStyleDescription= [];
+        $editorConfigsStyleDescription['name'] = 'sld_style_description';
+        $editorConfigsStyleDescription['value'] = $this->getVar('sld_style_description', 'e');
+        $editorConfigsStyleDescription['rows'] = 5;
+        $editorConfigsStyleDescription['cols'] = 40;
+        $editorConfigsStyleDescription['width'] = '60%';
+        $editorConfigsStyleDescription['height'] = '200px';
+        $editorConfigsStyleDescription['editor'] = $editor;
+        $inputStleDescription = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_style_description', $editorConfigsStyleDescription);
+        $inputStleDescription->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
+        $form->addElement($inputStleDescription);
+//------------ STYLES -------------------------------
+        $editor = $helper->getConfig('text_array');
+        $editorConfigsStyleButton= [];
+        $editorConfigsStyleButton['name'] = 'sld_style_button';
+        $editorConfigsStyleButton['value'] = $this->getVar('sld_style_button', 'e');
+        $editorConfigsStyleButton['rows'] = 5;
+        $editorConfigsStyleButton['cols'] = 30;
+        $editorConfigsStyleButton['width'] = '300px';
+        $editorConfigsStyleButton['height'] = '200px';
+        $editorConfigsStyleButton['editor'] = $editor;
+        $inputStleButton = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_style_button', $editorConfigsStyleButton);
+        $inputStleButton->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
+        $form->addElement($inputStleButton);
+//---------------------------------------------------        
 
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
@@ -219,7 +269,7 @@ $upload_size = $helper->getConfig('maxsize_image');
         $ret['title']              = $this->getVar('sld_title');
         $ret['description']        = $this->getVar('sld_description', 'e');
         $editorMaxchar             = $helper->getConfig('editor_maxchar');
-        $ret['read_more']          = $utility::truncateHtml($this->getVar('sld_read_more'), $editorMaxchar);
+        $ret['read_more']          = $this->getVar('sld_read_more');
         $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['weight']             = $this->getVar('sld_weight');
         $ret['date_begin']         = \formatTimestamp($this->getVar('sld_date_begin'), 'm');
@@ -231,6 +281,11 @@ $upload_size = $helper->getConfig('maxsize_image');
         $ret['theme']              = $this->getVar('sld_theme');
         $ret['image']              = $this->getVar('sld_image');
         $ret['image_fullName']     = XOOPS_URL . "/uploads/slider/images/slides/" . $this->getVar('sld_image');
+        
+        $ret['button_title']             = $this->getVar('sld_button_title');
+        $ret['style_title']        = $this->getVar('sld_style_title', 'e');
+        $ret['style_description']  = $this->getVar('sld_style_description', 'e');
+        $ret['style_button']       = $this->getVar('sld_style_button', 'e');
         
         $ret['current_status'] = getCurrentStatusOfSlide($ret);
         return $ret;

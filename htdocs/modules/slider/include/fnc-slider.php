@@ -105,7 +105,8 @@ global $xoopsConfig, $helper;
  * 
  **********************************************************************/
 function build_new_tpl($slides, $theme, $forceRebuild = false){
-    
+
+//echo "<hr>slides<pre>" . print_r($slides, true) . "</pre><hr>"; exit("build_new_tpl");   
     $tpl_main = "slider_main-02.tpl";
 
     // generation du fichier de flag pour eviter de reconstruire à chaque connexion utilisateur   
@@ -136,6 +137,8 @@ function build_new_tpl($slides, $theme, $forceRebuild = false){
         rename($fullName, $fullName_old);
     }
     //---------------------------------------------------
+    $allStyles = buildStyles($slides);
+//echo "<hr><pre>" . print_r($slides, true) . "</pre><hr>";
     //génération de la liste des slides et indicators
     $template = 'db:slider_slider.tpl';
     $tpl = new \XoopsTpl();
@@ -150,6 +153,7 @@ function build_new_tpl($slides, $theme, $forceRebuild = false){
     
     // sauvegarde du nouveau tpl/slide.tpl
     $tplOrg = str_replace ("__Slides__", $content, $tplOrg);
+    $tplOrg = str_replace ("__STYLES__", $allStyles, $tplOrg);
     saveTexte2File($fullName, $tplOrg, $mod = 0777);
     
     //nettoyage des cachepour un rafraichissement immediat
@@ -162,6 +166,51 @@ function build_new_tpl($slides, $theme, $forceRebuild = false){
     //$content = "togodo";
             
     return true;        
+}
+
+/**********************************************************************
+ * 
+ **********************************************************************/
+function buildStyles(&$slides){
+    $bolOk = false;
+    $tStyles = array();
+    
+    foreach ($slides as $k=>$v){
+        $prefixeName = "slide-{$v['id']}";
+        
+        if (trim($v['style_title']) != ''){
+            $name = "{$prefixeName}-title";
+            $tStyles[] = "#{$name}{{$v['style_title']}}";
+            $slides[$k]['style_title_name'] = $name;
+            $bolOk = true;
+        }else $slides[$k]['style_title_name'] = '';
+        
+        if (trim($v['style_description']) != ''){
+            $name = "{$prefixeName}-description";
+            $tStyles[] = "#{$name}{{$v['style_description']}}";
+            $slides[$k]['style_description_name'] = $name;
+            $bolOk = true;
+        }else $slides[$k]['style_description_name'] = '';
+        
+        if (trim($v['style_button']) != ''){
+            $name = "{$prefixeName}-button";
+            $tStyles[] = "#{$name}{{$v['style_button']}}";
+            $slides[$k]['style_button_name'] = $name;
+            $bolOk = true;
+        }else $slides[$k]['style_button_name'] = '';
+    
+    
+    }
+    
+    if ($bolOk){
+        $allStyles = "<style>\n" . implode("\n", $tStyles) . "</style>\n";
+
+    }else{
+        $allStyles = "";
+    }
+    //echo "allStyles : <hr><pre><code>" . implode("\n", $tStyles) . "</code></pre><hr>";
+    //return "allStyles : <hr><pre><code>" . implode("\n", $tStyles) . "</code></pre><hr>";
+    return $allStyles; 
 }
 
 /**********************************************************************

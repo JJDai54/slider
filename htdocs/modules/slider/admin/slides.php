@@ -119,6 +119,13 @@ Utility::include_highslide(array('allowMultipleInstances'=>false));
         $slidesObj->setVar('sld_actif', Request::getInt('sld_actif', 0));
         $slidesObj->setVar('sld_has_periode', Request::getInt('sld_has_periode', 0));
         $slidesObj->setVar('sld_theme', Request::getString('sld_theme', ''));
+        
+        $slidesObj->setVar('sld_button_title', Request::getString('sld_button_title', ''));
+        $slidesObj->setVar('sld_style_title', Request::getText('sld_style_title'));
+        $slidesObj->setVar('sld_style_description', Request::getText('sld_style_description'));
+        $slidesObj->setVar('sld_style_button', Request::getText('sld_style_button'));
+        
+        
         // Set Var sld_image
         $theme = Request::getString('sld_theme', '');
         include_once XOOPS_ROOT_PATH . '/class/uploader.php';

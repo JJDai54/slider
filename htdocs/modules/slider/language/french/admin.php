@@ -93,7 +93,7 @@ include_once __DIR__ . '/common.php';
 \define('_AM_SLIDER_SLIDE_TITLE_DESC', "Titre principal affiché sur le slide");
 \define('_AM_SLIDER_SLIDE_DESCRIPTION_DESC', "Texte ou sous-titre afficher sur le slide");
 \define('_AM_SLIDER_SLIDE_READ_MORE', "En savoir plus");
-\define('_AM_SLIDER_SLIDE_READ_MORE_DESC', "URL sur un article ouune page avec plus d'informations");
+\define('_AM_SLIDER_SLIDE_READ_MORE_DESC', "URL sur un article ou une page avec plus d'informations");
 \define('_AM_SLIDER_SLIDE_PROCESSING_OK', "Traitement effectué");
 \define('_AM_SLIDER_REFRESH_SLIDERS', "Rafraichier les sliders");
 \define('_AM_SLIDER_REFRESH_SLIDERS_DESC', "Réinitialise tous les thèmes et force la reconstruction des sliders");
@@ -103,4 +103,6 @@ include_once __DIR__ . '/common.php';
 \define('_AM_CARTOUCHES_HIGHSLIDE_0', "<span style=\"color:red;\">Le framework \"<a href=\"http://highslide.com/\">Highslide</a>\" n'est pas installé.</span>");
 \define('_AM_CARTOUCHES_HIGHSLIDE_1', "<span style=\"color:green;\">Le framework \"<a href=\"http://highslide.com/\">Highslide</a>\" est installé.</span>");
 
+\define('_AM_SLIDER_SLIDE_BUTTON_CAPTION', "Titre du bouton");
+\define('_AM_SLIDER_SLIDE_BUTTON_CAPTION_DESC', "Le bouton n'apparait que si une url est définie.<br>exemples de titres : Lire plus | En savoir plus ...");
 // ---------------- End ----------------

@@ -93,4 +93,6 @@ include_once 'common.php';
 \define('_MI_SLIDER_HIGHSLIDE', 'Framework "highslide"');
 \define('_MI_SLIDER_HIGHSLIDE_DESC', "Dossier d'installation du framework <a href=\"http://highslide.com/\">Highslide</a>");
 
+\define('_MI_SLIDER_REBUILD', 'Reconstruction du templae des slides');
+\define('_MI_SLIDER_REBUILD_DESC', "Force la reconstruction des templates, à utiliser pendant le développement.<br>Laissez 'Non' en production");
 // ---------------- End ----------------

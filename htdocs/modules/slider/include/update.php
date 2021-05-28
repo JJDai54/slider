@@ -35,6 +35,45 @@ function xoops_module_update_slider($module, $prev_version = null)
     if ($prev_version < 10) {
         $ret = update_slider_v10($module);
     }
+    
+    if ($prev_version < 20) {
+        $ret = update_slider_v200($module);
+    }
+
+//-------------------------------------------------------------------
+    $fld = XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/versions/';
+    $cls = 'Slider_%1$s';
+
+    $version = [
+        '1_80' => 180,
+        '2_02' => 202,
+    ];
+
+    //    while (list($key, $val) = each($version)) {
+    foreach ($version as $key => $val) {
+        if ($previousVersion < $val) {
+            echo "actuelle = {$previousVersion}  - version maj : {$key} = {$val}<br>";
+            $name = ucfirst(sprintf($cls, $key));
+            $f    = $fld . $name . '.php';
+            //ext_echo ("Fichier : {$f}<hr>");
+            if (is_readable($f)) {
+                //echo "mise à jour version : {$key} = {$val}<br>";
+                require_once $f;
+                $cl = new $name($module, ['previousVersion' => $previousVersion]);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------
+
+
 
     $ret = slider_check_db($module);
 
@@ -57,6 +96,17 @@ function xoops_module_update_slider($module, $prev_version = null)
  *
  * @return bool
  */
+ 
+ 
+
+// irmtfan bug fix: solve templates duplicate issue
+/**
+ * @param $module
+ *
+ * @return bool
+ */
+ 
+ 
 function update_slider_v10($module)
 {
     global $xoopsDB;

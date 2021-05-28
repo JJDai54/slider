@@ -26,7 +26,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 1.10,
+    'version'             => 2.02,
     'description'         => _MI_SLIDER_DESC,
     'author'              => 'JJDai',
     'author_mail'         => 'jjdelalandre@orange.fr',
@@ -219,7 +219,7 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 10,
 ];
-// Admin pager
+// Admin framework highslide
 $modversion['config'][] = [
     'name'        => 'highslide',
     'title'       => '_MI_SLIDER_HIGHSLIDE',
@@ -228,6 +228,15 @@ $modversion['config'][] = [
     'valuetype'   => 'string',
     'default'     => 'highslide-5.0.0',
 ];
+$modversion['config'][] = [
+    'name'        => 'foreRebuildSlides',
+    'title'       => '_MI_SLIDER_REBUILD',
+    'description' => '_MI_SLIDER_REBUILD_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 0,
+];
+
 /*
 // Number column
 $modversion['config'][] = [

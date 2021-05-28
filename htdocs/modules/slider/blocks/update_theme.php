@@ -58,7 +58,8 @@ global $xoopsConfig, $helper;
     
     
     //--------------------------------------------------------------
-    $bolOk = build_new_tpl($slides, $theme, false);
+    $forceRebuild = $helper->getConfig('foreRebuildSlides');
+    $bolOk = build_new_tpl($slides, $theme, $forceRebuild);
     $block['generation'] = ($bolOk) ? _MB_SLIDER_TPL_OK : _MB_SLIDER_TPL_NOT_OK;
    
     $block['now'] = sprintf(_MB_SLIDER_TPL_HEURE_COURANTE, date("Y-m-d H:i:s", $now));    
