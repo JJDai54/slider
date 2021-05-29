@@ -73,9 +73,9 @@ $highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $xoopsModuleConfig['highslide'];
 //echo "===>highslide : <hr>{$highslide}<hr>";                           
     $adminObject->addConfigBoxLine($highslide, 'folder');
 if (is_dir($highslide)){
-    $adminObject->addConfigBoxLine(_AM_CARTOUCHES_HIGHSLIDE_1, '');
+    $adminObject->addConfigBoxLine(_AM_SLIDER_HIGHSLIDE_1, '');
 }else{
-    $adminObject->addConfigBoxLine(_AM_CARTOUCHES_HIGHSLIDE_0, '');
+    $adminObject->addConfigBoxLine(_AM_SLIDER_HIGHSLIDE_0, '');
 }
 
 // Render Index
@@ -84,9 +84,9 @@ $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('inde
 if ($helper->getConfig('displaySampleButton')) {
     \xoops_loadLanguage('admin/modulesadmin', 'system');
     include_once \dirname(__DIR__) . '/testdata/index.php';
-    $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_ADD_SAMPLEDATA'), '__DIR__ . /../../testdata/index.php?op=load', 'add');
-    $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_SAVE_SAMPLEDATA'), '__DIR__ . /../../testdata/index.php?op=save', 'add');
-//    $adminObject->addItemButton(\constant('CO_' . $moduleDirNameUpper . '_EXPORT_SCHEMA'), '__DIR__ . /../../testdata/index.php?op=exportschema', 'add');
+    $adminObject->addItemButton(\constant('CO_SLIDER_ADD_SAMPLEDATA'), '__DIR__ . /../../testdata/index.php?op=load', 'add');
+    $adminObject->addItemButton(\constant('CO_SLIDER_SAVE_SAMPLEDATA'), '__DIR__ . /../../testdata/index.php?op=save', 'add');
+//    $adminObject->addItemButton(\constant('CO_SLIDER_EXPORT_SCHEMA'), '__DIR__ . /../../testdata/index.php?op=exportschema', 'add');
     $adminObject->displayButton('left');
 }
 $GLOBALS['xoopsTpl']->assign('index', $adminObject->displayIndex());

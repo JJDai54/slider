@@ -299,8 +299,8 @@ $modversion['config'][] = [
 // Make Sample button visible?
 $modversion['config'][] = [
     'name'        => 'displaySampleButton',
-    'title'       => 'CO_' . $moduleDirNameUpper . '_' . 'SHOW_SAMPLE_BUTTON',
-    'description' => 'CO_' . $moduleDirNameUpper . '_' . 'SHOW_SAMPLE_BUTTON_DESC',
+    'title'       => 'CO_SLIDER_SHOW_SAMPLE_BUTTON',
+    'description' => 'CO_SLIDER_SHOW_SAMPLE_BUTTON_DESC',
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => 1,
