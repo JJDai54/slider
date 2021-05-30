@@ -62,7 +62,7 @@ $modversion = [
     'module_status'       => 'Beta 1',
     'system_menu'         => 1,
     'hasAdmin'            => 1,
-    'hasMain'             => 1,
+    'hasMain'             => 0,
     'adminindex'          => 'admin/index.php',
     'adminmenu'           => 'admin/menu.php',
     'onInstall'           => 'include/install.php',
@@ -100,8 +100,9 @@ $modversion['blocks'][] = [
     'show_func'   => 'b_slider_update_theme_show',
     'edit_func'   => 'b_slider_update_theme_edit', //
     'template'    => 'slider_block_update_theme.tpl',
-    'options'     => '0|0',
+    'options'     => '0|0',     // periodicite | show block
 ];
+
 // ------------------- Config ------------------- //
 // Editor Admin
 \xoops_load('xoopseditorhandler');

@@ -62,4 +62,7 @@ define ('_MB_SLIDER_PERIODICITY_RND_DESC', "Défini la périodicité de changeme
 \define('_MB_SLIDER_PERIODICITE_SEMESTER', 'Une fois par semestre');
 \define('_MB_SLIDER_PERIODICITE_YEAR', 'Une fois par an');
 
+\define('_MB_SLIDER_MAX_SLIDES', 'Nombre de slides maximum');
+\define('_MB_SLIDER_MAX_SLIDES_DESC', 'Laissez 0 pour sélectionner tous les slides actifs');
+
 // ---------------- End ----------------

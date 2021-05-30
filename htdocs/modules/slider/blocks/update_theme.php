@@ -100,9 +100,9 @@ function b_slider_update_theme_edit($options)
         $form->setExtra('enctype="multipart/form-data"');
 
 
-        $periodicite = (isset($options[0])) ? $options[0]: 0; 
-        $k = _SLD_PERIODICITE;
-            $selPeriodicite = new XoopsFormSelect(_MB_SLIDER_PERIODICITY_RND, "options[0]", $periodicite);
+        $k = 0;
+        $periodicite = (isset($options[$k])) ? $options[$k]: 0; 
+            $selPeriodicite = new XoopsFormSelect(_MB_SLIDER_PERIODICITY_RND, "options[{$k}]", $periodicite);
             $selPeriodicite->addOption(_SLD_PERIODICITY_NEVER,    _MB_SLIDER_PERIODICITE_NEVER);
             $selPeriodicite->addOption(_SLD_PERIODICITY_RANDOM,   _MB_SLIDER_PERIODICITE_RANDOM);
             $selPeriodicite->addOption(_SLD_PERIODICITY_MINUTE,   _MB_SLIDER_PERIODICITE_MINUTE);
@@ -118,9 +118,14 @@ function b_slider_update_theme_edit($options)
 
             $form->addElement($selPeriodicite);
 
-
-        $showBlock = (isset($options[1])) ? $options[1]: 0; 
-        $radShowBlock = new \XoopsFormRadioYN(_MB_SLIDER_SHOW_BLOCK, 'options[1]', $showBlock);
+//         $nbMaxSlides = (isset($options[1])) ? $options[1]: 0; 
+//         $inpMaxSlides = new XoopsFormText(_MB_SLIDER_MAX_SLIDES, 'options[1]', 20, 20, $nbMaxSlides);
+//         $inpMaxSlides->setDescription(_MB_SLIDER_MAX_SLIDES_DESC);
+//         $form->addElement($inpMaxSlides);
+        
+        $k++;
+        $showBlock = (isset($options[$k])) ? $options[$k]: 0; 
+        $radShowBlock = new \XoopsFormRadioYN(_MB_SLIDER_SHOW_BLOCK, "options[{$k}]", $showBlock);
         $radShowBlock->SetDescription(_MB_SLIDER_SHOW_BLOCK_DESC);
         $form->addElement($radShowBlock);
         
