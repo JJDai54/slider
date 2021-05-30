@@ -253,33 +253,87 @@ Utility::include_highslide(array('allowMultipleInstances'=>false));
         $sld_id = Request::getInt('sld_id', 0);
          $sld_weight = Request::getInt('sld_weight', 0);
          $sld_theme = Request::getString('sld_theme', '');
-        if (Request::getString('sens', "asc") == 'asc'){
+         $action = Request::getString('sens', "asc") ;
+         switch ($action){
+            case 'up'; 
               $sens =  '<';
-             $ordre = "DESC";
-        }else{
+              $ordre = "DESC";
+              break;
+
+            case 'down'; 
               $sens =  '>';
-             $ordre = "ASC";
-        }
-        
+              $ordre = "ASC";
+            break;
+
+            case 'first'; 
+              $sens =  '<';
+              $ordre = "ASC";
+            break;
+
+            case 'last'; 
+              $sens =  '>';
+              $ordre = "DESC";
+            break;
+         }
+         
+        $tbl = $xoopsDB->prefix("slider_slides");
         $criteria = new \CriteriaCompo();
         $criteria->add(new \Criteria('sld_theme', $select_theme));
         $criteria->add(new \Criteria('sld_weight', $sld_weight, $sens));
         $limit = 0;
         $start = 0;
         $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit, "sld_weight {$ordre}, sld_short_name {$ordre}, sld_id");
-        if(count($slidesAll) > 0  ){
-            $key = array_key_first($slidesAll);
-//            echo "===> count = " . count($slidesAll) . "<br>key={$key}"; 
-            $slide = $slidesAll[$key]->getValuesSlides();
-            $sld_id2 = $slide['id'];
-            $sld_weight2 = $slide['weight'];
-            
-            $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_weight={$sld_weight2} WHERE sld_id={$sld_id}";
-            $xoopsDB->queryf($sql);
-            
-            $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_weight={$sld_weight} WHERE sld_id={$sld_id2}";
-            $xoopsDB->queryf($sql);
+        if(count($slidesAll) == 0  ){
+                    \redirect_header("slides.php?op=list&sld_theme={$select_theme}", 0, "");
         }
+        $key = array_key_first($slidesAll);
+//            echo "===> count = " . count($slidesAll) . "<br>key={$key}"; 
+        $slide = $slidesAll[$key]->getValuesSlides();
+        $sld_id2 = $slide['id'];
+        $sld_weight2 = $slide['weight'];
+        
+
+                
+                
+                
+         switch ($action){
+            case 'up'; 
+            case 'down'; 
+              $sql = "UPDATE {$tbl} SET sld_weight={$sld_weight2} WHERE sld_id={$sld_id}";
+              $xoopsDB->queryf($sql);
+              
+              $sql = "UPDATE {$tbl} SET sld_weight={$sld_weight} WHERE sld_id={$sld_id2}";
+              $xoopsDB->queryf($sql);
+            break;
+
+            case 'first'; 
+              $sld_weight2 -= 10;  
+              $sql = "UPDATE {$tbl} SET sld_weight={$sld_weight2} WHERE sld_id={$sld_id}";
+              $xoopsDB->queryf($sql);
+              
+              $sql = "SET @rank=0;";
+              $xoopsDB->queryf($sql);
+              
+              $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) ORDER BY sld_weight ASC;";
+              $xoopsDB->queryf($sql);
+
+
+Source: https://prograide.com/pregunta/13002/mysql---recupre-le-numero-de-ligne-sur-select
+            break;
+
+            case 'last'; 
+              $sld_weight2 += 10;  
+              $sql = "UPDATE {$tbl} SET sld_weight={$sld_weight2} WHERE sld_id={$sld_id}";
+              $xoopsDB->queryf($sql);
+              
+              $sql = "SET @rank=0;";
+              $xoopsDB->queryf($sql);
+              
+              $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) ORDER BY sld_weight ASC;";
+              $xoopsDB->queryf($sql);
+            break;
+         }
+        
 
         //permet le rafraissement de la page d'accueil    
         deleteSliderthemeFlag($sld_theme);

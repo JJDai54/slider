@@ -1,11 +1,24 @@
 ==============================================================
-1.2 [2021/05/24 15:00:00]
+2.02 [2021/05/31 15:00:00] - JJDai (jjdelalandre@orange.fr)
+==============================================================
+Slides :
+- Ajout des champs sld_style_title, sld_style_description, sld_style button.
+  permet de mettre en valeur le titre, la description et le bouton qui apparaise pour chaque slide
+- Ajout du champ sld_button_title => titre du bouton du slide
+
+Block update_theme :
+- Ajout de la periodicité. Permet d'afficher les slides dans un ordre aléatoire,
+  selon une prériode prédéfinie (heure, jour, mois, ...)
+  never garde l'ordre du champ "weight".
+  
+1.2 [2021/05/24 15:00:00] - JJDai (jjdelalandre@orange.fr)
 ==============================================================
 - Intégration du framework "highslide" (http://highslide.com/)
   permet la visualisation des slides dans la liste de l'admin
   
+ 
 ==============================================================
-1.0 [2021/05/11 19:16:51]
+1.0 [2021/05/11 19:16:51] - JJDai (jjdelalandre@orange.fr)
 ==============================================================
  - Original release slider (JJDai)
  - Création du module
@@ -14,11 +27,12 @@
        Définition d'une période
        Ordre d'affichage
        Activaion désactivation
+       Image à a afficher
  
  - IMPORTANT:
  Block : pour fonctioner correctement le bloc du module dot être activé.
          Il peut être placé n'import ou, il est invisible.
-         Ne pas modifier les paramètres du bloc
+         Ne pas modifier le paramètre "visible" du bloc, le laisser sur "non"
          
 Pour plus d'informations voir le fichier "help.html" dans l'admin du module.
 

@@ -203,47 +203,23 @@ $upload_size = $helper->getConfig('maxsize_image');
         $sldDate_end = $this->isNew() ? time() : $this->getVar('sld_date_end');
         $form->addElement(new \XoopsFormDateTime(_AM_SLIDER_SLIDE_DATE_END, 'sld_date_end', '', $sldDate_end));
         
-        
 //------------ STYLES -------------------------------
-        $editor = $helper->getConfig('text_array');
-        $editorConfigsStyleTitle = [];
-        $editorConfigsStyleTitle['name'] = 'sld_style_title';
-        $editorConfigsStyleTitle['value'] = $this->getVar('sld_style_title', 'e');
-        $editorConfigsStyleTitle['rows'] = 5;
-        $editorConfigsStyleTitle['cols'] = 40;
-        $editorConfigsStyleTitle['width'] = '60%';
-        $editorConfigsStyleTitle['height'] = '200px';
-        $editorConfigsStyleTitle['editor'] = $editor;
-        $inputStyleTitle = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_style_title', $editorConfigsStyleTitle);
-        $inputStyleTitle->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
+       $stylTA = "style='width:350px;'";        
+        
+        $inputStyleTitle = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_TITLE, 'sld_style_title',  $this->getVar('sld_style_title', 'e'), 3, 60);
+        $inputStyleTitle->setExtra($stylTA);
+        $inputStyleTitle->setDescription(_AM_SLIDER_SLIDE_STYLE_TITLE_DESC);
         $form->addElement($inputStyleTitle);
-        
-//------------ STYLES -------------------------------
-        $editor = $helper->getConfig('text_array');
-        $editorConfigsStyleDescription= [];
-        $editorConfigsStyleDescription['name'] = 'sld_style_description';
-        $editorConfigsStyleDescription['value'] = $this->getVar('sld_style_description', 'e');
-        $editorConfigsStyleDescription['rows'] = 5;
-        $editorConfigsStyleDescription['cols'] = 40;
-        $editorConfigsStyleDescription['width'] = '60%';
-        $editorConfigsStyleDescription['height'] = '200px';
-        $editorConfigsStyleDescription['editor'] = $editor;
-        $inputStleDescription = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_style_description', $editorConfigsStyleDescription);
-        $inputStleDescription->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
+
+        $inputStleDescription = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_DESCRIPTION, 'sld_style_description',  $this->getVar('sld_style_description', 'e'), 3, 60);
+        $inputStleDescription->setExtra($stylTA);
+        $inputStleDescription->setDescription(_AM_SLIDER_SLIDE_STYLE_DESCRIPTION_DESC);
         $form->addElement($inputStleDescription);
-//------------ STYLES -------------------------------
-        $editor = $helper->getConfig('text_array');
-        $editorConfigsStyleButton= [];
-        $editorConfigsStyleButton['name'] = 'sld_style_button';
-        $editorConfigsStyleButton['value'] = $this->getVar('sld_style_button', 'e');
-        $editorConfigsStyleButton['rows'] = 5;
-        $editorConfigsStyleButton['cols'] = 30;
-        $editorConfigsStyleButton['width'] = '300px';
-        $editorConfigsStyleButton['height'] = '200px';
-        $editorConfigsStyleButton['editor'] = $editor;
-        $inputStleButton = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_style_button', $editorConfigsStyleButton);
-        $inputStleButton->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
-        $form->addElement($inputStleButton);
+        
+        $inputSytleButton = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_BUTTON, 'sld_style_button',  $this->getVar('sld_style_button', 'e'), 3, 60);
+        $inputSytleButton->setExtra($stylTA);
+        $inputSytleButton->setDescription(_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC);
+        $form->addElement($inputSytleButton);
 //---------------------------------------------------        
 
         // To Save

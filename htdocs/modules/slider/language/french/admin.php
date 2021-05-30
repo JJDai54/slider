@@ -105,4 +105,17 @@ include_once __DIR__ . '/common.php';
 
 \define('_AM_SLIDER_SLIDE_BUTTON_CAPTION', "Titre du bouton");
 \define('_AM_SLIDER_SLIDE_BUTTON_CAPTION_DESC', "Le bouton n'apparait que si une url est définie.<br>exemples de titres : Lire plus | En savoir plus ...");
+
+\define('_AM_SLIDER_FIRST', "Premier");
+\define('_AM_SLIDER_LAST', "Dernier");
+
+\define('_AM_SLIDER_SLIDE_STYLE_TITLE', "Style du titre");
+\define('_AM_SLIDER_SLIDE_STYLE_TITLE_DESC', "Utiliser les style CSS sans le nom du style ni les acolades<br>exemple :<br>color:red;<br>background:yellow;");
+
+\define('_AM_SLIDER_SLIDE_STYLE_DESCRIPTION', "Style de la description");
+\define('_AM_SLIDER_SLIDE_STYLE_DESCRIPTION_DESC', "Utiliser les style CSS sans le nom du style ni les acolades<br>exemple :<br>color:red;<br>background:yellow;");
+
+\define('_AM_SLIDER_SLIDE_STYLE_BUTTON', "Style du bouton");
+\define('_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC', "Utiliser les style CSS sans le nom du style ni les acolades<br>exemple :<br>color:red;<br>background:yellow;");
+
 // ---------------- End ----------------

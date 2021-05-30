@@ -42,9 +42,24 @@
 \define('_MB_SLIDER_TPL_OK', 'le template a été regénéré');
 \define('_MB_SLIDER_TPL_NOT_OK', 'le template n\'a pas été modifié');
 \define('_MB_SLIDER_TPL_HEURE_COURANTE', "Il est %s");
-\define('_BL_SLIDER_SHOW_BLOCK', "Afficher le block");
-\define('_BL_SLIDER_SHOW_BLOCK_DESC', "Laisser <b><span style='color : Red;'>Non</span></b> en production, <b><span style='color : Red;'>à n'utiliser qu'à des fins de debugage</span></b>");
-\define('_BL_SLIDER_RED_MORE', "Lire plus");
-\define('_BL_SLIDER_RED_MORE_DESC', "URL sur un article ou une page contenant plus d'informations");
+\define('_MB_SLIDER_SHOW_BLOCK', "Afficher le block");
+\define('_MB_SLIDER_SHOW_BLOCK_DESC', "Laisser <b><span style='color : Red;'>Non</span></b> en production, <b><span style='color : Red;'>à n'utiliser qu'à des fins de debugage</span></b>");
+\define('_MB_SLIDER_RED_MORE', "Lire plus");
+\define('_MB_SLIDER_RED_MORE_DESC', "URL sur un article ou une page contenant plus d'informations");
+
+define ('_MB_SLIDER_PERIODICITY_RND', "Périodicité de renouvellement");
+define ('_MB_SLIDER_PERIODICITY_RND_DESC', "Défini la périodicité de changement d'ordre des slides<br>'Jamais' utilise l'ordre prédéfini (Conseillé) ");
+
+\define('_MB_SLIDER_PERIODICITE_NEVER', 'Jamais (Conseillé)');
+\define('_MB_SLIDER_PERIODICITE_RANDOM', 'Aléatoire à chaque rafraichissement de la page (Déconseillé)');
+\define('_MB_SLIDER_PERIODICITE_HOUR', 'Une fois par heure');
+\define('_MB_SLIDER_PERIODICITE_MINUTE', 'Une fois par minute');
+\define('_MB_SLIDER_PERIODICITE_DAY', 'Une fois par jour');
+\define('_MB_SLIDER_PERIODICITE_WEEK', 'Une fois par semaine');
+\define('_MB_SLIDER_PERIODICITE_MONTH', 'Une fois par mois');
+\define('_MB_SLIDER_PERIODICITE_BIMONTHLY', 'Une fois tous les deux mois');
+\define('_MB_SLIDER_PERIODICITE_QUATER', 'Une fois par trimestre');
+\define('_MB_SLIDER_PERIODICITE_SEMESTER', 'Une fois par semestre');
+\define('_MB_SLIDER_PERIODICITE_YEAR', 'Une fois par an');
 
 // ---------------- End ----------------

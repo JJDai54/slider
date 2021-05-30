@@ -105,4 +105,17 @@ include_once __DIR__ . '/main.php';
 
 \define('_AM_SLIDER_SLIDE_BUTTON_CAPTION', "Title of button");
 \define('_AM_SLIDER_SLIDE_BUTTON_CAPTION_DESC', "The button only appears if an url is defined. <br> examples of titles: Read more | Find out more ...");
+
+\define('_AM_SLIDER_FIRST', "First");
+\define('_AM_SLIDER_LAST', "Last");
+
+\define('_AM_SLIDER_SLIDE_STYLE_TITLE', "Style of title");
+\define('_AM_SLIDER_SLIDE_STYLE_TITLE_DESC', "Using CSS styles without the style name or the braces <br> example: <br> color: red; <br> background: yellow;");
+
+\define('_AM_SLIDER_SLIDE_STYLE_DESCRIPTION', "Style of description");
+\define('_AM_SLIDER_SLIDE_STYLE_DESCRIPTION_DESC', "Using CSS styles without the style name or the braces <br> example: <br> color: red; <br> background: yellow;");
+
+\define('_AM_SLIDER_SLIDE_STYLE_BUTTON', "Style of bouton");
+\define('_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC', "Using CSS styles without the style name or the braces <br> example: <br> color: red; <br> background: yellow;");
+
 // ---------------- End ----------------

@@ -25,7 +25,7 @@
         </thead>
         <{if $slides_count}>
         <tbody>
-            <{foreach item=slide from=$slides_list}>
+            <{foreach item=slide from=$slides_list name=slider}>
             <tr class='<{cycle values='odd, even'}>'>
                 <td class='center'><{$slide.id}></td>
                 <td class='left'><{$slide.theme}></td>
@@ -33,14 +33,38 @@
                 <{* <td class='left'><{$slide.title}></td> *}>
                 <{* <td class='center'><{$slide.description}></td> *}>
                 
+                <{* ---------------- Arrows -------------------- *}>
                 <td class='center'>
-                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=asc&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
-                    <img src="<{$sysPathIcon16}>/ASC.png" title="<{$smarty.const._AM_SLIDER_UP}>">
-                    </a>
+                    <{if $smarty.foreach.slider.first}>
+                      <img src="<{$modPathIcon16}>/arrows/first-0.png" title="<{$smarty.const._AM_SLIDER_FIRST}>">
+                      <img src="<{$modPathIcon16}>/arrows/up-0.png" title="<{$smarty.const._AM_SLIDER_UP}>">
+                    <{else}>
+                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=first&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
+                      <img src="<{$modPathIcon16}>/arrows/first-1.png" title="<{$smarty.const._AM_SLIDER_FIRST}>">
+                      </a>
+                    
+                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=up&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
+                      <img src="<{$modPathIcon16}>/arrows/up-1.png" title="<{$smarty.const._AM_SLIDER_UP}>">
+                      </a>
+                    <{/if}>
+                 
+                    <img src="<{$modPathIcon16}>/blank-08.png" title="">
                     <{$slide.weight}>
-                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=desc&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
-                    <img src="<{$sysPathIcon16}>/DESC.png" title="<{$smarty.const._AM_SLIDER_DOWN}>">
-                    </a>
+                    <img src="<{$modPathIcon16}>/blank-08.png" title="">
+                 
+                    <{if $smarty.foreach.slider.last}>
+                      <img src="<{$modPathIcon16}>/arrows/down-0.png" title="<{$smarty.const._AM_SLIDER_DOWN}>">
+                      <img src="<{$modPathIcon16}>/arrows/last-0.png" title="<{$smarty.const._AM_SLIDER_LAST}>">
+                    <{else}>
+                    
+                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=down&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
+                      <img src="<{$modPathIcon16}>/arrows/down-1.png" title="<{$smarty.const._AM_SLIDER_DOWN}>">
+                      </a>
+                 
+                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=last&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
+                      <img src="<{$modPathIcon16}>/arrows/last-1.png" title="<{$smarty.const._AM_SLIDER_LAST}>">
+                      </a>
+                    <{/if}>
                 </td>
                 
                 <{* <td class='center'><{$slide.actif}></td> *}>
@@ -69,8 +93,13 @@
                 <{/if}>
                 </td>
                 
-                <td class='center'><{$slide.date_begin}></td>
-                <td class='center'><{$slide.date_end}></td>
+                <{if $slide.has_periode}>
+                  <td class='center'><{$slide.date_begin}></td>
+                  <td class='center'><{$slide.date_end}></td>
+                <{else}>
+                  <td class='center'>-----</td>
+                  <td class='center'>-----</td>
+                <{/if}>
                 
                 <td class='center'>
                 <{if $slide.current_status}>
@@ -93,14 +122,7 @@
                     </div>
                 </td>
 
-
-                      
-
-
-
-
-
-                
+               
                 <td class="center  width5">
                     <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>">
                        <img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> slides" /></a>

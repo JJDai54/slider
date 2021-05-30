@@ -24,6 +24,7 @@ use XoopsModules\Slider;
 use XoopsModules\Slider\Helper;
 use XoopsModules\Slider\Constants;
 
+
 /**
  * réinitialise chaque theme avec le fichier slider.tpl d'origine
  * er active le block du module pour forcer la reconstruction dues sliders de chaque theme utlisé
@@ -42,11 +43,11 @@ function force_rebuild_slider() {
  * Renvoioe un tableau des slides actif pour le theme courant
  *
  */
-function getSlidesActifs($theme = '') {
+function getSlidesActifs($theme = '', $rnd = false) {
 global $xoopsConfig, $helper;
 
     $helper      = Helper::getInstance();
-        $myts = MyTextSanitizer::getInstance();
+    $myts = MyTextSanitizer::getInstance();
     $slidesHandler = $helper->getHandler('Slides');
     
     //recupe du theme actif
@@ -55,15 +56,19 @@ global $xoopsConfig, $helper;
     // selection des slides actifs
     $now = time();
     
-    
+    //-------------------------------------------------------------------------
+    //Selectionne les slides actifs pour le theme courant
     $crSlidesTheme = new \CriteriaCompo();    
     $crSlidesTheme->add(new \Criteria('sld_theme', $theme, '='));
     $crSlidesTheme->add(new \Criteria('sld_actif', 1, '='));
     
     //-------------------------------------------------------------------------
+    //Selectionne les slides qui n'utilisent pas une periode
     $crSlidesHasPeriode = new \CriteriaCompo();
     $crSlidesHasPeriode->add(new \Criteria('sld_has_periode', 0, '='));
     
+    //pour les slides qui utilisent une période 
+    //sélectionne ceux qui concordent avec la date en cours
     $crSlidesperiode = new \CriteriaCompo();    
     $crSlidesperiode->add(new \Criteria('sld_has_periode', 1, '='));
     $crSlidesperiode->add(new \Criteria('sld_date_end', $now, '>='));
@@ -74,14 +79,21 @@ global $xoopsConfig, $helper;
     $crSlidesAP->add($crSlidesHasPeriode);    
     $crSlidesAP->add($crSlidesperiode, "OR");    
     //-------------------------------------------------------------------------
-    
+    //criteria = (actif AND theme courant) AND (sans periode OR (utilise periode AND (date_debut < date courante AND date_fin > date courante))) 
     $crSlides0 = new \CriteriaCompo();    
     $crSlides0->add($crSlidesTheme);    
     $crSlides0->add($crSlidesAP, "AND");  
-      
-    $crSlides0->setSort('sld_weight,sld_short_name');
-    $crSlides0->setOrder('ASC');
-
+    
+    //-------------------------------------------------------------------------
+    //defini l'ordre d'affichage  
+    if ($rnd){
+      $crSlides0->setSort('RAND()');
+      //$crSlides0->setOrder('ASC');
+    }else{
+      $crSlides0->setSort('sld_weight,sld_short_name');
+      $crSlides0->setOrder('ASC');
+    }
+  
     $slidesAll = $slidesHandler->getAll($crSlides0);
     unset($crSlides);
     $slides = array();
@@ -89,7 +101,7 @@ global $xoopsConfig, $helper;
     
     if (\count($slidesAll) > 0) {
         foreach (\array_keys($slidesAll) as $i) {
-            $id = $slidesAll[$i]->getVar('sld_id'); // pas utile mais il y avait un doute sur la clé du recordset a verifier
+            $id = $slidesAll[$i]->getVar('sld_id'); // pas utile mais il y avait un doute sur la clé du recordset, a verifier
             $slides[$id] = $slidesAll[$i]->getValuesSlides();
 
         }
@@ -104,22 +116,24 @@ global $xoopsConfig, $helper;
 /**********************************************************************
  * 
  **********************************************************************/
-function build_new_tpl($slides, $theme, $forceRebuild = false){
-
+function build_new_tpl($slides, $theme, $periodicite, $forceRebuild = false){
+$rnd =  ($periodicite != 'j');
 //echo "<hr>slides<pre>" . print_r($slides, true) . "</pre><hr>"; exit("build_new_tpl");   
     $tpl_main = "slider_main-02.tpl";
 
     // generation du fichier de flag pour eviter de reconstruire à chaque connexion utilisateur   
     //construction d'un tableu des id trié par ordre croissant
     $slide_Ids = array_keys($slides);
-    sort($slide_Ids);
+    //sort($slide_Ids);
     $newFlag = implode("|", $slide_Ids);
-    
+    $newFlag  = sld_getFlagPeriodicity($periodicite, array_keys($slides));  
+    //echo "<hr>===>Flag = {$newFlag}<hr>";  
+   
     //chargement du fichier en court
     $fFlag = XOOPS_ROOT_PATH . "/uploads/slider/images/slides/" . $theme . ".txt";
     $oldflag = slider_loadTextFile($fFlag);
     
-    //si le nouveau fichier est diffrent de l'ancien on continu
+    //si le nouveau flag egal l'ancien flag pas de reconstruction du tpl des slides
     if ($newFlag == $oldflag && !$forceRebuild) return false;   
     
     //sauvegarde du nouveau fichier d'id
@@ -426,4 +440,67 @@ function getCurrentStatusOfSlide(&$slide) {
 
 }
 
+/**
+*
+*/
+function sld_getFlagPeriodicity($periodicite, $slidesIds)
+{
+global $xoopsConfig, $helper;
+    //recupe du theme actif
+    $theme = $xoopsConfig['theme_set'];
+    $ids = "";
+    
+        switch($periodicite){
+        case _SLD_PERIODICITY_MINUTE:
+            $instant = date("Y-m-d-i");
+            break;
+        case _SLD_PERIODICITY_HOUR:
+            $instant = date("Y-m-d-H");
+            break;
+        case _SLD_PERIODICITY_DAY:
+            $instant = date("Y-m-d");
+            break;
+        case _SLD_PERIODICITY_WEEK:
+            $instant = date("Y-W");
+            break;
+        case _SLD_PERIODICITY_MONTH:
+            $instant = date("Y-m");
+            break;
+        case _SLD_PERIODICITY_BIMONTLY:
+            $month = (intval((date("m") -1) / 2 ) * 2)+ 1;
+            $instant =  date("Y-m", mktime(0,0,0, $month, 1, date("Y")));
+            break;
+        case _SLD_PERIODICITY_QUATER:
+            $month = (intval((date("m") -1) / 3 ) * 3)+ 1;
+            $instant =  date("Y-m", mktime(0,0,0, $month, 1, date("Y")));
+            break;
+         case _SLD_PERIODICITY_SEMESTER:
+            $month = (intval((date("m") -1) / 6 ) * 6)+ 1;
+            $instant =  date("Y-m", mktime(0,0,0, $month, 1, date("Y")));
+            //echo "===>mois = " . date("m") ."<br>===>instant = {$instant}<br>" . intval(11/6) . "<br>";
+            break;
+        case _SLD_PERIODICITY_YEAR:
+            $instant = date("Y", mktime());
+            break;
+            break;
+        case _SLD_PERIODICITY_RANDOM:
+            $instant = 0;
+            break;
+        default:
+            $instant = 0;
+            $ids = implode("-", $slidesIds);
+            break;
+        }
+        //echo "<hr>===>code periode-> {$month} - {$instant}<hr>";
+
+//        if($instant == '')
+//             return '';
+//        else{
+//            //$tpl = "bid-%'.03d\n|%s|%s";
+//            $tpl = "%s|%s|%03d|%s";
+//            return sprintf($tpl, $theme, $periodicite, $instant, $ids);
+//        }
+           $tpl = "%s|%s|%s|%s";
+           return sprintf($tpl, $theme, $periodicite, $instant, $ids);
+    }
 

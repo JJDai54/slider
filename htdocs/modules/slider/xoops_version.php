@@ -38,7 +38,7 @@ $modversion = [
     'help'                => 'page=help',
     'release_info'        => 'release_info',
     'release_file'        => XOOPS_URL . '/modules/slider/docs/release_info file',
-    'release_date'        => '2021/05/15',
+    'release_date'        => '2021/05/30',
     'manual'              => 'link to manual file',
     'manual_file'         => XOOPS_URL . '/modules/slider/docs/install.txt',
     'min_php'             => '5.5',
@@ -100,7 +100,7 @@ $modversion['blocks'][] = [
     'show_func'   => 'b_slider_update_theme_show',
     'edit_func'   => 'b_slider_update_theme_edit', //
     'template'    => 'slider_block_update_theme.tpl',
-    'options'     => '0',
+    'options'     => '0|0',
 ];
 // ------------------- Config ------------------- //
 // Editor Admin

@@ -25,8 +25,8 @@ include_once \dirname(__DIR__) . '/include/common.php';
 $sysPathIcon16   = '../' . $GLOBALS['xoopsModule']->getInfo('sysicons16');
 $sysPathIcon32   = '../' . $GLOBALS['xoopsModule']->getInfo('sysicons32');
 $pathModuleAdmin = $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin');
-$modPathIcon16   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons16') . '/';
-$modPathIcon32   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons32') . '/';
+$modPathIcon16   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons16');
+$modPathIcon32   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons32');
 
 // Get instance of module
 $helper = \XoopsModules\Slider\Helper::getInstance();
