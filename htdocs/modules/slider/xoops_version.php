@@ -229,7 +229,7 @@ $modversion['config'][] = [
     'default'     => 'highslide-5.0.0',
 ];
 $modversion['config'][] = [
-    'name'        => 'foreRebuildSlides',
+    'name'        => 'forceRebuildSlides',
     'title'       => '_MI_SLIDER_REBUILD',
     'description' => '_MI_SLIDER_REBUILD_DESC',
     'formtype'    => 'yesno',

@@ -173,7 +173,7 @@ _slider
 8=language\english\admin.php
 [Selected Project Files]
 Main=
-Selected=docs\changelog.txt
+Selected=xoops_version.php
 [blocks\slides.php]
 TopLine=65
 Caret=1,1
@@ -181,17 +181,17 @@ Caret=1,1
 TopLine=13
 Caret=41,33
 [include\fnc-slider.php]
-TopLine=130
-Caret=11,148
+TopLine=118
+Caret=68,119
 [language\french\blocks.php]
 TopLine=36
 Caret=1,64
 [docs\changelog.txt]
 TopLine=1
-Caret=1,8
+Caret=26,30
 [xoops_version.php]
-TopLine=15
-Caret=30,29
+TopLine=209
+Caret=40,232
 [language\french\admin.php]
 TopLine=89
 Caret=1,121

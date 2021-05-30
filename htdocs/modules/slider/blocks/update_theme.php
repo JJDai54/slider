@@ -73,7 +73,7 @@ global $xoopsConfig, $helper;
     
     
     //--------------------------------------------------------------
-    $forceRebuild = $helper->getConfig('foreRebuildSlides');
+    $forceRebuild = $helper->getConfig('forceRebuildSlides');
     $bolOk = build_new_tpl($slides, $theme, $periodicite, $forceRebuild);
     $block['generation'] = ($bolOk) ? _MB_SLIDER_TPL_OK : _MB_SLIDER_TPL_NOT_OK;
    
