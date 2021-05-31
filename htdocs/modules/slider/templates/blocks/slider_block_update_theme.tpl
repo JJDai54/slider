@@ -45,9 +45,9 @@ jQuery(document).ready(function(){
                 <{* <td class='center'><{$slide.description}></td> *}>
                 <td class='center'><{$slide.weight}></td>
                 <td class='center'><{$slide.actif_yn}></td>
-                <td class='center'><{$slide.has_periode_yn}></td>
-                <td class='center'><{$slide.date_begin}></td>
-                <td class='center'><{$slide.date_end}></td>
+                <td class='center'><{$slide.periodicity_yn}></td>
+                <td class='center'><{$slide.str_date_begin}></td>
+                <td class='center'><{$slide.str_date_end}></td>
                 <td class='center'><{$slide.theme}></td>
                 <td class='center'><img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" width='150px'> /</td>
             </tr>

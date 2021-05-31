@@ -26,7 +26,8 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 2.02,
+    'version'             => 2.03,
+    'release_date'        => '2021/05/31',
     'description'         => _MI_SLIDER_DESC,
     'author'              => 'JJDai',
     'author_mail'         => 'jjdelalandre@orange.fr',
@@ -38,7 +39,6 @@ $modversion = [
     'help'                => 'page=help',
     'release_info'        => 'release_info',
     'release_file'        => XOOPS_URL . '/modules/slider/docs/release_info file',
-    'release_date'        => '2021/05/30',
     'manual'              => 'link to manual file',
     'manual_file'         => XOOPS_URL . '/modules/slider/docs/install.txt',
     'min_php'             => '5.5',
@@ -79,10 +79,10 @@ $modversion['templates'] = [
     ['file' => 'slider_admin_slides.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_footer.tpl', 'description' => '', 'type' => 'admin'],
     // User templates
-    ['file' => 'slider_header.tpl', 'description' => ''],
-    ['file' => 'slider_index.tpl', 'description' => ''],
-    ['file' => 'slider_breadcrumbs.tpl', 'description' => ''],
-    ['file' => 'slider_footer.tpl', 'description' => ''],
+//     ['file' => 'slider_header.tpl', 'description' => ''],
+//     ['file' => 'slider_index.tpl', 'description' => ''],
+//     ['file' => 'slider_breadcrumbs.tpl', 'description' => ''],
+//     ['file' => 'slider_footer.tpl', 'description' => ''],
 ];
 
 

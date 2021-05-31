@@ -118,4 +118,29 @@ include_once __DIR__ . '/common.php';
 \define('_AM_SLIDER_SLIDE_STYLE_BUTTON', "Style du bouton");
 \define('_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC', "Utiliser les style CSS sans le nom du style ni les acolades<br>exemple :<br>color:red;<br>background:yellow;");
 
+define ('_AM_SLIDER_PERIODICITY', "Périodicité");
+define ('_AM_SLIDER_PERIODICITY_DESC', "Défini la périodicité de renouvellement d'affichage après une période expirée<br>'Toujours' : aucune prériodicité.<br>pour les autres options définir une date de début et de fin.");
+
+\define('_AM_SLIDER_PERIODICITE_ALWAYS', 'Toujours');
+\define('_AM_SLIDER_PERIODICITE_FLOAT', 'Période flottante');
+\define('_AM_SLIDER_PERIODICITE_CYCLIQUE', 'Période cyclique');
+\define('_AM_SLIDER_PERIODICITE_WEEK', 'Toute les semaines');
+\define('_AM_SLIDER_PERIODICITE_MONTH', 'Tous les mois');
+//\define('_AM_SLIDER_PERIODICITE_BIMONTHLY', 'Une fois tous les deux mois');
+\define('_AM_SLIDER_PERIODICITE_QUATER', 'Tous les trimestres');
+//\define('_AM_SLIDER_PERIODICITE_SEMESTER', 'Une fois par semestre');
+\define('_AM_SLIDER_PERIODICITE_YEAR', 'Tous les ans');
+\define('_AM_SLIDER_UPDATE_PERIODICITY', 'Mettre à jour la périodicité');
+\define('_AM_SLIDER_PERIODICITY_UPDATED', "Les périodes de %s slides ont été mises à jour");
+\define('_AM_SLIDER_NO_PERIODICITY_TO_UPDATE', "Il n'y a pas de période à mettre à jour");
+\define('_AM_SLIDER_NON_ACTIF', "Non actif");
+\define('_AM_SLIDER_ACTIF', "Actif");
+\define('_AM_SLIDER_CURRENT_DATE', "Date courante");
+\define('_AM_SLIDER_SLIDE_SELECT_THEME', "Choix du ou des thèmes");
+//\define('_AM_SLIDER_SLIDE_SELECT_THEME_DESC', "Date courante");
+\define('_AM_SLIDER_THEME', "Thèmes");
+
+\define('_AM_SLIDER_ALL_THEMES_ARE_VISIBLE', "Visible dans tous les thèmes");
+\define('_AM_SLIDER_ALL_THEMES', "Tous les thèmes");
+
 // ---------------- End ----------------

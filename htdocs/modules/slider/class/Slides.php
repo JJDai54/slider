@@ -49,7 +49,7 @@ class Slides extends \XoopsObject
         $this->initVar('sld_date_begin', XOBJ_DTYPE_INT);
         $this->initVar('sld_date_end', XOBJ_DTYPE_INT);
         $this->initVar('sld_actif', XOBJ_DTYPE_INT);
-        $this->initVar('sld_has_periode', XOBJ_DTYPE_INT);
+        $this->initVar('sld_periodicity', XOBJ_DTYPE_INT);
         $this->initVar('sld_theme', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_image', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_style_title', XOBJ_DTYPE_OTHER);
@@ -165,17 +165,21 @@ $upload_size = $helper->getConfig('maxsize_image');
         // Form Image sldImage
         // Form Image sldImage: Select Uploaded Image 
         
-        
-        
-         // Form Select Lang sldTheme
-        //-JJDai
+        //----------------------------------------------------        
+        //        choix du themes
         global $xoopsConfig;
-        //$theme = ($this->getVar('sld_theme') != '') ? $this->getVar('sld_theme') : $xoopsConfig['theme_set'];
-        $theme = ($this->getVar('sld_theme') != '') ? $this->getVar('sld_theme') : $SelectedTheme;
-        
-        $sldThemeSelect = new \XoopsFormSelectTheme(_AM_SLIDER_SLIDE_SELECT_THEME, 'sld_theme', $theme);        
+        if ($this->isNew()) {
+            $theme = $SelectedTheme;
+        }else{
+            $theme = $this->getVar('sld_theme');
+        }
+
+        $sldThemeSelect = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'sld_theme', $theme);   
         $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
+        $sldThemeSelect->addOptionArray(sld_getThemesAllowed(true));   
         $form->addElement($sldThemeSelect);
+
+        //----------------------------------------------------        
 /*
         $sldThemeSelect = new \XoopsFormSelect(_AM_SLIDER_THEME, 'sld_theme', $this->getVar('sld_theme'));
         $sldThemeSelect->addOption('', _NONE);
@@ -192,20 +196,57 @@ $upload_size = $helper->getConfig('maxsize_image');
         $sldInputActif->setdescription(_AM_SLIDER_SLIDE_ACTIF_DESC);
         $form->addElement($sldInputActif);
         // Form Radio Yes/No sldHasPeriode
-        $sldHasPeriode = $this->isNew() ? 0 : $this->getVar('sld_has_periode');
-        $sldHasPeriode = new \XoopsFormRadioYN(_AM_SLIDER_SLIDE_HAS_PERIODE, 'sld_has_periode', $sldHasPeriode);
-        $sldHasPeriode->setDescription(_AM_SLIDER_SLIDE_HAS_PERIODE_DESC);
-        $form->addElement($sldHasPeriode);
+        
+//         $sldHasPeriode = $this->isNew() ? 0 : $this->getVar('sld_periodicity');
+//         $sldHasPeriode = new \XoopsFormRadioYN(_AM_SLIDER_SLIDE_HAS_PERIODE, 'sld_periodicity', $sldHasPeriode);
+//         $sldHasPeriode->setDescription(_AM_SLIDER_SLIDE_HAS_PERIODE_DESC);
+//         $form->addElement($sldHasPeriode);
+        
+        
+        $periodicite = $this->isNew() ? 0 : $this->getVar('sld_periodicity');
+        $selPeriodicite = new \XoopsFormSelect(_AM_SLIDER_PERIODICITY, 'sld_periodicity', $periodicite);
+            $selPeriodicite->setDescription (_AM_SLIDER_PERIODICITY_DESC);
+            $selPeriodicite->addOption(Constants::PERIODICITY_ALWAYS,  _AM_SLIDER_PERIODICITE_ALWAYS);
+            $selPeriodicite->addOption(Constants::PERIODICITY_FLOAT,   _AM_SLIDER_PERIODICITE_FLOAT);
+            $selPeriodicite->addOption(Constants::PERIODICITY_WEEK,    _AM_SLIDER_PERIODICITE_WEEK);
+            $selPeriodicite->addOption(Constants::PERIODICITY_MONTH,   _AM_SLIDER_PERIODICITE_MONTH);
+            $selPeriodicite->addOption(Constants::PERIODICITY_QUATER,  _AM_SLIDER_PERIODICITE_QUATER);
+            $selPeriodicite->addOption(Constants::PERIODICITY_YEAR,    _AM_SLIDER_PERIODICITE_YEAR);
+        //$form->addElement($selPeriodicite);
+
+        
+        
         // Form Text Date Select sldDate_begin
         $sldDate_begin = $this->isNew() ? time() : $this->getVar('sld_date_begin');
-        $form->addElement(new \XoopsFormDateTime(_AM_SLIDER_SLIDE_DATE_BEGIN, 'sld_date_begin', '', $sldDate_begin));
+        $inpDateBegin= new \XoopsFormDateTime(_AM_SLIDER_SLIDE_DATE_BEGIN, 'sld_date_begin', '', $sldDate_begin);
+        //$form->addElement($inpDateBegin);
         // Form Text Date Select sldDate_end
         $sldDate_end = $this->isNew() ? time() : $this->getVar('sld_date_end');
-        $form->addElement(new \XoopsFormDateTime(_AM_SLIDER_SLIDE_DATE_END, 'sld_date_end', '', $sldDate_end));
+        $sldDate_end = new \XoopsFormDateTime(_AM_SLIDER_SLIDE_DATE_END, 'sld_date_end', '', $sldDate_end);
+        //$form->addElement($inpDateBegin);
+/*
+$perDate = new \XoopsFormElementTray('', '&nbsp;');  
+$perDate->addElement($inpDateBegin);
+$perDate->addElement($sldDate_end);
+        $inpPeriod = new \XoopsFormElementTray(_AM_SLIDER_PERIODICITY, '<br>');   
+        $inpPeriod->setDescription(_AM_SLIDER_PERIODICITY_DESC);
+        $inpPeriod->addElement($selPeriodicite);
+        $inpPeriod->addElement($perDate);
+*/        
+
         
+        $inpPeriod = new \XoopsFormElementTray(_AM_SLIDER_PERIODICITY, '<br>');   
+        $inpPeriod->setDescription(_AM_SLIDER_PERIODICITY_DESC);
+        $inpPeriod->addElement($selPeriodicite);
+        $inpPeriod->addElement($inpDateBegin);
+        $inpPeriod->addElement($sldDate_end);
+        $form->addElement($inpPeriod);
+        
+            
+
 //------------ STYLES -------------------------------
-       $stylTA = "style='width:350px;'";        
-        
+
+       
         $inputStyleTitle = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_TITLE, 'sld_style_title',  $this->getVar('sld_style_title', 'e'), 3, 60);
         $inputStyleTitle->setExtra($stylTA);
         $inputStyleTitle->setDescription(_AM_SLIDER_SLIDE_STYLE_TITLE_DESC);
@@ -248,12 +289,15 @@ $upload_size = $helper->getConfig('maxsize_image');
         $ret['read_more']          = $this->getVar('sld_read_more');
         $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['weight']             = $this->getVar('sld_weight');
-        $ret['date_begin']         = \formatTimestamp($this->getVar('sld_date_begin'), 'm');
-        $ret['date_end']           = \formatTimestamp($this->getVar('sld_date_end'), 'm');
+        $ret['date_begin']         = $this->getVar('sld_date_begin');
+        $ret['date_end']           = $this->getVar('sld_date_end');
+        $ret['str_date_begin']         = \formatTimestamp($this->getVar('sld_date_begin'), 'm');
+        $ret['str_date_end']           = \formatTimestamp($this->getVar('sld_date_end'), 'm');
         $ret['actif']              = (int)$this->getVar('sld_actif');
+        
         $ret['actif_yn']           = (int)$this->getVar('sld_actif') > 0 ? _YES : _NO;
-        $ret['has_periode']        = (int)$this->getVar('sld_has_periode');
-        $ret['has_periode_yn']     = (int)$this->getVar('sld_has_periode') > 0 ? _YES : _NO;
+        $ret['periodicity']        = (int)$this->getVar('sld_periodicity');
+        $ret['periodicity_yn']     = (int)$this->getVar('sld_periodicity') > 0 ? _YES : _NO;
         $ret['theme']              = $this->getVar('sld_theme');
         $ret['image']              = $this->getVar('sld_image');
         $ret['image_fullName']     = XOOPS_URL . "/uploads/slider/images/slides/" . $this->getVar('sld_image');

@@ -46,10 +46,20 @@ switch ($op) {
         $templateMain = 'slider_admin_slides.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('slides.php'));
         $adminObject->addItemButton(_AM_SLIDER_ADD_SLIDE, "slides.php?op=new&select_theme={$select_theme}", 'add');
+        $adminObject->addItemButton(_AM_SLIDER_UPDATE_PERIODICITY, "slides.php?op=update_periodicity&select_theme={$select_theme}", 'update');
+        
+        
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         $slidesCount = $slidesHandler->getCountSlides();
         
-        $criteria = new \Criteria('sld_theme', $select_theme);
+        $criteria = new \CriteriaCompo();
+        $criteria->add(new \Criteria('sld_theme', $select_theme, '='));
+        //$criteria->add(new \Criteria('length(sld_theme)','0','=', 'OR'));
+        //$criteria->add(new \Criteria('sld_theme', '','=', 'OR'));
+        
+        $criteria->add(new Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
+   // public function __construct($column, $value = '', $operator = '=', $prefix = '', $function = '')
+            
         $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit,'sld_theme ASC, sld_weight ASC, sld_short_name');
         $GLOBALS['xoopsTpl']->assign('slides_count', $slidesCount);
         $GLOBALS['xoopsTpl']->assign('slider_url', SLIDER_URL);
@@ -75,11 +85,13 @@ Utility::include_highslide(array('allowMultipleInstances'=>false));
         /* --------- selection du theme ----------------*/
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
-        $sldThemeSelect = new \XoopsFormSelectTheme(_AM_SLIDER_SLIDE_SELECT_THEME, 'select_theme', $select_theme);        
+        $sldThemeSelect = new \XoopsFormSelectTheme(_AM_SLIDER_SLIDE_SELECT_THEME, 'select_theme', $select_theme,1, true);        
         $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
         $sldThemeSelect->setExtra("onChange=\"document.theme_form.submit()\"");
         $GLOBALS['xoopsTpl']->assign('sldThemeSelect', $sldThemeSelect->render());
+        $GLOBALS['xoopsTpl']->assign('current_DateTime', \formatTimestamp(time(), 'm'));
         break;
+        
     case 'new':
         $templateMain = 'slider_admin_slides.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('slides.php'));
@@ -117,7 +129,7 @@ Utility::include_highslide(array('allowMultipleInstances'=>false));
         $slideDate_end = $slideDate_endObj->getTimestamp() + (int)$slideDate_endArr['time'];
         $slidesObj->setVar('sld_date_end', $slideDate_end);
         $slidesObj->setVar('sld_actif', Request::getInt('sld_actif', 0));
-        $slidesObj->setVar('sld_has_periode', Request::getInt('sld_has_periode', 0));
+        $slidesObj->setVar('sld_periodicity', Request::getInt('sld_periodicity', 0));
         $slidesObj->setVar('sld_theme', Request::getString('sld_theme', ''));
         
         $slidesObj->setVar('sld_button_title', Request::getString('sld_button_title', ''));
@@ -238,10 +250,10 @@ Utility::include_highslide(array('allowMultipleInstances'=>false));
         deleteSliderthemeFlag($sld_theme);
         break;
         
-    case 'bascule_has_periode':
+    case 'bascule_periodicity':
         $sld_id = Request::getInt('sld_id', 0);
         $newValue = Request::getInt('value', 0);
-        $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_has_periode={$newValue} WHERE sld_id={$sld_id}";
+        $sql = "UPDATE " . $xoopsDB->prefix("slider_slides") . " SET sld_periodicity={$newValue} WHERE sld_id={$sld_id}";
         $xoopsDB->queryf($sql);
 
         //permet le rafraissement de la page d'accueil    
@@ -332,12 +344,17 @@ Source: https://prograide.com/pregunta/13002/mysql---recupre-le-numero-de-ligne-
               $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) ORDER BY sld_weight ASC;";
               $xoopsDB->queryf($sql);
             break;
+            
          }
-        
 
         //permet le rafraissement de la page d'accueil    
         deleteSliderthemeFlag($sld_theme);
         \redirect_header("slides.php?op=list&sld_theme={$select_theme}", 0, "");
+        break;
+        
+    case 'update_periodicity'; 
+        sld_updatePeriodicity($msg);
+        \redirect_header("slides.php?op=list&sld_theme={$select_theme}", 3, $msg);
         break;
 }
 require __DIR__ . '/footer.php';

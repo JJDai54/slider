@@ -1,7 +1,7 @@
 <!-- Header -->
 <{include file='db:slider_admin_header.tpl' }>
 <form id="theme_form"  name="theme_form" action="slides.php" method='get'>
-    <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}>
+    <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}> <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
 </form>
 
 <{if $slides_list}>
@@ -9,16 +9,16 @@
         <thead>
             <tr class='head'>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_ID}></th>
-                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_THEME}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_SHORT_NAME}></th>
                 <{* <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_TITLE}></th> *}>
                 <{* <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DESCRIPTION}></th> *}>
+                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_THEME}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_WEIGHT}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_ACTIF}></th>
-                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_HAS_PERIODE}></th>
+                <th class="center"><{$smarty.const._AM_SLIDER_PERIODICITY}></th>
+                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_CURRENT_STATUS}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DATE_BEGIN}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DATE_END}></th>
-                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_CURRENT_STATUS}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_IMAGE}></th>
                 <th class="center width5"><{$smarty.const._AM_SLIDER_FORM_ACTION}></th>
             </tr>
@@ -28,10 +28,10 @@
             <{foreach item=slide from=$slides_list name=slider}>
             <tr class='<{cycle values='odd, even'}>'>
                 <td class='center'><{$slide.id}></td>
-                <td class='left'><{$slide.theme}></td>
                 <td class='left'> <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>"><{$slide.short_name}></a></td>
                 <{* <td class='left'><{$slide.title}></td> *}>
                 <{* <td class='center'><{$slide.description}></td> *}>
+                <td class='center'><{if $slide.theme <> ''}><{$slide.theme}><{else}><{$smarty.const._AM_SLIDER_ALL_THEMES}><{/if}></td>
                 
                 <{* ---------------- Arrows -------------------- *}>
                 <td class='center'>
@@ -80,26 +80,29 @@
                 <{/if}>
                 </td>
                 
-                <{* <td class='center'><{$slide.has_periode}></td> *}>
+                <{* <td class='center'><{$slide.periodicity}></td> *}>
+<{*
                 <td class='center'>
-                <{if $slide.has_periode == 1}>
-                    <a href="slides.php?op=bascule_has_periode&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
+                <{if $slide.periodicity == 1}>
+                    <a href="slides.php?op=bascule_periodicity&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
                     <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>">
                     </a>
                 <{else}>
-                    <a href="slides.php?op=bascule_has_periode&sld_id=<{$slide.id}>&value=1&sld_theme=<{$slide.theme}>">
+                    <a href="slides.php?op=bascule_periodicity&sld_id=<{$slide.id}>&value=1&sld_theme=<{$slide.theme}>">
                     <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_ACTIVATE}>">
                     </a>
                 <{/if}>
                 </td>
-                
-                <{if $slide.has_periode}>
-                  <td class='center'><{$slide.date_begin}></td>
-                  <td class='center'><{$slide.date_end}></td>
-                <{else}>
-                  <td class='center'>-----</td>
-                  <td class='center'>-----</td>
-                <{/if}>
+*}>                
+                <td class='center'>
+                    <{if $slide.periodicity == 0 }>
+                        <img src="<{$modPathIcon16}>/periodicity-0.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_ALWAYS}>">
+                    <{elseif $slide.periodicity == 1 }>
+                        <img src="<{$modPathIcon16}>/periodicity-1.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_FLOAT}>">
+                    <{else}>
+                        <img src="<{$modPathIcon16}>/periodicity-2.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_CYCLIQUE}>">
+                    <{/if}>
+                </td>
                 
                 <td class='center'>
                 <{if $slide.current_status}>
@@ -109,6 +112,14 @@
                     <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_NON_ACTIF}>">
                 <{/if}>
                 </td>
+                
+                <{if $slide.periodicity > 0}>
+                  <td class='center'><{$slide.str_date_begin}></td>
+                  <td class='center'><{$slide.str_date_end}></td>
+                <{else}>
+                  <td class='center'>-----</td>
+                  <td class='center'>-----</td>
+                <{/if}>
                 
                 <td class='center'>
 <{*

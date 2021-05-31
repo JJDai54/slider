@@ -38,4 +38,16 @@ interface Constants
     public const STATUS_APPROVED  = 3;
     public const STATUS_BROKEN    = 4;
 
+
+
+   public const PERIODICITY_ALWAYS   = 0; // toujurs
+   public const PERIODICITY_FLOAT    = 1; // periode flottante
+   public const PERIODICITY_WEEK     = 2; // week
+   public const PERIODICITY_MONTH    = 3; // month
+   public const PERIODICITY_BIMONTLY = 5; // bimestre
+   public const PERIODICITY_QUATER   = 6; // trimestre
+   public const PERIODICITY_SEMESTER = 7; // semestre
+   public const PERIODICITY_YEAR     = 8; // year
+
+   public const ALL = '(*)'; 
 }

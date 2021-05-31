@@ -19,7 +19,7 @@ CREATE TABLE `slider_slides` (
   `sld_button` VARCHAR(80) NOT NULL DEFAULT '',  
   `sld_read_more`  VARCHAR(255) NOT NULL DEFAULT '',
   `sld_weight` INT(10) NOT NULL DEFAULT '0',
-  `sld_has_periode` INT(1) NOT NULL DEFAULT '0',
+  `sld_periodicity` INT(1) NOT NULL DEFAULT '0',
   `sld_date_begin` INT(10) NOT NULL DEFAULT '0',
   `sld_date_end` INT(10) NOT NULL DEFAULT '0',
   `sld_actif` INT(1) NOT NULL DEFAULT '0',

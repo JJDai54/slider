@@ -41,30 +41,64 @@ function xoops_module_update_slider($module, $prev_version = null)
     }
 
 //-------------------------------------------------------------------
+        $items = array();
+
+        require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
+        $file_path = XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/versions/';
+        $extensions = array("php");
+        $files = XoopsLists::getFileListByExtension($file_path, $extensions);
+        asort($files);
+/*
+*/
+        
+        foreach($files AS $k=>$v){
+            $shortname = str_replace('.php', '', $v);
+            $t = explode('_', $shortname);
+            $newVersion = ($t[1] * 100) + $t[2];
+            //$files[$k] = $newVersion; 
+            if ($prev_version < $newVersion) {
+              //echo "actuelle = {$prev_version}  - version maj : {$v} = {$newVersion}<br>";
+              $name = ucfirst($shortname);
+              $f    = $file_path . $v;
+              //ext_echo ("Fichier : {$f}<hr>");
+              if (is_readable($f)) {
+                  //echo "mise à jour version : {$key} = {$val}<br>";
+                  require_once $f;
+                  $cl = new $name($module, ['previousVersion' => $prev_version]);
+              }
+            }
+            
+        }
+//echo "<hr><pre>" . print_r($files, true) . "</pre><hr>";
+/*
+exit;
+//-------------------------------------------------------------------
     $fld = XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/versions/';
     $cls = 'Slider_%1$s';
 
     $version = [
         '1_80' => 180,
         '2_02' => 202,
+        '2_03' => 203,
     ];
 
     //    while (list($key, $val) = each($version)) {
     foreach ($version as $key => $val) {
-        if ($previousVersion < $val) {
-            echo "actuelle = {$previousVersion}  - version maj : {$key} = {$val}<br>";
+        if ($prev_version < $val) {
+            echo "actuelle = {$prev_version}  - version maj : {$key} = {$val}<br>";
             $name = ucfirst(sprintf($cls, $key));
             $f    = $fld . $name . '.php';
             //ext_echo ("Fichier : {$f}<hr>");
             if (is_readable($f)) {
                 //echo "mise à jour version : {$key} = {$val}<br>";
                 require_once $f;
-                $cl = new $name($module, ['previousVersion' => $previousVersion]);
+                $cl = new $name($module, ['previousVersion' => $prev_version]);
             }
         }
     }
 
 
+*/
 
 
 

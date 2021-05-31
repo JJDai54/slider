@@ -58,19 +58,26 @@ global $xoopsConfig, $helper;
     
     //-------------------------------------------------------------------------
     //Selectionne les slides actifs pour le theme courant
+    $crSlidesActif = new \CriteriaCompo();    
+    $crSlidesActif->add(new \Criteria('sld_actif', 1, '='));
+ 
+ 
     $crSlidesTheme = new \CriteriaCompo();    
     $crSlidesTheme->add(new \Criteria('sld_theme', $theme, '='));
-    $crSlidesTheme->add(new \Criteria('sld_actif', 1, '='));
+    $crSlidesTheme->add(new Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
+ 
+ 
+ 
     
     //-------------------------------------------------------------------------
     //Selectionne les slides qui n'utilisent pas une periode
     $crSlidesHasPeriode = new \CriteriaCompo();
-    $crSlidesHasPeriode->add(new \Criteria('sld_has_periode', 0, '='));
+    $crSlidesHasPeriode->add(new \Criteria('sld_periodicity', 0, '='));
     
     //pour les slides qui utilisent une période 
     //sélectionne ceux qui concordent avec la date en cours
     $crSlidesperiode = new \CriteriaCompo();    
-    $crSlidesperiode->add(new \Criteria('sld_has_periode', 1, '='));
+    $crSlidesperiode->add(new \Criteria('sld_periodicity', 0, '>'));
     $crSlidesperiode->add(new \Criteria('sld_date_end', $now, '>='));
     $crSlidesperiode->add(new \Criteria('sld_date_begin', $now, '<='));
     //$crSlidesperiode->add(new \Criteria('sld_date_begin', $now + 86400, '<='));
@@ -81,7 +88,8 @@ global $xoopsConfig, $helper;
     //-------------------------------------------------------------------------
     //criteria = (actif AND theme courant) AND (sans periode OR (utilise periode AND (date_debut < date courante AND date_fin > date courante))) 
     $crSlides0 = new \CriteriaCompo();    
-    $crSlides0->add($crSlidesTheme);    
+    $crSlides0->add($crSlidesActif);    
+    $crSlides0->add($crSlidesTheme, 'AND');    
     $crSlides0->add($crSlidesAP, "AND");  
     
     //-------------------------------------------------------------------------
@@ -431,11 +439,12 @@ global $xoopsDB;
 function getCurrentStatusOfSlide(&$slide) {
 
    if (!$slide['actif']) return false;
-   if (!$slide['has_periode']) return true;
+
+   if ($slide['periodicity'] == CONSTANTS::PERIODICITY_ALWAYS) return true;
    
    $now = time();
    if (($slide['date_begin'] < $now) && ($slide['date_end'] > $now)) return true;
-   
+//echo "<hr>{$slide['id']}<br>{$slide['date_begin']}<br>{$slide['date_end']}<br>{$now}<hr>";   //  
    return false;
 
 }
@@ -504,3 +513,85 @@ global $xoopsConfig, $helper;
            return sprintf($tpl, $theme, $periodicite, $instant, $ids);
     }
 
+
+/* ******************************************
+
+*********************************************/
+function sld_updatePeriodicity(&$msg){
+global $xoopsDB, $slidesHandler;
+    
+    $now = time();
+    $criteria = new CriteriaCompo();
+    $criteria->add( new Criteria('sld_periodicity', Constants::PERIODICITY_FLOAT, '>'));
+    $criteria->add( new Criteria('sld_date_end', $now, '<'));
+    $slidesAll = $slidesHandler->getAll($criteria);
+    $countSlides = count($slidesAll);
+    if ($countSlides > 0) {
+        //foreach (\array_keys($slidesAll) as $i=>$slide) {
+        foreach ($slidesAll as $i=>$slide) {
+            //$slide = $slidesAll[$i]->getValuesSlides();
+            $dateBegin = $slide->getVar('sld_date_begin');
+            $dateEnd   = $slide->getVar('sld_date_end');
+            
+            $db = new DateTime();
+            $db->setTimestamp($dateBegin);
+            $de = new DateTime();
+            $de->setTimestamp($dateEnd);
+            
+            switch ($slide->getVar('sld_periodicity')){
+            case  Constants::PERIODICITY_WEEK :
+                $interval = new DateInterval('P7D');
+                Break;
+            case  Constants::PERIODICITY_MONTH :
+                $interval = new DateInterval('P1M');
+                Break;
+            case  Constants::PERIODICITY_QUATER :
+                $interval = new DateInterval('P3M');
+                Break;
+            case  Constants::PERIODICITY_YEAR :
+                 $interval = new DateInterval('P1Y');
+               Break;
+            }
+            
+            while ($de->getTimestamp() < $now){
+              $db->add($interval);
+              $de->add($interval);
+            }
+            
+            
+            $slide->setVar('sld_date_begin', $db->getTimestamp());            
+            $slide->setVar('sld_date_end', $de->getTimestamp());
+            $slidesHandler->insert($slide);
+
+/*
+            $sql = "UPDATE " . $xoopsDB->prefix("slider_slides")
+                 . " SET sld_date_begin={$db->getTimestamp()}, sld_date_end={$de->getTimestamp()}}"
+                 . " WHERE sld_id = " . $slide->getVar('sld_periodicity');
+            echo "<br>===> sql : {$sql}<hr>";
+*/            
+        }
+        $msg = sprintf(_AM_SLIDER_PERIODICITY_UPDATED, $countSlides);
+    }else $msg = _AM_SLIDER_NO_PERIODICITY_TO_UPDATE;
+    
+//exit ("sld_updatePeriodicity => {$msg}");   
+}
+
+/* ***********************
+
+************************** */
+function sld_getThemesAllowed($addAll = false){
+    
+    $themes = array();
+    if ($addAll){
+        //$themes['(*)'] = _AM_SLIDER_ALL_THEMES ; //'(*)';
+        $themes[''] = _AM_SLIDER_ALL_THEMES_ARE_VISIBLE; //Constants::ALL;
+    }
+
+    $theme_arr = $GLOBALS['xoopsConfig']['theme_set_allowed'];
+    foreach (array_keys($theme_arr) as $i) {
+        $themes[$theme_arr[$i]] = $theme_arr[$i]; 
+    }
+    
+    return $themes;
+
+}

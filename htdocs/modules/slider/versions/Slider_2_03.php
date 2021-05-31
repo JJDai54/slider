@@ -18,7 +18,7 @@
  **/
 
 //----------------------------------------------------
-class Slider_2_02
+class Slider_2_03
 {
     //----------------------------------------------------
 
@@ -34,27 +34,21 @@ class Slider_2_02
     }
 
     //----------------------------------------------------
+/**************************************************
+ *
+ **************************************************/
     public function alterTable_slides()
     {
-  global $xoopsDB;
-  
-  $tbl = $xoopsDB->Prefix("slider_slides");
+        global $xoopsDB;
+        $tbl = $xoopsDB->prefix('slider_slides');
 
 $sql = <<<__sql__
-ALTER TABLE `{$tbl}` 
-ADD `sld_button_title` VARCHAR(80) NOT NULL ,
-ADD `sld_style_title` TEXT NOT NULL ,
-ADD `sld_style_description` TEXT NOT NULL ,
-ADD `sld_style_button` TEXT NOT NULL ;
+ALTER TABLE {$tbl} CHANGE `sld_has_periode` `sld_periodicity` INT(1) NOT NULL DEFAULT '0';
 __sql__;
-
-
 
     //----------------------------------------------
     $ok = $xoopsDB->queryF($sql);
 
-  //$ok = true;
-//jexit; 
  return $ok;
 
 

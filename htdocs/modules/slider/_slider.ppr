@@ -5,21 +5,18 @@ Compilator.CompileOnBackground=0
 Compilator.ProgSaveAll=0
 Compilator.ProgRunSelection=0
 Compilator.LogType=0
-DefaultDir=J:\Xoops\_Xoops\modules-JJD\slider\slider
+DefaultDir=J:\Xoops\_Xoops\modules-JJD\slider\_module\slider
 DefaultCP=0
 LogtoEnd=1
 DontOpen=0
 AbsolutePath=0
 FileFormat=0
 ProjectFilesOnly=0
-HTServer=localhost
 Extensions=*.*
 [Project tree]
 _slider
 	+slider
-		+versions
-			versions\Slider_2_02.php
-		+admin
+		-admin
 			admin\about.php
 			admin\feedback.php
 			admin\footer.php
@@ -29,7 +26,7 @@ _slider
 			admin\menu.php
 			admin\slides.php
 			admin\traitements.php
-		+assets
+		-assets
 			-css
 				-admin
 					assets\css\admin\index.html
@@ -38,6 +35,17 @@ _slider
 				assets\css\style.css
 			-icons
 				-16
+					-arrows
+						assets\icons\16\arrows\down-0.png
+						assets\icons\16\arrows\down-1.png
+						assets\icons\16\arrows\first-0.png
+						assets\icons\16\arrows\first-1.png
+						assets\icons\16\arrows\last-0.png
+						assets\icons\16\arrows\last-1.png
+						assets\icons\16\arrows\up-0.png
+						assets\icons\16\arrows\up-1.png
+					assets\icons\16\blank-08.png
+					assets\icons\16\blank-16.png
 					assets\icons\16\index.html
 					assets\icons\16\status0.png
 					assets\icons\16\status1.png
@@ -54,16 +62,15 @@ _slider
 				assets\images\blank.png
 				assets\images\index.html
 				assets\images\logoModule.png
-			+js
+			-js
 				assets\js\functions.js
 				assets\js\highslide.js
 				assets\js\index.html
 			assets\index.html
-		+blocks
+		-blocks
 			blocks\index.html
-			blocks\slides.php
 			blocks\update_theme.php
-		+class
+		-class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -76,6 +83,7 @@ _slider
 				class\Common\ServerStats.php
 				class\Common\VersionChecks.php
 				class\Common\XoopsConfirm.php
+			class\About.php
 			class\Constants.php
 			class\Helper.php
 			class\index.html
@@ -93,10 +101,9 @@ _slider
 			docs\credits.txt
 			docs\index.html
 			docs\install.txt
-			docs\lang.diff
 			docs\license.txt
 			docs\readme.txt
-		+include
+		-include
 			include\common.php
 			include\fnc-slider.php
 			include\functions.php
@@ -106,8 +113,8 @@ _slider
 			include\update.php
 			include\xoops_version.inc.php
 		+language
-			+english
-				+help
+			-english
+				-help
 					language\english\help\help.html
 					language\english\help\index.html
 				language\english\admin.php
@@ -117,7 +124,7 @@ _slider
 				language\english\index.html
 				language\english\modinfo.php
 			+french
-				+help
+				-help
 					language\french\help\help.html
 					language\french\help\index.html
 				language\french\admin.php
@@ -145,9 +152,8 @@ _slider
 				templates\admin\slider_main-01.tpl
 				templates\admin\slider_main-02.tpl
 				templates\admin\slider_slider.tpl
-			+blocks
+			-blocks
 				templates\blocks\index.html
-				templates\blocks\slider_block_slides.tpl
 				templates\blocks\slider_block_update_theme.tpl
 			templates\index.html
 		-testdata
@@ -160,64 +166,55 @@ _slider
 				testdata\images\index.html
 			testdata\index.html
 			testdata\index.php
+			testdata\slider.tpl
+			testdata\slider-old.tpl
+		+versions
+			versions\index.html
+			versions\Slider_2_02.php
+			versions\Slider_2_03.php
+		_slider.ppr
 		xoops_version.php
 [Open project files]
-0=blocks\slides.php
-1=blocks\update_theme.php
+0=templates\admin\slider_admin_slides.tpl
+1=class\Slides.php
 2=include\fnc-slider.php
-3=docs\changelog.txt
-4=xoops_version.php
-5=language\french\admin.php
-6=language\french\blocks.php
-7=language\english\blocks.php
-8=language\english\admin.php
-9=sql\mysql.sql
-10=class\Slides.php
-11=templates\admin\slider_slider.tpl
-12=templates\admin\slider_main-02.tpl
-13=..\..\copie to github.bat
+3=class\Constants.php
+4=class\SlidesHandler.php
+5=admin\slides.php
+6=language\french\admin.php
+7=xoops_version.php
+8=docs\changelog.txt
+9=versions\Slider_2_03.php
 [Selected Project Files]
 Main=
-Selected=..\..\copie to github.bat
-[blocks\slides.php]
-TopLine=65
-Caret=1,1
-[blocks\update_theme.php]
-TopLine=102
-Caret=71,128
+Selected=docs\changelog.txt
+[templates\admin\slider_admin_slides.tpl]
+TopLine=16
+Caret=135,34
+[class\Slides.php]
+TopLine=79
+Caret=26,92
 [include\fnc-slider.php]
-TopLine=187
-Caret=39,202
+TopLine=569
+Caret=56,587
+[class\Constants.php]
+TopLine=23
+Caret=18,52
+[class\SlidesHandler.php]
+TopLine=82
+Caret=1,100
+[admin\slides.php]
+TopLine=38
+Caret=1,60
+[language\french\admin.php]
+TopLine=113
+Caret=31,144
+[xoops_version.php]
+TopLine=1
+Caret=34,29
 [docs\changelog.txt]
 TopLine=1
-Caret=26,30
-[xoops_version.php]
-TopLine=46
-Caret=31,65
-[language\french\admin.php]
-TopLine=89
-Caret=1,121
-[language\french\blocks.php]
-TopLine=39
-Caret=41,66
-[language\english\blocks.php]
-TopLine=45
-Caret=41,66
-[language\english\admin.php]
-TopLine=98
-Caret=156,113
-[sql\mysql.sql]
-TopLine=11
-Caret=18,29
-[class\Slides.php]
-TopLine=196
-Caret=1,214
-[templates\admin\slider_slider.tpl]
-TopLine=1
-Caret=104,16
-[templates\admin\slider_main-02.tpl]
-TopLine=1
-Caret=1,1
-[..\..\copie to github.bat]
-TopLine=1
-Caret=1,4
+Caret=7,15
+[versions\Slider_2_03.php]
+TopLine=17
+Caret=1,46
