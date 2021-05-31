@@ -175,9 +175,10 @@ _slider
 10=class\Slides.php
 11=templates\admin\slider_slider.tpl
 12=templates\admin\slider_main-02.tpl
+13=..\..\copie to github.bat
 [Selected Project Files]
 Main=
-Selected=xoops_version.php
+Selected=..\..\copie to github.bat
 [blocks\slides.php]
 TopLine=65
 Caret=1,1
@@ -217,3 +218,6 @@ Caret=104,16
 [templates\admin\slider_main-02.tpl]
 TopLine=1
 Caret=1,1
+[..\..\copie to github.bat]
+TopLine=1
+Caret=1,4
