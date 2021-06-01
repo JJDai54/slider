@@ -1,34 +1,251 @@
-<p><strong>Help: <span style="text-decoration: underline;"><a href="http://xmodules.jubile.fr/modules/slider/admin/%3C%7B$xoops_url%7D%3E/modules/slider/admin/index.php" title="Back to the administration of slider - Slides management">slider - Slides management </a></span></strong></p>
-<p><strong>Description</strong></p>
-<p>Ce module permet de g&eacute;rer les slides de la page d'accueil des th&egrave;mes utilis&eacute;s<br /> Il ne fonctionne qu'avec les th&egrave;mes de type "xbootstrap".<br /> Le fichier "<strong>tpl/slider.tpl</strong>" doit exister.<br /> Il sera peut &ecirc;tre n&eacute;c&eacute;ssaire de la mettre en &eacute;criture pour permettre sa modification.</p>
-<p><strong>Fonctionalit&eacute;s</strong> :</p>
-<ul type="disc"><li>Ajout, Supprimer de slides &agrave; la page d'accueil</li><li>Activation, d&eacute;sactivation des slide, sans supression</li><li>D&eacute;fini le type d'affichage: avec ou sans p&eacute;riode d'affichage</li><li>D&eacute;finition de l'ordre d'affichage des slides</li><li>D&eacute;finition d'une p&eacute;riode d'affichage pour anticiper un &eacute;v&eacute;nnement</li></ul><p>&nbsp;</p>
-<p><strong>Install/uninstall</strong></p>
-<p>Aucune mesure particuli&egrave;re n'est n&eacute;cessaire, suivez le processus d'installation standard et extrayez le dossier du curseur dans le r&eacute;pertoire ../modules. Installez le module via Admin =&gt; Module syst&egrave;me =&gt; Modules. <br /> Des instructions d&eacute;taill&eacute;es sur l'installation des modules sont disponibles dans le <span style="text-decoration: underline;"><a href="http://goo.gl/adT2i">XOOPS Operations Manual</a></span></p>
-<p>&nbsp;</p>
-<p><strong>Carat&eacute;ristiques</strong></p>
-<p>Le module &laquo;&nbsp;slider&nbsp;&raquo; continue d&rsquo;&eacute;voluer. Pour cette raison, j'invite tous les d&eacute;veloppeurs &agrave; signaler et envoyer sur le SVN tout changement ou ajout &agrave; ce module, afin que nous puissions contribuer conjointement au d&eacute;veloppement</p>
-<p><strong>Tutorial</strong></p>
-<p>Une fois install&eacute;, actions &agrave; effectuer :</p>
-<ul type="disc"><li>Installation standard&nbsp; de module</li><li>Ajouter des slides au th&egrave;mes utilis&eacute;s (voir "Ajout d'un nouveau slide)""</li><li>Activer le block du module, peu importe sa place il restera invisible<br /> <strong>Important</strong> : l'option "Afficher le block" du block Permet de lister les slides s&eacute;lectionn&eacute;s<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &agrave; utiliser en mode d&eacute;bogage uniquement<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; laisser la sur "Non" en production</li></ul><p><strong>Ajout d'un nouveau slide</strong></p>
-<p><strong>Nom court</strong> (sld_short_name): Expression pour affichage dans l&rsquo;admin. Utilis&eacute; pour les tris, mais inutilis&eacute; pour l&rsquo;affichage sur les slides.</p>
-<p><strong>Titre (sld_title)</strong> : message affich&eacute; sur le slide. Avec TinyMCE il est possible de rendre le titre plus visible sur certains slide.</p>
-<p><strong>Description (sld_description)</strong> : Message affich&eacute; sous le titre sur le slide. Avec TinyMCE il est possible de rendre la description plus visible sur certains slide.</p>
-<p><strong>En savoir plus (sld_read_more)</strong>&nbsp;: URL accessible sur le bouton affich&eacute; sur le slide. Optionnelle, il permet d&rsquo;acc&eacute;der &agrave; un article ou une page d&rsquo;informations.</p>
-<p><strong>Image (sld_image)</strong> : Image du slide. Attention v&eacute;rifiez la taille des fichiers (1920 px x 500 px pour xbootstrap).</p>
-<p><strong>Actif (sld_actif)</strong> : <strong>non</strong> = Le slide ne sera jamais afficher. Permet d&rsquo;activer un slide pour une utilisation ult&eacute;rieure sans le supprimer, par exemple pour les f&ecirc;tes r&eacute;currentes.</p>
-<p><strong>A une p&eacute;riode (sld_periodicity) </strong>: <strong>non</strong> = le slide est toujours affich&eacute; quel que soit la p&eacute;riode d&rsquo;affichage /&nbsp; <strong>oui</strong> = il faut d&eacute;finir la p&eacute;riode d'affichage.</p>
-<p><strong>Date de d&eacute;but (sld_date_begin)</strong> : date et heure de d&eacute;but d'affichage du slide.</p>
-<p><strong>Date de fin (sld_date_end)</strong> : date de fin d'affichage du slide.</p>
-<p><strong>Poids (sld_weight)</strong> : d&eacute;fini l'ordre d'affichage des slides. Si plusieurs slides ont le m&ecirc;me poids l'ordre alphab&eacute;tique des titres est appliqu&eacute;.</p>
-<p><strong>Th&egrave;me&nbsp;(sld_theme)</strong> : Nom du th&egrave;me sur lequel les slide seront affich&eacute;s. Le fichier "tpl/slides.tpl" sera modifi&eacute;.</p>
-<p><strong>Traitements</strong></p>
-<p>Sur la page d'index plusieurs traitements sont&nbsp; possibles.</p>
-<ul type="disc"><li>R&eacute;initialise les fichiers 'tpl/slider.tpl' d'origine de chaque th&egrave;me.<br /> D&eacute;sactive le block du module slider pour permettre l'affichage des slides d'origine<br /> Supprime les caches pour actualiser l'affichage imm&eacute;diatement</li></ul><p>&nbsp;</p>
-<ul type="disc"><li>Activer le block qui permet la mise &agrave; jour des slides<br /> Equivaut &agrave; afficher le block dans le gestionnaire de blocks</li></ul><p>&nbsp;</p>
-<p><strong>Block =&gt; slider_update_tpl</strong></p>
-<p>Quand le block est activ&eacute;, le block modifie le fichier "tpl/slider.tpl" avec les slides qui ont &eacute;t&eacute; ajout&eacute;s.</p>
-<p>La mise &agrave; jour n'est effectu&eacute; que dans le cas un des slides a &eacute;t&eacute; modifi&eacute; ajout&eacute; ou supprim&eacute;.<br /> Le fichier d'origine est sauvegard&eacute; avec le le suffixe "-old" =&gt; "tlp/slider-old.tpl"<br /> Il sera r&eacute;install&eacute; lors de la d&eacute;sinstallation du module.</p>
-<p>&nbsp;</p>
+<div id="help-template" class="outer">
 
-<p>&nbsp;</p>
+<h1 class="head">Help:
+    <a class="ui-corner-all tooltip" href="<{$xoops_url}>/modules/slider/admin/index.php"
+           title="Back to the administration of slider - Slides management">
+           slider - Slides management 
+           <img src="<{xoAdminIcons home.png}>" alt="Back to the Administration of slider - Slides management"/>
+    </a>
+</h1>
+        <!- ------------------ Content ------------------------- -->
+<br>
+<h4 class="odd">Description</h4>
+<br>
+Ce module permet de gérer les slides de la page d'accueil pour les thèmes utilisés<br>
+Il ne fonctionne qu'avec les thèmes de type "xbootstrap".<br>
+Le fichier "tpl/slider.tpl" doit exister.<br>
+Il <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">sera peut-être
+nécessaire </span> de la mettre en écriture pour permettre sa modification.<br>
+<br>
+<h4 class="odd"><b><span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">Fonctionnalités </span></b>:</h4>
+<ul>
+  <li>Ajout, Suppression de slides à la page d'accueil</li>
+  <li>Activation, désactivation des slides, sans <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">suppression</span></li>
+  <li>Défini le type d'affichage: avec ou sans période d'affichage</li>
+  <li>Définition de l'ordre d'affichage des slides</li>
+  <li>Définition d'une période d'affichage pour anticiper un <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">évènement</span></li>
+  <li>pour les <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">périodes </span> fixes possibilité de reporter cette dernière dès que la date de fin est dépassée. </li>
+  <li>Par exemple le 1er mai 2021 sera <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">reporté </span> au 1er mai 2022. Ce report peut être sur la semaine, le mois, l'année, ...<br>
+  </li>
+  <li>Chaque slide peut être affecté à un thème en particulier ou bien à tous les thèmes actifs<br>
+ </li>
+</ul>
+ 
+<h4 class="odd">Installation / Désinstallation</h4>
+Aucune mesure particulière n'est nécessaire, suivez le processus
+d'installation standard et extrayez le dossier du curseur dans le <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">répertoire</span> ../modules. Installez le module via Admin =&gt; Module système =&gt; Modules.<br>
+Des instructions détaillées sur l'installation des modules sont disponibles dans le "XOOPS Operations Manual".<br>
+<br>
+<h4 class="odd">
+
+</h4>
+<p class="MsoNormal" style="line-height: normal;"><b><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,serif;">Caractéristiques<o:p></o:p></span></b></p>
+
+
+Le module « slider » continue d&#8217;évoluer. Pour cette raison, j'invite
+tous les développeurs à signaler et envoyer sur le SVN tout changement
+ou ajout à ce module, afin que nous puissions contribuer conjointement
+au développement<br>
+<br>
+<h4 class="odd">Tutorial</h4>
+&nbsp;&nbsp;&nbsp; Installation standard&nbsp; de module<br>
+&nbsp;&nbsp;&nbsp; Ajouter des slides aux thèmes utilisés (voir "Ajout d'un nouveau slide)""<br>
+&nbsp;&nbsp;&nbsp; Activer le block du module, peu importe sa place il restera invisible<br>
+&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Important</span> : l'option "Afficher le block" du block Permet de lister les slides sélectionnés<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+à utiliser en mode débogage uniquement<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+laisser la sur "Non" en production<br>
+<br>
+<h4 class="odd">Ajout d'un nouveau slide</h4>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; background-color: rgb(204, 255, 255); text-align: center;">Titre<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(204, 255, 255); text-align: center;">Champ<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(204, 255, 255); text-align: center;">Description<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Nom court</td>
+      <td style="vertical-align: top;">sld_short_name</td>
+      <td style="vertical-align: top;">Expression pour affichage dans l&#8217;admin. Utilisé pour les tris, mais inutilisé pour l&#8217;affichage sur les slides.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Image</td>
+      <td style="vertical-align: top;">sld_image</td>
+      <td style="vertical-align: top;">Image du slide. Attention
+vérifiez la taille des fichiers (1920 x 500 px pour xbootstrap). Tous
+les slides doivent avoir la même taille.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Titre</td>
+      <td style="vertical-align: top;">sld_title</td>
+      <td style="vertical-align: top;">Message principal affiché sur le slide. Avec TinyMCE il est possible de rendre le titre plus visible sur certains slide.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Description</td>
+      <td style="vertical-align: top;">sld_description</td>
+      <td style="vertical-align: top;">Message affiché sous le titre sur le slide. Avec TinyMCE il est
+possible de rendre la description plus visible sur certains slide.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Titre du bouton<br>
+      </td>
+      <td style="vertical-align: top;">sld_button</td>
+      <td style="vertical-align: top;">Ce bouton n'est affiché que si une url est définie dans le champ "en savoir plus". Valeur par défaut "Lire la suite ..."<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">En savoir plus</td>
+      <td style="vertical-align: top;">sld_read_more</td>
+      <td style="vertical-align: top;">URL du bouton affiché sur le
+slide. Si cette zone n'est pas renseignée le bouton ne sera pas
+affiché. Optionnelle, il permet d&#8217;accéder à un article ou une page
+d&#8217;informations.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Thème</td>
+      <td style="vertical-align: top;">sld_theme</td>
+      <td style="vertical-align: top;">Nom du thème sur lequel les
+slide seront affichés. Le fichier "tpl/slides.tpl" sera modifié. Il est
+possible de choisir tous les thèmes.<br>
+Seuls les thèmes actifs définis dans les préférences du site seront affichés.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Poids</td>
+      <td style="vertical-align: top;">sld_weight</td>
+      <td style="vertical-align: top;">Défini l'ordre d'affichage des slides.<br>
+Dans le bloc il est possible de définir un ordre <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">aléatoire</span>, voir les options du bloc "update_theme".<br>
+Si plusieurs slides ont le même poids l'ordre alphabétique des noms courts est appliqué.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Actif</td>
+      <td style="vertical-align: top;">sld_actif</td>
+      <td style="vertical-align: top;">Oui : Le slide sera toujours visible si aucune <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">période </span> n'est définie, ou si la période est <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">d'actualité.</span><br>
+
+non = Le slide ne sera jamais afficher. Permet d&#8217;activer un slide pour
+une utilisation ultérieure sans le supprimer, par exemple pour les <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">évènements&nbsp;</span><span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">récurrents</span>.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Périodicité<br>
+      </td>
+      <td style="vertical-align: top;">sld_periodicity</td>
+      <td style="vertical-align: top;">Permet de <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">définir </span> une période d'affichage:<br>
+Toujours : Le slide sera toujours affiché si le champ est actif<br>
+Période flottante : Affiche le slide selon la période de début et de fin.<br>
+Semaine, Mois Trimestre, An : Affiche le slide pendant la période
+définie. Ces options permettent de réactualiser automatiquement les
+périodes une fois celle-ci passée.<br>
+Exemple "1er mai 2021"&nbsp; de début = 1er mai 2021 à 00h00 et date de fin 1er mai 2021 à 23h 50. <br>
+Le 2 mai 2021 à 00h00 la période sera reportée au 1er mai de l'année suivante.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Date et heure de début<br>
+      </td>
+      <td style="vertical-align: top;">sld_date_begin</td>
+      <td style="vertical-align: top;">A définir si une périodicité à été sélectionnée<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Date et heure de fin<br>
+      </td>
+      <td style="vertical-align: top;">sld_date_end</td>
+      <td style="vertical-align: top;">A définir si une périodicité à été sélectionnée; Doit-être supérieure à la date de début.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Style du titre<br>
+      </td>
+      <td style="vertical-align: top;">sld_style_title</td>
+      <td style="vertical-align: top;">Bien que l'on puisse mettre en forme le titre avec un éditeur comme TinyMCE, il est possible à la place <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">d'utiliser
+      </span> du CSS.<br>
+Cela permet de rendre plus lisible la lecture du titre et la description qui peuvent être <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">difficiles
+      </span> sur certains slides.<br>
+Mettre dans le champ uniquement les commande CSS sans le nom de la classe ni les <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">accolades</span>.<br>
+exemple:<br>
+      <br>
+      <span style="color: red;">color : red;</span><br style="color: red;">
+      <span style="color: red;">background : yellow;</span><br style="color: red;">
+      <span style="color: red;">padding : 25px;</span><br style="color: red;">
+      <span style="color: red;">border-radius : 30px;</span><br style="color: red;">
+      <span style="color: red;">margin-left : 150px:</span><br style="color: red;">
+      <span style="color: red;">margin-right : 150px;</span><br style="color: red;">
+      <span style="color: red;">width : 350px;</span><br style="color: red;">
+      <span style="color: red;">position : absolute;</span><br style="color: red;">
+      <span style="color: red;">left : 50px;</span><br>
+      <br>
+
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Style de la description<br>
+      </td>
+      <td style="vertical-align: top;">sld_style_description</td>
+      <td style="vertical-align: top;">Idem pour la description<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Sstyle du bouton<br>
+      </td>
+      <td style="vertical-align: top;">sld_style_button</td>
+      <td style="vertical-align: top;">Idem pour le bouton et le titre du bouton "En savoir plus"<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;<br>
+<br>
+<br>
+<h4 class="odd">Traitements</h4>
+Sur la page d'index plusieurs traitements sont&nbsp; possibles.<br>
+<br>
+&nbsp;&nbsp;&nbsp; Réinitialise les fichiers '<span style="font-weight: bold;">tpl/slider.tpl</span>' d'origine de chaque thème.<br>
+&nbsp;&nbsp;&nbsp; Désactive le block du module slider pour permettre l'affichage des slides d'origine<br>
+&nbsp;&nbsp;&nbsp; Supprime les caches pour actualiser l'affichage immédiatement<br>
+<br>
+&nbsp;<br>
+<h4 class="odd">Blocks "update_theme"<br>
+</h4>
+<span style="font-weight: bold;">Important</span> : Pour fonctionner ce block doit être activé, il peut être placé <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">accolades,</span> il ne sera pas visible.<br>
+Il permet la mise à jour du fichier "<span style="font-weight: bold;">tlp/slider.tpl</span>".<br>
+Le fichier d'origine est <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">renommé </span> "<span style="font-weight: bold;">tlp/slider-old.tpl</span>". Il sera réactivé en choisissant l'option "<span style="font-weight: bold;">Réinitialise les fichiers 'tpl/slider.tpl' d'origine de chaque thème.</span>" de la page d'index du module, ou lors de la <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">désinstallation
+</span> du module.<br>
+La mise à jour du fichier "tlp/slider.tpl" n'est effectuée
+qu'uniquement si il y a eu modification des slides, ajout, suppression,
+et selon la périodicité des slides, ...<br>
+<br>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; background-color: rgb(204, 255, 255); text-align: center;">Options<br>
+      </td>
+      <td style="vertical-align: top; background-color: rgb(204, 255, 255); text-align: center;">Description<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Périodicité de renouvellement</td>
+      <td style="vertical-align: top;">Défini la périodicité de changement d'ordre des slides<br>
+&nbsp;- Jamais : utilise l'ordre prédéfini (Conseillé)<br>
+&nbsp;-&nbsp; Les autres options permettent&nbsp; de sélectionner la périodicité de <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">rafraîchissement
+      </span> de l'ordre des slides<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">Afficher le block</td>
+      <td style="vertical-align: top;">Ne pas confondre avec l'acivation du bloc. <br>
+      <span style="color: red;"><span style="font-weight: bold;">Toujours laisser "Non" en production.</span> </span><br>
+Cette option est utilisée pendant la période de développement à des fins de <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">débogage.</span></td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;&nbsp;&nbsp; <br>
+<br>
+&nbsp;<br>
+<br>
+</div>

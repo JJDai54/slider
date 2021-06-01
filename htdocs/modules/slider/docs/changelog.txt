@@ -3,7 +3,7 @@
 ==============================================================
 - renomage du champ `sld_has_periode` en  `sld_periodicity`.
   opbjectif : permetre d'actualiser les date de debut et de fin selon
-  une periodicité.
+  une périodicité.
   0 : toujours affiché, pas de traitement de la date de début et de fin
   1 : Periode flottante, pas de traitement de la date de début et de fin
       exemple de fêtes non fixe comme paques ou la pentecote

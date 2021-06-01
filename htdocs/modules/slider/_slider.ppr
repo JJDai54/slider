@@ -12,6 +12,7 @@ DontOpen=0
 AbsolutePath=0
 FileFormat=0
 ProjectFilesOnly=0
+HTServer=localhost
 Extensions=*.*
 [Project tree]
 _slider
@@ -113,8 +114,8 @@ _slider
 			include\update.php
 			include\xoops_version.inc.php
 		+language
-			-english
-				-help
+			+english
+				+help
 					language\english\help\help.html
 					language\english\help\index.html
 				language\english\admin.php
@@ -124,7 +125,7 @@ _slider
 				language\english\index.html
 				language\english\modinfo.php
 			+french
-				-help
+				+help
 					language\french\help\help.html
 					language\french\help\index.html
 				language\french\admin.php
@@ -185,15 +186,20 @@ _slider
 7=xoops_version.php
 8=docs\changelog.txt
 9=versions\Slider_2_03.php
+10=sql\mysql.sql
+11=language\french\help\help.html
+12=language\english\help\help.html
+13=..\..\_archives\slider-2021-05-12a\language\french\help\help.html
+14=..\..\..\..\modules-Xoops\xmnews\xmnews-1.1\language\french\help\help.tpl
 [Selected Project Files]
 Main=
-Selected=docs\changelog.txt
+Selected=language\english\help\help.html
 [templates\admin\slider_admin_slides.tpl]
 TopLine=16
 Caret=135,34
 [class\Slides.php]
-TopLine=79
-Caret=26,92
+TopLine=138
+Caret=76,156
 [include\fnc-slider.php]
 TopLine=569
 Caret=56,587
@@ -214,7 +220,22 @@ TopLine=1
 Caret=34,29
 [docs\changelog.txt]
 TopLine=1
-Caret=7,15
+Caret=12,10
 [versions\Slider_2_03.php]
 TopLine=17
 Caret=1,46
+[sql\mysql.sql]
+TopLine=1
+Caret=14,19
+[language\french\help\help.html]
+TopLine=216
+Caret=7,251
+[language\english\help\help.html]
+TopLine=216
+Caret=7,251
+[..\..\_archives\slider-2021-05-12a\language\french\help\help.html]
+TopLine=1
+Caret=18,6
+[..\..\..\..\modules-Xoops\xmnews\xmnews-1.1\language\french\help\help.tpl]
+TopLine=1
+Caret=8,20
