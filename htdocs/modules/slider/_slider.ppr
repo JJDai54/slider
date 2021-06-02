@@ -188,12 +188,10 @@ _slider
 9=versions\Slider_2_03.php
 10=sql\mysql.sql
 11=language\french\help\help.html
-12=language\english\help\help.html
-13=..\..\_archives\slider-2021-05-12a\language\french\help\help.html
-14=..\..\..\..\modules-Xoops\xmnews\xmnews-1.1\language\french\help\help.tpl
+12=Nouveau1.html
 [Selected Project Files]
 Main=
-Selected=language\english\help\help.html
+Selected=Nouveau1.html
 [templates\admin\slider_admin_slides.tpl]
 TopLine=16
 Caret=135,34
@@ -228,14 +226,8 @@ Caret=1,46
 TopLine=1
 Caret=14,19
 [language\french\help\help.html]
-TopLine=216
-Caret=7,251
-[language\english\help\help.html]
-TopLine=216
-Caret=7,251
-[..\..\_archives\slider-2021-05-12a\language\french\help\help.html]
+TopLine=192
+Caret=31,219
+[Nouveau1.html]
 TopLine=1
-Caret=18,6
-[..\..\..\..\modules-Xoops\xmnews\xmnews-1.1\language\french\help\help.tpl]
-TopLine=1
-Caret=8,20
+Caret=66,8
