@@ -68,7 +68,7 @@ _slider
 				assets\js\highslide.js
 				assets\js\index.html
 			assets\index.html
-		-blocks
+		+blocks
 			blocks\index.html
 			blocks\update_theme.php
 		-class
@@ -187,20 +187,19 @@ _slider
 8=docs\changelog.txt
 9=versions\Slider_2_03.php
 10=sql\mysql.sql
-11=language\french\help\help.html
-12=Nouveau1.html
+11=templates\admin\slider_slider.tpl
 [Selected Project Files]
 Main=
-Selected=Nouveau1.html
+Selected=xoops_version.php
 [templates\admin\slider_admin_slides.tpl]
 TopLine=16
 Caret=135,34
 [class\Slides.php]
-TopLine=138
-Caret=76,156
+TopLine=276
+Caret=11,288
 [include\fnc-slider.php]
-TopLine=569
-Caret=56,587
+TopLine=123
+Caret=16,128
 [class\Constants.php]
 TopLine=23
 Caret=18,52
@@ -214,8 +213,8 @@ Caret=1,60
 TopLine=113
 Caret=31,144
 [xoops_version.php]
-TopLine=1
-Caret=34,29
+TopLine=20
+Caret=34,31
 [docs\changelog.txt]
 TopLine=1
 Caret=12,10
@@ -225,9 +224,6 @@ Caret=1,46
 [sql\mysql.sql]
 TopLine=1
 Caret=14,19
-[language\french\help\help.html]
-TopLine=192
-Caret=31,219
-[Nouveau1.html]
+[templates\admin\slider_slider.tpl]
 TopLine=1
-Caret=66,8
+Caret=1,29

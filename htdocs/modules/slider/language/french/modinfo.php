@@ -95,4 +95,7 @@ include_once 'common.php';
 
 \define('_MI_SLIDER_REBUILD', 'Reconstruction du template des slides');
 \define('_MI_SLIDER_REBUILD_DESC', "Force la reconstruction des templates, à utiliser pendant le développement.<br>Laissez 'Non' en production");
+
+\define('_MI_SLIDER_EXTRA', 'Extra (CSS & HTML)');
+\define('_MI_SLIDER_EXTRA_DESC', "Code CSS ou HTML ajouter après la liste des slides dans le fichier tpl/slider.tpl<br>Ce code n'est affiché que sur la page d'accueil comme les slides<br>Il permet d'ajouter un ou des éléments qui apparaitront sur tous les slides, par exemple un logo avec un lien externe.");
 // ---------------- End ----------------

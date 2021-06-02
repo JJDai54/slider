@@ -285,7 +285,7 @@ $perDate->addElement($sldDate_end);
         $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['title']              = $this->getVar('sld_title');
         $ret['description']        = $this->getVar('sld_description', 'e');
-        $editorMaxchar             = $helper->getConfig('editor_maxchar');
+        //$editorMaxchar             = $helper->getConfig('editor_maxchar');
         $ret['read_more']          = $this->getVar('sld_read_more');
         $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['weight']             = $this->getVar('sld_weight');

@@ -50,8 +50,9 @@ function b_slider_update_theme_show($options)
 global $xoopsConfig, $helper;
     $block = array();
 // echo "<hr><pre>" . print_r($xoopsConfig, true ). "</pre><hr>";
-    $periodicite = (isset($options[0])) ? $options[0]: 0;
-    $hideBlock = ($options[1]==0) ? 1 : 0;
+    $periodicite = (isset($options[0])) ? $options[0] : 0;
+    $hideBlock   = (isset($options[1])) ? $options[1] : 1;
+    $hideBlock   = ($options[1] == 1) ? 0 : 1;
     //----------------------------------------------------------        
     include_once XOOPS_ROOT_PATH . '/modules/slider/class/Slides.php';
     $myts = MyTextSanitizer::getInstance();

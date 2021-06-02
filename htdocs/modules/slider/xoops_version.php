@@ -26,8 +26,10 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 2.03,
-    'release_date'        => '2021/05/31',
+    'version'             => 2.04,
+    'release_date'        => '2021/06/02',
+    'release'             => '09-05-2021',
+    'module_status'       => 'Beta 1',
     'description'         => _MI_SLIDER_DESC,
     'author'              => 'JJDai',
     'author_mail'         => 'jjdelalandre@orange.fr',
@@ -58,8 +60,6 @@ $modversion = [
     'support_name'        => 'Support Forum',
     'module_website_url'  => 'www.xoops.org',
     'module_website_name' => 'XOOPS Project',
-    'release'             => '09-05-2021',
-    'module_status'       => 'Beta 1',
     'system_menu'         => 1,
     'hasAdmin'            => 1,
     'hasMain'             => 0,
@@ -116,6 +116,8 @@ $modversion['config'][] = [
     'default'     => 'dhtml',
     'options'     => array_flip($editorHandler->getList()),
 ];
+
+/*
 // Editor : max characters admin area
 $modversion['config'][] = [
     'name'        => 'editor_maxchar',
@@ -125,7 +127,6 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 50,
 ];
-/*
 // Keywords
 $modversion['config'][] = [
     'name'        => 'keywords',
@@ -229,6 +230,7 @@ $modversion['config'][] = [
     'valuetype'   => 'string',
     'default'     => 'highslide-5.0.0',
 ];
+//Force la reconstruction du template des slide
 $modversion['config'][] = [
     'name'        => 'forceRebuildSlides',
     'title'       => '_MI_SLIDER_REBUILD',
@@ -236,6 +238,16 @@ $modversion['config'][] = [
     'formtype'    => 'yesno',
     'valuetype'   => 'int',
     'default'     => 0,
+];
+
+//extra - code ajouter dans le template
+$modversion['config'][] = [
+    'name'        => 'slider-extra',
+    'title'       => '_MI_SLIDER_EXTRA',
+    'description' => '_MI_SLIDER_EXTRA_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => '',
 ];
 
 /*

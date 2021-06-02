@@ -125,6 +125,7 @@ global $xoopsConfig, $helper;
  * 
  **********************************************************************/
 function build_new_tpl($slides, $theme, $periodicite, $forceRebuild = false){
+global $helper;
 $rnd =  ($periodicite != 'j');
 //echo "<hr>slides<pre>" . print_r($slides, true) . "</pre><hr>"; exit("build_new_tpl");   
     $tpl_main = "slider_main-02.tpl";
@@ -176,6 +177,8 @@ $rnd =  ($periodicite != 'j');
     // sauvegarde du nouveau tpl/slide.tpl
     $tplOrg = str_replace ("__Slides__", $content, $tplOrg);
     $tplOrg = str_replace ("__STYLES__", $allStyles, $tplOrg);
+    $tplOrg = str_replace ("__EXTRA__", $helper->getConfig('slider-extra'), $tplOrg);
+    
     saveTexte2File($fullName, $tplOrg, $mod = 0777);
     
     //nettoyage des cachepour un rafraichissement immediat

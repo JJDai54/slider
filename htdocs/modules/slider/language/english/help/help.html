@@ -14,14 +14,76 @@
 <ul></ul>
  
 <h4 class="odd">Installation / Uninstallation</h4>No special steps are necessary, follow the standard installation process and extract the cursor folder to the ../modules directory. Install the module via Admin =&gt; System module =&gt; Modules.<br>Detailed instructions on installing the modules are available in the "XOOPS Operations Manual".<br>
-<h4 class="odd">
 
-</h4>
-<p class="MsoNormal" style="line-height: normal;"><b><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,serif;">Characteristics<o:p></o:p></span></b></p>The "slider" module continues to evolve. For this reason, I invite all developers to report and send to the SVN any changes or additions to this module, so that we can jointly contribute to the development.<br>
+<h4 class="odd">Characteristics</h4>
+The "slider" module continues to evolve. For this reason, I invite all developers to report and send to the SVN any changes or additions to this module, so that we can jointly contribute to the development.<br>
 <br>
 <h4 class="odd">Tutorial</h4>
 &nbsp;&nbsp; Standard module installation<br>&nbsp;&nbsp;&nbsp;&nbsp; Add slides to the themes used (see "Adding a new slide)" "<br>&nbsp;&nbsp;&nbsp;&nbsp; Activate the module block, regardless of its place it will remain invisible<br>&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Important</span>: the "Show block" option of the block Allows you to list the selected slides<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to be used in debug mode only<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; leave it on "No" in production<br>
-<br>
+<br><h4 class="odd">Préférences</h4>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">Admin editor<br>
+      </td>
+      <td style="vertical-align: top;">Choice of the editor for the "title" and "description" fields of the slides.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="caption-text">Maximum Image Size</span></td>
+      <td style="vertical-align: top;">Maximum size in mb of slides to download.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="caption-text">Maximum width image</span></td>
+      <td style="vertical-align: top;">Set the maximum width of images.<br>1920 px for the "xbootstrap" theme slides.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="caption-text">Maximum height image</span></td>
+      <td style="vertical-align: top;">Set the maximum height of images.<br>500px for the "xbootstrap" theme slides.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="caption-text">Admin
+pages</span></td>
+      <td style="vertical-align: top;">Number of lines in the admin list.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="caption-text">Framework
+"highslide"</span></td>
+      <td style="vertical-align: top;">Highslide framework installation folder<br>It allows you to zoom in on the slides of the admin list.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="caption-text">Rebuilding the slide template</span></td>
+      <td style="vertical-align: top;">Force template reconstruction, to be used during development.<br>Leave 'No' in production.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="caption-text">Extra
+(CSS &amp; HTML)</span></td>
+      <td style="vertical-align: top;">CSS or HTML code added after the list of slides in the tpl / slider.tpl file<br>This code is only displayed on the home page like the slides.<br>It allows you to add one or more elements that will appear on all the slides.<br>Example an icon with an external link:<br>
+      <br>
+&lt;pre&gt;&lt;code&gt;&lt;style&gt;<br>
+#logo-bidon {<br>
+&nbsp;position : absolute;<br>
+&nbsp;top : 50px;<br>
+&nbsp;left : 50px;<br>
+}<br>
+&lt;/style&gt;<br>
+&lt;a href="https://github.com/JJDai54/Slider-Module-Xoops"
+target="blank"&gt;<br>
+&lt;img id="logo-bidon"&nbsp; name="logo-bidon"&nbsp;
+src="modules/slider/assets/images/logoModule.png" title="GitHub"/&gt;<br>
+&lt;/a&gt;<br>
+&lt;/code&gt;&lt;/pre&gt;<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 class="odd"><br>
+</h4><br>
 <h4 class="odd">Adding a new slide</h4>
 <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
   <tbody>
