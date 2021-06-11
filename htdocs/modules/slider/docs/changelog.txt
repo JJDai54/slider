@@ -1,4 +1,19 @@
 ==============================================================
+2.05 [2021/06/04 15:00:00] - JJDai (jjdelalandre@orange.fr)
+==============================================================
+- renomage des champs sld_description et sld_style_description
+    en sld_subtitle et sld_style_subtitle plus judicieux.
+- dans les préférences ajout des options slider_style_points et slider_style_point_active
+    qui permettent de surcharger le style des points de navigation des slides.
+    Couleur, tailles, clignotement, ... des options utiles pour des  mal voyants par exemple.
+- dans les préférences ajout des options slider-extra, 
+    qui permet d'ajoute du code CSS et HTML après la définition des slides.
+    Ajout par exemple d'un logo sur tous les slide.
+- Un peu de cosmétique par ci par la.
+    
+    
+
+==============================================================
 2.03 [2021/05/31 15:00:00] - JJDai (jjdelalandre@orange.fr)
 ==============================================================
 - renomage du champ `sld_has_periode` en  `sld_periodicity`.

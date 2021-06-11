@@ -163,9 +163,21 @@ $rnd =  ($periodicite != 'j');
     $allStyles = buildStyles($slides);
 //echo "<hr><pre>" . print_r($slides, true) . "</pre><hr>";
     //génération de la liste des slides et indicators
-    $template = 'db:slider_slider.tpl';
+    $template = 'db:slider_theme_xbootstrap.tpl';
     $tpl = new \XoopsTpl();
     $tpl->assign('slides', $slides);
+
+$options = array();
+$clignotement_name='flash_points';
+$options['slider_style_points'] = $helper->getConfig('slider_style_points') . "\n animation-name: {$clignotement_name};\n";
+$options['slider_style_point_active'] = $helper->getConfig('slider_style_point_active');
+$options['slider_style_clignotement'] = $helper->getConfig('slider_style_clignotement');
+$options['clignotement_name'] = 'flash_points';
+    
+    $tpl->assign('options', $options);
+
+    
+    
     $content = $tpl->fetch($template);
 
     $fSlide = XOOPS_ROOT_PATH . "/modules/slider/templates/admin/{$tpl_main}";
@@ -210,12 +222,12 @@ function buildStyles(&$slides){
             $bolOk = true;
         }else $slides[$k]['style_title_name'] = '';
         
-        if (trim($v['style_description']) != ''){
-            $name = "{$prefixeName}-description";
-            $tStyles[] = "#{$name}{{$v['style_description']}}";
-            $slides[$k]['style_description_name'] = $name;
+        if (trim($v['style_subtitle']) != ''){
+            $name = "{$prefixeName}-subtitle";
+            $tStyles[] = "#{$name}{{$v['style_subtitle']}}";
+            $slides[$k]['style_subtitle_name'] = $name;
             $bolOk = true;
-        }else $slides[$k]['style_description_name'] = '';
+        }else $slides[$k]['style_subtitle_name'] = '';
         
         if (trim($v['style_button']) != ''){
             $name = "{$prefixeName}-button";

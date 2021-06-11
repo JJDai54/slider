@@ -1,4 +1,4 @@
-<div id='block_slides' name='media_menu_h' class='media_block' width="100%">
+<div id='block_slides' name='block_slides' class='media_block' width="100%">
 
 <{if $block.hide}>
 <script>
@@ -25,7 +25,7 @@ jQuery(document).ready(function(){
                 <th>&nbsp;</th>
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_SHORT_NAME}></th>
                 <{* <th class='center'><{$smarty.const._MB_SLIDER_SLD_TITLE}></th> *}>
-                <{* <th class='center'><{$smarty.const._MB_SLIDER_SLD_DESCRIPTION}></th> *}>
+                <{* <th class='center'><{$smarty.const._MB_SLIDER_SLD_SUBTITLE}></th> *}>
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_WEIGHT}></th>
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_ACTIF}></th>
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_HAS_PERIODE}></th>
@@ -42,7 +42,7 @@ jQuery(document).ready(function(){
                 <td class='center'><{$slide.id}></td>
                 <td class='center'><{$slide.short_name}></td>
                 <{* <td class='center'><{$slide.title}></td> *}>
-                <{* <td class='center'><{$slide.description}></td> *}>
+                <{* <td class='center'><{$slide.subtitle}></td> *}>
                 <td class='center'><{$slide.weight}></td>
                 <td class='center'><{$slide.actif_yn}></td>
                 <td class='center'><{$slide.periodicity_yn}></td>

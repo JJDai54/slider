@@ -115,7 +115,7 @@ Utility::include_highslide(array('allowMultipleInstances'=>false));
         // Set Vars
         $slidesObj->setVar('sld_short_name', Request::getString('sld_short_name', ''));
         $slidesObj->setVar('sld_title', Request::getText('sld_title', ''));
-        $slidesObj->setVar('sld_description', Request::getText('sld_description', ''));
+        $slidesObj->setVar('sld_subtitle', Request::getText('sld_subtitle', ''));
         $slidesObj->setVar('sld_read_more', Request::getString('sld_read_more', ''));
         $slidesObj->setVar('sld_weight', Request::getInt('sld_weight', 0));
         $slideDate_beginArr = Request::getArray('sld_date_begin');
@@ -134,7 +134,7 @@ Utility::include_highslide(array('allowMultipleInstances'=>false));
         
         $slidesObj->setVar('sld_button_title', Request::getString('sld_button_title', ''));
         $slidesObj->setVar('sld_style_title', Request::getText('sld_style_title'));
-        $slidesObj->setVar('sld_style_description', Request::getText('sld_style_description'));
+        $slidesObj->setVar('sld_style_subtitle', Request::getText('sld_style_subtitle'));
         $slidesObj->setVar('sld_style_button', Request::getText('sld_style_button'));
         
         
@@ -191,6 +191,7 @@ Utility::include_highslide(array('allowMultipleInstances'=>false));
         // Insert Data
         if ($slidesHandler->insert($slidesObj)) {
             if ('' !== $uploaderErrors) {
+                \force_rebuild_slider();
                 \redirect_header("slides.php?op=edit&sld_id=" . $sldId, 5, $uploaderErrors);
             } else {
                 \redirect_header("slides.php?op=list&select_theme={$theme}", 2, _AM_SLIDER_FORM_OK);

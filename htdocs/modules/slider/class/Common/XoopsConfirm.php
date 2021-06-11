@@ -62,8 +62,8 @@ class XoopsConfirm
     public function getFormXoopsConfirm()
     {
         //in order to be accessable from user and admin area this should be place in language common.php
-        \define('CO__SLIDER_DELETE_CONFIRM', 'Confirm delete');
-        \define('CO__SLIDER_DELETE_LABEL', 'Do you really want to delete:');
+        define('CO__SLIDER_DELETE_CONFIRM', 'Confirm delete');
+        define('CO__SLIDER_DELETE_LABEL', 'Do you really want to delete:');
 
         // Get Theme Form
         if ('' === $this->action) {

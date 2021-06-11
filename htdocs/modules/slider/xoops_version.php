@@ -26,8 +26,8 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 2.04,
-    'release_date'        => '2021/06/02',
+    'version'             => 2.05,
+    'release_date'        => '2021/06/04',
     'release'             => '09-05-2021',
     'module_status'       => 'Beta 1',
     'description'         => _MI_SLIDER_DESC,
@@ -72,7 +72,7 @@ $modversion = [
 // ------------------- Templates ------------------- //
 $modversion['templates'] = [
     // Admin templates
-    ['file' => 'slider_slider.tpl', 'description' => 'Generation du nouveau tpl pour le theme', 'type' => 'admin'],
+    ['file' => 'slider_theme_xbootstrap.tpl', 'description' => 'Generation du nouveau tpl pour le theme', 'type' => 'admin'],
     ['file' => 'slider_admin_about.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_header.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_index.tpl', 'description' => '', 'type' => 'admin'],
@@ -240,7 +240,54 @@ $modversion['config'][] = [
     'default'     => 0,
 ];
 
-//extra - code ajouter dans le template
+//extra - code à ajouter dans le template
+$modversion['config'][] = [
+    'name'        => 'slider_style_points',
+    'title'       => '_MI_STYLE_POINTS',
+    'description' => '_MI_STYLE_POINTS_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => "width: 20px;
+ height: 20px;
+ margin: 2px;
+ background-color: rgba(0, 0, 0, 0);
+ border: 0px solid #f00;
+ border-radius: 20px;
+
+ animation-duration: 12s;
+ animation-iteration-count: infinite;
+ transition: none;",
+];
+
+//extra - code à ajouter dans le template
+$modversion['config'][] = [
+    'name'        => 'slider_style_clignotement',
+    'title'       => '_MI_STYLE_POINTS_FLASH',
+    'description' => '_MI_STYLE_POINTS_FLASH_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => "0%   { opacity:1;background:white; }
+25%   {opacity:1;background:blue; }
+50% { opacity:1;background:yellow; }
+75% { opacity:1;background:green; }
+100%   { opacity:1;background:white; }",
+
+];
+
+//extra - code à ajouter dans le template
+$modversion['config'][] = [
+    'name'        => 'slider_style_point_active',
+    'title'       => '_MI_STYLE_POINTS_ACTIVE',
+    'description' => '_MI_STYLE_POINTS_ACTIVE_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => "width: 22px;
+ height: 32px;
+ margin: 0;
+ background-color: #0000ff;",
+];
+
+//extra - code à ajouter dans le template
 $modversion['config'][] = [
     'name'        => 'slider-extra',
     'title'       => '_MI_SLIDER_EXTRA',

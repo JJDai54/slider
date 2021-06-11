@@ -42,7 +42,7 @@ class Slides extends \XoopsObject
         $this->initVar('sld_id', XOBJ_DTYPE_INT);
         $this->initVar('sld_short_name', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_title', XOBJ_DTYPE_OTHER);
-        $this->initVar('sld_description', XOBJ_DTYPE_OTHER);
+        $this->initVar('sld_subtitle', XOBJ_DTYPE_OTHER);
         $this->initVar('sld_button_title', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_read_more', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_weight', XOBJ_DTYPE_INT);
@@ -53,7 +53,7 @@ class Slides extends \XoopsObject
         $this->initVar('sld_theme', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_image', XOBJ_DTYPE_TXTBOX);
         $this->initVar('sld_style_title', XOBJ_DTYPE_OTHER);
-        $this->initVar('sld_style_description', XOBJ_DTYPE_OTHER);
+        $this->initVar('sld_style_subtitle', XOBJ_DTYPE_OTHER);
         $this->initVar('sld_style_button', XOBJ_DTYPE_OTHER);
     }
 
@@ -116,7 +116,11 @@ $upload_size = $helper->getConfig('maxsize_image');
         $imageTray->addElement(new \XoopsFormFile(_AM_SLIDER_SLIDE_TO_LOAD, 'sld_image', $upload_size), false);
         
         $form->addElement($imageTray, true);
-        
+ $stylTA = "style='width:350px';";  
+ $nbLinesTA = 8;     
+        //--------------------------------------------------------------------------------
+        $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_TITLE . "</th><tr>");
+    //$form->insertBreak("<div class='outer'>zzz</div>");
         
         // Form Text sldTitle
         // Form Editor DhtmlTextArea sldDescription
@@ -127,7 +131,7 @@ $upload_size = $helper->getConfig('maxsize_image');
             $editor = $helper->getConfig('editor_user');
         }
         
-        $editorConfigs['name'] = 'sld_description';
+        $editorConfigs['name'] = 'sld_subtitle';
         $editorConfigs['value'] = $this->getVar('sld_title', 'e');
         $editorConfigs['rows'] = 5;
         $editorConfigs['cols'] = 40;
@@ -137,20 +141,36 @@ $upload_size = $helper->getConfig('maxsize_image');
         $inputTitle = new \XoopsFormEditor(_AM_SLIDER_SLIDE_TITLE, 'sld_title', $editorConfigs);
         $inputTitle->setDescription(_AM_SLIDER_SLIDE_TITLE_DESC);
         $form->addElement($inputTitle);
+
+        //------------ STYLES -------------------------------
+        $inputStyleTitle = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_TITLE, 'sld_style_title',  $this->getVar('sld_style_title', 'e'), $nbLinesTA, 60);
+        $inputStyleTitle->setExtra($stylTA);
+        $inputStyleTitle->setDescription(_AM_SLIDER_SLIDE_STYLE_TITLE_DESC);
+        $form->addElement($inputStyleTitle);
         
+        //--------------------------------------------------------------------------------
+        $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_SUBTITLE . "</th><tr>");
         
         $editorConfigs2 = [];
-        $editorConfigs2['name'] = 'sld_description';
-        $editorConfigs2['value'] = $this->getVar('sld_description', 'e');
+        $editorConfigs2['name'] = 'sld_subtitle';
+        $editorConfigs2['value'] = $this->getVar('sld_subtitle', 'e');
         $editorConfigs2['rows'] = 5;
         $editorConfigs2['cols'] = 40;
         $editorConfigs2['width'] = '60%';
         $editorConfigs2['height'] = '200px';
         $editorConfigs2['editor'] = $editor;
-        $inputDescription = new \XoopsFormEditor(_AM_SLIDER_SLIDE_DESCRIPTION, 'sld_description', $editorConfigs2);
-        $inputDescription->setDescription(_AM_SLIDER_SLIDE_DESCRIPTION_DESC);
-        $form->addElement($inputDescription);
+        $inputSubtitle = new \XoopsFormEditor(_AM_SLIDER_SUBTITLE, 'sld_subtitle', $editorConfigs2);
+        $inputSubtitle->setDescription(_AM_SLIDER_SUBTITLE_DESC);
+        $form->addElement($inputSubtitle);
         
+        //------------ STYLES -------------------------------
+        $inputStyleSubtitlen = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_SUBTITLE, 'sld_style_subtitle',  $this->getVar('sld_style_subtitle', 'e'), $nbLinesTA, 60);
+        $inputStyleSubtitlen->setExtra($stylTA);
+        $inputStyleSubtitlen->setDescription(_AM_SLIDER_SLIDE_STYLE_SUBTITLE_DESC);
+        $form->addElement($inputStyleSubtitlen);
+
+        //--------------------------------------------------------------------------------
+        $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_BUTTON . "</th><tr>");
         
         // Form Text sld_button_title
         $inpurReadMore = new \XoopsFormText(_AM_SLIDER_SLIDE_BUTTON_CAPTION, 'sld_button_title', 80, 255, $this->getVar('sld_button_title'));
@@ -158,14 +178,18 @@ $upload_size = $helper->getConfig('maxsize_image');
         $form->addElement($inpurReadMore, false);
         
         // Form Text sld_read_more
-        $inpurReadMore = new \XoopsFormText(_AM_SLIDER_SLIDE_READ_MORE, 'sld_read_more', 80, 255, $this->getVar('sld_read_more'));
+        $inpurReadMore = new \XoopsFormText(_AM_SLIDER_BUTTON_URL, 'sld_read_more', 80, 255, $this->getVar('sld_read_more'));
         $inpurReadMore->setDescription(_AM_SLIDER_SLIDE_READ_MORE_DESC);
         $form->addElement($inpurReadMore, false);
         
-        // Form Image sldImage
-        // Form Image sldImage: Select Uploaded Image 
+        //------------ STYLES -------------------------------
+        $inputSytleButton = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_BUTTON, 'sld_style_button',  $this->getVar('sld_style_button', 'e'), $nbLinesTA, 60);
+        $inputSytleButton->setExtra($stylTA);
+        $inputSytleButton->setDescription(_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC);
+        $form->addElement($inputSytleButton);
         
         //----------------------------------------------------        
+        $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_OPTIONS. "</th><tr>");
         //        choix du themes
         global $xoopsConfig;
         if ($this->isNew()) {
@@ -244,24 +268,11 @@ $perDate->addElement($sldDate_end);
         
             
 
-//------------ STYLES -------------------------------
 
-       
-        $inputStyleTitle = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_TITLE, 'sld_style_title',  $this->getVar('sld_style_title', 'e'), 3, 60);
-        $inputStyleTitle->setExtra($stylTA);
-        $inputStyleTitle->setDescription(_AM_SLIDER_SLIDE_STYLE_TITLE_DESC);
-        $form->addElement($inputStyleTitle);
-
-        $inputStleDescription = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_DESCRIPTION, 'sld_style_description',  $this->getVar('sld_style_description', 'e'), 3, 60);
-        $inputStleDescription->setExtra($stylTA);
-        $inputStleDescription->setDescription(_AM_SLIDER_SLIDE_STYLE_DESCRIPTION_DESC);
-        $form->addElement($inputStleDescription);
         
-        $inputSytleButton = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_BUTTON, 'sld_style_button',  $this->getVar('sld_style_button', 'e'), 3, 60);
-        $inputSytleButton->setExtra($stylTA);
-        $inputSytleButton->setDescription(_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC);
-        $form->addElement($inputSytleButton);
 //---------------------------------------------------        
+        //--------------------------------------------------------------------------------
+        $form->insertBreak("<tr><th colspan='2'>" . '' . "</th><tr>");
 
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
@@ -284,7 +295,7 @@ $perDate->addElement($sldDate_end);
         $ret['id']                 = $this->getVar('sld_id');
         $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['title']              = $this->getVar('sld_title');
-        $ret['description']        = $this->getVar('sld_description', 'e');
+        $ret['subtitle']        = $this->getVar('sld_subtitle', 'e');
         //$editorMaxchar             = $helper->getConfig('editor_maxchar');
         $ret['read_more']          = $this->getVar('sld_read_more');
         $ret['short_name']         = $this->getVar('sld_short_name');
@@ -304,7 +315,7 @@ $perDate->addElement($sldDate_end);
         
         $ret['button_title']             = $this->getVar('sld_button_title');
         $ret['style_title']        = $this->getVar('sld_style_title', 'e');
-        $ret['style_description']  = $this->getVar('sld_style_description', 'e');
+        $ret['style_subtitle']  = $this->getVar('sld_style_subtitle', 'e');
         $ret['style_button']       = $this->getVar('sld_style_button', 'e');
         
         $ret['current_status'] = getCurrentStatusOfSlide($ret);

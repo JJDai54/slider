@@ -49,8 +49,7 @@ function xoops_module_update_slider($module, $prev_version = null)
         $files = XoopsLists::getFileListByExtension($file_path, $extensions);
         asort($files);
 /*
-*/
-        
+*/        
         foreach($files AS $k=>$v){
             $shortname = str_replace('.php', '', $v);
             $t = explode('_', $shortname);

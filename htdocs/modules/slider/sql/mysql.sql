@@ -15,7 +15,7 @@ CREATE TABLE `slider_slides` (
   `sld_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `sld_short_name` VARCHAR(80) NOT NULL DEFAULT '',
   `sld_title` TEXT  NOT NULL DEFAULT '',
-  `sld_description` TEXT NOT NULL ,
+  `sld_subtitle` TEXT NOT NULL ,
   `sld_button` VARCHAR(80) NOT NULL DEFAULT '',  
   `sld_read_more`  VARCHAR(255) NOT NULL DEFAULT '',
   `sld_weight` INT(10) NOT NULL DEFAULT '0',
@@ -25,7 +25,7 @@ CREATE TABLE `slider_slides` (
   `sld_actif` INT(1) NOT NULL DEFAULT '0',
   `sld_theme` VARCHAR(100) NOT NULL DEFAULT '',
   `sld_style_title` TEXT NOT NULL ,
-  `sld_style_description` TEXT NOT NULL ,
+  `sld_style_subtitle` TEXT NOT NULL ,
   `sld_style_button` TEXT NOT NULL ,
   `sld_image` VARCHAR(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`sld_id`)
