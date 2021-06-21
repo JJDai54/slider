@@ -97,7 +97,7 @@ define('_MI_SLIDER_REBUILD', 'Reconstruction du template des slides');
 define('_MI_SLIDER_REBUILD_DESC', "Force la reconstruction des templates, à utiliser pendant le développement.<br>Laissez 'Non' en production");
 
 define('_MI_SLIDER_EXTRA', 'Extra (CSS & HTML)');
-define('_MI_SLIDER_EXTRA_DESC', "Code CSS ou HTML ajoutr après la liste des slides dans le fichier \"tpl/slider.tpl\"<br>Ce code n'est affiché que sur la page d'accueil comme les slides<br>Il permet d'ajouter un ou des éléments qui apparaitront sur tous les slides, par exemple un logo avec un lien externe.");
+define('_MI_SLIDER_EXTRA_DESC', "Code CSS ou HTML ajouté après la liste des slides dans le fichier \"tpl/slider.tpl\"<br>Ce code n'est affiché que sur la page d'accueil comme les slides<br>Il permet d'ajouter un ou des éléments qui apparaitront sur tous les slides, par exemple un logo avec un lien externe.");
 
 
 define('_MI_STYLE_POINTS', "Style des points de navigation");
@@ -107,4 +107,15 @@ define('_MI_STYLE_POINTS_FLASH_DESC', "Permet d'ajouer un clignotement sur les p
 define('_MI_STYLE_POINTS_ACTIVE', "Style du point actif de navigation");
 define('_MI_STYLE_POINTS_ACTIVE_DESC', "Permet de surcharger le style du point actif de navigation qui sont parfois peu visible sur certains slide");
 
+define('_MI_STYLE_TITLE', "Style du titre");
+define('_MI_STYLE_TITLE_DESC', "Permet de surcharger le style par défaut du titre des slides");
+
+define('_MI_STYLE_SUBTITLE', "Style du sous-titre");
+define('_MI_STYLE_SUBTITLE_DESC', "Permet de surcharger le style par défaut du sous-titre des slides");
+
+define('_MI_STYLE_BUTTON', "Style du bouton");
+define('_MI_STYLE_BUTTON_DESC', "Permet de surcharger le style par défaut du bouton des slides");
+
 // ---------------- End ----------------
+
+

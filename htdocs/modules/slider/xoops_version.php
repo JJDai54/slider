@@ -239,7 +239,62 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 0,
 ];
+//-------------------------------------------------------
+//css defaut pour les titres soustitres et boutons
+//extra - code à ajouter dans le template
+$modversion['config'][] = [
+    'name'        => 'slider_style_title',
+    'title'       => '_MI_STYLE_TITLE',
+    'description' => '_MI_STYLE_TITLE_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => "color:#496381;
+background:#E1D6C9;
+opacity: 0.8;
+padding: 0px 25px 0px 25px;
+border-radius: 50px 50px 50px 50px;
+margin-left:250px;
+margin-right:250px;
+margin-bottom:15px;",
+];
 
+//extra - code à ajouter dans le template
+$modversion['config'][] = [
+    'name'        => 'slider_style_subtitle',
+    'title'       => '_MI_STYLE_SUBTITLE',
+    'description' => '_MI_STYLE_SUBTITLE_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => "color : #496381;
+background : #E1D6C9;
+opacity : 0.8;
+padding : 25px;
+border-radius : 50px 50px 50px 50px;
+margin-left : 250px;
+margin-right : 250px;
+padding-bottom : 5px;
+padding-top : 5px;",
+];
+
+//extra - code à ajouter dans le template
+$modversion['config'][] = [
+    'name'        => 'slider_style_button',
+    'title'       => '_MI_STYLE_BUTTON',
+    'description' => '_MI_STYLE_BUTTON_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => "color:#496381;
+background:#E1D6C9;
+opacity: 0.9;
+padding:25px;
+border-radius: 50px 50px 50px 50px;
+margin-left:250px;
+margin-right:250px;
+padding-bottom : 5px;
+padding-top : 5px;",
+];
+
+//-------------------------------------------------------
 //extra - code à ajouter dans le template
 $modversion['config'][] = [
     'name'        => 'slider_style_points',

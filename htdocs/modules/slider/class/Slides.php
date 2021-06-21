@@ -26,6 +26,8 @@ namespace XoopsModules\Slider;
 use XoopsModules\Slider;
 
 \defined('XOOPS_ROOT_PATH') || die('Restricted access');
+xoops_load('XoopsLists', 'core');
+//echo "<hr><pre>" . print_r(get_declared_classes(), true) . "</pre><hr>";
 
 /**
  * Class Object Slides
@@ -87,6 +89,7 @@ class Slides extends \XoopsObject
      */
     public function getFormSlides($SelectedTheme, $action = false)
     {
+        $isNew = $this->isNew();
         $helper = \XoopsModules\Slider\Helper::getInstance();
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
@@ -143,11 +146,23 @@ $upload_size = $helper->getConfig('maxsize_image');
         $form->addElement($inputTitle);
 
         //------------ STYLES -------------------------------
-        $inputStyleTitle = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_TITLE, 'sld_style_title',  $this->getVar('sld_style_title', 'e'), $nbLinesTA, 60);
+        $css = ($isNew) ? $helper->getConfig('slider_style_title') : $this->getVar('sld_style_title', 'e');
+        $inputStyleTitle = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_TITLE, 'sld_style_title',  $css, $nbLinesTA, 60);
         $inputStyleTitle->setExtra($stylTA);
         $inputStyleTitle->setDescription(_AM_SLIDER_SLIDE_STYLE_TITLE_DESC);
         $form->addElement($inputStyleTitle);
         
+        
+/* projet d'ajout du css a partir de fichier, à voi !!!!
+        $dirname = XOOPS_ROOT_PATH . "/modules/slider/css";
+        $extensions = array("css","txt");
+        $cssTitles =  \XoopsLists::getFileListByExtension($dirname, $extensions, $prefix = '');       
+        $sldCssTitleSelect = new \XoopsFormSelect("zzzzzzz", 'sld_css_title', $cssTitles);   
+        $sldCssTitleSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
+        $sldCssTitleSelect->addOptionArray($cssTitles);   
+        $form->addElement($sldCssTitleSelect);
+*/        
+         
         //--------------------------------------------------------------------------------
         $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_SUBTITLE . "</th><tr>");
         
@@ -164,7 +179,8 @@ $upload_size = $helper->getConfig('maxsize_image');
         $form->addElement($inputSubtitle);
         
         //------------ STYLES -------------------------------
-        $inputStyleSubtitlen = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_SUBTITLE, 'sld_style_subtitle',  $this->getVar('sld_style_subtitle', 'e'), $nbLinesTA, 60);
+        $css = ($isNew) ? $helper->getConfig('slider_style_subtitle') : $this->getVar('sld_style_subtitle', 'e');
+        $inputStyleSubtitlen = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_SUBTITLE, 'sld_style_subtitle',  $css, $nbLinesTA, 60);
         $inputStyleSubtitlen->setExtra($stylTA);
         $inputStyleSubtitlen->setDescription(_AM_SLIDER_SLIDE_STYLE_SUBTITLE_DESC);
         $form->addElement($inputStyleSubtitlen);
@@ -183,7 +199,8 @@ $upload_size = $helper->getConfig('maxsize_image');
         $form->addElement($inpurReadMore, false);
         
         //------------ STYLES -------------------------------
-        $inputSytleButton = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_BUTTON, 'sld_style_button',  $this->getVar('sld_style_button', 'e'), $nbLinesTA, 60);
+        $css = ($isNew) ? $helper->getConfig('slider_style_button') : $this->getVar('sld_style_button', 'e');
+        $inputSytleButton = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_BUTTON, 'sld_style_button',  $css, $nbLinesTA, 60);
         $inputSytleButton->setExtra($stylTA);
         $inputSytleButton->setDescription(_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC);
         $form->addElement($inputSytleButton);
