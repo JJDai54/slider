@@ -10,7 +10,10 @@
     qui permet d'ajoute du code CSS et HTML après la définition des slides.
     Ajout par exemple d'un logo sur tous les slide.
 - Un peu de cosmétique par ci par la.
-    
+- Ajout d'une image temporaire pour les slide dont l'image n'est pas téléchargée.
+  permet de préparer la fiche sans avoir encore fait l'image.
+- intgration du framework "triertableauHTML" 
+  et ajout du tri en cliquant sur l'entete des colonnes dans l'onglet admin/slides    
     
 
 ==============================================================

@@ -49,7 +49,7 @@ jQuery(document).ready(function(){
                 <td class='center'><{$slide.str_date_begin}></td>
                 <td class='center'><{$slide.str_date_end}></td>
                 <td class='center'><{$slide.theme}></td>
-                <td class='center'><img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" width='150px'> /</td>
+                <td class='center'><img src="<{$slide.image_fullName}>" alt="slides" width='150px'> /</td>
             </tr>
             <{/foreach}>
         </tbody>

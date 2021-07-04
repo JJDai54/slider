@@ -258,19 +258,19 @@ var hasSelected = false; var selectBox = myform.item[A][amount];for (i = 0; i < 
  * 
  ****************************************************************************/
 public static function include_highslide($options = null){
-  Global $xoTheme,$helper;
+  Global $xoTheme,$helper, $xoopsModuleConfig;
 
   //$xoTheme->addScript('browse.php?jquery/jquery.js');
 //	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');  
   
 //   $xoTheme->addStylesheet('browse.php?Frameworks/zoom/highslide.css');
 //   $xoTheme->addScript('browse.php?Frameworks/zoom/highslide.js');
-global $xoopsModuleConfig;
+
 //$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $helper->getConfig('highslide');  
 $highslide = XOOPS_URL . "/Frameworks/" . $xoopsModuleConfig['highslide'];  
 //echo "===>highslide : <hr>{$highslide}<hr>";  
 
-  $xoTheme->addStylesheet("$highslide}/highslide.css");
+  $xoTheme->addStylesheet("{$highslide}/highslide.css");
   $xoTheme->addScript("{$highslide}/highslide.js");
 
   //$xoTheme->addScript('browse.php?modules/slider/assets/js/highslide.js');

@@ -4,8 +4,13 @@
     <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}> <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
 </form>
 
+<STYLE>
+SPAN { FONT:bold 12 Arial; CURSOR:pointer }
+</STYLE>
+
+
 <{if $slides_list}>
-    <table class='table table-bordered'>
+    <table  id="slides_list"  name="slides_list" class='table table-bordered'>
         <thead>
             <tr class='head'>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_ID}></th>
@@ -122,12 +127,9 @@
                 <{/if}>
                 
                 <td class='center'>
-<{*
-                    <img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" style="max-width:100px" />
-*}>
                     <div class='highslide-gallery'>
-                        <a href='<{$slider_upload_url}>/images/slides/<{$slide.image}>' class='highslide' onclick='return hs.expand(this);' >
-                            <img src="<{$slider_upload_url}>/images/slides/<{$slide.image}>" alt="slides" style="max-width:100px" />
+                        <a href='<{$slide.image_fullName}>' class='highslide' onclick='return hs.expand(this);' >
+                            <img src="<{$slide.image_fullName}>" alt="slides" style="max-width:100px" />
                         </a>
                         <div class='highslide-heading'></div>
                     </div>
@@ -160,3 +162,8 @@
 
 <!-- Footer -->
 <{include file='db:slider_admin_footer.tpl' }>
+
+<script>
+trierTableau('slides_list', 2, '1|2|3|4|8|9', '<{$smarty.const.XOOPS_URL}>/Frameworks');  
+</script>
+

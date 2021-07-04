@@ -109,9 +109,17 @@ class Slides extends \XoopsObject
         // Form Image sldImage
         // Form Image sldImage: Select Uploaded Image 
         $getSldImage = $this->getVar('sld_image');
-        $urlImg =  SLIDER_UPLOAD_IMAGE_URL . '/slides/' . $getSldImage;        
+        
+        $slideImg = $this->getVar('sld_image');
+        $fulName = SLIDER_UPLOAD_IMAGE_PATH. "/slides/" . $slideImg;
+        if (is_null($slideImg) || !is_readable($fulName)) {
+          $urlImg = XOOPS_URL . "/modules/slider/assets/images/slide-temp-01.png";
+        }else{
+          $urlImg = SLIDER_UPLOAD_IMAGE_URL . "/slides/" . $slideImg;
+        }
+//        $urlImg =  SLIDER_UPLOAD_IMAGE_URL . '/slides/' . $getSldImage;        
         //$uploadirectory      = XOOPS_ROOT_PATH . "/uploads/slider";        
-$upload_size = $helper->getConfig('maxsize_image'); 
+        $upload_size = $helper->getConfig('maxsize_image'); 
 
         $imageTray  = new \XoopsFormElementTray(_AM_SLIDER_SLIDE . '<br><br>' . sprintf(_AM_SLIDER_UPLOADSIZE, $upload_size / 1024), '<br>'); 
         $imageTray->addElement(new \XoopsFormLabel('', "<br><img src='{$urlImg}'  name='image_img2' id='image_img2' alt='' style='max-width:60%'>")); 
@@ -328,7 +336,12 @@ $perDate->addElement($sldDate_end);
         $ret['periodicity_yn']     = (int)$this->getVar('sld_periodicity') > 0 ? _YES : _NO;
         $ret['theme']              = $this->getVar('sld_theme');
         $ret['image']              = $this->getVar('sld_image');
-        $ret['image_fullName']     = XOOPS_URL . "/uploads/slider/images/slides/" . $this->getVar('sld_image');
+        $fulName = SLIDER_UPLOAD_IMAGE_PATH. "/slides/" . $this->getVar('sld_image');
+        if (is_null($ret['image']) || !is_readable($fulName)) {
+          $ret['image_fullName']     = XOOPS_URL . "/modules/slider/assets/images/slide-temp-01.png";
+        }else{
+          $ret['image_fullName']     = SLIDER_UPLOAD_IMAGE_URL . "/slides/" . $this->getVar('sld_image') ;
+        }
         
         $ret['button_title']             = $this->getVar('sld_button_title');
         $ret['style_title']        = $this->getVar('sld_style_title', 'e');

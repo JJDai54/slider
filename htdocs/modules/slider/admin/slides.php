@@ -81,7 +81,9 @@ switch ($op) {
             $GLOBALS['xoopsTpl']->assign('error', _AM_SLIDER_THEREARENT_SLIDES);
         }
         
-Utility::include_highslide(array('allowMultipleInstances'=>false));        
+Utility::include_highslide(array('allowMultipleInstances'=>false));  
+$xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');      
+                                 
         /* --------- selection du theme ----------------*/
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
