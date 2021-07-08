@@ -108,11 +108,11 @@ class Slides extends \XoopsObject
         
         // Form Image sldImage
         // Form Image sldImage: Select Uploaded Image 
-        $getSldImage = $this->getVar('sld_image');
+        $getSldImage = trim($this->getVar('sld_image'));
         
         $slideImg = $this->getVar('sld_image');
         $fulName = SLIDER_UPLOAD_IMAGE_PATH. "/slides/" . $slideImg;
-        if (is_null($slideImg) || !is_readable($fulName)) {
+        if (is_null($slideImg) || $slideImg=='' || !is_readable($fulName)) {
           $urlImg = XOOPS_URL . "/modules/slider/assets/images/slide-temp-01.png";
         }else{
           $urlImg = SLIDER_UPLOAD_IMAGE_URL . "/slides/" . $slideImg;
@@ -335,9 +335,9 @@ $perDate->addElement($sldDate_end);
         $ret['periodicity']        = (int)$this->getVar('sld_periodicity');
         $ret['periodicity_yn']     = (int)$this->getVar('sld_periodicity') > 0 ? _YES : _NO;
         $ret['theme']              = $this->getVar('sld_theme');
-        $ret['image']              = $this->getVar('sld_image');
+        $ret['image']              = trim($this->getVar('sld_image'));
         $fulName = SLIDER_UPLOAD_IMAGE_PATH. "/slides/" . $this->getVar('sld_image');
-        if (is_null($ret['image']) || !is_readable($fulName)) {
+        if (is_null($ret['image']) || $ret['image']=='' || !is_readable($fulName)) {
           $ret['image_fullName']     = XOOPS_URL . "/modules/slider/assets/images/slide-temp-01.png";
         }else{
           $ret['image_fullName']     = SLIDER_UPLOAD_IMAGE_URL . "/slides/" . $this->getVar('sld_image') ;

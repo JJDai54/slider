@@ -136,8 +136,8 @@ define('_AM_SLIDER_NO_PERIODICITY_TO_UPDATE', "Il n'y a pas de période à mettr
 define('_AM_SLIDER_NON_ACTIF', "Non actif");
 define('_AM_SLIDER_ACTIF', "Actif");
 define('_AM_SLIDER_CURRENT_DATE', "Date courante");
-define('_AM_SLIDER_SLIDE_SELECT_THEME', "Choix du ou des thèmes");
-//define('_AM_SLIDER_SLIDE_SELECT_THEME_DESC', "Date courante");
+// define('_AM_SLIDER_SLIDE_SELECT_THEME', "Choix du ou des thèmes");
+// define('_AM_SLIDER_SLIDE_SELECT_THEME_DESC', "Date courante");
 define('_AM_SLIDER_THEME', "Thèmes");
 
 define('_AM_SLIDER_ALL_THEMES_ARE_VISIBLE', "Visible dans tous les thèmes");

@@ -135,7 +135,7 @@ define('_AM_SLIDER_PERIODICITY_DESC', "Define the display renewal periodicity af
 \define ('_AM_SLIDER_NON_ACTIF', "Not active");
 \define ('_AM_SLIDER_ACTIF', "Active");
 \define ('_AM_SLIDER_CURRENT_DATE', "Current date");
-\define ('_AM_SLIDER_SLIDE_SELECT_THEME', "Choice of theme (s)");
+// \define ('_AM_SLIDER_SLIDE_SELECT_THEME', "Choice of theme (s)");
 // \define ('_AM_SLIDER_SLIDE_SELECT_THEME_DESC', "Current date");
 \define ('_AM_SLIDER_THEME', "Themes");
 

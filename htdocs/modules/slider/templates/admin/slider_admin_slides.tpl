@@ -74,32 +74,21 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                 
                 <{* <td class='center'><{$slide.actif}></td> *}>
                 <td class='center'>
-                <{if $slide.actif == 1}>
-                    <a href="slides.php?op=bascule_actif&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
-                    <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>">
-                    </a>
-                <{else}>
-                    <a href="slides.php?op=bascule_actif&sld_id=<{$slide.id}>&value=1&sld_theme=<{$slide.theme}>">
-                    <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_ACTIVATE}>">
-                    </a>
-                <{/if}>
+                    <span style='visibility:hidden;'><{$slide.actif}></span>
+                
+                    <{if $slide.actif == 1}>
+                        <a href="slides.php?op=bascule_actif&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
+                        <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>">
+                        </a>
+                    <{else}>
+                        <a href="slides.php?op=bascule_actif&sld_id=<{$slide.id}>&value=1&sld_theme=<{$slide.theme}>">
+                        <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_ACTIVATE}>">
+                        </a>
+                    <{/if}>
                 </td>
                 
-                <{* <td class='center'><{$slide.periodicity}></td> *}>
-<{*
                 <td class='center'>
-                <{if $slide.periodicity == 1}>
-                    <a href="slides.php?op=bascule_periodicity&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
-                    <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>">
-                    </a>
-                <{else}>
-                    <a href="slides.php?op=bascule_periodicity&sld_id=<{$slide.id}>&value=1&sld_theme=<{$slide.theme}>">
-                    <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_ACTIVATE}>">
-                    </a>
-                <{/if}>
-                </td>
-*}>                
-                <td class='center'>
+                    <span style='visibility:hidden;'><{$slide.periodicity}></span>
                     <{if $slide.periodicity == 0 }>
                         <img src="<{$modPathIcon16}>/periodicity-0.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_ALWAYS}>">
                     <{elseif $slide.periodicity == 1 }>
@@ -110,12 +99,13 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                 </td>
                 
                 <td class='center'>
-                <{if $slide.current_status}>
-                    <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_ACTIF}>">
-                <{else}>
-
-                    <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_NON_ACTIF}>">
-                <{/if}>
+                    <span style='visibility:hidden;'><{$slide.current_status}></span>
+                    <{if $slide.current_status}>
+                        <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_ACTIF}>">
+                    <{else}>
+    
+                        <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_NON_ACTIF}>">
+                    <{/if}>
                 </td>
                 
                 <{if $slide.periodicity > 0}>
@@ -164,6 +154,7 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
 <{include file='db:slider_admin_footer.tpl' }>
 
 <script>
-trierTableau('slides_list', 2, '1|2|3|4|8|9', '<{$smarty.const.XOOPS_URL}>/Frameworks');  
+tth_set_value('last_asc', true);
+tth_trierTableau('slides_list', 2, '1-2-3-4-5-6-7-8-9');  
 </script>
 
