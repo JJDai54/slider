@@ -92,12 +92,23 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
                                  
         /* --------- selection du theme ----------------*/
         // Get Theme Form
-        \xoops_load('XoopsFormLoader');
-        $sldThemeSelect = new \XoopsFormSelectTheme(_AM_SLIDER_SLIDE_SELECT_THEME, 'select_theme', $select_theme,1, true);        
+         \xoops_load('XoopsFormLoader');
+//         $sldThemeSelect = new \XoopsFormSelectTheme(_AM_SLIDER_SLIDE_SELECT_THEME, 'select_theme', $select_theme,1, true);        
+//         $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
+//         $sldThemeSelect->setExtra("onChange=\"document.theme_form.submit()\"");
+        
+        
+        
+
+        $sldThemeSelect = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'select_theme', $select_theme);   
         $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
+        $sldThemeSelect->addOptionArray($themesHandler->getThemesAllowed(true));   
         $sldThemeSelect->setExtra("onChange=\"document.theme_form.submit()\"");
+        
+
         $GLOBALS['xoopsTpl']->assign('sldThemeSelect', $sldThemeSelect->render());
         $GLOBALS['xoopsTpl']->assign('current_DateTime', \formatTimestamp(time(), 'm'));
+        
         break;
         
     case 'new':

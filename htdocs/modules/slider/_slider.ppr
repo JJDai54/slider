@@ -12,11 +12,12 @@ DontOpen=0
 AbsolutePath=0
 FileFormat=0
 ProjectFilesOnly=0
+HTServer=localhost
 Extensions=*.*
 [Project tree]
 _slider
 	+slider
-		-admin
+		+admin
 			admin\about.php
 			admin\feedback.php
 			admin\footer.php
@@ -99,7 +100,7 @@ _slider
 			blocks\index.html
 			blocks\update_theme_slides.php
 			blocks\verif_slides_of_theme.php
-		-class
+		+class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -127,7 +128,7 @@ _slider
 			config\icons.php
 			config\index.html
 			config\paths.php
-		-docs
+		+docs
 			docs\changelog.txt
 			docs\credits.txt
 			docs\index.html
@@ -171,11 +172,11 @@ _slider
 			preloads\autoloader.php
 			preloads\core.php
 			preloads\index.html
-		-sql
+		+sql
 			sql\index.html
 			sql\mysql.sql
-		-templates
-			-admin
+		+templates
+			+admin
 				templates\admin\index.html
 				templates\admin\slider_admin_about.tpl
 				templates\admin\slider_admin_footer.tpl
@@ -213,18 +214,30 @@ _slider
 		_slider.ppr
 		xoops_version.php
 [Open project files]
-0=blocks\update_theme_slides.php
-1=include\fnc-slider.php
-2=class\About.php
+0=class\Slides.php
+1=admin\themes.php
+2=admin\slides.php
+3=class\ThemesHandler.php
+4=class\SlidesHandler.php
+5=class\Themes.php
 [Selected Project Files]
 Main=
-Selected=blocks\update_theme_slides.php
-[blocks\update_theme_slides.php]
-TopLine=101
-Caret=3,119
-[include\fnc-slider.php]
-TopLine=413
-Caret=1,431
-[class\About.php]
-TopLine=20
-Caret=1,40
+Selected=class\Themes.php
+[class\Slides.php]
+TopLine=228
+Caret=1,248
+[admin\themes.php]
+TopLine=39
+Caret=3,61
+[admin\slides.php]
+TopLine=75
+Caret=96,103
+[class\ThemesHandler.php]
+TopLine=195
+Caret=26,213
+[class\SlidesHandler.php]
+TopLine=137
+Caret=1,153
+[class\Themes.php]
+TopLine=212
+Caret=1,230

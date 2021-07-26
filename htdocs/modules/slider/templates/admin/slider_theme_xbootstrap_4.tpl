@@ -16,7 +16,7 @@
 <div id="sliderCarousel" class="<{$sldOptions.slider_transition}> carousel slide mb-4" data-ride="carousel"> 
 
 
-  <ol class="carousel-indicators">
+  <ol class="carousel-indicators carousel-indicators-bis">
       <{assign var="index" value="0"}>
       <{foreach item=slide from=$slides key=num_item}>
         <li <{if $index==0}>class="active"<{/if}> data-slide-to="<{$index}>" data-target="#sliderCarousel"></li>

@@ -15,15 +15,15 @@
 - corrections :
     procédure de désinstallation, réinitialistion des sliders d'origine   
 - Blocks random_slider :
-    le block update_slide a été renomé en random slider
-    Il n'est plus utilisé que poour les thèmes dont l'options raandom est utilisée
-    si aucun thème n'utilise cette options, laisser ce block invisible
-    Transefert des options de ce block dans la table des thèmes
-    Il n'affiche plus la liste des slides en cours
+    le block update_slide a été renomé en update_them_slides
+    Il est nécessaire d'activer ce bloc si une période ont été difine pour au moins un slide
+    si ce n'est pas le cas il n'est pas utile d'aciver ce block, il faudra juste générer les slider dans l'onglet "Thèmes"
+    Transefert des options de ce block dans la table des thèmes pour facilier la maintenance
+    L'affichage de la liste des slides en cours a été transférée dans le block verif_slides_of_theme
     
 - Blocks verif_slides_of_theme :
     Ajout du block 'verif_slides_of_theme'
-    Il est utilisé uniquement pour le dev, il affiche les slides courant pour le thème en cours
+    Il est utilisé uniquement pour le dev, il affiche les slides courants pour le thème en cours
     laisser ce blok invisible
     
 ==============================================================

@@ -227,6 +227,8 @@ if (!$slidesHandler){
     $slidesHandler = $helper->getHandler('Slides');
  }       
         $criteria = new \CriteriaCompo(new \Criteria("sld_theme", $ret['folder'], "="));
+        $criteria->add(new \Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
+            
 		$ret['nbSlides']   = $slidesHandler->getCountSlides($criteria);
 //echo "theme_ini : <hr><pre>" . print_r($ini, true ). "</pre><hr>";
 // exit;       
