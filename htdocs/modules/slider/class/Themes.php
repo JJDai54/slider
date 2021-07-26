@@ -222,7 +222,10 @@ class Themes extends \XoopsObject
 		$ret['name']       = (isset($ini['Name'])) ? $ini['Name'] : '';
 		$ret['version']    = (isset($ini['Version'])) ? $ini['Version'] : '';
 		$ret['css']        = $this->getCurrentCss();
-        
+if (!$slidesHandler){
+    $helper = \XoopsModules\Slider\Helper::getInstance();
+    $slidesHandler = $helper->getHandler('Slides');
+ }       
         $criteria = new \CriteriaCompo(new \Criteria("sld_theme", $ret['folder'], "="));
 		$ret['nbSlides']   = $slidesHandler->getCountSlides($criteria);
 //echo "theme_ini : <hr><pre>" . print_r($ini, true ). "</pre><hr>";

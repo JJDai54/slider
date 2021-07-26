@@ -12,3 +12,5 @@ jQuery(document).ready(function(){
 </script>
 
 <{/if}>
+
+</div>

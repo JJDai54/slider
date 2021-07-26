@@ -97,11 +97,11 @@ $modversion['tables'] = [
 ];
 // ------------------- Blocks ------------------- //
 $modversion['blocks'][] = [
-    'file'        => 'update_theme.php',
+    'file'        => 'update_slider.php',
     'name'        => _AM_SLIDER_RANDOM_SLIDER,
     'description' => _AM_SLIDER_RANDOM_SLIDER_DESC,
-    'show_func'   => 'b_slider_random_slider_show',
-    'edit_func'   => 'b_slider_random_slider_edit', //
+    'show_func'   => 'b_slider_update_theme_slides_show',
+    'edit_func'   => 'b_slider_update_theme_slides_edit', //
     'template'    => 'slider_block_random_slide_theme.tpl',
     'options'     => '',
 ];

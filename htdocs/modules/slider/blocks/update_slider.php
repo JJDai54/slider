@@ -34,7 +34,7 @@ include_once XOOPS_ROOT_PATH . '/modules/slider/include/common.php';
 function b_slider_update_theme_slides_show($options)
 {
 global $xoopsConfig, $helper;
-exit;
+//exit;
     $helper      = Helper::getInstance();
     //recupe du theme actif
     $theme = $xoopsConfig['theme_set'];
@@ -95,7 +95,7 @@ global $helper, $themesHandler;
 
 
 //echo "<hr>slides<pre>" . print_r($slides, true) . "</pre><hr>"; exit("build_new_tpl");   
-exit;
+//exit;
     //$themeVersion = sld_getThemesVersion($theme);
     $themesHandler = $helper->getHandler('Themes');
     $dbTheme = $themesHandler->getThemeByName($theme);
@@ -111,8 +111,8 @@ exit;
      $fFlag = XOOPS_ROOT_PATH . "/uploads/slider/images/slides/" . $theme . ".txt";
      $oldflag = sld_loadTextFile($fFlag);
      
-echo "<hr>===>newFlag = {$newFlag}<hr>";  
-echo "<hr>===>oldFlag = {$oldflag}<hr>";  
+// echo "<hr>===>newFlag = {$newFlag}<hr>";  
+// echo "<hr>===>oldFlag = {$oldflag}<hr>";  
     
     //si le nouveau flag egal l'ancien flag pas de reconstruction du tpl des slides
     if ($newFlag == $oldflag && !$forceRebuild) return false;   
