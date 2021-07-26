@@ -38,7 +38,7 @@ define('_MB_SLIDER_SLD_HAS_PERIODE', 'A period is define');
 define('_MB_SLIDER_SLD_THEME', 'Theme');
 define('_MB_SLIDER_SLD_IMAGE', 'Image');
 
-define('_MB_SLIDER_SELECTED', 'Slides sélecionnés');
+define('_MB_SLIDER_SELECTED', 'Slides sélected');
 define('_MB_SLIDER_TPL_OK', 'le template a été regénéré');
 define('_MB_SLIDER_TPL_NOT_OK', 'le template n\'a pas été modifié');
 define('_MB_SLIDER_TPL_HEURE_COURANTE', "Il est %s");

@@ -88,7 +88,7 @@ define('_MI_SLIDER_DISQUS_COMMENTS', 'Disqus comments');
 define('_MI_SLIDER_DISQUS_COMMENTS_DESC', 'Allow Disqus comments in the single page');
 
 // JJDai
-define('_MI_SLIDER_UPDATE_THEME', 'slider_update_tpl');
+define('_AM_SLIDER_RANDOM_SLIDER', 'slider_update_tpl');
 \define ('_ MI_SLIDER_UPDATE_THEME_DESC', 'Slider.tpl update block for the current theme');
 
 \define ('_ MI_SLIDER_HIGHSLIDE', 'Framework "highslide"');

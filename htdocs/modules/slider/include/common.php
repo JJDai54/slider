@@ -25,6 +25,9 @@ if (!\defined('XOOPS_ICONS32_PATH')) {
 if (!\defined('XOOPS_ICONS32_URL')) {
     define('XOOPS_ICONS32_URL', XOOPS_URL . '/Frameworks/moduleclasses/icons/32');
 }
+
+
+
 define('SLIDER_DIRNAME', 'slider');
 define('SLIDER_PATH', XOOPS_ROOT_PATH . '/modules/' . SLIDER_DIRNAME);
 define('SLIDER_URL', XOOPS_URL . '/modules/' . SLIDER_DIRNAME);
@@ -48,5 +51,16 @@ include_once XOOPS_ROOT_PATH . '/class/xoopsrequest.php';
 include_once SLIDER_PATH . '/include/functions.php';
 include_once SLIDER_PATH . '/include/fnc-slider.php';
 
+define ('_SLD_PERIODICITY_NEVER',     'j'); // Jamais
+define ('_SLD_PERIODICITY_RANDOM',    'r'); // Random
+define ('_SLD_PERIODICITY_MINUTE',    'n'); // Minute pour tester en dev
+define ('_SLD_PERIODICITY_HOUR',      'h'); // hour
+define ('_SLD_PERIODICITY_DAY',       'd'); // day
+define ('_SLD_PERIODICITY_WEEK',      'w'); // week
+define ('_SLD_PERIODICITY_MONTH',     'm'); // month
+define ('_SLD_PERIODICITY_BIMONTLY',  'b'); // bimestre
+define ('_SLD_PERIODICITY_QUATER',    'q'); // trimestre
+define ('_SLD_PERIODICITY_SEMESTER',  's'); // semestre
+define ('_SLD_PERIODICITY_YEAR',      'y'); // year
 
 //define('pathModuleAdmin', SLIDER_URL . $pathModuleAdmin);

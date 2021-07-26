@@ -1,4 +1,44 @@
 ==============================================================
+2.08 [2021/07/24 15:00:00] - JJDai (jjdelalandre@orange.fr)
+==============================================================
+- Onglet 'Themes' :
+- revue complete de l'interface
+- Fonctionalité ajoutée : 
+    genération des sliders individuellement
+    réinitialisation des sliders d'origine individuellement
+- Onglet 'Index' :
+    Transfert des traitement dans les autres onglets "Slides" et "Thèmes"
+    Affichage des statistiques par thème
+- Onglet "Slides" :
+    Sélection de slide déjà téléchargé
+    Le nom des slides téléchargés est préfixée du nom de l'image d'origine ce qui permet une sélection plus facile 
+- corrections :
+    procédure de désinstallation, réinitialistion des sliders d'origine   
+- Blocks random_slider :
+    le block update_slide a été renomé en random slider
+    Il n'est plus utilisé que poour les thèmes dont l'options raandom est utilisée
+    si aucun thème n'utilise cette options, laisser ce block invisible
+    Transefert des options de ce block dans la table des thèmes
+    Il n'affiche plus la liste des slides en cours
+    
+- Blocks verif_slides_of_theme :
+    Ajout du block 'verif_slides_of_theme'
+    Il est utilisé uniquement pour le dev, il affiche les slides courant pour le thème en cours
+    laisser ce blok invisible
+    
+==============================================================
+2.06 [2021/06/04 15:00:00] - JJDai (jjdelalandre@orange.fr)
+==============================================================
+- Intégration des thème xsBootstrap 4 (xswatch4)
+- Ajout de l'onglet "theme"
+- Ajout de la table theme pour stocker le sens de défilement, et le style CSS
+- Sélection de slides déjà uploadé pour un autre thème
+  La table theme est remplie automatiquement avec les themes actif.
+- Possibilité de définir la transition les thèmes xswatch4   
+- Possibilité de définir le stylee CSS parmi les 21 disponibles les thèmes xswatch4   
+- Ajout de la fonction de suppression des slides inutilisée.  
+
+==============================================================
 2.05 [2021/06/04 15:00:00] - JJDai (jjdelalandre@orange.fr)
 ==============================================================
 - renomage des champs sld_description et sld_style_description

@@ -29,12 +29,17 @@ $sysPathIcon32 = $moduleInfo->getInfo('sysicons32');
 $adminmenu[] = [
     'title' => _MI_SLIDER_ADMENU1,
     'link' => 'admin/index.php',
-    'icon' => $sysPathIcon32.'/dashboard.png',
+    'icon' => $sysPathIcon32.'/administration.png',
 ];
 $adminmenu[] = [
     'title' => _MI_SLIDER_ADMENU2,
     'link' => 'admin/slides.php',
     'icon' => 'assets/icons/32/dashboard.png',
+];
+$adminmenu[] = [
+    'title' => _MI_SLIDER_ADMENU4,
+    'link' => 'admin/themes.php',
+    'icon' => 'assets/icons/32/style_css.png',
 ];
 $adminmenu[] = [
     'title' => _MI_SLIDER_ADMENU3,

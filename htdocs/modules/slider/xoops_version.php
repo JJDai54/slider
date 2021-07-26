@@ -26,9 +26,9 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 2.05,
-    'release_date'        => '2021/06/04',
-    'release'             => '09-05-2021',
+    'version'             => 2.08,
+    'release_date'        => '2021/07/04',
+    'release'             => '21-07-2021',
     'module_status'       => 'Beta 1',
     'description'         => _MI_SLIDER_DESC,
     'author'              => 'JJDai',
@@ -72,11 +72,13 @@ $modversion = [
 // ------------------- Templates ------------------- //
 $modversion['templates'] = [
     // Admin templates
-    ['file' => 'slider_theme_xbootstrap.tpl', 'description' => 'Generation du nouveau tpl pour le theme', 'type' => 'admin'],
+    ['file' => 'slider_theme_xbootstrap_3.tpl', 'description' => 'Generation du nouveau tpl pour les themes bootstrap 3', 'type' => 'admin'],
+    ['file' => 'slider_theme_xbootstrap_4.tpl', 'description' => 'Generation du nouveau tpl pour les themes bootstrap 4', 'type' => 'admin'],
     ['file' => 'slider_admin_about.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_header.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_index.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_slides.tpl', 'description' => '', 'type' => 'admin'],
+    ['file' => 'slider_admin_themes.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_footer.tpl', 'description' => '', 'type' => 'admin'],
     // User templates
 //     ['file' => 'slider_header.tpl', 'description' => ''],
@@ -91,16 +93,27 @@ $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
 // Tables
 $modversion['tables'] = [
     'slider_slides',
+    'slider_themes',
 ];
 // ------------------- Blocks ------------------- //
 $modversion['blocks'][] = [
     'file'        => 'update_theme.php',
-    'name'        => _MI_SLIDER_UPDATE_THEME,
-    'description' => _MI_SLIDER_UPDATE_THEME_DESC,
-    'show_func'   => 'b_slider_update_theme_show',
-    'edit_func'   => 'b_slider_update_theme_edit', //
-    'template'    => 'slider_block_update_theme.tpl',
-    'options'     => '0|0',     // periodicite | show block
+    'name'        => _AM_SLIDER_RANDOM_SLIDER,
+    'description' => _AM_SLIDER_RANDOM_SLIDER_DESC,
+    'show_func'   => 'b_slider_random_slider_show',
+    'edit_func'   => 'b_slider_random_slider_edit', //
+    'template'    => 'slider_block_random_slide_theme.tpl',
+    'options'     => '',
+];
+
+$modversion['blocks'][] = [
+    'file'        => 'verif_slides_of_theme.php',
+    'name'        => _MI_SLIDER_VERIF_SLIDES_OF_THEME,
+    'description' => _MI_SLIDER_VERIF_SLIDES_OF_THEME_DESC,
+    'show_func'   => 'b_slider_verif_slides_of_theme_show',
+    'edit_func'   => 'b_slider_verif_slides_of_theme_edit', //
+    'template'    => 'slider_block_slides_of_theme.tpl',
+    'options'     => '',
 ];
 
 // ------------------- Config ------------------- //

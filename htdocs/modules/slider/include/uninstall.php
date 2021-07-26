@@ -10,6 +10,7 @@
 
 use XoopsModules\Slider;
 
+include_once ("fnc-slider.php");
 /**
  * Prepares system prior to attempting to uninstall module
  * @param \XoopsModule $module {@link XoopsModule}
@@ -44,6 +45,11 @@ function xoops_module_uninstall_slider(\XoopsModule $module)
     $helper->loadLanguage('admin');
 
     //------------------------------------------------------------------
+    // réinitialise tous les themes si besoin
+    //------------------------------------------------------------------
+    cleanAllThemesFolder();
+    
+    //------------------------------------------------------------------
     // Remove uploads folder (and all subfolders) if they exist
     //------------------------------------------------------------------
 
@@ -61,9 +67,6 @@ function xoops_module_uninstall_slider(\XoopsModule $module)
     }
     /*
     //------------ START ----------------
-    //------------------------------------------------------------------
-    // Remove xsitemap.xml from XOOPS root folder if it exists
-    //------------------------------------------------------------------
     $xmlfile = $GLOBALS['xoops']->path('xsitemap.xml');
     if (is_file($xmlfile)) {
         if (false === ($delOk = \unlink($xmlfile))) {

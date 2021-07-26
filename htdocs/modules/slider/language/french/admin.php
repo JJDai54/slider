@@ -44,7 +44,7 @@ define('_AM_SLIDER_SLIDES_LIST', 'Liste des Slides');
 define('_AM_SLIDER_SLIDE_ADD', 'Ahouter le Slide');
 define('_AM_SLIDER_SLIDE_EDIT', 'Editer le  Slide');
 // Elements of Slide
-define('_AM_SLIDER_SLIDE_ID', 'Id');
+define('_AM_SLIDER_ID', 'Id');
 define('_AM_SLIDER_SLIDE_TITLE', 'Titre');
 define('_AM_SLIDER_SLIDE_DESCRIPTION', 'Description');
 define('_AM_SLIDER_SLIDE_WEIGHT', 'Poids');
@@ -85,7 +85,7 @@ define('_AM_SLIDER_ACTIVATE', "Activation");
 define('_AM_SLIDER_DESACTIVATE', "Désactivation");
 
 define('_AM_SLIDER_CLEAN_DIR', "Thèmes");
-define('_AM_SLIDER_CLEAN_DIR_DESC', "Rinitialise les fichiers 'slider.tpl' de chaque thème");
+define('_AM_SLIDER_CLEAN_DIR_DESC', "Rinitialise les fichiers 'slider.tpl' d'origine de chaque thème");
 define('_AM_SLIDER_BLOCK', "Slider Block");
 define('_AM_SLIDER_BLOCK_DESC', "Active le block qui permet la mise à jour des slides");
 define('_AM_SLIDER_TRAITEMENTS', "Traitements");
@@ -95,7 +95,7 @@ define('_AM_SLIDER_SUBTITLE_DESC', "Texte ou sous-titre affiché sur le slide");
 define('_AM_SLIDER_BUTTON_URL', "URL du bouton");
 define('_AM_SLIDER_SLIDE_READ_MORE_DESC', "Lien sur un article ou une page avec plus d'informations");
 define('_AM_SLIDER_SLIDE_PROCESSING_OK', "Traitement effectué");
-define('_AM_SLIDER_REFRESH_SLIDERS', "Rafraichier les sliders");
+define('_AM_SLIDER_REFRESH_SLIDERS', "Rafraichir les sliders");
 define('_AM_SLIDER_REFRESH_SLIDERS_DESC', "Réinitialise tous les thèmes et force la reconstruction des sliders");
 define('_AM_SLIDER_SLIDE_CURRENT_STATUS', "Courrant");
 define('_AM_SLIDER_UP', "Monter");
@@ -146,5 +146,52 @@ define('_AM_SLIDER_TITLE', "Titre principal");
 define('_AM_SLIDER_SUBTITLE', "Sous-titre");
 define('_AM_SLIDER_BUTTON', "Bouton");
 define('_AM_SLIDER_OPTIONS', "Options");
+
+define('_AM_SLIDER_theme_transition', "Défilement");
+define('_AM_SLIDER_THEME_TRANSITION_DESC', "Cette option n'est disponible que pour les thèmes xbootstrap 4 (xswatch4)");
+define('_AM_SLIDER_THEME_TRANSITION_VERTICAL', "Vertical");
+define('_AM_SLIDER_THEME_TRANSITION_HORIZONTAL', "Horizontal");
+
+define('_AM_SLIDER_NAME', "Nom");
+define('_AM_SLIDER_THEME_CSS', "CSS");
+define('_AM_SLIDER_THEME_CSS_DESC', "Style CSS du thème.<br>Dossiers préfixés \"css_\" des thèmes xbootstrap 4 (xswatch4)");
+define('_AM_SLIDER_THEME_VERSION', "Version");
+define('_AM_SLIDER_THEME_VERSION_DESC', "Vérifiez la vesion du thème bottstrap avent de changer cette valeur");
+define('_AM_SLIDER_REFRESH_TBL_THEME', "Initialiser la table");
+define('_AM_SLIDER_THEME_TPL_SLIDER', "Template");
+define('_AM_SLIDER_THEME_TPL_SLIDER_DESC', "Template à utiliser pour la génération du slider.<br>utiliez \"slider_theme_xbootstrap_4.tpl\" pour les thèmes xbootstrap 4 (xswatch4)");
+define('_AM_SLIDER_FOLDER', "Dossier");
+define('_AM_SLIDER_THEMES_LIST', "Retour à la liste des thèmes");
+define('_AM_SLIDER_THEME_EDIT', "Edition du thème : %s");
+define('_AM_SLIDER_SLIDE_IMG_DESC', "Sélectionnez une image existante ou téléchargez une nouvelle image.<br>Laissez vide pour garder l'image existante.");
+define('_AM_SLIDER_IMG_UPLODED', "Images téléchargées : ");
+define('_AM_SLIDER_IMG_DELETED_1', "%s images inutilsées ont été suprimées.");
+define('_AM_SLIDER_IMG_DELETED_0', "Aucune imges a supprimer.");
+define('_AM_SLIDER_PURGER_IMG', "Purger les \"slides\" inutilisés");
+define('_AM_SLIDER_PURGER_IMG_DESC', "Les \"slides\" inutilisées de tous les thèmes seront dfinitement supprimées.");
+
+define('_AM_SLIDER_THEME_DESACTIVER', "Rinitialiser les slides d'origine");
+define('_AM_SLIDER_GENERER_SLIDER', "Générer le Slider");
+define('_AM_SLIDER_GENERER_SLIDER_2', "Générer de nouveau le Slider");
+define('_AM_SLIDER_THEME_SURCHARGER', "Surcharger my_css.css");
+define('_AM_SLIDER_ALLOW_UPDATE', "MAJ");
+define('_AM_SLIDER_GENERER', 'Générer');
+
+define('_AM_SLIDER_PERIODICITE_RND_NEVER', 'Jamais (Conseillé)');
+define('_AM_SLIDER_PERIODICITE_RND_RANDOM', 'Aléatoire à chaque rafraichissement de la page (Déconseillé)');
+define('_AM_SLIDER_PERIODICITE_RND_HOUR', 'Une fois par heure');
+define('_AM_SLIDER_PERIODICITE_RND_MINUTE', 'Une fois par minute');
+define('_AM_SLIDER_PERIODICITE_RND_DAY', 'Une fois par jour');
+define('_AM_SLIDER_PERIODICITE_RND_WEEK', 'Une fois par semaine');
+define('_AM_SLIDER_PERIODICITE_RND_MONTH', 'Une fois par mois');
+define('_AM_SLIDER_PERIODICITE_RND_BIMONTHLY', 'Une fois tous les deux mois');
+define('_AM_SLIDER_PERIODICITE_RND_QUATER', 'Une fois par trimestre');
+define('_AM_SLIDER_PERIODICITE_RND_SEMESTER', 'Une fois par semestre');
+define('_AM_SLIDER_PERIODICITE_RND_YEAR', 'Une fois par an');
+
+define('_AM_SLIDER_THEME_RANDOM', 'MAJ aléatoire');
+define('_AM_SLIDER_PURGER_SLIDES', "Purger le(s) %s slide(s) inutilisé(s)");
+define('_AM_SLIDER_THEMES_STATS1', "Thème %s : %s slide(s) défini(s) dont %s en cours");
+define('_AM_SLIDER_THEMES_STATS2', "<tr><td>Thème %s : </td><td>%s slide(s) défini(s)</td><td> dont %s en cours</td></tr>");
 
 // ---------------- End ----------------

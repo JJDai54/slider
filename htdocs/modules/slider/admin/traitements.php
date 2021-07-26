@@ -31,11 +31,15 @@ $op = Request::getCmd('op', '');
 
 
 //-------------------------------------------------------        
+$msg = _AM_SLIDER_SLIDE_PROCESSING_OK;
+
 switch ($op) {
+    //fore la reconstruction du slider avec les slides du module
     case 'force_rebuild_slider' :
         \force_rebuild_slider();
     break;
     
+    //réinstall le fichier slider.tpl d'origine
     case 'clean_themes_dir':
         \cleanAllThemesFolder();
     break;
@@ -48,9 +52,13 @@ switch ($op) {
         \setBlockSliderVisible(true);
     break;
     
+    case 'purger_sliders_folder':
+        $imgDeleted = \purgerSliderFolder(1);
+        $msg = ($imgDeleted == 0) ? _AM_SLIDER_IMG_DELETED_0: sprintf(_AM_SLIDER_IMG_DELETED_1, $imgDeleted);
+    break;
     default:
 
 }
 
 require __DIR__ . '/footer.php';
-\redirect_header("index.php", 3, _AM_SLIDER_SLIDE_PROCESSING_OK);
+\redirect_header("index.php", 3, $msg);

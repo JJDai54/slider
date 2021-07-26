@@ -36,21 +36,32 @@ $countSlides = $slidesHandler->getCount();
 // InfoBox Statistics
 $adminObject->addInfoBox(_AM_SLIDER_STATISTICS);
 // Info elements
-$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_SLIDER_THEREARE_SLIDES . '</label>', $countSlides));
+//$adminObject->addInfoBoxLine(\sprintf( '<label>' . _AM_SLIDER_THEREARE_SLIDES . '</label>', $countSlides));
+$statStr = implode("\n", $themesHandler->getStatics(_AM_SLIDER_THEMES_STATS2));
+$adminObject->addInfoBoxLine("<table>{$statStr}</table>");
 
 /***********************************************/
 // traitements
+/*  a supprimer plus utiles, mais je grde en prévision
 $adminObject->addInfoBox(_AM_SLIDER_TRAITEMENTS);
 // Info elements
 
 $traitement = sprintf("<label>%s</label> : <a href='%s'>%s</a>", _AM_SLIDER_BLOCK, "traitements.php?op=activate_block", _AM_SLIDER_BLOCK_DESC);
 $adminObject->addInfoBoxLine($traitement);
+$adminObject->addInfoBoxLine('');
 
 $traitement = sprintf("<label>%s</label> : <a href='%s'>%s</a>", _AM_SLIDER_CLEAN_DIR, "traitements.php?op=clean_themes_dir", _AM_SLIDER_CLEAN_DIR_DESC);
 $adminObject->addInfoBoxLine($traitement);
+$adminObject->addInfoBoxLine('');
 
 $traitement = sprintf("<label>%s</label> : <a href='%s'>%s</a>", _AM_SLIDER_REFRESH_SLIDERS, "traitements.php?op=force_rebuild_slider", _AM_SLIDER_REFRESH_SLIDERS_DESC);
 $adminObject->addInfoBoxLine($traitement);
+$adminObject->addInfoBoxLine('');
+
+$traitement = sprintf("<label>%s</label> : <a href='%s'>%s</a>", _AM_SLIDER_PURGER_IMG, "traitements.php?op=purger_sliders_folder", _AM_SLIDER_PURGER_IMG_DESC);
+$adminObject->addInfoBoxLine($traitement);
+$adminObject->addInfoBoxLine('');
+*/
 /***********************************************/
 
 // Upload Folders

@@ -79,6 +79,8 @@ chmod($configurator->uploadFolders[$i], 0777);
     }
 
     //  ---  COPY blank.gif FILES ---------------
+    /* pas utile pour ce module  voir fichier config.php - JJDai */
+ 
     if ($configurator->copyBlankFiles && \is_array($configurator->copyBlankFiles)) {
         $file = \dirname(__DIR__) . '/assets/images/blank.gif';
         foreach (\array_keys($configurator->copyBlankFiles) as $i) {

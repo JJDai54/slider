@@ -117,17 +117,34 @@ class Slides extends \XoopsObject
         }else{
           $urlImg = SLIDER_UPLOAD_IMAGE_URL . "/slides/" . $slideImg;
         }
+        
+        //choix d'un image existante:
+        $dirname = XOOPS_ROOT_PATH . '/uploads/slider/images/slides';
+        $listImg = sld_getFilePrefixedBy($dirname, array('jpg','png'), '', true);
+
+        //si il n"y a pas de skin ou qu'il n'y en a qu'un seul, unitile de proposer l'option    
+        if(count($listImg) > 1){
+            $inpImg= new \XoopsFormSelect(_AM_SLIDER_IMG_UPLODED, 'sld_image', $slideImg);   
+            $inpImg->setDescription(_AM_SLIDER_IMG_UPLODED_DESC);        
+            $inpImg->addOptionArray($listImg);   
+        }
+
+
+        $img = new \XoopsFormLabel('', "<br><img src='{$urlImg}'  name='image_img2' id='image_img2' alt='' style='max-width:60%'>");
 //        $urlImg =  SLIDER_UPLOAD_IMAGE_URL . '/slides/' . $getSldImage;        
         //$uploadirectory      = XOOPS_ROOT_PATH . "/uploads/slider";        
         $upload_size = $helper->getConfig('maxsize_image'); 
 
-        $imageTray  = new \XoopsFormElementTray(_AM_SLIDER_SLIDE . '<br><br>' . sprintf(_AM_SLIDER_UPLOADSIZE, $upload_size / 1024), '<br>'); 
-        $imageTray->addElement(new \XoopsFormLabel('', "<br><img src='{$urlImg}'  name='image_img2' id='image_img2' alt='' style='max-width:60%'>")); 
+        $imageTray  = new \XoopsFormElementTray(_AM_SLIDER_SLIDE,"<br>"); 
+        $imageTray->setDescription(_AM_SLIDER_SLIDE_IMG_DESC . '<br>' . sprintf(_AM_SLIDER_UPLOADSIZE, $upload_size / 1024), '<br>');
+        
+        //$imageTray->addElement($img); 
 //echo "{$urlImg}<br>"; 
+        if(count($listImg) > 1) $imageTray->addElement($inpImg, false);
         $imageTray->addElement(new \XoopsFormFile(_AM_SLIDER_SLIDE_TO_LOAD, 'sld_image', $upload_size), false);
         
-        $form->addElement($imageTray, true);
- $stylTA = "style='width:350px';";  
+        $form->addElement($img, false);
+        $form->addElement($imageTray, true); $stylTA = "style='width:350px';";  
  $nbLinesTA = 8;     
         //--------------------------------------------------------------------------------
         $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_TITLE . "</th><tr>");
@@ -222,10 +239,11 @@ class Slides extends \XoopsObject
         }else{
             $theme = $this->getVar('sld_theme');
         }
-
+//global $themesHandler;
+$themesHandler = $helper->getHandler('Themes');
         $sldThemeSelect = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'sld_theme', $theme);   
         $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
-        $sldThemeSelect->addOptionArray(sld_getThemesAllowed(true));   
+        $sldThemeSelect->addOptionArray($themesHandler->getThemesAllowed(true));   
         $form->addElement($sldThemeSelect);
 
         //----------------------------------------------------        

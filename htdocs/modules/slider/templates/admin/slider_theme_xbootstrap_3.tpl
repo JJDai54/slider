@@ -1,21 +1,20 @@
     <!-- Indicators -->
 <style>
 .carousel-indicators-bis li {
-<{$options.slider_style_points}>
+<{$sldOptions.slider_style_points}>
 }
 .carousel-indicators-bis .active {
-<{$options.slider_style_point_active}>
+<{$sldOptions.slider_style_point_active}>
 
 }
 
-@keyframes <{$options.clignotement_name}> {
-<{$options.slider_style_clignotement}>
+@keyframes <{$sldOptions.clignotement_name}> {
+<{$sldOptions.slider_style_clignotement}>
 }
 </style>
 
-</style>
-    
-  
+<div id="myCarousel" class="carousel slide slideshow" data-ride="carousel">
+
   <ol class="carousel-indicators carousel-indicators-bis">
       <{assign var="index" value="0"}>
       <{foreach item=slide from=$slides key=num_item}>
@@ -46,5 +45,9 @@
         <{assign var=index value=$index+1}>
       <{/foreach}>
       
+      
   </div>
-  
+
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="icon-prev"></span></a>
+  <a data-slide="next" href="#myCarousel" class="right carousel-control"><span class="icon-next"></span></a>
+</div><!-- .carousel -->  

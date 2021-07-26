@@ -13,7 +13,7 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
     <table  id="slides_list"  name="slides_list" class='table table-bordered'>
         <thead>
             <tr class='head'>
-                <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_ID}></th>
+                <th class="center"><{$smarty.const._AM_SLIDER_ID}></th>
                 <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_SHORT_NAME}></th>
                 <{* <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_TITLE}></th> *}>
                 <{* <th class="center"><{$smarty.const._AM_SLIDER_SLIDE_DESCRIPTION}></th> *}>

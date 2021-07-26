@@ -26,8 +26,26 @@ CREATE TABLE `slider_slides` (
   `sld_theme` VARCHAR(100) NOT NULL DEFAULT '',
   `sld_style_title` TEXT NOT NULL ,
   `sld_style_subtitle` TEXT NOT NULL ,
+  `sld_button_title` VARCHAR(80) NOT NULL ,
   `sld_style_button` TEXT NOT NULL ,
   `sld_image` VARCHAR(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`sld_id`)
 ) ENGINE=InnoDB;
 
+
+#
+# Structure table for `slider_themes` 4
+#
+
+CREATE TABLE `slider_themes` (
+  `theme_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `theme_folder` VARCHAR(80) NOT NULL DEFAULT '',
+  `theme_css` VARCHAR(80) NOT NULL DEFAULT '',
+  `theme_random`  VARCHAR(1) NOT NULL DEFAULT 'j',
+  `theme_transition`  INT(10) NOT NULL DEFAULT '0',
+  `theme_tpl_slider` VARCHAR(80) NOT NULL DEFAULT '',
+  `theme_status`  INT(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`theme_id`)
+) ENGINE=InnoDB;
+
+ 

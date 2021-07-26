@@ -43,7 +43,7 @@ define('_AM_SLIDER_SLIDES_LIST', 'List of Slides');
 define('_AM_SLIDER_SLIDE_ADD', 'Add Slide');
 define('_AM_SLIDER_SLIDE_EDIT', 'Edit Slide');
 // Elements of Slide
-define('_AM_SLIDER_SLIDE_ID', 'Id');
+define('_AM_SLIDER_ID', 'Id');
 define('_AM_SLIDER_SLIDE_TITLE', 'Title');
 define('_AM_SLIDER_SLIDE_DESCRIPTION', 'Description');
 define('_AM_SLIDER_SLIDE_WEIGHT', 'Weight');
@@ -94,7 +94,7 @@ define('_AM_SLIDER_SUBTITLE_DESC', "Text or subtitle displayed on the slide");
 define('_AM_SLIDER_BUTTON_URL', "URL of button");
 define('_AM_SLIDER_SLIDE_READ_MORE_DESC', "Link on an article or a page with more information");
 define('_AM_SLIDER_SLIDE_PROCESSING_OK', "Processing carried out");
-define('_AM_SLIDER_REFRESH_SLIDERS', "Rafraichier les sliders");
+define('_AM_SLIDER_REFRESH_SLIDERS', "Rafraichir les sliders");
 define('_AM_SLIDER_REFRESH_SLIDERS_DESC', "Réinitialise tous les thèmes et force la reconstruction des sliders");
 define('_AM_SLIDER_SLIDE_CURRENT_STATUS', "Current");
 define('_AM_SLIDER_UP', "Up");

@@ -11,14 +11,14 @@ jQuery(document).ready(function(){
 //alert("masquage du titre");
 </script>
 
-<{else}>
+<{/if}>
 
     <center><b><{$smarty.const._MB_SLIDER_SELECTED}></b></center>
     <center><b><{$block.generation}></b></center>
     <center><b><{$block.now}></b></center>
 
-
-    
+   
+    <center><b><{$block.msg}></b></center>
     <table class='table table-<{$table_type}>'>
         <thead>
             <tr class='head'>
@@ -35,7 +35,6 @@ jQuery(document).ready(function(){
                 <th class='center'><{$smarty.const._MB_SLIDER_SLD_IMAGE}></th>
             </tr>
         </thead>
-        <{if count($block)}>
         <tbody>
             <{foreach item=slide from=$block.slides}>
             <tr class='<{cycle values="odd, even"}>'>
@@ -49,13 +48,17 @@ jQuery(document).ready(function(){
                 <td class='center'><{$slide.str_date_begin}></td>
                 <td class='center'><{$slide.str_date_end}></td>
                 <td class='center'><{$slide.theme}></td>
-                <td class='center'><img src="<{$slide.image_fullName}>" alt="slides" width='150px'> /</td>
+                <td class='center'><img src="<{$slide.image_fullName}>" alt="slides" width='150px' /></td>
             </tr>
             <{/foreach}>
         </tbody>
+        <{if count($block.slides > 0)}>
         <{/if}>
         <tfoot><tr><td>&nbsp;</td></tr></tfoot>
     </table>
-<{/if}>
 
 </div>
+  
+
+
+

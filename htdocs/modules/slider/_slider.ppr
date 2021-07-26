@@ -5,7 +5,7 @@ Compilator.CompileOnBackground=0
 Compilator.ProgSaveAll=0
 Compilator.ProgRunSelection=0
 Compilator.LogType=0
-DefaultDir=J:\Xoops\_Xoops\modules-JJD\slider\_module\slider
+DefaultDir=J:\Xoops\modules-JJD\slider\Projet\htdocs\modules\slider
 DefaultCP=0
 LogtoEnd=1
 DontOpen=0
@@ -26,7 +26,9 @@ _slider
 			admin\index.php
 			admin\menu.php
 			admin\slides.php
+			admin\themes.php
 			admin\traitements.php
+			admin\xswatch4.php
 		-assets
 			-css
 				-admin
@@ -45,32 +47,60 @@ _slider
 						assets\icons\16\arrows\last-1.png
 						assets\icons\16\arrows\up-0.png
 						assets\icons\16\arrows\up-1.png
+					assets\icons\16\administration.png
+					assets\icons\16\blank.png
 					assets\icons\16\blank-08.png
 					assets\icons\16\blank-16.png
+					assets\icons\16\configuration_small.png
+					assets\icons\16\generer.png
+					assets\icons\16\generer-1.png
+					assets\icons\16\generer-2.png
 					assets\icons\16\index.html
+					assets\icons\16\periodicity-0.png
+					assets\icons\16\periodicity-1.png
+					assets\icons\16\periodicity-2.png
+					assets\icons\16\retour.png
+					assets\icons\16\retour-1.png
+					assets\icons\16\retour-2.png
 					assets\icons\16\status0.png
 					assets\icons\16\status1.png
 					assets\icons\16\status2.png
 					assets\icons\16\status3.png
 					assets\icons\16\status4.png
+					assets\icons\16\verrou-close.gif
+					assets\icons\16\verrou-close.png
+					assets\icons\16\verrou-open.gif
+					assets\icons\16\verrou-open.png
 				-32
+					assets\icons\32\administration.png
 					assets\icons\32\broken.png
 					assets\icons\32\dashboard.png
+					assets\icons\32\generer-1.png
+					assets\icons\32\generer-2.png
 					assets\icons\32\index.html
+					assets\icons\32\retour.png
+					assets\icons\32\retour-1.png
+					assets\icons\32\retour-2.png
+					assets\icons\32\style_css.png
 				assets\icons\index.html
 			-images
 				assets\images\blank.gif
 				assets\images\blank.png
 				assets\images\index.html
 				assets\images\logoModule.png
+				assets\images\slide-temp-00.jpg
+				assets\images\slide-temp-01.jpg
+				assets\images\slide-temp-01.png
+				assets\images\slide-temp-01.svg
 			-js
 				assets\js\functions.js
 				assets\js\highslide.js
 				assets\js\index.html
 			assets\index.html
-		+blocks
+		-blocks
 			blocks\index.html
-			blocks\update_theme.php
+			blocks\random_slider.php
+			blocks\verif_slides_of_theme.php
 		+class
 			-Common
 				class\Common\Breadcrumb.php
@@ -90,6 +120,8 @@ _slider
 			class\index.html
 			class\Slides.php
 			class\SlidesHandler.php
+			class\Themes.php
+			class\ThemesHandler.php
 			class\Utility.php
 		-config
 			config\admin.yml
@@ -104,6 +136,7 @@ _slider
 			docs\install.txt
 			docs\license.txt
 			docs\readme.txt
+			docs\todo.txt
 		+include
 			include\common.php
 			include\fnc-slider.php
@@ -114,8 +147,8 @@ _slider
 			include\update.php
 			include\xoops_version.inc.php
 		+language
-			+english
-				+help
+			-english
+				-help
 					language\english\help\help.html
 					language\english\help\index.html
 				language\english\admin.php
@@ -150,12 +183,16 @@ _slider
 				templates\admin\slider_admin_header.tpl
 				templates\admin\slider_admin_index.tpl
 				templates\admin\slider_admin_slides.tpl
+				templates\admin\slider_admin_themes.tpl
 				templates\admin\slider_main-01.tpl
 				templates\admin\slider_main-02.tpl
-				templates\admin\slider_theme_xbootstrap.tpl
+				templates\admin\slider_slider.tpl
+				templates\admin\slider_theme_xbootstrap_3.tpl
+				templates\admin\slider_theme_xbootstrap_4.tpl
 			-blocks
 				templates\blocks\index.html
-				templates\blocks\slider_block_update_theme.tpl
+				templates\blocks\slider_block_random_slide_theme.tpl
+				templates\blocks\slider_block_slides_of_theme.tpl
 			templates\index.html
 		-testdata
 			-english
@@ -169,54 +206,79 @@ _slider
 			testdata\index.php
 			testdata\slider.tpl
 			testdata\slider-old.tpl
-		+versions
+		-versions
 			versions\index.html
 			versions\Slider_2_02.php
 			versions\Slider_2_03.php
 			versions\Slider_2_05.php
+			versions\Slider_2_08.php
 		_slider.ppr
 		xoops_version.php
 [Open project files]
-0=class\SlidesHandler.php
-1=class\Slides.php
-2=xoops_version.php
-3=language\french\modinfo.php
-4=include\common.php
-5=docs\changelog.txt
-6=admin\slides.php
-7=templates\admin\slider_admin_slides.tpl
-8=language\french\admin.php
-9=language\english\admin.php
+0=include\fnc-slider.php
+1=include\uninstall.php
+2=sql\mysql.sql
+3=class\ThemesHandler.php
+4=class\Themes.php
+5=class\SlidesHandler.php
+6=class\Slides.php
+7=templates\admin\slider_admin_themes.tpl
+8=admin\themes.php
+9=admin\traitements.php
+10=templates\admin\slider_theme_xbootstrap_4.tpl
+11=language\french\admin.php
+12=docs\changelog.txt
+13=admin\index.php
+14=language\french\help\help.html
+15=language\french\help\help - Copie.html
 [Selected Project Files]
 Main=
-Selected=templates\admin\slider_admin_slides.tpl
+Selected=language\french\help\help.html
+[include\fnc-slider.php]
+TopLine=79
+Caret=58,97
+[include\uninstall.php]
+TopLine=21
+Caret=25,50
+[sql\mysql.sql]
+TopLine=10
+Caret=13,26
+[class\ThemesHandler.php]
+TopLine=222
+Caret=35,241
+[class\Themes.php]
+TopLine=116
+Caret=38,129
 [class\SlidesHandler.php]
-TopLine=1
-Caret=1,1
+TopLine=67
+Caret=35,85
 [class\Slides.php]
-TopLine=323
-Caret=70,338
-[xoops_version.php]
-TopLine=255
-Caret=42,279
-[language\french\modinfo.php]
+TopLine=333
+Caret=1,333
+[templates\admin\slider_admin_themes.tpl]
+TopLine=17
+Caret=43,35
+[admin\themes.php]
+TopLine=30
+Caret=42,45
+[admin\traitements.php]
+TopLine=34
+Caret=1,52
+[templates\admin\slider_theme_xbootstrap_4.tpl]
 TopLine=1
-Caret=1,11
-[include\common.php]
-TopLine=22
-Caret=19,30
+Caret=64,16
+[language\french\admin.php]
+TopLine=179
+Caret=33,195
 [docs\changelog.txt]
 TopLine=1
-Caret=3,16
-[admin\slides.php]
-TopLine=74
-Caret=1,85
-[templates\admin\slider_admin_slides.tpl]
-TopLine=98
-Caret=44,77
-[language\french\admin.php]
-TopLine=121
-Caret=4,141
-[language\english\admin.php]
-TopLine=121
-Caret=4,138
+Caret=22,11
+[admin\index.php]
+TopLine=18
+Caret=47,41
+[language\french\help\help.html]
+TopLine=294
+Caret=15,329
+[language\french\help\help - Copie.html]
+TopLine=297
+Caret=15,329

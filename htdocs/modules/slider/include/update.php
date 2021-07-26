@@ -56,7 +56,7 @@ function xoops_module_update_slider($module, $prev_version = null)
             $newVersion = ($t[1] * 100) + $t[2];
             //$files[$k] = $newVersion; 
             if ($prev_version < $newVersion) {
-              //echo "actuelle = {$prev_version}  - version maj : {$v} = {$newVersion}<br>";
+              echo "actuelle = {$prev_version}  - version maj : {$v} = {$newVersion}<br>";
               $name = ucfirst($shortname);
               $f    = $file_path . $v;
               //ext_echo ("Fichier : {$f}<hr>");
@@ -68,8 +68,8 @@ function xoops_module_update_slider($module, $prev_version = null)
             }
             
         }
-//echo "<hr><pre>" . print_r($files, true) . "</pre><hr>";
 /*
+echo "<hr><pre>" . print_r($files, true) . "</pre><hr>";
 exit;
 //-------------------------------------------------------------------
     $fld = XOOPS_ROOT_PATH . '/modules/' . $module->getVar('dirname') . '/versions/';

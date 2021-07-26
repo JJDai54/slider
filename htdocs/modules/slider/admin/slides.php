@@ -48,7 +48,13 @@ switch ($op) {
         $adminObject->addItemButton(_AM_SLIDER_ADD_SLIDE, "slides.php?op=new&select_theme={$select_theme}", 'add');
         $adminObject->addItemButton(_AM_SLIDER_UPDATE_PERIODICITY, "slides.php?op=update_periodicity&select_theme={$select_theme}", 'update');
         
+        $imgDeleted = \purgerSliderFolder(0);
+        if($imgDeleted > 0){
+          $caption = sprintf(_AM_SLIDER_PURGER_SLIDES, $imgDeleted);
+          $adminObject->addItemButton($caption, "slides.php?op=purger_sliders_folder&select_theme={$select_theme}", 'update');
+        }
         
+                
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         $slidesCount = $slidesHandler->getCountSlides();
         
@@ -104,6 +110,7 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         $form = $slidesObj->getFormSlides($select_theme);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
+        
     case 'save':
         // Security Check
         if (!$GLOBALS['xoopsSecurity']->check()) {
@@ -139,61 +146,77 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         $slidesObj->setVar('sld_style_subtitle', Request::getText('sld_style_subtitle'));
         $slidesObj->setVar('sld_style_button', Request::getText('sld_style_button'));
         
-        
+        //-------------------------------------------------------
         // Set Var sld_image
         $theme = Request::getString('sld_theme', '');
-        include_once XOOPS_ROOT_PATH . '/class/uploader.php';
-        $filename       = $_FILES['sld_image']['name'];
-        $imgMimetype    = $_FILES['sld_image']['type'];
-        $imgNameDef     = Request::getString('sld_short_name');
-        $uploaderErrors = '';
-        $uploader = new \XoopsMediaUploader(SLIDER_UPLOAD_IMAGE_PATH . '/slides/', 
-                                                    $helper->getConfig('mimetypes_image'), 
-                                                    $helper->getConfig('maxsize_image'), null, null);
-        if ($uploader->fetchMedia($_POST['xoops_upload_file'][0])) {
-            $extension = \preg_replace('/^.+\.([^.]+)$/sU', '', $filename);
-            $imgName = \str_replace(' ', '', $imgNameDef) . '.' . $extension;
-            ///$uploader->setPrefix($imgName);
-            $uploader->setPrefix(Request::getString('sld_theme', '') . "-");
-            $uploader->fetchMedia($_POST['xoops_upload_file'][0]);
-            if (!$uploader->upload()) {
-                $uploaderErrors = $uploader->getErrors();
-            } else {
-                $savedFilename = $uploader->getSavedFileName();
-                $maxwidth  = (int)$helper->getConfig('maxwidth_image');
-                $maxheight = (int)$helper->getConfig('maxheight_image');
-                if ($maxwidth > 0 && $maxheight > 0) {
-                    // Resize image
-                    $imgHandler                = new Slider\Common\Resizer();
-                    $endFile = "{$theme}-{$savedFilename}" ;
-                    
-                    $imgHandler->sourceFile    = SLIDER_UPLOAD_IMAGE_PATH . "/slides/" . $savedFilename;
-                    $imgHandler->endFile       = SLIDER_UPLOAD_IMAGE_PATH . "/slides/" . $savedFilename;
-                    $imgHandler->imageMimetype = $imgMimetype;
-                    $imgHandler->maxWidth      = $maxwidth;
-                    $imgHandler->maxHeight     = $maxheight;
-                    $result                    = $imgHandler->resizeImage();
-                }
-                $slidesObj->setVar('sld_image', $savedFilename);
-            }
-        } else {
-            if ($filename > '') {
-                $uploaderErrors = $uploader->getErrors();
-            }
-            // il faut garder l'image existante si il n'y a pas eu de nouvelle selection
-            //$slidesObj->setVar('sld_image', Request::getString('sld_image'));
-        }
-        
+//  echo "<hr><pre>" . print_r($_FILES, true ). "</pre><hr>";       
+ ///       if($_FILES['sld_image']['error'] == 0){
+//            echo "===>Ok pour une image<br>";
+              include_once XOOPS_ROOT_PATH . '/class/uploader.php';
+              $filename       = $_FILES['sld_image']['name'];
+              $imgMimetype    = $_FILES['sld_image']['type'];
+              $imgNameDef     = Request::getString('sld_short_name');
+              $uploaderErrors = '';
+              $uploader = new \XoopsMediaUploader(SLIDER_UPLOAD_IMAGE_PATH . '/slides/', 
+                                                          $helper->getConfig('mimetypes_image'), 
+                                                          $helper->getConfig('maxsize_image'), null, null);
+              if ($uploader->fetchMedia($_POST['xoops_upload_file'][0])) {
+                  $h= strlen($filename) - strrpos($filename, '.');   
+                  $imgName = substr($filename,0,-$h);
+                  $imgName = TexteSansAccent($imgName, "_");
+      //            $extension = \preg_replace('/^.+\.([^.]+)$/sU', '', $filename);            
+      //            echo "===>filename = {$filename}<br>===>h = {$h}<br>===>imgName = {$imgName}";            
+      //exit;
+                  $uploader->setPrefix($imgName . "-");
+                  $uploader->fetchMedia($_POST['xoops_upload_file'][0]);
+                  if (!$uploader->upload()) {
+                      $uploaderErrors = $uploader->getErrors();
+                  } else {
+                      $savedFilename = $uploader->getSavedFileName();
+                      $maxwidth  = (int)$helper->getConfig('maxwidth_image');
+                      $maxheight = (int)$helper->getConfig('maxheight_image');
+                      if ($maxwidth > 0 && $maxheight > 0) {
+                          // Resize image
+                          $imgHandler                = new Slider\Common\Resizer();
+                          $endFile = "{$theme}-{$savedFilename}" ;
+                          
+                          $imgHandler->sourceFile    = SLIDER_UPLOAD_IMAGE_PATH . "/slides/" . $savedFilename;
+                          $imgHandler->endFile       = SLIDER_UPLOAD_IMAGE_PATH . "/slides/" . $savedFilename;
+                          $imgHandler->imageMimetype = $imgMimetype;
+                          $imgHandler->maxWidth      = $maxwidth;
+                          $imgHandler->maxHeight     = $maxheight;
+                          $result                    = $imgHandler->resizeImage();
+                      }
+                      $slidesObj->setVar('sld_image', $savedFilename);
+                  }
+              } else {
+                  if ($filename > '') {
+                      $uploaderErrors = $uploader->getErrors();
+                  }
+                  // il faut garder l'image existante si il n'y a pas eu de nouvelle selection
+                  // ou l'image sélectionée dans la liste
+                  $slidesObj->setVar('sld_image', Request::getString('sld_image'));
+
+              }
+//         }else{
+// //            echo "===>pas d'image<br>";
+//         }
+
+              
         //suppression du fichier des flags pour forcer un rafraichissement
         //ce fichier contien la list des id des slide à afficher
-        $fFlag = XOOPS_ROOT_PATH . "/uploads/slider/images/slides/" . $theme . ".txt";
-        unlink($fFlag);
+//         $fFlag = XOOPS_ROOT_PATH . "/uploads/slider/images/slides/" . $theme . ".txt";
+//         unlink($fFlag);
         //echo "===>{$fFlag}<br>";
             
+        $bolOk = $slidesHandler->insert($slidesObj);
         // Insert Data
-        if ($slidesHandler->insert($slidesObj)) {
+        if ($bolOk) {
             if ('' !== $uploaderErrors) {
-                \force_rebuild_slider();
+                if ($themesHandler->isActif($theme)){
+                    generer_new_tpl($theme);
+                }
+                //\force_rebuild_slider();
                 \redirect_header("slides.php?op=edit&sld_id=" . $sldId, 5, $uploaderErrors);
             } else {
                 \redirect_header("slides.php?op=list&select_theme={$theme}", 2, _AM_SLIDER_FORM_OK);
@@ -204,10 +227,11 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         $form = $slidesObj->getFormSlides($theme);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
+        
     case 'edit':
         $templateMain = 'slider_admin_slides.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('slides.php'));
-        $adminObject->addItemButton(_AM_SLIDER_ADD_SLIDE, "slides.php?op=new&theme={$select_theme}", 'add');
+        //$adminObject->addItemButton(_AM_SLIDER_ADD_SLIDE, "slides.php?op=new&theme={$select_theme}", 'add');
         $adminObject->addItemButton(_AM_SLIDER_SLIDES_LIST, 'slides.php', 'list');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
@@ -331,9 +355,6 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
               
               $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) ORDER BY sld_weight ASC;";
               $xoopsDB->queryf($sql);
-
-
-Source: https://prograide.com/pregunta/13002/mysql---recupre-le-numero-de-ligne-sur-select
             break;
 
             case 'last'; 
@@ -359,6 +380,13 @@ Source: https://prograide.com/pregunta/13002/mysql---recupre-le-numero-de-ligne-
         sld_updatePeriodicity($msg);
         \redirect_header("slides.php?op=list&sld_theme={$select_theme}", 3, $msg);
         break;
+
+    case 'purger_sliders_folder':
+        $imgDeleted = \purgerSliderFolder(1);
+        $msg = ($imgDeleted == 0) ? _AM_SLIDER_IMG_DELETED_0: sprintf(_AM_SLIDER_IMG_DELETED_1, $imgDeleted);
+        \redirect_header("slides.php?op=list&sld_theme={$select_theme}", 3, $msg);
+        break;
+
 }
 require __DIR__ . '/footer.php';
 

@@ -45,10 +45,10 @@ return (object)[
 //        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/files/slides',
 //        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/temp',
     ],
-    'copyBlankFiles'  => [
-        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images',
-        XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/slides',
-    ],
+//     'copyBlankFiles'  => [
+//         XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images',
+//         XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/slides',
+//     ],
     'copyTestFolders'  => [
         [XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/testdata/uploads',
         XOOPS_UPLOAD_PATH . '/' . $moduleDirName],
