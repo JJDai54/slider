@@ -12,12 +12,11 @@ DontOpen=0
 AbsolutePath=0
 FileFormat=0
 ProjectFilesOnly=0
-HTServer=localhost
 Extensions=*.*
 [Project tree]
-_slider
-	+slider
-		+admin
+slider
+	-slider
+		-admin
 			admin\about.php
 			admin\feedback.php
 			admin\footer.php
@@ -28,7 +27,6 @@ _slider
 			admin\slides.php
 			admin\themes.php
 			admin\traitements.php
-			admin\xswatch4.php
 		-assets
 			-css
 				-admin
@@ -97,12 +95,11 @@ _slider
 				assets\js\highslide.js
 				assets\js\index.html
 			assets\index.html
-		+blocks
+		-blocks
 			blocks\index.html
-			blocks\random_slider.php
-			blocks\update_slider.php
+			blocks\update_theme_slides.php
 			blocks\verif_slides_of_theme.php
-		+class
+		-class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -130,7 +127,7 @@ _slider
 			config\icons.php
 			config\index.html
 			config\paths.php
-		+docs
+		-docs
 			docs\changelog.txt
 			docs\credits.txt
 			docs\index.html
@@ -138,7 +135,7 @@ _slider
 			docs\license.txt
 			docs\readme.txt
 			docs\todo.txt
-		+include
+		-include
 			include\common.php
 			include\fnc-slider.php
 			include\functions.php
@@ -147,7 +144,7 @@ _slider
 			include\uninstall.php
 			include\update.php
 			include\xoops_version.inc.php
-		+language
+		-language
 			-english
 				-help
 					language\english\help\help.html
@@ -158,8 +155,9 @@ _slider
 				language\english\feedback.php
 				language\english\index.html
 				language\english\modinfo.php
-			+french
-				+help
+			-french
+				-help
+					language\french\help\help - Copie.html
 					language\french\help\help.html
 					language\french\help\index.html
 				language\french\admin.php
@@ -173,11 +171,11 @@ _slider
 			preloads\autoloader.php
 			preloads\core.php
 			preloads\index.html
-		+sql
+		-sql
 			sql\index.html
 			sql\mysql.sql
-		+templates
-			+admin
+		-templates
+			-admin
 				templates\admin\index.html
 				templates\admin\slider_admin_about.tpl
 				templates\admin\slider_admin_footer.tpl
@@ -187,13 +185,12 @@ _slider
 				templates\admin\slider_admin_themes.tpl
 				templates\admin\slider_main-01.tpl
 				templates\admin\slider_main-02.tpl
-				templates\admin\slider_slider.tpl
 				templates\admin\slider_theme_xbootstrap_3.tpl
 				templates\admin\slider_theme_xbootstrap_4.tpl
-			+blocks
+			-blocks
 				templates\blocks\index.html
-				templates\blocks\slider_block_random_slide_theme.tpl
 				templates\blocks\slider_block_slides_of_theme.tpl
+				templates\blocks\slider_block_update_theme_slides.tpl
 			templates\index.html
 		-testdata
 			-english
@@ -216,86 +213,5 @@ _slider
 		_slider.ppr
 		xoops_version.php
 [Open project files]
-0=include\fnc-slider.php
-1=include\uninstall.php
-2=sql\mysql.sql
-3=class\ThemesHandler.php
-4=class\Themes.php
-5=class\SlidesHandler.php
-6=class\Slides.php
-7=templates\admin\slider_admin_themes.tpl
-8=admin\themes.php
-9=admin\traitements.php
-10=templates\admin\slider_theme_xbootstrap_4.tpl
-11=language\french\admin.php
-12=docs\changelog.txt
-13=admin\index.php
-14=language\french\help\help.html
-15=language\french\help\help - Copie.html
-16=blocks\random_slider.php
-17=xoops_version.php
-18=templates\blocks\slider_block_random_slide_theme.tpl
-19=blocks\update_slider.php
 [Selected Project Files]
 Main=
-Selected=templates\blocks\slider_block_random_slide_theme.tpl
-[include\fnc-slider.php]
-TopLine=79
-Caret=58,97
-[include\uninstall.php]
-TopLine=21
-Caret=25,50
-[sql\mysql.sql]
-TopLine=10
-Caret=13,26
-[class\ThemesHandler.php]
-TopLine=222
-Caret=35,241
-[class\Themes.php]
-TopLine=200
-Caret=5,227
-[class\SlidesHandler.php]
-TopLine=67
-Caret=35,85
-[class\Slides.php]
-TopLine=333
-Caret=1,333
-[templates\admin\slider_admin_themes.tpl]
-TopLine=17
-Caret=43,35
-[admin\themes.php]
-TopLine=30
-Caret=42,45
-[admin\traitements.php]
-TopLine=34
-Caret=1,52
-[templates\admin\slider_theme_xbootstrap_4.tpl]
-TopLine=1
-Caret=64,16
-[language\french\admin.php]
-TopLine=179
-Caret=33,195
-[docs\changelog.txt]
-TopLine=1
-Caret=1,1
-[admin\index.php]
-TopLine=18
-Caret=47,41
-[language\french\help\help.html]
-TopLine=294
-Caret=15,329
-[language\french\help\help - Copie.html]
-TopLine=297
-Caret=15,329
-[blocks\random_slider.php]
-TopLine=91
-Caret=1,126
-[xoops_version.php]
-TopLine=86
-Caret=36,100
-[templates\blocks\slider_block_random_slide_theme.tpl]
-TopLine=1
-Caret=1,15
-[blocks\update_slider.php]
-TopLine=78
-Caret=8,98

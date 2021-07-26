@@ -111,8 +111,8 @@ global $helper, $themesHandler;
      $fFlag = XOOPS_ROOT_PATH . "/uploads/slider/images/slides/" . $theme . ".txt";
      $oldflag = sld_loadTextFile($fFlag);
      
-// echo "<hr>===>newFlag = {$newFlag}<hr>";  
-// echo "<hr>===>oldFlag = {$oldflag}<hr>";  
+// echo "<hr>===>newFlag = {$newFlag}";  
+// echo "<br>===>oldFlag = {$oldflag}<hr>";  
     
     //si le nouveau flag egal l'ancien flag pas de reconstruction du tpl des slides
     if ($newFlag == $oldflag && !$forceRebuild) return false;   
