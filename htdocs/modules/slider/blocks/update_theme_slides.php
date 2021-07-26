@@ -116,7 +116,7 @@ global $helper, $themesHandler;
     
     //si le nouveau flag egal l'ancien flag pas de reconstruction du tpl des slides
     if ($newFlag == $oldflag && !$forceRebuild) return false;   
-    echo "===>oldFlag = {$oldflag}<br>===>newFlag = {$newFlag}<br>";
+//    echo "===>oldFlag = {$oldflag}<br>===>newFlag = {$newFlag}<br>";
     
     generer_new_tpl($theme);
     return true;        

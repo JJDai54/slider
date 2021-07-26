@@ -14,8 +14,8 @@ FileFormat=0
 ProjectFilesOnly=0
 Extensions=*.*
 [Project tree]
-slider
-	-slider
+_slider
+	+slider
 		-admin
 			admin\about.php
 			admin\feedback.php
@@ -95,7 +95,7 @@ slider
 				assets\js\highslide.js
 				assets\js\index.html
 			assets\index.html
-		-blocks
+		+blocks
 			blocks\index.html
 			blocks\update_theme_slides.php
 			blocks\verif_slides_of_theme.php
@@ -213,5 +213,18 @@ slider
 		_slider.ppr
 		xoops_version.php
 [Open project files]
+0=blocks\update_theme_slides.php
+1=include\fnc-slider.php
+2=class\About.php
 [Selected Project Files]
 Main=
+Selected=blocks\update_theme_slides.php
+[blocks\update_theme_slides.php]
+TopLine=101
+Caret=3,119
+[include\fnc-slider.php]
+TopLine=413
+Caret=1,431
+[class\About.php]
+TopLine=20
+Caret=1,40

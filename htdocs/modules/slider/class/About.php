@@ -31,11 +31,11 @@ use \XoopsModules\Xmf;
 
 include_once XOOPS_ROOT_PATH . "/Frameworks/moduleclasses/moduleadmin/moduleadmin.php";
 
-$f = XOOPS_ROOT_PATH . "/Frameworks/moduleclasses/moduleadmin/moduleadmin.php";
-if (is_readable($f)){
-echo "<hr>===>{$f}<br>lecture ok<hr>";
-}else{
-echo "<hr>===>{$f}<br>pas ok<hr>";
+// $f = XOOPS_ROOT_PATH . "/Frameworks/moduleclasses/moduleadmin/moduleadmin.php";
+// if (is_readable($f)){
+// echo "<hr>===>{$f}<br>lecture ok<hr>";
+// }else{
+// echo "<hr>===>{$f}<br>pas ok<hr>";
 }
 
 

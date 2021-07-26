@@ -46,7 +46,7 @@ function force_rebuild_slider() {
 function generer_new_tpl($theme)
 {
 global $xoopsConfig, $helper, $slidesHandler, $themesHandler;
-echo "===>generer_new_tpl : theme ={$theme}<br>";
+//echo "===>generer_new_tpl : theme ={$theme}<br>";
     
     if (is_null($slidesHandler)) {
 $helper = \XoopsModules\Slider\Helper::getInstance();
