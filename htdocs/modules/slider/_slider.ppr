@@ -205,7 +205,7 @@ _slider
 			testdata\index.php
 			testdata\slider.tpl
 			testdata\slider-old.tpl
-		-versions
+		+versions
 			versions\index.html
 			versions\Slider_2_02.php
 			versions\Slider_2_03.php
@@ -217,27 +217,19 @@ _slider
 0=class\Slides.php
 1=admin\themes.php
 2=admin\slides.php
-3=class\ThemesHandler.php
-4=class\SlidesHandler.php
-5=class\Themes.php
+3=sql\mysql.sql
 [Selected Project Files]
 Main=
-Selected=class\Themes.php
+Selected=admin\slides.php
 [class\Slides.php]
-TopLine=228
-Caret=1,248
+TopLine=326
+Caret=14,345
 [admin\themes.php]
-TopLine=39
+TopLine=40
 Caret=3,61
 [admin\slides.php]
-TopLine=75
-Caret=96,103
-[class\ThemesHandler.php]
-TopLine=195
-Caret=26,213
-[class\SlidesHandler.php]
-TopLine=137
-Caret=1,153
-[class\Themes.php]
-TopLine=212
-Caret=1,230
+TopLine=330
+Caret=72,379
+[sql\mysql.sql]
+TopLine=1
+Caret=13,26

@@ -364,7 +364,7 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
               $sql = "SET @rank=0;";
               $xoopsDB->queryf($sql);
               
-              $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) ORDER BY sld_weight ASC;";
+              $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) WHERE sld_theme='{$sld_theme}' ORDER BY sld_weight ASC;";
               $xoopsDB->queryf($sql);
             break;
 
@@ -376,7 +376,7 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
               $sql = "SET @rank=0;";
               $xoopsDB->queryf($sql);
               
-              $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) ORDER BY sld_weight ASC;";
+              $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) WHERE sld_theme='{$sld_theme}' ORDER BY sld_weight ASC;";
               $xoopsDB->queryf($sql);
             break;
             

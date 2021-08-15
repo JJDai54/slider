@@ -70,6 +70,7 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                       <img src="<{$modPathIcon16}>/arrows/last-1.png" title="<{$smarty.const._AM_SLIDER_LAST}>">
                       </a>
                     <{/if}>
+                <{* ---------------- /Arrows -------------------- *}>
                 </td>
                 
                 <{* <td class='center'><{$slide.actif}></td> *}>
