@@ -118,11 +118,11 @@ class Slides extends \XoopsObject
           $urlImg = SLIDER_UPLOAD_IMAGE_URL . "/slides/" . $slideImg;
         }
         
-        //choix d'un image existante:
+        //choix d'une image existante:
         $dirname = XOOPS_ROOT_PATH . '/uploads/slider/images/slides';
         $listImg = sld_getFilePrefixedBy($dirname, array('jpg','png'), '', true);
 
-        //si il n"y a pas de skin ou qu'il n'y en a qu'un seul, unitile de proposer l'option    
+        //si il n"y a pas de skin ou qu'il n'y en a qu'un seul, inutile de proposer l'option    
         if(count($listImg) > 1){
             $inpImg= new \XoopsFormSelect(_AM_SLIDER_IMG_UPLODED, 'sld_image', $slideImg);   
             $inpImg->setDescription(_AM_SLIDER_IMG_UPLODED_DESC);        

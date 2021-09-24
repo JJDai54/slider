@@ -324,8 +324,33 @@ public static function updateCss($theme, $newCSS){
         }
     }
     
+    self::updateCss_xwatch($theme, $newCSS);   
     //cleanThemeFolder($theme);
     self::cleanAllCaches($theme);
+    return true;
+
+}
+/* ***********************
+met à jour les fichiers du therme xwatch:
+- xswatchCss.tpl
+
+************************** */
+public static function updateCss_xwatch($theme, $newCSS){
+//echo "===> theme = {$theme} - newCSS = {$newCSS}<br>";
+//exit;
+
+    $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl'; 
+    if (file_exists($fullNameXW)) save_file_org_2_old($fullNameXW);
+
+    //-------------------------------------------------
+
+
+     
+    if (file_exists($fullNameXW)){
+    }
+        $content = $newCSS;  
+        saveTexte2File($fullNameXW, $content, $mod = 0777);
+
     return true;
 
 }

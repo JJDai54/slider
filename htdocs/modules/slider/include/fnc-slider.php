@@ -77,12 +77,7 @@ $themesHandler = $helper->getHandler('Themes');
     
     //
     $fullName = XOOPS_ROOT_PATH . "/themes/" . $theme. '/tpl/slider.tpl';
-    $fullName_old = str_replace(".tpl","-old.tpl",$fullName);   
-    //echo "<hr>===>{$fullName}<br>===>{$fullName_old}<hr>";
-    //Sauvegarde du slides.tpl d'origine si ce n'est déjà fait
-    if (!is_readable($fullName_old)){
-        rename($fullName, $fullName_old);
-    }
+    save_file_org_2_old($fullName);
     
     //---------------------------------------------------
     $template = "db:{$themeObj['tpl_slider']}";
@@ -113,6 +108,15 @@ $sldOptions['show_jumbotron'] = 0; //$themeObj['']==1) ? 'vert' : '';
     $tplOrg = str_replace ("__STYLES__", $allStyles, $tplOrg);
     $tplOrg = str_replace ("__EXTRA__", $helper->getConfig('slider-extra'), $tplOrg);
     saveTexte2File($fullName, $tplOrg, $mod = 0777);    
+    
+    //-------------------------------------------------
+    //theme de type xwatch
+//     $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl';
+//     if (file_exists($fullNameXW)) save_file_org_2_old($fullNameXW);
+//     updateCss_xwatch($theme, $newCSS);
+    //-------------------------------------------------
+    
+    
     Slider\ThemesHandler::cleanAllCaches($theme);
     
 ////////////////////////////////////////////////////////////////////////
@@ -121,6 +125,50 @@ $sldOptions['show_jumbotron'] = 0; //$themeObj['']==1) ? 'vert' : '';
 
 }
 
+/**********************************************************************
+ * permet de garder une version originale d'un fichier
+ * verifie si le fichier old existe, si on le crée
+ **********************************************************************/
+function save_file_org_2_old($fullName, $keepOrg = false, $extOld = "_old"){
+    $h = strrpos($fullName, '.');
+    $oldFullName = substr($fullName,0, $h) . $extOld .  substr($fullName,$h); 
+
+    if (!file_exists($oldFullName)){
+        //echo "<hr>save_file_org_2_old : <br>org : {$fullName}<br>old : {$oldFullName}<hr>";
+        if($keepOrg){
+            $ret = copy($fullName, $oldFullName);
+        }else{
+          $ret = rename($fullName, $oldFullName);
+        }
+    }
+    
+    return $ret;
+}
+/**
+ * reinitalise le fichier _old sauver avec save_file_org_2_old
+ *
+ * @param string $themeDir      nom du theme dont il faut effacer les caches
+ * @return bool $bolOk          Le fichier slider-old.tpl existe et a éé réinitialisé
+ */
+function restaure_file_old_2_org($fullName, $keepOld = false, $extOld = "_old") {
+
+    $h = strrpos($fullName, '.');
+    $oldFullName = substr($fullName,0, $h) . $extOld .  substr($fullName,$h); 
+
+    if (file_exists($oldFullName)){
+        if (file_exists($fullName)) $ret = unlink ($fullName);
+        //echo "<hr>save_file_org_2_old : <br>org : {$fullName}<br>old : {$oldFullName}<hr>";
+        if($keepOld){
+            $ret = copy($oldFullName, $fullName);
+        }else{
+            $ret = rename($oldFullName, $fullName);
+        }
+        
+    }
+
+    return $ret;
+
+}
 
 /**********************************************************************
  * construit les tyle des titres et des boutons pour les slides actifs
@@ -177,7 +225,7 @@ function buildStyles(&$slides){
 /**
  * réinitialise chaque theme avec le fichier slider.tpl d'origine
  *
- */
+ç */
 function cleanAllThemesFolder() {
 
     $themesDir   = XOOPS_ROOT_PATH . '/themes';
@@ -202,33 +250,20 @@ function cleanAllThemesFolder() {
  * @return bool $bolOk          Le fichier slider-old.tpl existe et a éé réinitialisé
  */
 function cleanThemeFolder($theme) {
-global $themesHandler;
-    $themeDir = XOOPS_ROOT_PATH . "/themes/{$theme}";
-    
-    $newTpl = $themeDir . "/tpl/slider.tpl";
-    $oldTpl = $themeDir . "/tpl/slider-old.tpl";
-    
-    //supression du fichier slider.tpl et renomage de slider-old.tpl en slider.tpl
-    if (is_readable($oldTpl)){
-//        echo "===> {$oldTpl}<br>";
-        unlink ($newTpl);
-        rename ($oldTpl, $newTpl);
-        $bolOk = true;
-        if ($bolOk){
-        }
-    }else{
-        $bolOk=false;
-    }
 
-//global $helper;    
-// $themesHandler = $helper->getHandler('Themes');
-// include_once(XOOPS_ROOT_PATH . "/modules/slider/class/ThemesHandler.php");
-                               
-        //nettoyage de caches
-//           cleanCache($theme, 'smarty_cache');
-//           cleanCache($theme, 'smarty_compile');
-          Slider\ThemesHandler::cleanAllCaches($theme);          
-          deleteSliderthemeFlag($theme);
+    $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}" . "/tpl/slider.tpl";;
+    //supression du fichier slider.tpl et renomage de slider-old.tpl en slider.tpl
+    restaure_file_old_2_org($fullName, $keepOld = false, $extOld = "_old");
+
+    //theme de type xwatch
+    $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl';
+    //if (file_exists($fullNameXW)) 
+    restaure_file_old_2_org($fullNameXW);
+
+
+    //nettoyage de caches
+    Slider\ThemesHandler::cleanAllCaches($theme);          
+    deleteSliderthemeFlag($theme);
     return $bolOk;
     
 }

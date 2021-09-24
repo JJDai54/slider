@@ -78,9 +78,9 @@ define('_AM_SLIDER_SLIDE_TO_LOAD', 'Selectionner le slide à télécharger ');
 define('_AM_SLIDER_SLIDE', 'Slide');
 define('_AM_SLIDER_UPLOADSIZE', "Taille maximum du slide %s mo");
 define('_AM_SLIDER_SLIDE_THEME', "Thème");
-define('_AM_SLIDER_CONTRIBUTION', "Contribution");
-define('_AM_SLIDER_BY', "par");
-define('_AM_SLIDER_WHY_DONATE', "Faire une donation c'est contribuer à maintenir le projet, et à aider l'auteur à le maintenir.<br>Merci à tous ceux qui feront un donation, si petite soit-elle.");
+define('_AM_SLIDER_ABOUT_CONTRIBUTION', "Contribution");
+define('_AM_SLIDER_ABOUT_BY', "par");
+define('_AM_SLIDER_ABOUT_WHY_DONATE', "Faire une donation c'est contribuer à maintenir le projet, et à aider l'auteur à le maintenir.<br>Merci à tous ceux qui feront un donation, si petite soit-elle.");
 define('_AM_SLIDER_ACTIVATE', "Activation");
 define('_AM_SLIDER_DESACTIVATE', "Désactivation");
 

@@ -284,7 +284,7 @@ $highslide = XOOPS_URL . "/Frameworks/" . $xoopsModuleConfig['highslide'];
 /****************************************************************************
 Genere la declaration d'un tableau en javascript
 $name : nom du ta&bleau javascript
-$options : tableau associatif. les clefs seront les m^me en javascript
+$options : tableau associatif. les clefs seront les même en javascript
 $bolEcho : si true envoie directement la chaine générée dans le flus html
 retour : string a envoyer dans le flus html
 note : la balise script est ajoutée automatiquement

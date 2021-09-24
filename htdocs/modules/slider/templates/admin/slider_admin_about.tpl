@@ -25,19 +25,5 @@
     </tr>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Footer -->
 <{includeq file='db:slider_admin_footer.tpl' }>

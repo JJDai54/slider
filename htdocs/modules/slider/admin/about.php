@@ -92,7 +92,7 @@ function contribution(){
     $html = array();
     $html[] = "<div style=\"clear: both; height: 1em;\"></div>";
     
-    $html[] = "<div>" . _AM_SLIDER_WHY_DONATE . "</div><center>";
+    $html[] = "<div>" . _AM_SLIDER_ABOUT_WHY_DONATE . "</div><center>";
     
     $html[] = '<form action="https://www.paypal.com/donate" method="post" target="_top">
 <input type="hidden" name="hosted_button_id" value="MUUZPTPGJSB9G" />
@@ -134,7 +134,7 @@ $module_dir = basename(dirname(dirname(__FILE__)));
     
     
     $html[] = "<div style=\"line-height: 16px; font-weight: bold;\">";
-    $html[] = _AM_SLIDER_BY . " ".  $helper->getModule()->getInfo('author');
+    $html[] = _AM_SLIDER_ABOUT_BY . " ".  $helper->getModule()->getInfo('author');
     $html[] = "</div>";
     $html[] = "<div style=\"line-height: 16px;\">";
     $html[] = "<a href=\"$license_url\" target=\"_blank\" rel=\"external\">" . $helper->getModule()->getInfo('license') . "</a>";
@@ -230,7 +230,7 @@ $box['module']['legend'] = _AM_MODULEADMIN_ABOUT_MODULEINFO;
 $box['module']['content'] = array2table(moduleInfo());
 
 /* ------------------------- Module -----------------------------*/
-$box['paypal']['legend'] = _AM_SLIDER_CONTRIBUTION;
+$box['paypal']['legend'] = _AM_SLIDER_ABOUT_CONTRIBUTION;
 $box['paypal']['content'] = contribution();
 
 /* ------------------------- Header Info -----------------------------*/
