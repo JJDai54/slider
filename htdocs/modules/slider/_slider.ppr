@@ -229,12 +229,13 @@ _slider
 12=language\english\admin.php
 13=assets\css\style.css
 14=class\ThemesHandler.php
+15=class\Themes.php
 [Selected Project Files]
 Main=
-Selected=class\ThemesHandler.php
+Selected=sql\mysql.sql
 [include\fnc-slider.php]
-TopLine=88
-Caret=4,117
+TopLine=72
+Caret=1,114
 [class\Slides.php]
 TopLine=81
 Caret=1,148
@@ -245,8 +246,8 @@ Caret=58,114
 TopLine=208
 Caret=36,228
 [sql\mysql.sql]
-TopLine=1
-Caret=13,26
+TopLine=13
+Caret=17,44
 [class\Utility.php]
 TopLine=275
 Caret=32,292
@@ -275,5 +276,8 @@ Caret=1,83
 TopLine=3
 Caret=1,1
 [class\ThemesHandler.php]
-TopLine=322
-Caret=18,349
+TopLine=324
+Caret=1,342
+[class\Themes.php]
+TopLine=99
+Caret=76,123

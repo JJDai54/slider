@@ -343,9 +343,6 @@ public static function updateCss_xwatch($theme, $newCSS){
     if (file_exists($fullNameXW)) save_file_org_2_old($fullNameXW);
 
     //-------------------------------------------------
-
-
-     
     if (file_exists($fullNameXW)){
     }
         $content = $newCSS;  
