@@ -101,17 +101,22 @@ switch ($op) {
 		// Set Vars
         //$theme   = Request::getString('theme_folder', '');
         //$version = Request::getString('theme_version', 3);
-        $newCss     = Request::getString('theme_css', '');
         
 		$themesObj->setVar('theme_folder', $theme);
-        $oldCss = $themesObj->getVar('theme_css', $css);
-		$themesObj->setVar('theme_css', $css);
 		$themesObj->setVar('theme_random',  Request::getString('theme_random', 'j'));
 		$themesObj->setVar('theme_transition', Request::getString('theme_transition', ''));
 		$themesObj->setVar('theme_tpl_slider', Request::getString('theme_tpl_slider', 'slider_theme_xbootstrap_3'));
 		// Insert Data
 		if ($themesHandler->insert($themesObj)) {
-            if ($oldCss != $newCss) $themesObj->updateCss($newCss);
+            $newCss     = Request::getString('theme_whiteCss', '');
+            $newDarkCss = Request::getString('theme_darkCss', '');
+            
+            if($themesObj->isXwatch4E()){
+                $themesObj->updateCss_xwatch4E($newCss, false);
+                $themesObj->updateCss_xwatch4E($newDarkCss, true);
+            }
+           
+            
 			\redirect_header('themes.php?op=list', 2, _AM_SLIDER_FORM_OK);
 		}
         

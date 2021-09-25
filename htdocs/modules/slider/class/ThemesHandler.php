@@ -162,10 +162,6 @@ function updateThemesValid($clearBefore = false){
 
   			$themesObj = $this->create();
       		$themesObj->setVar('theme_folder', $theme);
-//       		$themesObj->setVar('theme_name', isset($ini['name']) ? isset($ini['name']) : '';
-//       		$themesObj->setVar('theme_version', isset($ini['version']) ? isset($ini['version']) : '';
-      		//$themesObj->setVar('theme_css', ($version==4) ? 'css-cerulean' : '');
-      		$themesObj->setVar('theme_css', '');
             
       		$themesObj->setVar('theme_transition',   $this->getTransition($theme));
 //      		$themesObj->setVar('theme_version', $version);
@@ -294,6 +290,31 @@ public static function getThemesIni($theme, $forceLcaseForKeys = false){
 }
 
 /* ***********************
+
+************************** */
+public static function getCurrentCss_xbootstrap($theme){
+    $fileToParse = "bootstrap.min.css"; 
+    $css = '';
+    $fullName= XOOPS_ROOT_PATH . "/themes/{$theme}/css/{$fileToParse}";
+//    echo "$fullName<br>";
+    if (is_readable($fullName)){
+        $contents = \sld_loadTextFile($fullName);
+        
+        //$h = strpos($contents, '@import url(../css-');
+        $h = strpos($contents, '/css-');
+        if (!($h === false)){
+//    echo "===>getCurrentCss_xbootstrap : {$fullName}<br>";
+          $h++;
+          $i = strpos($contents, '/', $h+1);
+          $css = substr($contents, $h, $i-$h);
+        }
+    }
+//echo "===>getCurrentCss_xbootstrap<br>{$fullName}<br>css = |{$css}|";
+
+    return $css;
+}
+
+/* ***********************
 met à jour les fichiers :
 - bootstrap.min.css
 - cookieconsent.css
@@ -305,7 +326,7 @@ et leru affect le nouveau style CSS du theme en modifiant le contenu avec le nom
 @import url(../css-cerulean/xoops.css);
 
 ************************** */
-public static function updateCss($theme, $newCSS){
+public static function updateCss_xbootstrap($theme, $newCSS){
 //echo "===> theme = {$theme} - newCSS = {$newCSS}<br>";
 //exit;
     $themePath = XOOPS_ROOT_PATH . "/themes/{$theme}";    
@@ -324,56 +345,107 @@ public static function updateCss($theme, $newCSS){
         }
     }
     
-    self::updateCss_xwatch($theme, $newCSS);   
-    //cleanThemeFolder($theme);
     self::cleanAllCaches($theme);
     return true;
 
 }
+
 /* ***********************
-met à jour les fichiers du therme xwatch:
+
+************************** */
+public static function isXwatch4E($theme){
+    $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl';
+    return file_exists($fullNameXW);
+}
+
+/* ***********************
+
+************************** */
+public static function getCurrentCss_xwatch4E($theme, $darkCss = false){
+
+    $listCssOk = self::getCssList($theme);
+    $fileName = ($darkCss) ? 'xswatchDarkCss.tpl' : 'xswatchCss.tpl';    
+    $fullName= XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/{$fileName}";
+//    echo "$fullName<br>";
+
+    if (is_readable($fullName)){
+        $contents = \sld_loadTextFile($fullName);
+        $tLines = explode("\n", $contents);
+        for ($h=count($tLines)-1; $h>=0; $h--){
+            $css = trim($tLines[$h]);
+            //if (strlen($css)>0)
+            if (array_key_exists($css, $listCssOk)){
+                break;
+            }
+        }
+    }else{
+        $css = '???';
+    }
+//echo "===>getCurrentCss_xwatch4E<br>{$fullName}<br>css = |{$css}|<br>";
+    return $css; 
+
+}
+/* ***********************
+met à jour les fichiers du therme xwatch4E:
 - xswatchCss.tpl
 
 ************************** */
-public static function updateCss_xwatch($theme, $newCSS){
+public static function updateCss_xwatch4E($theme, $newCSS, $darkCss = false){
 //echo "===> theme = {$theme} - newCSS = {$newCSS}<br>";
 //exit;
 
-    $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl'; 
+    $fileName = ($darkCss) ? 'xswatchDarkCss.tpl' : 'xswatchCss.tpl';
+    $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/{$fileName}"; 
     if (file_exists($fullNameXW)) save_file_org_2_old($fullNameXW);
 
     //-------------------------------------------------
-    if (file_exists($fullNameXW)){
-    }
-        $content = $newCSS;  
-        saveTexte2File($fullNameXW, $content, $mod = 0777);
+    $content = $newCSS;  
+    saveTexte2File($fullNameXW, $content, $mod = 0777);
+//echo "===><br>updateCss_xwatch4E{$fullNameXW}<br>css = |{$newCSS}|<br>";
+    
+    //pour les themes xwatch4 sous xoops 2510 et inférieur
+    //pas vraiment utile à partir de xoops2511 mais à faire quand meme
+    self::updateCss_xwatch4E_x2510($theme, $newCSS);
+    
 
     return true;
 
 }
+
 /* ***********************
+met à jour les fichiers :
+- bootstrap.min.css
+- cookieconsent.css
+- xoops.css
+
+et leru affect le nouveau style CSS du theme en modifiant le contenu avec le nom du dossier css_???
+@import url(../css-cerulean/bootstrap.min.css);
+@import url(../css-cerulean/cookieconsent.css);
+@import url(../css-cerulean/xoops.css);
 
 ************************** */
-public static function getCurrentCss($theme){
-    $fileToParse = "bootstrap.min.css"; 
-    $css = '';
-    $fullName= XOOPS_ROOT_PATH . "/themes/{$theme}/css/{$fileToParse}";
-//    echo "$fullName<br>";
-    if (is_readable($fullName)){
-        $contents = \sld_loadTextFile($fullName);
-        
-        //$h = strpos($contents, '@import url(../css-');
-        $h = strpos($contents, '/css-');
-        if (!($h === false)){
-//    echo "===>getCurrentCss : {$fullName}<br>";
-          $h++;
-          $i = strpos($contents, '/', $h+1);
-          $css = substr($contents, $h, $i-$h);
+public static function updateCss_xwatch4E_x2510($theme, $newCSS){
+//echo "===> theme = {$theme} - newCSS = {$newCSS}<br>";
+//exit;
+    $themePath = XOOPS_ROOT_PATH . "/themes/{$theme}";    
+    $cssPath = $themePath . "/css";
+    $filesList = \XoopsLists::getFileListByExtension($cssPath, array("css"));
+//echo "<hr><pre>" . print_r ($fileList, true). "</pre><hr>";     
+ //exit;  
+    foreach ($filesList as $key=>$css2change){
+        $fullName = $cssPath . "/{$css2change}";
+        //$name= substr($css2change,0,-4):
+        $fSrc = $themePath . "/{$newCSS}/{$css2change}";
+//echo "{$fullName}<br>{$fSrc}<br>"; exit;        
+        if(is_readable($fullName) && is_readable($fSrc) && $css2change != "my_css.css"){
+          $content = "@import url(../{$newCSS}/{$css2change});";  
+          saveTexte2File($fullName, $content, $mod = 0777);
         }
-        //echo "===>getCurrentCss - css = |{$css}|";
     }
+    
+    self::cleanAllCaches($theme);
+    return true;
 
-    return $css;
 }
 
 /* ***********************

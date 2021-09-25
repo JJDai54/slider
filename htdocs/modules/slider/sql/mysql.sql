@@ -40,8 +40,6 @@ CREATE TABLE `slider_slides` (
 CREATE TABLE `slider_themes` (
   `theme_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `theme_folder` VARCHAR(80) NOT NULL DEFAULT '',
-  `theme_css` VARCHAR(80) NOT NULL DEFAULT '',
-  `theme_darkCss` VARCHAR(80) NOT NULL DEFAULT '',
   `theme_random`  VARCHAR(1) NOT NULL DEFAULT 'j',
   `theme_transition`  INT(10) NOT NULL DEFAULT '0',
   `theme_tpl_slider` VARCHAR(80) NOT NULL DEFAULT '',

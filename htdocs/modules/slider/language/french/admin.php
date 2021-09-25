@@ -153,8 +153,11 @@ define('_AM_SLIDER_THEME_TRANSITION_VERTICAL', "Vertical");
 define('_AM_SLIDER_THEME_TRANSITION_HORIZONTAL', "Horizontal");
 
 define('_AM_SLIDER_NAME', "Nom");
-define('_AM_SLIDER_THEME_CSS', "CSS");
-define('_AM_SLIDER_THEME_CSS_DESC', "Style CSS du thème.<br>Dossiers préfixés \"css_\" des thèmes xbootstrap 4 (xswatch4)");
+define('_AM_SLIDER_THEME_WHITE_CSS', "CSS");
+define('_AM_SLIDER_THEME_WHITE_CSS_DESC', "Style CSS du thème.<br>Dossiers préfixés \"css_\" des thèmes xbootstrap 4 (xswatch4)");
+define('_AM_SLIDER_THEME_DARK_CSS', "CSS sombre");
+define('_AM_SLIDER_THEME_DARK_CSS_DESC', "Style CSS sombre pour les themes \"xwatch 4E\".");
+
 define('_AM_SLIDER_THEME_VERSION', "Version");
 define('_AM_SLIDER_THEME_VERSION_DESC', "Vérifiez la vesion du thème bottstrap avent de changer cette valeur");
 define('_AM_SLIDER_REFRESH_TBL_THEME', "Initialiser la table");
@@ -193,5 +196,6 @@ define('_AM_SLIDER_THEME_RANDOM', 'MAJ aléatoire');
 define('_AM_SLIDER_PURGER_SLIDES', "Purger le(s) %s slide(s) inutilisé(s)");
 define('_AM_SLIDER_THEMES_STATS1', "Thème %s : %s slide(s) défini(s) dont %s en cours");
 define('_AM_SLIDER_THEMES_STATS2', "<tr><td>Thème %s : </td><td>%s slide(s) défini(s)</td><td> dont %s en cours</td></tr>");
+define('_AM_SLIDER_THEME_XWATCH4E', "xwatch 4E");
 
 // ---------------- End ----------------

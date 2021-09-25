@@ -110,11 +110,6 @@ $sldOptions['show_jumbotron'] = 0; //$themeObj['']==1) ? 'vert' : '';
     saveTexte2File($fullName, $tplOrg, $mod = 0777);    
     
     //-------------------------------------------------
-    //theme de type xwatch
-//     $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl';
-//     if (file_exists($fullNameXW)) save_file_org_2_old($fullNameXW);
-//     updateCss_xwatch($theme, $newCSS);
-    //-------------------------------------------------
     
     
     Slider\ThemesHandler::cleanAllCaches($theme);
@@ -255,11 +250,12 @@ function cleanThemeFolder($theme) {
     //supression du fichier slider.tpl et renomage de slider-old.tpl en slider.tpl
     restaure_file_old_2_org($fullName, $keepOld = false, $extOld = "_old");
 
-    //theme de type xwatch
+/*
+    //theme de type xwatch4E
     $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl';
     //if (file_exists($fullNameXW)) 
     restaure_file_old_2_org($fullNameXW);
-
+*/
 
     //nettoyage de caches
     Slider\ThemesHandler::cleanAllCaches($theme);          

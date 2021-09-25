@@ -10,7 +10,9 @@
 				<th class="center"><{$smarty.const._AM_SLIDER_NAME}></th>
 				<th class="center width10"><{$smarty.const._AM_SLIDER_THEME_VERSION}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_TPL_SLIDER}></th>
-				<th class="center"><{$smarty.const._AM_SLIDER_THEME_CSS}></th>
+				<th class="center"><{$smarty.const._AM_SLIDER_THEME_XWATCH4E}></th>
+				<th class="center"><{$smarty.const._AM_SLIDER_THEME_WHITE_CSS}></th>
+				<th class="center"><{$smarty.const._AM_SLIDER_THEME_DARK_CSS}></th>
 				<th class="center width10""><{$smarty.const._AM_SLIDER_theme_transition}></th>
 				<th class="center width10""><{$smarty.const._AM_SLIDER_THEME_RANDOM}></th>
 				<th class="center width5"><{$smarty.const._AM_SLIDER_GENERER}></th>
@@ -31,7 +33,15 @@
                 
 				<td class='center'><{$theme.version}></td>
 				<td class='left'><{$theme.tpl_slider}></td>
+				<td class='center'>
+                    <{if $theme.isXwatch4E}>
+                        <img src="<{xoModuleIcons16 green.gif}>" alt="" />
+                    <{else}>
+                        <img src="<{xoModuleIcons16 red.gif}>" alt="" />
+                    <{/if}>
+                </td>
 				<td class='left'><{$theme.css}></td>
+				<td class='left'><{$theme.darkCss}></td>
 				<td class='center'><{$theme.transition_caption}></td>
 				<td class='left'><{$theme.random_caption}></td>
 				<td class='center'>

@@ -42,7 +42,6 @@ class Themes extends \XoopsObject
 		$this->initVar('theme_id', XOBJ_DTYPE_INT);
 		$this->initVar('theme_folder', XOBJ_DTYPE_TXTBOX);
 		$this->initVar('theme_random', XOBJ_DTYPE_TXTBOX);
-		$this->initVar('theme_css', XOBJ_DTYPE_TXTBOX);
 		$this->initVar('theme_transition', XOBJ_DTYPE_INT);
         $this->initVar('theme_tpl_slider', XOBJ_DTYPE_TXTBOX);
         $this->initVar('theme_status', XOBJ_DTYPE_INT);
@@ -115,15 +114,28 @@ class Themes extends \XoopsObject
             $inpSldTheme->setDescription(_AM_SLIDER_THEME_TPL_SLIDER_DESC);
             $inpSldTheme->addOptionArray($listSldThemes);   
             $form->addElement($inpSldTheme);
-          
-        $themeCss = $this->getCurrentCss();
-        $listCss = $this->getCssList();
-        //si il n"y a pas de skin ou qu'il n'y en a qu'un seul, unutile de proposer l'option    
-        if(count($listCss) > 1){
-            $inpCSS = new \XoopsFormSelect(_AM_SLIDER_THEME_CSS, 'theme_css', $themeCss);   //$this->getVar('theme_css')
-            $inpCSS->setDescription(_AM_SLIDER_THEME_CSS_DESC);        
+
+        if( $this->isXwatch4E()){
+            $listCss = $this->getCssList();        
+            $themeCss = $this->getCurrentCss_xwatch4E(false);
+            $inpCSS = new \XoopsFormSelect(_AM_SLIDER_THEME_WHITE_CSS, 'theme_whiteCss', $themeCss);   
+            $inpCSS->setDescription(_AM_SLIDER_THEME_WHITE_CSS_DESC);        
             $inpCSS->addOptionArray($listCss);   
             $form->addElement($inpCSS);
+            //-------------------------------------------------------------
+            $listDarkCss = array('css-cyborg'      => 'css-cyborg',
+                                 'css-darkly'      => 'css-darkly',
+                                 'css-slate'       => 'css-slate',
+                                 'css-solar'       => 'css-solar',
+                                 'css-superhero'   => 'css-superhero');
+             
+            $themeDarkCss = $this->getCurrentCss_xwatch4E(true);
+            $inpDarkCSS = new \XoopsFormSelect(_AM_SLIDER_THEME_DARK_CSS, 'theme_darkCss', $themeDarkCss);    
+            $inpDarkCSS->setDescription(_AM_SLIDER_THEME_DARK_CSS_DESC);        
+            $inpDarkCSS->addOptionArray($listDarkCss);   
+            $form->addElement($inpDarkCSS);
+                  
+
         }
         
     		// Form Select theme_transition
@@ -221,7 +233,16 @@ class Themes extends \XoopsObject
         $ini = $this->getThemesIni();
 		$ret['name']       = (isset($ini['Name'])) ? $ini['Name'] : '';
 		$ret['version']    = (isset($ini['Version'])) ? $ini['Version'] : '';
-		$ret['css']        = $this->getCurrentCss();
+		
+        
+		$ret['isXwatch4E']      = $this->isXwatch4E();
+        if($ret['isXwatch4E']){
+            $ret['css']       = $this->getCurrentCss_xwatch4E(false);
+            $ret['darkCss']   = $this->getCurrentCss_xwatch4E(true);
+        }else{
+            $ret['css']       = '' ; //$this->getCurrentCss_xbootstrap();
+            $ret['darkCss']   = '';
+        }
 if (!$slidesHandler){
     $helper = \XoopsModules\Slider\Helper::getInstance();
     $slidesHandler = $helper->getHandler('Slides');
@@ -259,15 +280,31 @@ public function  isActif() {
 public function getThemesIni() {
     return ThemesHandler::getThemesIni($this->getVar('theme_folder'));
 } 
+//---------------------------------------------------
 
-public function updateCss($newCss) {
+public function updateCss_xbootstrap($newCss) {
     return ThemesHandler::updateCss($this->getVar('theme_folder'), $newCss);
 } 
 
-public function  getCurrentCss() {
-//echo "getCurrentCss = {$this->getVar('theme_folder')}<br>";
-    return ThemesHandler::getCurrentCss($this->getVar('theme_folder'));
+public function  getCurrentCss_xbootstrap() {
+//echo "getCurrentCss_xbootstrap = {$this->getVar('theme_folder')}<br>";
+    return ThemesHandler::getCurrentCss_xbootstrap($this->getVar('theme_folder'));
 } 
+//---------------------------------------------------
+
+public function  isXwatch4E() {
+//echo "getCurrentCss = {$this->getVar('theme_folder')}<br>";
+    return ThemesHandler::isXwatch4E($this->getVar('theme_folder'));
+} 
+
+public function  getCurrentCss_xwatch4E($darkCss = false) {
+//echo "getCurrentCss = {$this->getVar('theme_folder')}<br>";
+    return ThemesHandler::getCurrentCss_xwatch4E($this->getVar('theme_folder'), $darkCss);
+} 
+public function updateCss_xwatch4E($newCss, $darkCss = false) {
+    return ThemesHandler::updateCss_xwatch4E($this->getVar('theme_folder'), $newCss, $darkCss);
+} 
+//---------------------------------------------------
            
 public function  getCssList($prefix = 'css-') {
     return ThemesHandler::getCssList($this->getVar('theme_folder'), $prefix);
