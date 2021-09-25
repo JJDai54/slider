@@ -1,3 +1,12 @@
+<{* un-comment to enable slider
+<{if $xoops_page == "index"}>
+    <{include file="$theme_name/tpl/slider.tpl"}>
+<{/if}>
+*}>
+
+
+
+
 <{* JJDai - Ajout d'une 2eme banniere *}>
 <style>
 .banniere{

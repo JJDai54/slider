@@ -118,7 +118,7 @@ global $helper, $themesHandler;
     if ($newFlag == $oldflag && !$forceRebuild) return false;   
 //    echo "===>oldFlag = {$oldflag}<br>===>newFlag = {$newFlag}<br>";
     
-    generer_new_tpl($theme);
+    generer_new_tpl_slider($theme);
     return true;        
 }
 

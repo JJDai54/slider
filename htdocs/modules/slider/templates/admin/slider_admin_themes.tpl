@@ -13,6 +13,7 @@
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_XWATCH4E}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_WHITE_CSS}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_DARK_CSS}></th>
+				<th class="center"><{$smarty.const._AM_SLIDER_THEME_SLIDER}></th>
 				<th class="center width10""><{$smarty.const._AM_SLIDER_theme_transition}></th>
 				<th class="center width10""><{$smarty.const._AM_SLIDER_THEME_RANDOM}></th>
 				<th class="center width5"><{$smarty.const._AM_SLIDER_GENERER}></th>
@@ -42,6 +43,23 @@
                 </td>
 				<td class='left'><{$theme.css}></td>
 				<td class='left'><{$theme.darkCss}></td>
+                
+				<td class='center'>
+                    <{if $theme.isXwatch4E}>
+                    <{if $theme.isSliderAllowed}>
+					    <a href="themes.php?op=allowed_slider&theme_id=<{$theme.id}>&theme_folder=<{$theme.folder}>&etat=0" title="<{$smarty.const._AM_SLIDER_THEME_DESACTIVER_SLIDER}>">           
+                            <img src="<{xoModuleIcons16 green.gif}>" alt="" />
+                        </a>
+                    <{else}>
+					    <a href="themes.php?op=allowed_slider&theme_id=<{$theme.id}>&theme_folder=<{$theme.folder}>&etat=1" title="<{$smarty.const._AM_SLIDER_THEME_ACTIVER_SLIDER}>">           
+                            <img src="<{xoModuleIcons16 red.gif}>" alt="" />
+                        </a>
+                    <{/if}>
+                    <{else}>
+                            <img src="<{xoModuleIcons16 green_off.gif}>" alt="" />
+                    <{/if}>
+                </td>
+                
 				<td class='center'><{$theme.transition_caption}></td>
 				<td class='left'><{$theme.random_caption}></td>
 				<td class='center'>
@@ -104,5 +122,5 @@
 
 <br><script>
 tth_set_value('last_asc', true);
-tth_trierTableau('slider_tbl_theme', 2, '1-2-3-4-5-6');  
+tth_trierTableau('slider_tbl_theme', 2, '1-2-3-4-5');  
 </script>

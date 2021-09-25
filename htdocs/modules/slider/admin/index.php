@@ -89,6 +89,17 @@ if (is_dir($highslide)){
     $adminObject->addConfigBoxLine(_AM_SLIDER_HIGHSLIDE_0, '');
 }
 
+$trierTableauHTML = XOOPS_ROOT_PATH . "/Frameworks/" . 'trierTableauHTML';  
+//echo "===>highslide : <hr>{$highslide}<hr>";                           
+    $adminObject->addConfigBoxLine($trierTableauHTML, 'folder');
+if (is_dir($trierTableauHTML)){
+    $adminObject->addConfigBoxLine(_AM_SLIDER_TRIER_TABLEAU_HTML_1, '');
+}else{
+    $adminObject->addConfigBoxLine(_AM_SLIDER_TRIER_TABLEAU_HTML_0, '');
+}
+
+
+
 // Render Index
 $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('index.php'));
 // Test Data

@@ -102,6 +102,8 @@ define('_AM_SLIDER_UP', "Monter");
 define('_AM_SLIDER_DOWN', "Descendre");
 define('_AM_SLIDER_HIGHSLIDE_0', "<span style=\"color:red;\">Le framework \"<a href=\"http://highslide.com/\">Highslide</a>\" n'est pas installé.</span>");
 define('_AM_SLIDER_HIGHSLIDE_1', "<span style=\"color:green;\">Le framework \"<a href=\"http://highslide.com/\">Highslide</a>\" est installé.</span>");
+define('_AM_SLIDER_TRIER_TABLEAU_HTML_0', "<span style=\"color:red;\">Le framework \"<a href=\"https://github.com/JJDai54/trierTableauHTML\"> trierTableauHTML </a>\" n'est pas installé.</span>");
+define('_AM_SLIDER_TRIER_TABLEAU_HTML_1', "<span style=\"color:green;\">Le framework \"<a href=\"https://github.com/JJDai54/trierTableauHTML\"> trierTableauHTML </a>\" est installé.</span>");
 
 define('_AM_SLIDER_SLIDE_BUTTON_CAPTION', "Titre du bouton");
 define('_AM_SLIDER_SLIDE_BUTTON_CAPTION_DESC', "Le bouton n'apparait que si une url est définie.<br>exemples de titres : Lire plus | En savoir plus ...");
@@ -197,5 +199,6 @@ define('_AM_SLIDER_PURGER_SLIDES', "Purger le(s) %s slide(s) inutilisé(s)");
 define('_AM_SLIDER_THEMES_STATS1', "Thème %s : %s slide(s) défini(s) dont %s en cours");
 define('_AM_SLIDER_THEMES_STATS2', "<tr><td>Thème %s : </td><td>%s slide(s) défini(s)</td><td> dont %s en cours</td></tr>");
 define('_AM_SLIDER_THEME_XWATCH4E', "xwatch 4E");
+define('_AM_SLIDER_THEME_SLIDER', "Slider");
 
 // ---------------- End ----------------

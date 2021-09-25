@@ -166,8 +166,15 @@ switch ($op) {
         \redirect_header('themes.php?op=list', 2, _AM_SLIDER_FORM_OK);
 		break;
         
+	case 'allowed_slider':
+        $etat   = Request::getInt('etat', 0);    
+        $bolOk = $themesHandler::set_allowed_slider($theme, $etat);
+        \redirect_header('themes.php?op=list', 2, _AM_SLIDER_FORM_OK);
+		break;
+        
+        
 	case 'generer_new_slider':
-        $bolOk = generer_new_tpl($theme);
+        $bolOk = generer_new_tpl_slider($theme);
         \redirect_header('themes.php?op=list', 2, _AM_SLIDER_FORM_OK);
 		break;
         

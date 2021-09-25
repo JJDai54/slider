@@ -234,6 +234,7 @@ class Themes extends \XoopsObject
 		$ret['name']       = (isset($ini['Name'])) ? $ini['Name'] : '';
 		$ret['version']    = (isset($ini['Version'])) ? $ini['Version'] : '';
 		
+		$ret['isSliderAllowed'] = $this-> is_slider_allowed();
         
 		$ret['isXwatch4E']      = $this->isXwatch4E();
         if($ret['isXwatch4E']){
@@ -321,5 +322,22 @@ public function  cleanCache($cache) {
 public function  getTransition() {
     return ThemesHandler::getTransition($this->getVar('theme_folder'));
 } 
+
+
+
+
+
+
+public function is_slider_allowed()
+{
+    return ThemesHandler::is_slider_allowed($this->getVar('theme_folder'));
+}
+
+public function set_allowed_slider($enabled = true)
+{
+    return ThemesHandler::set_allowed_slider($this->getVar('theme_folder'), $enabled);
+}
+    
+
 
 } // ----- FIN DE LA CLASSE -----

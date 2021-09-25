@@ -184,7 +184,7 @@ function updateThemesValid($clearBefore = false){
     return true;
 
 }
-    
+
 	/**
 	 * Get sld_getThemesValid complete la table des themes 
 	 * @return int nb themes
@@ -233,6 +233,7 @@ global $slidesHandler;
     $stat = array();
     foreach ($themesList AS $key=>$theme){
         $criteria = new \CriteriaCompo(new \Criteria("sld_theme", $key, "="));
+        $criteria->add(new \Criteria("length(sld_theme)", 0, '='), 'OR');
         if ($tplString != ''){
             $stat[$key] = sprintf($tplString,  $key, 
                               $slidesHandler->getCountSlides($criteria),
@@ -447,6 +448,78 @@ public static function updateCss_xwatch4E_x2510($theme, $newCSS){
     return true;
 
 }
+
+
+/**
+ * Function is_slider_allowed
+ * @param  $theme : dossier du theme xwatch4
+ * @return bool
+ */
+public static function is_slider_allowed($theme)
+{
+    $line1a = '<{* un-comment to enable slider';
+    $line1b = '<{* comment to un-enable slider *}>';
+    //------------------------------------------------
+    $fileName = 'theme.tpl';
+    $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/{$fileName}"; 
+    if (is_readable($fullName)){
+        $contents = \sld_loadTextFile($fullName);
+        $pos = strpos($contents, $line1a);
+        $bolOk = ($pos === false);
+    }else $bolOk = false;
+    
+    return $bolOk;
+}
+
+/* ********************
+ * Function set_allowed_slider
+ * @param  $theme : dossier du theme xwatch4
+ * @return bool
+* ******************** */
+public static function set_allowed_slider($theme, $enabled = true)
+{
+/*
+<{* un-comment to enable slider
+<{if $xoops_page == "index"}>
+    <{include file="$theme_name/tpl/slider.tpl"}>
+<{/if}>
+*}>
+*/
+    $line1a = '<{* un-comment to enable slider';
+    $line1b = '<{* comment to un-enable slider *}>';
+    $line2a = '*}>';
+    $line2b = '<{* slider is alowed *}>';
+    
+    
+    if ($enabled){
+        $line2search = $line1a;
+        $line2replace = $line1b;
+        $lieneEnd = $line2b; 
+    }else{
+        $line2search = $line1b;
+        $line2replace = $line1a;
+        $lieneEnd = $line2a; 
+    }
+    //------------------------------------------------
+    $fileName = 'theme.tpl';
+    $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/{$fileName}"; 
+    if (is_readable($fullName)){
+        $contents = \sld_loadTextFile($fullName);
+        $tLines = explode("\n", $contents);
+
+        for($h = 0; $h < count($tLines); $h++){
+            if ($tLines[$h] == $line2search){
+                $tLines[$h] = $line2replace;
+                $tLines[$h+4] = $lieneEnd;   
+                break;         
+            }
+            
+        }
+        $content = implode("\n", $tLines);
+        saveTexte2File($fullName, $content, $mod = 0777);
+    }    
+}
+    
 
 /* ***********************
 

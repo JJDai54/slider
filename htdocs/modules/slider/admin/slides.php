@@ -225,7 +225,7 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         if ($bolOk) {
             if ('' !== $uploaderErrors) {
                 if ($themesHandler->isActif($theme)){
-                    generer_new_tpl($theme);
+                    generer_new_tpl_slider($theme);
                 }
                 //\force_rebuild_slider();
                 \redirect_header("slides.php?op=edit&sld_id=" . $sldId, 5, $uploaderErrors);

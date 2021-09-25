@@ -101,7 +101,7 @@ _slider
 			blocks\update_theme_slides.php
 			blocks\verif_slides_of_theme.php
 		+class
-			-Common
+			+Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
 				class\Common\FilesManagement.php
@@ -122,7 +122,7 @@ _slider
 			class\Themes.php
 			class\ThemesHandler.php
 			class\Utility.php
-		-config
+		+config
 			config\admin.yml
 			config\config.php
 			config\icons.php
@@ -136,7 +136,7 @@ _slider
 			docs\license.txt
 			docs\readme.txt
 			docs\todo.txt
-		-include
+		+include
 			include\common.php
 			include\fnc-slider.php
 			include\functions.php
@@ -222,9 +222,18 @@ _slider
 5=templates\admin\slider_admin_themes.tpl
 6=language\french\admin.php
 7=include\fnc-slider.php
+8=docs\todo.txt
+9=include\xoops_version.inc.php
+10=xoops_version.php
+11=admin\header.php
+12=admin\slides.php
+13=admin\index.php
+14=language\english\admin.php
+15=class\Common\Configurator.php
+16=config\config.php
 [Selected Project Files]
 Main=
-Selected=admin\themes.php
+Selected=config\config.php
 [sql\mysql.sql]
 TopLine=25
 Caret=1,43
@@ -232,20 +241,47 @@ Caret=1,43
 TopLine=31
 Caret=1,49
 [admin\themes.php]
-TopLine=93
-Caret=1,111
+TopLine=48
+Caret=1,66
 [class\Themes.php]
-TopLine=103
-Caret=1,121
+TopLine=233
+Caret=27,237
 [class\ThemesHandler.php]
-TopLine=149
-Caret=1,165
+TopLine=211
+Caret=64,236
 [templates\admin\slider_admin_themes.tpl]
-TopLine=1
-Caret=63,14
+TopLine=106
+Caret=51,125
 [language\french\admin.php]
-TopLine=138
-Caret=1,156
+TopLine=86
+Caret=142,105
 [include\fnc-slider.php]
-TopLine=58
-Caret=1,113
+TopLine=34
+Caret=1,40
+[docs\todo.txt]
+TopLine=1
+Caret=1,6
+[include\xoops_version.inc.php]
+TopLine=1
+Caret=1,1
+[xoops_version.php]
+TopLine=226
+Caret=1,244
+[admin\header.php]
+TopLine=33
+Caret=1,1
+[admin\slides.php]
+TopLine=73
+Caret=1,91
+[admin\index.php]
+TopLine=30
+Caret=52,40
+[language\english\admin.php]
+TopLine=85
+Caret=146,104
+[class\Common\Configurator.php]
+TopLine=25
+Caret=27,34
+[config\config.php]
+TopLine=33
+Caret=1,52

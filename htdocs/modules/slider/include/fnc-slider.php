@@ -39,14 +39,14 @@ function force_rebuild_slider() {
 
 
 /**
- * Function show block
- * @param  $options
- * @return array
+ * Function generer_new_tpl_slider
+ * @theme : dossier du theme xwatch4
+ * @return bool
  */
-function generer_new_tpl($theme)
+function generer_new_tpl_slider($theme)
 {
 global $xoopsConfig, $helper, $slidesHandler, $themesHandler;
-//echo "===>generer_new_tpl : theme ={$theme}<br>";
+//echo "===>generer_new_tpl_slider : theme ={$theme}<br>";
     
     if (is_null($slidesHandler)) {
 $helper = \XoopsModules\Slider\Helper::getInstance();
