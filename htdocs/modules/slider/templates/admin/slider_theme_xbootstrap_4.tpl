@@ -1,4 +1,6 @@
     <!-- Indicators -->
+    <!-- Fichier slider.tpl genere avec le module slider (JJDai) -->
+    
 <style>
 .carousel-indicators-bis li {
 <{$sldOptions.slider_style_points}>

@@ -230,9 +230,13 @@ _slider
 13=admin\index.php
 14=class\Common\Configurator.php
 15=config\config.php
+16=templates\admin\slider_theme_xbootstrap_3.tpl
+17=templates\admin\slider_theme_xbootstrap_4.tpl
+18=templates\admin\slider_main-02.tpl
+19=templates\admin\slider_main-01.tpl
 [Selected Project Files]
 Main=
-Selected=xoops_version.php
+Selected=templates\admin\slider_main-02.tpl
 [sql\mysql.sql]
 TopLine=25
 Caret=1,43
@@ -264,8 +268,8 @@ Caret=1,6
 TopLine=1
 Caret=1,1
 [xoops_version.php]
-TopLine=1
-Caret=40,30
+TopLine=210
+Caret=23,244
 [admin\header.php]
 TopLine=33
 Caret=1,1
@@ -281,3 +285,15 @@ Caret=27,34
 [config\config.php]
 TopLine=35
 Caret=23,61
+[templates\admin\slider_theme_xbootstrap_3.tpl]
+TopLine=1
+Caret=1,2
+[templates\admin\slider_theme_xbootstrap_4.tpl]
+TopLine=1
+Caret=5,3
+[templates\admin\slider_main-02.tpl]
+TopLine=1
+Caret=69,2
+[templates\admin\slider_main-01.tpl]
+TopLine=1
+Caret=69,2
