@@ -201,4 +201,7 @@ define('_AM_SLIDER_THEMES_STATS2', "<tr><td>Thème %s : </td><td>%s slide(s) dé
 define('_AM_SLIDER_THEME_XWATCH4E', "xwatch 4E");
 define('_AM_SLIDER_THEME_SLIDER', "Slider");
 
+define('_AM_SLIDER_THEME_DESACTIVER_SLIDER', "Désactiver le slider");
+define('_AM_SLIDER_THEME_ACTIVER_SLIDER', "Activer le slider");
+
 // ---------------- End ----------------

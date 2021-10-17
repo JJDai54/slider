@@ -145,8 +145,8 @@ _slider
 			include\uninstall.php
 			include\update.php
 			include\xoops_version.inc.php
-		-language
-			-english
+		+language
+			+english
 				-help
 					language\english\help\help.html
 					language\english\help\index.html
@@ -156,7 +156,7 @@ _slider
 				language\english\feedback.php
 				language\english\index.html
 				language\english\modinfo.php
-			-french
+			+french
 				-help
 					language\french\help\help - Copie.html
 					language\french\help\help.html
@@ -228,12 +228,11 @@ _slider
 11=admin\header.php
 12=admin\slides.php
 13=admin\index.php
-14=language\english\admin.php
-15=class\Common\Configurator.php
-16=config\config.php
+14=class\Common\Configurator.php
+15=config\config.php
 [Selected Project Files]
 Main=
-Selected=config\config.php
+Selected=xoops_version.php
 [sql\mysql.sql]
 TopLine=25
 Caret=1,43
@@ -250,11 +249,11 @@ Caret=27,237
 TopLine=211
 Caret=64,236
 [templates\admin\slider_admin_themes.tpl]
-TopLine=106
-Caret=51,125
+TopLine=46
+Caret=1,56
 [language\french\admin.php]
-TopLine=86
-Caret=142,105
+TopLine=181
+Caret=1,206
 [include\fnc-slider.php]
 TopLine=34
 Caret=1,40
@@ -265,23 +264,20 @@ Caret=1,6
 TopLine=1
 Caret=1,1
 [xoops_version.php]
-TopLine=226
-Caret=1,244
+TopLine=1
+Caret=40,30
 [admin\header.php]
 TopLine=33
 Caret=1,1
 [admin\slides.php]
-TopLine=73
-Caret=1,91
+TopLine=14
+Caret=4,21
 [admin\index.php]
 TopLine=30
 Caret=52,40
-[language\english\admin.php]
-TopLine=85
-Caret=146,104
 [class\Common\Configurator.php]
 TopLine=25
 Caret=27,34
 [config\config.php]
-TopLine=33
-Caret=1,52
+TopLine=35
+Caret=23,61

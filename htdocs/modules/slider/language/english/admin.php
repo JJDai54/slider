@@ -147,4 +147,8 @@ define('_AM_SLIDER_PERIODICITY_DESC', "Define the display renewal periodicity af
 \define ('_AM_SLIDER_SUBTITLE', "Sous-titre");
 \define ('_AM_SLIDER_BUTTON', "Bouton");
 \define ('_AM_SLIDER_OPTIONS', "Options");
+
+define('_AM_SLIDER_THEME_DESACTIVER_SLIDER', "Un-activate ther slider");
+define('_AM_SLIDER_THEME_ACTIVER_SLIDER', "Activate the slider");
+
 // ---------------- End ----------------
