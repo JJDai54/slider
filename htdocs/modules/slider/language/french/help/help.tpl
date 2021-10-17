@@ -1,6 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head></head>
-<body><div id="help-template" class="outer">
+<div id="help-template" class="outer">
 <h1 class="head">Help: <a class="ui-corner-all tooltip" href="%3C%7B$xoops_url%7D%3E/modules/slider/admin/index.php" title="Back to the administration of slider - Slides management">
 slider - Slides management <img src="%3C%7BxoAdminIcons%20home.png%7D%3E" alt="Back to the Administration of slider - Slides management"> </a>
 </h1>
@@ -36,8 +34,7 @@ mois, l'année, ...<br>
 </ul>
 <h4 class="odd">Installation / Désinstallation</h4>
 Aucune mesure particulière n'est nécessaire, suivez le processus
-d'installation standard et extrayez le dossier du curseur dans le <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">répertoire</span>
-../modules. Installez le module via Admin =&gt; Module système =&gt;
+d'installation standard et copiez le contenu du dossier htdocs à la racine de votre site puis Installez le module via Admin =&gt; Module système =&gt;
 Modules.<br>
 Des instructions détaillées sur l'installation des modules sont
 disponibles dans le "XOOPS Operations Manual".<br>
@@ -52,15 +49,11 @@ au développement<br>
 <h4 class="odd">Didacticiel</h4>
     Installation standard  de module<br>
     Ajouter des slides aux thèmes utilisés (voir "Ajout
-d'un nouveau slide)""<br>
-    Activer le block du module, peu importe sa place il
+d'un nouveau slide)""<br>Si des périodicité sont définies, il faut activer le block <span style="font-weight: bold;">"slider - slides aléatoires" </span>du module, peu importe sa place il
 restera invisible<br>
     <span style="font-weight: bold;">Important</span> :
-l'option "Afficher le block" du block Permet de lister les slides sélectionnés<br>
-                 
-A  utiliser en mode débogage uniquement<br>
-                 
-laisser la sur "Non" en production<br>
+Le block "Slider - Slides courants" doit rester inactif , il est utilisé uniquement en mode développement.
+               
 <br>
 <h4 class="odd">Préférences</h4>
 <br>
@@ -315,15 +308,17 @@ du bouton "En savoir plus"<br>
 immédiatement<br>
 - Pour les thèmes xbootstrap 4, selection du style css parmi les 21 défini dans xswatch<br>- Pour les thèmes xbootstrap 4, sélection de la transition "verticale" ou "horizontale"'<br>
  Champs de la table des thèmes:<br><br>
+<h4 class="odd">Blocks "Slider - Aléatoires"<br>
+</h4>
+Si des périodicité sont utilisées, il faut activer ce block. Il reste invisible, mais il vérifie régulièrement si le slider doit être actualisé..<br><br>
 <h4 class="odd">Blocks "random_slider"<br>
 </h4>
-Utilisé uniquement en phase de développement pour valider lea liste des slides qui devrient s'afficher.<br>Laisser ce block invisible.<br><br><h4 class="odd">Fonctionnement :</h4><ul><li>Génération des "sliders"</li></ul>Le fichier "tpl/slider.tpl" d'origine du thème est <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">renommé
+Utilisé uniquement en phase de développement pour valider la liste des slides qui devraient s'afficher.<br>Laisser ce block invisible.<br><br><h4 class="odd">Fonctionnement :</h4><ul><li>Génération des "sliders"</li></ul>Le fichier "tpl/slider.tpl" d'origine du thème est <span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;">renommé
 </span> "<span style="font-weight: bold;">tpl/slider-old.tpl</span>".<br>Un nouveau fichier est généré avec les slides téléchargés.<br>Un fichiers du nom du thème est aussi générés dans le dossier "uploads/slider/images/slides/theme.txt".<br>Il contient les index des slides en cours et permet le renouvellement du
-slider si la liste des slides courant à changés (slides périodiques)<br>Les caches du tème sont supprimés pour forcer leur regénération et rafraichir l'affichage immédiatement.<br><br><ul><li>Réinitialistion des sliders d'origines.</li></ul>Le fichier "tpl/slider.tpl" généré par le module est supprimé et le fichier&nbsp;<span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;"></span>"<span style="font-weight: bold;">tpl/slider-old.tpl</span>". est renomé "tpl/slide.tpl"<br>&nbsp;Le fichier "uploads/slider/images/slides/theme.txt" est supprimés<br>Les caches du thème sont supprimés pour forcer leur regénération et rafraichir l'affichage immédiatement.<br>L'ajout
+slider si la liste des slides courant à changés (slides périodiques)<br>Les caches du tème sont supprimés pour forcer leur regénération et rafraichir l'affichage immédiatement.<br><br><ul><li>Réinitialistion des sliders d'origines.</li></ul>Le fichier "tpl/slider.tpl" généré par le module est supprimé et le fichier&nbsp;<span style="font-size: 12pt; line-height: 107%; font-family: &quot;Times New Roman&quot;,serif;"></span>"<span style="font-weight: bold;">tpl/slider-old.tpl</span>". est renomé "tpl/slide.tpl"<br>Le fichier "uploads/slider/images/slides/theme.txt" est supprimés<br>Les caches du thème sont supprimés pour forcer leur regénération et rafraichir l'affichage immédiatement.<br>L'ajout
 ou la suppression de slide forcera la génération des slider en
 supprimant le fichier "uploads/slider/images/slides/theme.txt".<br><br>
 <br>
  <br>
 <br>
 </div>
-</body></html>
