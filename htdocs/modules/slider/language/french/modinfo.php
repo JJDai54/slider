@@ -116,7 +116,7 @@ define('_MI_STYLE_SUBTITLE_DESC', "Permet de surcharger le style par défaut du 
 define('_MI_STYLE_BUTTON', "Style du bouton");
 define('_MI_STYLE_BUTTON_DESC', "Permet de surcharger le style par défaut du bouton des slides");
 
-define('_MI_SLIDER_VERIF_SLIDES_OF_THEME', "Slider - Slides courrants");
+define('_MI_SLIDER_VERIF_SLIDES_OF_THEME', "Slider - Slides courants");
 define('_MI_SLIDER_VERIF_SLIDES_OF_THEME_DESC', "Verifie la liste des slides en cours");
 
 define('_MI_SLIDER_ADMENU4', "Thèmes");

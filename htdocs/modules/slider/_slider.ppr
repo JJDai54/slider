@@ -234,9 +234,10 @@ _slider
 17=templates\admin\slider_theme_xbootstrap_4.tpl
 18=templates\admin\slider_main-02.tpl
 19=templates\admin\slider_main-01.tpl
+20=language\french\modinfo.php
 [Selected Project Files]
 Main=
-Selected=templates\admin\slider_main-02.tpl
+Selected=language\french\modinfo.php
 [sql\mysql.sql]
 TopLine=25
 Caret=1,43
@@ -256,8 +257,8 @@ Caret=64,236
 TopLine=46
 Caret=1,56
 [language\french\admin.php]
-TopLine=181
-Caret=1,206
+TopLine=83
+Caret=48,100
 [include\fnc-slider.php]
 TopLine=34
 Caret=1,40
@@ -297,3 +298,6 @@ Caret=69,2
 [templates\admin\slider_main-01.tpl]
 TopLine=1
 Caret=69,2
+[language\french\modinfo.php]
+TopLine=102
+Caret=65,119
