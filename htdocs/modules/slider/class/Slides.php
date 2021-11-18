@@ -89,6 +89,9 @@ class Slides extends \XoopsObject
      */
     public function getFormSlides($SelectedTheme, $action = false)
     {
+        $helper  = \XoopsModules\Slider\Helper::getInstance();
+        $utility = new \XoopsModules\Slider\Utility();
+    
         $isNew = $this->isNew();
         $helper = \XoopsModules\Slider\Helper::getInstance();
         if (!$action) {
@@ -270,17 +273,17 @@ $themesHandler = $helper->getHandler('Themes');
 //         $form->addElement($sldHasPeriode);
         
         
-        $periodicite = $this->isNew() ? 0 : $this->getVar('sld_periodicity');
-        $selPeriodicite = new \XoopsFormSelect(_AM_SLIDER_PERIODICITY, 'sld_periodicity', $periodicite);
-            $selPeriodicite->setDescription (_AM_SLIDER_PERIODICITY_DESC);
-            $selPeriodicite->addOption(Constants::PERIODICITY_ALWAYS,  _AM_SLIDER_PERIODICITE_ALWAYS);
-            $selPeriodicite->addOption(Constants::PERIODICITY_FLOAT,   _AM_SLIDER_PERIODICITE_FLOAT);
-            $selPeriodicite->addOption(Constants::PERIODICITY_WEEK,    _AM_SLIDER_PERIODICITE_WEEK);
-            $selPeriodicite->addOption(Constants::PERIODICITY_MONTH,   _AM_SLIDER_PERIODICITE_MONTH);
-            $selPeriodicite->addOption(Constants::PERIODICITY_QUATER,  _AM_SLIDER_PERIODICITE_QUATER);
-            $selPeriodicite->addOption(Constants::PERIODICITY_YEAR,    _AM_SLIDER_PERIODICITE_YEAR);
+//         $periodicite = $this->isNew() ? 0 : $this->getVar('sld_periodicity');
+//         $selPeriodicite = new \XoopsFormSelect(_AM_SLIDER_PERIODICITY, 'sld_periodicity', $periodicite);
+//             $selPeriodicite->setDescription (_AM_SLIDER_PERIODICITY_DESC);
+//             $selPeriodicite->addOption(Constants::PERIODICITY_ALWAYS,  _AM_SLIDER_PERIODICITE_ALWAYS);
+//             $selPeriodicite->addOption(Constants::PERIODICITY_FLOAT,   _AM_SLIDER_PERIODICITE_FLOAT);
+//             $selPeriodicite->addOption(Constants::PERIODICITY_WEEK,    _AM_SLIDER_PERIODICITE_WEEK);
+//             $selPeriodicite->addOption(Constants::PERIODICITY_MONTH,   _AM_SLIDER_PERIODICITE_MONTH);
+//             $selPeriodicite->addOption(Constants::PERIODICITY_QUATER,  _AM_SLIDER_PERIODICITE_QUATER);
+//             $selPeriodicite->addOption(Constants::PERIODICITY_YEAR,    _AM_SLIDER_PERIODICITE_YEAR);
         //$form->addElement($selPeriodicite);
-
+        $selPeriodicite = $utility->xoopsFormPeriodicite(_AM_SLIDER_PERIODICITY,'sld_periodicity',$this->getVar('sld_periodicity'),_AM_SLIDER_PERIODICITY_DESC);
         
         
         // Form Text Date Select sldDate_begin

@@ -134,7 +134,7 @@ define('_AM_SLIDER_PERIODICITY_DESC', "Define the display renewal periodicity af
 \define ('_AM_SLIDER_UPDATE_PERIODICITY', 'Update periodicity');
 \define ('_AM_SLIDER_PERIODICITY_UPDATED', "The% s slides periods have been updated");
 \define ('_AM_SLIDER_NO_PERIODICITY_TO_UPDATE', "There is no period to update");
-\define ('_AM_SLIDER_NON_ACTIF', "Not active");
+\define ('_AM_SLIDER_INACTIF', "Not active");
 \define ('_AM_SLIDER_ACTIF', "Active");
 \define ('_AM_SLIDER_CURRENT_DATE', "Current date");
 // \define ('_AM_SLIDER_SLIDE_SELECT_THEME', "Choice of theme (s)");
@@ -150,5 +150,6 @@ define('_AM_SLIDER_PERIODICITY_DESC', "Define the display renewal periodicity af
 
 define('_AM_SLIDER_THEME_DESACTIVER_SLIDER', "Un-activate ther slider");
 define('_AM_SLIDER_THEME_ACTIVER_SLIDER', "Activate the slider");
+define('_AM_SLIDER_STATUS', "Status");
 
 // ---------------- End ----------------

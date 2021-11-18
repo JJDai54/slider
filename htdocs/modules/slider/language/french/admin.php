@@ -135,7 +135,7 @@ define('_AM_SLIDER_PERIODICITE_YEAR', 'Tous les ans');
 define('_AM_SLIDER_UPDATE_PERIODICITY', 'Mettre à jour la périodicité');
 define('_AM_SLIDER_PERIODICITY_UPDATED', "Les périodes de %s slides ont été mises à jour");
 define('_AM_SLIDER_NO_PERIODICITY_TO_UPDATE', "Il n'y a pas de période à mettre à jour");
-define('_AM_SLIDER_NON_ACTIF', "Non actif");
+define('_AM_SLIDER_INACTIF', "Inactif");
 define('_AM_SLIDER_ACTIF', "Actif");
 define('_AM_SLIDER_CURRENT_DATE', "Date courante");
 // define('_AM_SLIDER_SLIDE_SELECT_THEME', "Choix du ou des thèmes");
@@ -203,5 +203,6 @@ define('_AM_SLIDER_THEME_SLIDER', "Slider");
 
 define('_AM_SLIDER_THEME_DESACTIVER_SLIDER', "Désactiver le slider");
 define('_AM_SLIDER_THEME_ACTIVER_SLIDER', "Activer le slider");
+define('_AM_SLIDER_STATUS', "Etat");
 
 // ---------------- End ----------------

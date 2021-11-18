@@ -39,6 +39,9 @@ switch ($op) {
     case 'list':
     default:
 //echo "===>select_theme = {$select_theme}";
+        $periodicite = Request::getCmd('sld_periodicity', '0');  
+        $actif = Request::getCmd('sld_actif', '0');  
+        //-----------------------------------------------------
         // Define Stylesheet
         $GLOBALS['xoTheme']->addStylesheet($style, null);
         $start = Request::getInt('start', 0);
@@ -60,6 +63,8 @@ switch ($op) {
         
         $criteria = new \CriteriaCompo();
         $criteria->add(new \Criteria('sld_theme', $select_theme, '='));
+        if($periodicite != 0) $criteria->add(new \Criteria('sld_periodicity', $periodicite, "="));
+        if($actif >= 0) $criteria->add(new \Criteria('sld_actif', $actif, "="));
         //$criteria->add(new \Criteria('length(sld_theme)','0','=', 'OR'));
         //$criteria->add(new \Criteria('sld_theme', '','=', 'OR'));
         
@@ -108,7 +113,12 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
 
         $GLOBALS['xoopsTpl']->assign('sldThemeSelect', $sldThemeSelect->render());
         $GLOBALS['xoopsTpl']->assign('current_DateTime', \formatTimestamp(time(), 'm'));
+
+        $sldPeriodicite = Utility::xoopsFormPeriodicite('Filtre', 'sld_periodicity',$periodicite,null, "onChange=\"document.theme_form.submit()\"", true);        
+        $GLOBALS['xoopsTpl']->assign('sldPeriodicite', $sldPeriodicite->render());
         
+        $sldActif = Utility::xoopsFormActif('Filtre', 'sld_actif',$actif,null, "onChange=\"document.theme_form.submit()\"", true);        
+        $GLOBALS['xoopsTpl']->assign('sldActif', $sldActif->render());
         break;
         
     case 'new':

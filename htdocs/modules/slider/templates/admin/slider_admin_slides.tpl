@@ -1,7 +1,10 @@
 <!-- Header -->
 <{include file='db:slider_admin_header.tpl' }>
 <form id="theme_form"  name="theme_form" action="slides.php" method='get'>
-    <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}> <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
+    <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}>
+    <{$smarty.const._AM_SLIDER_PERIODICITY}> : <{$sldPeriodicite}>
+    <{$smarty.const._AM_SLIDER_STATUS}> : <{$sldActif}>
+    <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
 </form>
 
 <STYLE>
@@ -105,7 +108,7 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                         <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_ACTIF}>">
                     <{else}>
     
-                        <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_NON_ACTIF}>">
+                        <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_INACTIF}>">
                     <{/if}>
                 </td>
                 

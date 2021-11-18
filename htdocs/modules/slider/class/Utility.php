@@ -313,5 +313,42 @@ public static function array2js($name, $options, $isNew = false, $bolEcho = fals
   
   return $js;
 }
+
+/* ******
+*
+* ***** */
+public static function xoopsFormPeriodicite($caption, $name, $value, $description="", $extra = null, $addAll=false){
+
+        $selPeriodicite = new \XoopsFormSelect($caption, $name, $value);
+            $selPeriodicite->setDescription (_AM_SLIDER_PERIODICITY_DESC);
+            if($addAll) $selPeriodicite->addOption(Constants::PERIODICITY_ALL,  '(*)');
+            $selPeriodicite->addOption(Constants::PERIODICITY_ALWAYS,  _AM_SLIDER_PERIODICITE_ALWAYS);
+            $selPeriodicite->addOption(Constants::PERIODICITY_FLOAT,   _AM_SLIDER_PERIODICITE_FLOAT);
+            $selPeriodicite->addOption(Constants::PERIODICITY_WEEK,    _AM_SLIDER_PERIODICITE_WEEK);
+            $selPeriodicite->addOption(Constants::PERIODICITY_MONTH,   _AM_SLIDER_PERIODICITE_MONTH);
+            $selPeriodicite->addOption(Constants::PERIODICITY_QUATER,  _AM_SLIDER_PERIODICITE_QUATER);
+            $selPeriodicite->addOption(Constants::PERIODICITY_YEAR,    _AM_SLIDER_PERIODICITE_YEAR);
+        if ($description)
+            $selPeriodicite->setDescription($description);
+        if ($extra)
+           $selPeriodicite->setExtra($extra);
+        return $selPeriodicite;
+}
+/* ******
+*
+* ***** */
+public static function xoopsFormActif($caption, $name, $value, $description="", $extra = null, $addAll=false){
+
+        $selPeriodicite = new \XoopsFormSelect($caption, $name, $value);
+            $selPeriodicite->setDescription (_AM_SLIDER_PERIODICITY_DESC);
+            if($addAll) $selPeriodicite->addOption(-1,  '(*)');
+            $selPeriodicite->addOption(0, _AM_SLIDER_INACTIF);
+            $selPeriodicite->addOption(1, _AM_SLIDER_ACTIF);
+        if ($description)
+            $selPeriodicite->setDescription($description);
+        if ($extra)
+           $selPeriodicite->setExtra($extra);
+        return $selPeriodicite;
+}
     
 } // Fin de la Class
