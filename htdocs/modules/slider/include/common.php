@@ -51,16 +51,26 @@ include_once XOOPS_ROOT_PATH . '/class/xoopsrequest.php';
 include_once SLIDER_PATH . '/include/functions.php';
 include_once SLIDER_PATH . '/include/fnc-slider.php';
 
-define ('_SLD_PERIODICITY_NEVER',     'j'); // Jamais
-define ('_SLD_PERIODICITY_RANDOM',    'r'); // Random
-define ('_SLD_PERIODICITY_MINUTE',    'n'); // Minute pour tester en dev
-define ('_SLD_PERIODICITY_HOUR',      'h'); // hour
-define ('_SLD_PERIODICITY_DAY',       'd'); // day
-define ('_SLD_PERIODICITY_WEEK',      'w'); // week
-define ('_SLD_PERIODICITY_MONTH',     'm'); // month
-define ('_SLD_PERIODICITY_BIMONTLY',  'b'); // bimestre
-define ('_SLD_PERIODICITY_QUATER',    'q'); // trimestre
-define ('_SLD_PERIODICITY_SEMESTER',  's'); // semestre
-define ('_SLD_PERIODICITY_YEAR',      'y'); // year
+define ('_SLD_PERIODICITY_MAJ_NEVER',     'j'); // Jamais
+define ('_SLD_PERIODICITY_MAJ_RANDOM',    'r'); // Random
+define ('_SLD_PERIODICITY_MAJ_MINUTE',    'n'); // Minute pour tester en dev
+define ('_SLD_PERIODICITY_MAJ_HOUR',      'h'); // hour
+define ('_SLD_PERIODICITY_MAJ_DAY',       'd'); // day
+define ('_SLD_PERIODICITY_MAJ_WEEK',      'w'); // week
+define ('_SLD_PERIODICITY_MAJ_MONTH',     'm'); // month
+define ('_SLD_PERIODICITY_MAJ_BIMONTLY',  'b'); // bimestre
+define ('_SLD_PERIODICITY_MAJ_QUATER',    'q'); // trimestre
+define ('_SLD_PERIODICITY_MAJ_SEMESTER',  's'); // semestre
+define ('_SLD_PERIODICITY_MAJ_YEAR',      'y'); // year
 
 //define('pathModuleAdmin', SLIDER_URL . $pathModuleAdmin);
+define ('_SLD_PERIODICITY_ALL',      0); // tout
+define ('_SLD_PERIODICITY_ALWAYS',   1); // toujurs
+define ('_SLD_PERIODICITY_FLOAT',    2); // periode flottante
+define ('_SLD_PERIODICITY_WEEK',     3); // week
+define ('_SLD_PERIODICITY_MONTH',    4); // month
+define ('_SLD_PERIODICITY_BIMONTLY', 5); // bimestre
+define ('_SLD_PERIODICITY_QUATER',   6); // trimestre
+define ('_SLD_PERIODICITY_SEMESTER', 7); // semestre
+define ('_SLD_PERIODICITY_YEAR',     8); // year
+

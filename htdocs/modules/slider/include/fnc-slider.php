@@ -352,39 +352,39 @@ global $xoopsConfig, $helper;
     $ids = "";
     
         switch($periodicite){
-        case _SLD_PERIODICITY_MINUTE:
+        case _SLD_PERIODICITY_MAJ_MINUTE:
             $instant = date("Y-m-d-i");
             break;
-        case _SLD_PERIODICITY_HOUR:
+        case _SLD_PERIODICITY_MAJ_HOUR:
             $instant = date("Y-m-d-H");
             break;
-        case _SLD_PERIODICITY_DAY:
+        case _SLD_PERIODICITY_MAJ_DAY:
             $instant = date("Y-m-d");
             break;
-        case _SLD_PERIODICITY_WEEK:
+        case _SLD_PERIODICITY_MAJ_WEEK:
             $instant = date("Y-W");
             break;
-        case _SLD_PERIODICITY_MONTH:
+        case _SLD_PERIODICITY_MAJ_MONTH:
             $instant = date("Y-m");
             break;
-        case _SLD_PERIODICITY_BIMONTLY:
+        case _SLD_PERIODICITY_MAJ_BIMONTLY:
             $month = (intval((date("m") -1) / 2 ) * 2)+ 1;
             $instant =  date("Y-m", mktime(0,0,0, $month, 1, date("Y")));
             break;
-        case _SLD_PERIODICITY_QUATER:
+        case _SLD_PERIODICITY_MAJ_QUATER:
             $month = (intval((date("m") -1) / 3 ) * 3)+ 1;
             $instant =  date("Y-m", mktime(0,0,0, $month, 1, date("Y")));
             break;
-         case _SLD_PERIODICITY_SEMESTER:
+         case _SLD_PERIODICITY_MAJ_SEMESTER:
             $month = (intval((date("m") -1) / 6 ) * 6)+ 1;
             $instant =  date("Y-m", mktime(0,0,0, $month, 1, date("Y")));
             //echo "===>mois = " . date("m") ."<br>===>instant = {$instant}<br>" . intval(11/6) . "<br>";
             break;
-        case _SLD_PERIODICITY_YEAR:
+        case _SLD_PERIODICITY_MAJ_YEAR:
             $instant = date("Y", mktime());
             break;
             break;
-        case _SLD_PERIODICITY_RANDOM:
+        case _SLD_PERIODICITY_MAJ_RANDOM:
             $instant = 0;
             break;
         default:
@@ -594,17 +594,17 @@ function getFormPeriodicity($caption, $name, $periodicite = 'j', $prefixConst = 
  
     $selPeriodicite = new \XoopsFormSelect($caption, $name, $periodicite);
     //------------------------------------------------------------------
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_NEVER,    _MB_SLIDER_PERIODICITE_NEVER);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_RANDOM,   _MB_SLIDER_PERIODICITE_RANDOM);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_MINUTE,   _MB_SLIDER_PERIODICITE_MINUTE);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_HOUR,     _MB_SLIDER_PERIODICITE_HOUR);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_DAY,      _MB_SLIDER_PERIODICITE_DAY);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_WEEK,     _MB_SLIDER_PERIODICITE_WEEK);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_MONTH,    _MB_SLIDER_PERIODICITE_MONTH);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_BIMONTLY, _MB_SLIDER_PERIODICITE_BIMONTHLY);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_QUATER,   _MB_SLIDER_PERIODICITE_QUATER);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_SEMESTER, _MB_SLIDER_PERIODICITE_SEMESTER);
-//     $selPeriodicite->addOption(_SLD_PERIODICITY_YEAR,     _MB_SLIDER_PERIODICITE_YEAR);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_NEVER,    _MB_SLIDER_PERIODICITE_NEVER);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_RANDOM,   _MB_SLIDER_PERIODICITE_RANDOM);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_MINUTE,   _MB_SLIDER_PERIODICITE_MINUTE);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_HOUR,     _MB_SLIDER_PERIODICITE_HOUR);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_DAY,      _MB_SLIDER_PERIODICITE_DAY);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_WEEK,     _MB_SLIDER_PERIODICITE_WEEK);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_MONTH,    _MB_SLIDER_PERIODICITE_MONTH);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_BIMONTLY, _MB_SLIDER_PERIODICITE_BIMONTHLY);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_QUATER,   _MB_SLIDER_PERIODICITE_QUATER);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_SEMESTER, _MB_SLIDER_PERIODICITE_SEMESTER);
+//     $selPeriodicite->addOption(_SLD_PERIODICITY_MAJ_YEAR,     _MB_SLIDER_PERIODICITE_YEAR);
     
     $selPeriodicite->addOptionArray(getPeriodicityCaptions($prefixConst));
     //------------------------------------------------------------------
@@ -623,17 +623,17 @@ function getFormPeriodicity($caption, $name, $periodicite = 'j', $prefixConst = 
 function getPeriodicityCaptions($prefixConst = '_AM_'){
 //echo "===>getPeriodicityCaptions :  prefixConst = {$prefixConst}<br>";    
     $tCaptions = array(
-     _SLD_PERIODICITY_NEVER       => constant($prefixConst . 'SLIDER_PERIODICITE_RND_NEVER'),
-     _SLD_PERIODICITY_RANDOM      => constant($prefixConst . 'SLIDER_PERIODICITE_RND_RANDOM'),
-     _SLD_PERIODICITY_MINUTE      => constant($prefixConst . 'SLIDER_PERIODICITE_RND_MINUTE'),
-     _SLD_PERIODICITY_HOUR        => constant($prefixConst . 'SLIDER_PERIODICITE_RND_HOUR'),
-     _SLD_PERIODICITY_DAY         => constant($prefixConst . 'SLIDER_PERIODICITE_RND_DAY'),
-     _SLD_PERIODICITY_WEEK        => constant($prefixConst . 'SLIDER_PERIODICITE_RND_WEEK'),
-     _SLD_PERIODICITY_MONTH       => constant($prefixConst . 'SLIDER_PERIODICITE_RND_MONTH'),
-     _SLD_PERIODICITY_BIMONTLY    => constant($prefixConst . 'SLIDER_PERIODICITE_RND_BIMONTHLY'),
-     _SLD_PERIODICITY_QUATER      => constant($prefixConst . 'SLIDER_PERIODICITE_RND_QUATER'),
-     _SLD_PERIODICITY_SEMESTER    => constant($prefixConst . 'SLIDER_PERIODICITE_RND_SEMESTER'),
-     _SLD_PERIODICITY_YEAR        => constant($prefixConst . 'SLIDER_PERIODICITE_RND_YEAR')
+     _SLD_PERIODICITY_MAJ_NEVER       => constant($prefixConst . 'SLIDER_PERIODICITE_RND_NEVER'),
+     _SLD_PERIODICITY_MAJ_RANDOM      => constant($prefixConst . 'SLIDER_PERIODICITE_RND_RANDOM'),
+     _SLD_PERIODICITY_MAJ_MINUTE      => constant($prefixConst . 'SLIDER_PERIODICITE_RND_MINUTE'),
+     _SLD_PERIODICITY_MAJ_HOUR        => constant($prefixConst . 'SLIDER_PERIODICITE_RND_HOUR'),
+     _SLD_PERIODICITY_MAJ_DAY         => constant($prefixConst . 'SLIDER_PERIODICITE_RND_DAY'),
+     _SLD_PERIODICITY_MAJ_WEEK        => constant($prefixConst . 'SLIDER_PERIODICITE_RND_WEEK'),
+     _SLD_PERIODICITY_MAJ_MONTH       => constant($prefixConst . 'SLIDER_PERIODICITE_RND_MONTH'),
+     _SLD_PERIODICITY_MAJ_BIMONTLY    => constant($prefixConst . 'SLIDER_PERIODICITE_RND_BIMONTHLY'),
+     _SLD_PERIODICITY_MAJ_QUATER      => constant($prefixConst . 'SLIDER_PERIODICITE_RND_QUATER'),
+     _SLD_PERIODICITY_MAJ_SEMESTER    => constant($prefixConst . 'SLIDER_PERIODICITE_RND_SEMESTER'),
+     _SLD_PERIODICITY_MAJ_YEAR        => constant($prefixConst . 'SLIDER_PERIODICITE_RND_YEAR')
     );
 
     return $tCaptions;

@@ -158,12 +158,12 @@ global $xoopsConfig, $helper;
     //-------------------------------------------------------------------------
     //Selectionne les slides qui n'utilisent pas une periode
     $crSlidesHasPeriode = new \CriteriaCompo();
-    $crSlidesHasPeriode->add(new \Criteria('sld_periodicity', 0, '='));
+    $crSlidesHasPeriode->add(new \Criteria('sld_periodicity', Constants::PERIODICITY_ALWAYS, '='));
     
     //pour les slides qui utilisent une période 
     //sélectionne ceux qui concordent avec la date en cours
     $crSlidesperiode = new \CriteriaCompo();    
-    $crSlidesperiode->add(new \Criteria('sld_periodicity', 0, '>'));
+    $crSlidesperiode->add(new \Criteria('sld_periodicity', Constants::PERIODICITY_ALWAYS, '>'));
     $crSlidesperiode->add(new \Criteria('sld_date_end', $now, '>='));
     $crSlidesperiode->add(new \Criteria('sld_date_begin', $now, '<='));
     //$crSlidesperiode->add(new \Criteria('sld_date_begin', $now + 86400, '<='));

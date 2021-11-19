@@ -43,7 +43,7 @@ class Slider_2_03
         $tbl = $xoopsDB->prefix('slider_slides');
 
 $sql = <<<__sql__
-ALTER TABLE {$tbl} CHANGE `sld_has_periode` `sld_periodicity` INT(1) NOT NULL DEFAULT '0';
+ALTER TABLE {$tbl} CHANGE `sld_has_periode` `sld_periodicity` INT(1) NOT NULL DEFAULT '1';
 __sql__;
 
     //----------------------------------------------

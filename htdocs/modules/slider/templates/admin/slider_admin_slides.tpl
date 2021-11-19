@@ -93,9 +93,9 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                 
                 <td class='center'>
                     <span style='visibility:hidden;'><{$slide.periodicity}></span>
-                    <{if $slide.periodicity == 0 }>
+                    <{if $slide.periodicity == $smarty.const.PERIODICITY_ALWAYS }>
                         <img src="<{$modPathIcon16}>/periodicity-0.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_ALWAYS}>">
-                    <{elseif $slide.periodicity == 1 }>
+                    <{elseif $slide.periodicity == $smarty.const.PERIODICITY_FLOAT }>
                         <img src="<{$modPathIcon16}>/periodicity-1.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_FLOAT}>">
                     <{else}>
                         <img src="<{$modPathIcon16}>/periodicity-2.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_CYCLIQUE}>">
@@ -112,7 +112,7 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                     <{/if}>
                 </td>
                 
-                <{if $slide.periodicity > 0}>
+                <{if $slide.periodicity > $smarty.const._SLD_PERIODICITY_ALWAYS}>
                   <td class='center'><{$slide.str_date_begin}></td>
                   <td class='center'><{$slide.str_date_end}></td>
                 <{else}>

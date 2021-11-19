@@ -136,7 +136,7 @@ _slider
 			docs\license.txt
 			docs\readme.txt
 			docs\todo.txt
-		-include
+		+include
 			include\common.php
 			include\fnc-slider.php
 			include\functions.php
@@ -217,11 +217,13 @@ _slider
 0=admin\slides.php
 1=class\Slides.php
 2=templates\admin\slider_admin_slides.tpl
-3=class\Utility.php
-4=class\Constants.php
-5=language\french\blocks.php
-6=language\french\admin.php
-7=language\english\admin.php
+3=language\french\blocks.php
+4=language\french\admin.php
+5=language\english\admin.php
+6=class\SlidesHandler.php
+7=class\Constants.php
+8=versions\Slider_2_03.php
+9=include\common.php
 [Selected Project Files]
 Main=
 Selected=templates\admin\slider_admin_slides.tpl
@@ -229,17 +231,11 @@ Selected=templates\admin\slider_admin_slides.tpl
 TopLine=90
 Caret=47,121
 [class\Slides.php]
-TopLine=280
-Caret=24,286
+TopLine=89
+Caret=8,110
 [templates\admin\slider_admin_slides.tpl]
-TopLine=1
-Caret=5,7
-[class\Utility.php]
-TopLine=323
-Caret=63,345
-[class\Constants.php]
-TopLine=25
-Caret=40,44
+TopLine=87
+Caret=62,115
 [language\french\blocks.php]
 TopLine=18
 Caret=1,36
@@ -249,3 +245,15 @@ Caret=1,207
 [language\english\admin.php]
 TopLine=120
 Caret=36,153
+[class\SlidesHandler.php]
+TopLine=148
+Caret=1,166
+[class\Constants.php]
+TopLine=25
+Caret=1,52
+[versions\Slider_2_03.php]
+TopLine=28
+Caret=89,46
+[include\common.php]
+TopLine=52
+Caret=10,67
