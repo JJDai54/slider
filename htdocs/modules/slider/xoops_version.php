@@ -26,8 +26,8 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 2.12,
-    'release_date'        => '2021/10/15',
+    'version'             => 2.14,
+    'release_date'        => '2021/11/18',
     'release'             => '',
     'module_status'       => 'Beta 1',
     'description'         => _MI_SLIDER_DESC,
@@ -74,9 +74,9 @@ $modversion['templates'] = [
     // Admin templates
     ['file' => 'slider_theme_xbootstrap_3.tpl', 'description' => 'Generation du nouveau tpl pour les themes bootstrap 3', 'type' => 'admin'],
     ['file' => 'slider_theme_xbootstrap_4.tpl', 'description' => 'Generation du nouveau tpl pour les themes bootstrap 4', 'type' => 'admin'],
-    ['file' => 'slider_admin_about.tpl', 'description' => '', 'type' => 'admin'],
+    ['file' => 'slider_admin_about.tpl',  'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_header.tpl', 'description' => '', 'type' => 'admin'],
-    ['file' => 'slider_admin_index.tpl', 'description' => '', 'type' => 'admin'],
+    ['file' => 'slider_admin_index.tpl',  'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_slides.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_themes.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_footer.tpl', 'description' => '', 'type' => 'admin'],

@@ -28,7 +28,7 @@ _slider
 			admin\slides.php
 			admin\themes.php
 			admin\traitements.php
-		+assets
+		-assets
 			+css
 				-admin
 					assets\css\admin\index.html
@@ -96,12 +96,12 @@ _slider
 				assets\js\highslide.js
 				assets\js\index.html
 			assets\index.html
-		+blocks
+		-blocks
 			blocks\index.html
 			blocks\update_theme_slides.php
 			blocks\verif_slides_of_theme.php
 		+class
-			+Common
+			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
 				class\Common\FilesManagement.php
@@ -224,12 +224,18 @@ _slider
 7=class\Constants.php
 8=versions\Slider_2_03.php
 9=include\common.php
+10=admin\index.php
+11=class\ThemesHandler.php
+12=sql\mysql.sql
+13=include\xoops_version.inc.php
+14=include\update.php
+15=xoops_version.php
 [Selected Project Files]
 Main=
-Selected=templates\admin\slider_admin_slides.tpl
+Selected=include\update.php
 [admin\slides.php]
-TopLine=90
-Caret=47,121
+TopLine=38
+Caret=34,43
 [class\Slides.php]
 TopLine=89
 Caret=8,110
@@ -246,14 +252,32 @@ Caret=1,207
 TopLine=120
 Caret=36,153
 [class\SlidesHandler.php]
-TopLine=148
-Caret=1,166
+TopLine=67
+Caret=1,85
 [class\Constants.php]
 TopLine=25
-Caret=1,52
+Caret=4,44
 [versions\Slider_2_03.php]
 TopLine=28
 Caret=89,46
 [include\common.php]
 TopLine=52
 Caret=10,67
+[admin\index.php]
+TopLine=31
+Caret=52,40
+[class\ThemesHandler.php]
+TopLine=211
+Caret=11,236
+[sql\mysql.sql]
+TopLine=1
+Caret=13,26
+[include\xoops_version.inc.php]
+TopLine=1
+Caret=1,1
+[include\update.php]
+TopLine=235
+Caret=5,249
+[xoops_version.php]
+TopLine=3
+Caret=25,37

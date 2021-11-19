@@ -233,7 +233,8 @@ global $slidesHandler;
     $stat = array();
     foreach ($themesList AS $key=>$theme){
         $criteria = new \CriteriaCompo(new \Criteria("sld_theme", $key, "="));
-        $criteria->add(new \Criteria("length(sld_theme)", 0, '='), 'OR');
+        //$criteria->add(new \Criteria("length(sld_theme)", 0, '='), 'OR');
+        $criteria->add(new \Criteria("sld_theme", null, '='), 'OR');
         if ($tplString != ''){
             $stat[$key] = sprintf($tplString,  $key, 
                               $slidesHandler->getCountSlides($criteria),

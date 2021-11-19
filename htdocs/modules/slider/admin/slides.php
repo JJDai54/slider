@@ -39,8 +39,8 @@ switch ($op) {
     case 'list':
     default:
 //echo "===>select_theme = {$select_theme}";
-        $periodicite = Request::getCmd('sld_periodicity', '0');  
-        $actif = Request::getCmd('sld_actif', '0');  
+        $periodicite = Request::getInt('sld_periodicity', '0');  
+        $actif = Request::getInt('sld_actif', -1);  
         //-----------------------------------------------------
         // Define Stylesheet
         $GLOBALS['xoTheme']->addStylesheet($style, null);

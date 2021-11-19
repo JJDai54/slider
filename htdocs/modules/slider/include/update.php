@@ -36,8 +36,8 @@ function xoops_module_update_slider($module, $prev_version = null)
         $ret = update_slider_v10($module);
     }
     
-    if ($prev_version < 20) {
-        $ret = update_slider_v200($module);
+    if ($prev_version < 214) {
+        $ret = update_slider_v214($module);
     }
 
 //-------------------------------------------------------------------
@@ -234,4 +234,19 @@ function slider_check_db($module)
     }
     */
     return $ret;
+}
+
+/**
+ * @param $module
+ *
+ * @return bool
+ */
+function update_slider_v214($module)
+{
+    global $xoopsDB;
+
+    $sql = "UPDATE " . $xoopsDB->prefix('tplfile') . " SET sld_periodicity = sld_periodicity  + 1 ;";
+    $result = $xoopsDB->query($sql);
+    return $result;
+    
 }
