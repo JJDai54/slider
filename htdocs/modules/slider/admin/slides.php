@@ -163,9 +163,14 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         $slidesObj->setVar('sld_theme', Request::getString('sld_theme', ''));
         
         $slidesObj->setVar('sld_button_title', Request::getString('sld_button_title', ''));
+        
         $slidesObj->setVar('sld_style_title', Request::getText('sld_style_title'));
         $slidesObj->setVar('sld_style_subtitle', Request::getText('sld_style_subtitle'));
         $slidesObj->setVar('sld_style_button', Request::getText('sld_style_button'));
+        
+        $slidesObj->setVar('sld_style_id_title',    Request::getText('sld_style_id_title'));
+        $slidesObj->setVar('sld_style_id_subtitle', Request::getText('sld_style_id_subtitle'));
+        $slidesObj->setVar('sld_style_id_button',   Request::getText('sld_style_id_button'));
         
         //-------------------------------------------------------
         // Set Var sld_image

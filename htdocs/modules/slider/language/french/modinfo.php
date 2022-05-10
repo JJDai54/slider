@@ -28,7 +28,7 @@ define('_MI_SLIDER_DESC', 'Ce module permet de gérer l\'affichage des slides, A
 // ---------------- Admin Menu ----------------
 define('_MI_SLIDER_ADMENU1', 'Tableau de bord');
 define('_MI_SLIDER_ADMENU2', 'Slides');
-define('_MI_SLIDER_ADMENU3', 'Retour');
+define('_MI_SLIDER_FEEDBACK', 'Retour');
 define('_MI_SLIDER_ABOUT', 'A propos');
 // ---------------- Admin Nav ----------------
 define('_MI_SLIDER_ADMIN_PAGER', 'Admin pages');
@@ -120,6 +120,13 @@ define('_MI_SLIDER_VERIF_SLIDES_OF_THEME', "Slider - Slides courants");
 define('_MI_SLIDER_VERIF_SLIDES_OF_THEME_DESC', "Verifie la liste des slides en cours");
 
 define('_MI_SLIDER_ADMENU4', "Thèmes");
-// ---------------- End ----------------
+define('_MI_SLIDER_ADMENU5', "Styles");
 
+define('_MI_SLIDER_MENU_MANAGER', "Slider menu manager");
+define('_MI_SLIDER_MENU_MANAGER_DESC', "Bloc de gestion des mesnus du bandeau pour xbootstrap et xwatch4");
+
+define('_MI_SLIDER_SURCHARGE_THEME', "// Sucharge du theme");
+define('_MI_SLIDER_SURCHARGE_THEME_DESC', "Permet de surcharger certains attributs du thème comme la couleur de fond, ...");
+
+// ---------------- End ----------------
 

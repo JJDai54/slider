@@ -32,6 +32,9 @@ $modPathIcon32   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons
 $helper = \XoopsModules\Slider\Helper::getInstance();
 $slidesHandler = $helper->getHandler('Slides');
 $themesHandler = $helper->getHandler('Themes');
+$stylesHandler = $helper->getHandler('Styles');
+$allStyles = null;
+
 $myts = MyTextSanitizer::getInstance();
 //echo "<hr>"  . $helper->getConfig('highslide') . "<hr>";
 // 
@@ -50,6 +53,7 @@ if (\file_exists($GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php'))) 
 } else {
     \redirect_header('../../../admin.php', 5, _AM_MODULEADMIN_MISSING);
 }
+include('../class/CssParser.php');
 
 xoops_cp_header();
 

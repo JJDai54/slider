@@ -112,13 +112,9 @@ define('_AM_SLIDER_FIRST', "Premier");
 define('_AM_SLIDER_LAST', "Dernier");
 
 define('_AM_SLIDER_SLIDE_STYLE_TITLE', "Style du titre");
-define('_AM_SLIDER_SLIDE_STYLE_TITLE_DESC', "Utiliser les style CSS sans le nom du style ni les acolades. Exemple :<br>color:red;<br>background:yellow;");
-
 define('_AM_SLIDER_SLIDE_STYLE_SUBTITLE', "Style du sous-titre");
-define('_AM_SLIDER_SLIDE_STYLE_SUBTITLE_DESC', "Utiliser les style CSS sans le nom du style ni les acolades. Exemple :<br>color:red;<br>background:yellow;");
-
 define('_AM_SLIDER_SLIDE_STYLE_BUTTON', "Style du bouton");
-define('_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC', "Utiliser les style CSS sans le nom du style ni les acolades. Exemple :<br>color:red;<br>background:yellow;");
+define('_AM_SLIDER_SLIDE_STYLE_DESC', "Utiliser les styles CSS sans le nom de la classe ni les accolades. Exemple :<br><span style='color:blue'>color:red;<br>background:yellow;<br>opacity: 0.8;<br>padding: 0px 25px 0px 25px;<br>border-radius: 50px 50px 50px 50px;</span>");
 
 define('_AM_SLIDER_PERIODICITY', "Périodicité");
 define('_AM_SLIDER_PERIODICITY_DESC', "Défini la périodicité de renouvellement d'affichage après une période expirée<br>'Toujours' : aucune prériodicité.<br>pour les autres options définir une date de début et de fin.");
@@ -149,7 +145,7 @@ define('_AM_SLIDER_SUBTITLE', "Sous-titre");
 define('_AM_SLIDER_BUTTON', "Bouton");
 define('_AM_SLIDER_OPTIONS', "Options");
 
-define('_AM_SLIDER_theme_transition', "Défilement");
+define('_AM_SLIDER_THEME_TRANSITION', "Défilement");
 define('_AM_SLIDER_THEME_TRANSITION_DESC', "Cette option n'est disponible que pour les thèmes xbootstrap 4 (xswatch4)");
 define('_AM_SLIDER_THEME_TRANSITION_VERTICAL', "Vertical");
 define('_AM_SLIDER_THEME_TRANSITION_HORIZONTAL', "Horizontal");
@@ -158,7 +154,7 @@ define('_AM_SLIDER_NAME', "Nom");
 define('_AM_SLIDER_THEME_WHITE_CSS', "CSS");
 define('_AM_SLIDER_THEME_WHITE_CSS_DESC', "Style CSS du thème.<br>Dossiers préfixés \"css_\" des thèmes xbootstrap 4 (xswatch4)");
 define('_AM_SLIDER_THEME_DARK_CSS', "CSS sombre");
-define('_AM_SLIDER_THEME_DARK_CSS_DESC', "Style CSS sombre pour les themes \"xwatch 4E\".");
+define('_AM_SLIDER_THEME_DARK_CSS_DESC', "Style CSS sombre pour les themes \"xswatch 4E\".");
 
 define('_AM_SLIDER_THEME_VERSION', "Version");
 define('_AM_SLIDER_THEME_VERSION_DESC', "Vérifiez la vesion du thème bottstrap avent de changer cette valeur");
@@ -198,11 +194,34 @@ define('_AM_SLIDER_THEME_RANDOM', 'MAJ aléatoire');
 define('_AM_SLIDER_PURGER_SLIDES', "Purger le(s) %s slide(s) inutilisé(s)");
 define('_AM_SLIDER_THEMES_STATS1', "Thème %s : %s slide(s) défini(s) dont %s en cours");
 define('_AM_SLIDER_THEMES_STATS2', "<tr><td>Thème %s : </td><td>%s slide(s) défini(s)</td><td> dont %s en cours</td></tr>");
-define('_AM_SLIDER_THEME_XWATCH4E', "xwatch 4E");
+define('_AM_SLIDER_THEME_XSWATCH4E', "xswatch 4E");
 define('_AM_SLIDER_THEME_SLIDER', "Slider");
 
 define('_AM_SLIDER_THEME_DESACTIVER_SLIDER', "Désactiver le slider");
 define('_AM_SLIDER_THEME_ACTIVER_SLIDER', "Activer le slider");
 define('_AM_SLIDER_STATUS', "Etat");
+define('_AM_SLIDER_DEL_IMG', "Supprimer l'image");
+define('_AM_SLIDER_NONE', "Aucun");
+define('_AM_SLIDER_CURRENT_LOGO', "Logo courant");
+define('_AM_SLIDER_NEW_LOGO', "Nouveau logo");
+define('_AM_SLIDER_THEME_LOGO', "Logo");
+define('_AM_SLIDER_BLOCKS_INFO', "Blocks du module");
+
+define('_AM_SLIDER_THEME_MYCSS', "Fichier CSS à modifier");
+define('_AM_SLIDER_THEME_MYCSS_DESC', "Fichier de surchage des attributs background, color, ...<br>Selon le theme: reset.css , my_xoops.css, ...");
+
+define('_AM_SLIDER_ADD_STYLE', "Ajouter un style");
+define('_AM_SLIDER_STYLE_ADD', "Ajouter un style");
+define('_AM_SLIDER_THEREARENT_STYLES', "Il n'y a aucun style ans la base");
+define('_AM_SLIDER_LIST_STYLES', "Liste des styles");
+define('_AM_SLIDER_STYLE_NAME', "Nom");
+define('_AM_SLIDER_STYLE_NAME_DESC', "Nom unique");
+define('_AM_SLIDER_STYLE_CSS', "CSS");
+define('_AM_SLIDER_STYLE_EDIT', "Edit style");
+define('_AM_SLIDER_STYLE_OBJECT', "Objet");
+define('_AM_SLIDER_STYLE_NONE', "Aucun");
+define('_AM_SLIDER_STYLE_TITLE', "Style du titre");
+define('_AM_SLIDER_STYLE_SUBTITLE', "Style du sous-titre");
+define('_AM_SLIDER_STYLE_BUTTON', "Style du bouton");
 
 // ---------------- End ----------------

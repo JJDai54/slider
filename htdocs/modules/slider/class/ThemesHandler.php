@@ -168,6 +168,8 @@ function updateThemesValid($clearBefore = false){
             $versionProbable = (strpos($ini['Name'],'4')===false) ? 0 : 4;
 //echo "===>{$ini['Name']}--->{$versionProbable}<br>" ;           
       		$themesObj->setVar('theme_tpl_slider', ($versionProbable==4) ? 'slider_theme_xbootstrap_4.tpl' : 'slider_theme_xbootstrap_3.tpl');
+// a traiter
+// theme_mycss            
           }else{
   			//$themesObj = $this->get($themeId);    
               $ids = $this->getIds($criteria);       
@@ -355,7 +357,7 @@ public static function updateCss_xbootstrap($theme, $newCSS){
 /* ***********************
 
 ************************** */
-public static function isXwatch4E($theme){
+public static function isXswatch4E($theme){
     $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl';
     return file_exists($fullNameXW);
 }
@@ -363,7 +365,7 @@ public static function isXwatch4E($theme){
 /* ***********************
 
 ************************** */
-public static function getCurrentCss_xwatch4E($theme, $darkCss = false){
+public static function getCurrentCss_xswatch4E($theme, $darkCss = false){
 
     $listCssOk = self::getCssList($theme);
     $fileName = ($darkCss) ? 'xswatchDarkCss.tpl' : 'xswatchCss.tpl';    
@@ -383,16 +385,16 @@ public static function getCurrentCss_xwatch4E($theme, $darkCss = false){
     }else{
         $css = '???';
     }
-//echo "===>getCurrentCss_xwatch4E<br>{$fullName}<br>css = |{$css}|<br>";
+//echo "===>getCurrentCss_xswatch4E<br>{$fullName}<br>css = |{$css}|<br>";
     return $css; 
 
 }
 /* ***********************
-met à jour les fichiers du therme xwatch4E:
+met à jour les fichiers du therme xswatch4E:
 - xswatchCss.tpl
 
 ************************** */
-public static function updateCss_xwatch4E($theme, $newCSS, $darkCss = false){
+public static function updateCss_xswatch4E($theme, $newCSS, $darkCss = false){
 //echo "===> theme = {$theme} - newCSS = {$newCSS}<br>";
 //exit;
 
@@ -403,11 +405,11 @@ public static function updateCss_xwatch4E($theme, $newCSS, $darkCss = false){
     //-------------------------------------------------
     $content = $newCSS;  
     saveTexte2File($fullNameXW, $content, $mod = 0777);
-//echo "===><br>updateCss_xwatch4E{$fullNameXW}<br>css = |{$newCSS}|<br>";
+//echo "===><br>updateCss_xswatch4E{$fullNameXW}<br>css = |{$newCSS}|<br>";
     
-    //pour les themes xwatch4 sous xoops 2510 et inférieur
+    //pour les themes xswatch4 sous xoops 2510 et inférieur
     //pas vraiment utile à partir de xoops2511 mais à faire quand meme
-    self::updateCss_xwatch4E_x2510($theme, $newCSS);
+    self::updateCss_xswatch4E_x2510($theme, $newCSS);
     
 
     return true;
@@ -426,7 +428,7 @@ et leru affect le nouveau style CSS du theme en modifiant le contenu avec le nom
 @import url(../css-cerulean/xoops.css);
 
 ************************** */
-public static function updateCss_xwatch4E_x2510($theme, $newCSS){
+public static function updateCss_xswatch4E_x2510($theme, $newCSS){
 //echo "===> theme = {$theme} - newCSS = {$newCSS}<br>";
 //exit;
     $themePath = XOOPS_ROOT_PATH . "/themes/{$theme}";    
@@ -453,7 +455,7 @@ public static function updateCss_xwatch4E_x2510($theme, $newCSS){
 
 /**
  * Function is_slider_allowed
- * @param  $theme : dossier du theme xwatch4
+ * @param  $theme : dossier du theme xswatch4
  * @return bool
  */
 public static function is_slider_allowed($theme)
@@ -474,7 +476,7 @@ public static function is_slider_allowed($theme)
 
 /* ********************
  * Function set_allowed_slider
- * @param  $theme : dossier du theme xwatch4
+ * @param  $theme : dossier du theme xswatch4
  * @return bool
 * ******************** */
 public static function set_allowed_slider($theme, $enabled = true)

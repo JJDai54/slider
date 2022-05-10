@@ -19,6 +19,8 @@
  * @min_xoops      2.5.9
  * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
+ 
+include_once __DIR__ . '/common.php';
 // Admin Edit
 define('_MB_SLIDER_DISPLAY', 'Combien de tables à afficher');
 define('_MB_SLIDER_TITLE_LENGTH', 'Longueur des titres');
@@ -64,5 +66,6 @@ define('_MB_SLIDER_PERIODICITE_YEAR', 'Une fois par an');
 
 define('_MB_SLIDER_MAX_SLIDES', 'Nombre de slides maximum');
 define('_MB_SLIDER_MAX_SLIDES_DESC', 'Laissez 0 pour sélectionner tous les slides actifs');
+define('_MB_SLD_ADMIN_MODULE', 'Administration du module');
 
 // ---------------- End ----------------

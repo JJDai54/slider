@@ -28,7 +28,7 @@ define('_MI_SLIDER_DESC', 'Ce module permet de gérer l\'affichage des slides, A
 // ---------------- Admin Menu ----------------
 define('_MI_SLIDER_ADMENU1', 'Dashboard');
 define('_MI_SLIDER_ADMENU2', 'Slides');
-define('_MI_SLIDER_ADMENU3', 'Feedback');
+define('_MI_SLIDER_FEEDBACK', 'Feedback');
 define('_MI_SLIDER_ABOUT', 'About');
 // ---------------- Admin Nav ----------------
 define('_MI_SLIDER_ADMIN_PAGER', 'Admin pager');

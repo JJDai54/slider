@@ -1,4 +1,17 @@
 ==============================================================
+2.20 [2022/05/09 15:00:00] - JJDai (jjdelalandre@orange.fr)
+==============================================================
+- Ajout de la table style pour remplacer les champs texte des styles css de la table slides
+- Mise à jour du formulauraire de saisie des slides. le champs text est finalement conservé et complete le style css choisi dans la liste
+  cela permet par exemple de ne changer que la couleur du texte (titre, sous-stitre et bouton) qui pourrait ne pas bien se voir sur certain slides
+- suppression des css par defauts dans les préférences, ils strouvent maintenant dans la table des styles
+
+==============================================================
+2.18 [2022/04/06 15:00:00] - JJDai (jjdelalandre@orange.fr)
+==============================================================
+- Correction da recherche des catégories dans la classe plugin
+
+==============================================================
 2.08 [2021/07/24 15:00:00] - JJDai (jjdelalandre@orange.fr)
 ==============================================================
 - Onglet 'Themes' :
@@ -110,7 +123,7 @@ Block update_theme :
        Image à a afficher
  
  - IMPORTANT:
- Block : pour fonctioner correctement le bloc du module dot être activé.
+ Block : pour fonctioner correctement le bloc du module doit être activé.
          Il peut être placé n'import ou, il est invisible.
          Ne pas modifier le paramètre "visible" du bloc, le laisser sur "non"
          

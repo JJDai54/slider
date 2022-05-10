@@ -26,8 +26,8 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 2.14,
-    'release_date'        => '2021/11/18',
+    'version'             => 2.20,
+    'release_date'        => '2022/05/09',
     'release'             => '',
     'module_status'       => 'Beta 1',
     'description'         => _MI_SLIDER_DESC,
@@ -79,7 +79,13 @@ $modversion['templates'] = [
     ['file' => 'slider_admin_index.tpl',  'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_slides.tpl', 'description' => '', 'type' => 'admin'],
     ['file' => 'slider_admin_themes.tpl', 'description' => '', 'type' => 'admin'],
+    ['file' => 'slider_admin_styles.tpl', 'description' => '', 'type' => 'admin'],    
     ['file' => 'slider_admin_footer.tpl', 'description' => '', 'type' => 'admin'],
+    ['file' => 'slider_admin_logo.tpl',   'description' => '', 'type' => 'admin'],
+    ['file' => 'slider_menu_xbootstrap_main.tpl', 'description' => '', 'type' => ''],
+    ['file' => 'slider_menu_xswatch4_main.tpl',   'description' => '', 'type' => ''],
+
+
     // User templates
 //     ['file' => 'slider_header.tpl', 'description' => ''],
 //     ['file' => 'slider_index.tpl', 'description' => ''],
@@ -101,7 +107,7 @@ $modversion['blocks'][] = [
     'name'        => _AM_SLIDER_RANDOM_SLIDER,
     'description' => _AM_SLIDER_RANDOM_SLIDER_DESC,
     'show_func'   => 'b_slider_update_theme_slides_show',
-    'edit_func'   => 'b_slider_update_theme_slides_edit', //
+    'edit_func'   => 'b_slider_update_theme_slides_edit', 
     'template'    => 'slider_block_update_theme_slides.tpl',
     'options'     => '',
 ];
@@ -115,6 +121,30 @@ $modversion['blocks'][] = [
     'template'    => 'slider_block_slides_of_theme.tpl',
     'options'     => '',
 ];
+$modversion['blocks'][] = [
+    'file'        => 'menu_manager.php',
+    'name'        => _MI_SLIDER_MENU_MANAGER,
+    'description' => _MI_SLIDER_MENU_MANAGER_DESC,
+    'show_func'   => 'b_slider_menu_manager_show',
+    'edit_func'   => 'b_slider_menu_manager_edit', //
+    'template'    => 'slider_menu_manager.tpl',
+    'options'     => '', //option a definir dans nav_menu.tpl : moduleDirName|theme|level|sens
+];
+
+$modversion['blocks'][] = [
+    'file'        => 'surcharge_theme.php',
+    'name'        => _MI_SLIDER_SURCHARGE_THEME,
+    'description' => _MI_SLIDER_SURCHARGE_THEME_DESC,
+    'show_func'   => 'b_slider_surcharge_theme_show',
+    'edit_func'   => 'b_slider_surcharge_theme_edit', 
+    'template'    => 'slider_surcharge_theme.tpl',
+    'options'     => '', //option a definir dans nav_menu.tpl : moduleDirName|theme|level|sens
+];
+
+
+/*
+*/
+
 
 // ------------------- Config ------------------- //
 // Editor Admin
@@ -241,7 +271,7 @@ $modversion['config'][] = [
     'description' => '_MI_SLIDER_HIGHSLIDE_DESC',
     'formtype'    => 'textbox',
     'valuetype'   => 'string',
-    'default'     => 'highslide-5.0.0',
+    'default'     => 'highslide', //highslide-5.0.0
 ];
 //Force la reconstruction du template des slide
 $modversion['config'][] = [
@@ -252,6 +282,7 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 0,
 ];
+/*
 //-------------------------------------------------------
 //css defaut pour les titres soustitres et boutons
 //extra - code à ajouter dans le template
@@ -306,7 +337,7 @@ margin-right:250px;
 padding-bottom : 5px;
 padding-top : 5px;",
 ];
-
+*/
 //-------------------------------------------------------
 //extra - code à ajouter dans le template
 $modversion['config'][] = [

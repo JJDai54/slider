@@ -351,4 +351,5 @@ public static function xoopsFormActif($caption, $name, $value, $description="", 
         return $selPeriodicite;
 }
     
+
 } // Fin de la Class

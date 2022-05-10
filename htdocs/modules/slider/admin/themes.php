@@ -25,12 +25,17 @@ use XoopsModules\Xbootstrap;
 use XoopsModules\Xbootstrap\Constants;
 use XoopsModules\Xbootstrap\Common;
 
+use XoopsModules\Slider;
+
 require __DIR__ . '/header.php';
 // It recovered the value of argument op in URL$
 $op = Request::getCmd('op', 'list');
 // Request theme_id
 $themeId = Request::getInt('theme_id');
 $theme   = Request::getString('theme_folder', '');
+// $gp = array_merge($_GET, $_POST);
+// sld_echoArray($gp, 'get/post', 'red');
+// sld_echoArray($_FILES, 'Files', 'blue');
 
 $clearTblBefore = false;
         
@@ -89,6 +94,7 @@ switch ($op) {
 		break;
         
 	case 'save':
+//exit;
 		// Security Check
 		if (!$GLOBALS['xoopsSecurity']->check()) {
 			\redirect_header('themes.php', 3, \implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -103,20 +109,48 @@ switch ($op) {
         //$version = Request::getString('theme_version', 3);
         
 		$themesObj->setVar('theme_folder', $theme);
+		$themesObj->setVar('theme_mycss',  Request::getString('theme_mycss', ''));
 		$themesObj->setVar('theme_random',  Request::getString('theme_random', 'j'));
 		$themesObj->setVar('theme_transition', Request::getString('theme_transition', ''));
 		$themesObj->setVar('theme_tpl_slider', Request::getString('theme_tpl_slider', 'slider_theme_xbootstrap_3'));
-		// Insert Data
+ $attributs =  Request::getArray('css', null);         
+//sld_echoArray($attributs, 'saveNewAttribute', 'blue');           
+		
+        //suppresion des images
+        $delImg = Request::getArray('del', null);
+        if($delImg){
+          foreach($delImg AS $keyClass=>$class){
+              foreach($class AS $keyAttrinute=>$attribute){
+                  //unset($attributs[$keyClass][$keyAttrinute]);
+                  $attributs[$keyClass][$keyAttrinute] = '';
+              }
+          }
+        }
+//sld_echoArray($attributs, 'saveNewAttribute-del', 'red');           
+        
+        
+        
+        
+        
+        // Insert Data
 		if ($themesHandler->insert($themesObj)) {
+$css = Request::getArray('css', null);   
+include "uploader.php";   
+     
             $newCss     = Request::getString('theme_whiteCss', '');
             $newDarkCss = Request::getString('theme_darkCss', '');
             
-            if($themesObj->isXwatch4E()){
-                $themesObj->updateCss_xwatch4E($newCss, false);
-                $themesObj->updateCss_xwatch4E($newDarkCss, true);
+            if($themesObj->isXswatch4E()){
+                $themesObj->updateCss_xswatch4E($newCss, false);
+                $themesObj->updateCss_xswatch4E($newDarkCss, true);
             }
-           
-            
+           $css = getCssParser($theme, $newCss);
+           $css->saveNewAttribute($attributs, false);
+          Slider\ThemesHandler::cleanAllCaches($theme);          
+//exit;        
+
+//sld_echoArray($attributs, 'saveNewAttribute2', 'blue');           
+//           exit;
 			\redirect_header('themes.php?op=list', 2, _AM_SLIDER_FORM_OK);
 		}
         

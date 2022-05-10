@@ -57,6 +57,9 @@ class Slides extends \XoopsObject
         $this->initVar('sld_style_title', XOBJ_DTYPE_OTHER);
         $this->initVar('sld_style_subtitle', XOBJ_DTYPE_OTHER);
         $this->initVar('sld_style_button', XOBJ_DTYPE_OTHER);
+        $this->initVar('sld_style_id_title', XOBJ_DTYPE_INT);
+        $this->initVar('sld_style_id_subtitle', XOBJ_DTYPE_INT);
+        $this->initVar('sld_style_id_button', XOBJ_DTYPE_INT);
     }
 
     /**
@@ -89,9 +92,12 @@ class Slides extends \XoopsObject
      */
     public function getFormSlides($SelectedTheme, $action = false)
     {
+        global $stylesHandler;
+        
         $helper  = \XoopsModules\Slider\Helper::getInstance();
         $utility = new \XoopsModules\Slider\Utility();
-    
+        $allStyles = $stylesHandler->getListKeyName(true);
+        
         $isNew = $this->isNew();
         $helper = \XoopsModules\Slider\Helper::getInstance();
         if (!$action) {
@@ -105,10 +111,10 @@ class Slides extends \XoopsObject
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
         
-        
         // Form Text sld_short_name
         $form->addElement(new \XoopsFormText(_AM_SLIDER_SLIDE_SHORT_NAME, 'sld_short_name', 50, 255, $this->getVar('sld_short_name')), true);
         
+        // ********** Image **************
         // Form Image sldImage
         // Form Image sldImage: Select Uploaded Image 
         $getSldImage = trim($this->getVar('sld_image'));
@@ -123,12 +129,12 @@ class Slides extends \XoopsObject
         
         //choix d'une image existante:
         $dirname = XOOPS_ROOT_PATH . '/uploads/slider/images/slides';
-        $listImg = sld_getFilePrefixedBy($dirname, array('jpg','png'), '', true);
+        $listImg = sld_getFilePrefixedBy($dirname, array('jpg','png','gif'), '', true);
 
         //si il n"y a pas de skin ou qu'il n'y en a qu'un seul, inutile de proposer l'option    
         if(count($listImg) > 1){
             $inpImg= new \XoopsFormSelect(_AM_SLIDER_IMG_UPLODED, 'sld_image', $slideImg);   
-            $inpImg->setDescription(_AM_SLIDER_IMG_UPLODED_DESC);        
+            //$inpImg->setDescription(_AM_SLIDER_IMG_UPLODED_DESC);        
             $inpImg->addOptionArray($listImg);   
         }
 
@@ -137,7 +143,7 @@ class Slides extends \XoopsObject
 //        $urlImg =  SLIDER_UPLOAD_IMAGE_URL . '/slides/' . $getSldImage;        
         //$uploadirectory      = XOOPS_ROOT_PATH . "/uploads/slider";        
         $upload_size = $helper->getConfig('maxsize_image'); 
-
+        
         $imageTray  = new \XoopsFormElementTray(_AM_SLIDER_SLIDE,"<br>"); 
         $imageTray->setDescription(_AM_SLIDER_SLIDE_IMG_DESC . '<br>' . sprintf(_AM_SLIDER_UPLOADSIZE, $upload_size / 1024), '<br>');
         
@@ -147,8 +153,9 @@ class Slides extends \XoopsObject
         $imageTray->addElement(new \XoopsFormFile(_AM_SLIDER_SLIDE_TO_LOAD, 'sld_image', $upload_size), false);
         
         $form->addElement($img, false);
-        $form->addElement($imageTray, true); $stylTA = "style='width:350px';";  
- $nbLinesTA = 8;     
+        $form->addElement($imageTray, true); 
+        $stylTA = "style='width:400px;'";  
+        $nbLinesTA = 5;     
         //--------------------------------------------------------------------------------
         $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_TITLE . "</th><tr>");
     //$form->insertBreak("<div class='outer'>zzz</div>");
@@ -174,13 +181,19 @@ class Slides extends \XoopsObject
         $form->addElement($inputTitle);
 
         //------------ STYLES -------------------------------
-        $css = ($isNew) ? $helper->getConfig('slider_style_title') : $this->getVar('sld_style_title', 'e');
-        $inputStyleTitle = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_TITLE, 'sld_style_title',  $css, $nbLinesTA, 60);
-        $inputStyleTitle->setExtra($stylTA);
-        $inputStyleTitle->setDescription(_AM_SLIDER_SLIDE_STYLE_TITLE_DESC);
-        $form->addElement($inputStyleTitle);
+        $styleIdTitle = ($isNew) ? 1 : $this->getVar('sld_style_id_title');
+        $inpStyleIdTitle = new \XoopsFormSelect('', 'sld_style_id_title', $styleIdTitle);   
+        $inpStyleIdTitle->addoptionArray($allStyles);
         
+        //$css = ($isNew) ? $helper->getConfig('slider_style_title') : $this->getVar('sld_style_title', 'e');
+        $inputStyleTxtTitle = new \XoopsFormTextArea('', 'sld_style_title', $this->getVar('sld_style_title', 'e'), $nbLinesTA, 60);
+        $inputStyleTxtTitle->setExtra($stylTA);
         
+        $inpTrayStyleTitle = new \XoopsFormElementTray(_AM_SLIDER_STYLE_TITLE, '<br>');  
+        $inpTrayStyleTitle->setDescription(_AM_SLIDER_SLIDE_STYLE_DESC);
+        $inpTrayStyleTitle->addElement($inpStyleIdTitle);
+        $inpTrayStyleTitle->addElement($inputStyleTxtTitle);
+        $form->addElement($inpTrayStyleTitle);        
 /* projet d'ajout du css a partir de fichier, à voi !!!!
         $dirname = XOOPS_ROOT_PATH . "/modules/slider/css";
         $extensions = array("css","txt");
@@ -207,11 +220,18 @@ class Slides extends \XoopsObject
         $form->addElement($inputSubtitle);
         
         //------------ STYLES -------------------------------
-        $css = ($isNew) ? $helper->getConfig('slider_style_subtitle') : $this->getVar('sld_style_subtitle', 'e');
-        $inputStyleSubtitlen = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_SUBTITLE, 'sld_style_subtitle',  $css, $nbLinesTA, 60);
-        $inputStyleSubtitlen->setExtra($stylTA);
-        $inputStyleSubtitlen->setDescription(_AM_SLIDER_SLIDE_STYLE_SUBTITLE_DESC);
-        $form->addElement($inputStyleSubtitlen);
+        $styleIdSubtitle = ($isNew) ? 2 : $this->getVar('sld_style_id_subtitle');
+        $inpStyleIdSubitle = new \XoopsFormSelect('', 'sld_style_id_subtitle', $styleIdSubtitle);   
+        $inpStyleIdSubitle->addoptionArray($allStyles);
+        
+        $inputStyleTxtSubtitle = new \XoopsFormTextArea('', 'sld_style_subtitle',  $this->getVar('sld_style_subtitle', 'e'), $nbLinesTA, 60);
+        $inputStyleTxtSubtitle->setExtra($stylTA);
+        
+        $inpTrayStyleSubitle = new \XoopsFormElementTray(sld_style_id_subtitle, '<br>');  
+        $inpTrayStyleSubitle->setDescription(_AM_SLIDER_SLIDE_STYLE_DESC);
+        $inpTrayStyleSubitle->addElement($inpStyleIdSubitle);
+        $inpTrayStyleSubitle->addElement($inputStyleTxtSubtitle);
+        $form->addElement($inpTrayStyleSubitle);        
 
         //--------------------------------------------------------------------------------
         $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_BUTTON . "</th><tr>");
@@ -227,12 +247,20 @@ class Slides extends \XoopsObject
         $form->addElement($inpurReadMore, false);
         
         //------------ STYLES -------------------------------
-        $css = ($isNew) ? $helper->getConfig('slider_style_button') : $this->getVar('sld_style_button', 'e');
-        $inputSytleButton = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_BUTTON, 'sld_style_button',  $css, $nbLinesTA, 60);
-        $inputSytleButton->setExtra($stylTA);
-        $inputSytleButton->setDescription(_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC);
-        $form->addElement($inputSytleButton);
+        $styleIdButton = ($isNew) ? 3 : $this->getVar('sld_style_id_button');
+        $inpStyleIdButton = new \XoopsFormSelect('', 'sld_style_id_button', $styleIdButton);   
+        $inpStyleIdButton->addoptionArray($allStyles);
         
+        $inputSytleTxtButton = new \XoopsFormTextArea('', 'sld_style_button',  $this->getVar('sld_style_button', 'e'), $nbLinesTA, 60);
+        $inputSytleTxtButton->setExtra($stylTA);
+        
+        $inpTrayStyleSubitle = new \XoopsFormElementTray(_AM_SLIDER_STYLE_BUTTON, '<br>');  
+        $inpTrayStyleSubitle->setDescription(_AM_SLIDER_SLIDE_STYLE_DESC);
+        $inpTrayStyleSubitle->addElement($inpStyleIdButton);
+        $inpTrayStyleSubitle->addElement($inputSytleTxtButton);
+        $form->addElement($inpTrayStyleSubitle);        
+
+
         //----------------------------------------------------        
         $form->insertBreak("<tr><th colspan='2'>" . _AM_SLIDER_OPTIONS. "</th><tr>");
         //        choix du themes
@@ -335,6 +363,7 @@ $perDate->addElement($sldDate_end);
      */
     public function getValuesSlides($keys = null, $format = null, $maxDepth = null)
     {
+    global $stylesHandler;
         $helper  = \XoopsModules\Slider\Helper::getInstance();
         $utility = new \XoopsModules\Slider\Utility();
         //$ret = $this->getValues($keys, $format, $maxDepth);
@@ -365,10 +394,31 @@ $perDate->addElement($sldDate_end);
         }
         
         $ret['button_title']             = $this->getVar('sld_button_title');
-        $ret['style_title']        = $this->getVar('sld_style_title', 'e');
-        $ret['style_subtitle']  = $this->getVar('sld_style_subtitle', 'e');
-        $ret['style_button']       = $this->getVar('sld_style_button', 'e');
         
+        $ret['style_title']     = $this->getVar('sld_style_title', 'e');
+        $ret['style_subtitle']  = $this->getVar('sld_style_subtitle', 'e');
+        $ret['style_button']    = $this->getVar('sld_style_button', 'e');
+        
+        $ret['style_id_title']     = $this->getVar('sld_style_id_title');
+        $ret['style_id_subtitle']  = $this->getVar('sld_style_id_subtitle');
+        $ret['style_id_button']    = $this->getVar('sld_style_id_button');
+global $allStyles, $helper;
+if (!isset($stylesHandler)) $stylesHandler = $helper->getHandler('Styles');
+
+
+if (!isset($allStyles))
+$allStyles = $stylesHandler->getAll(null,null,false);        
+// echo "<hr>Styles :<pre><code>" . print_r($allStyles, true ). "</code></pre><hr>";       
+// exit;
+         $ret['style_title']    = ($ret['style_id_title'] == 0) ? ""    : str_replace("<br>","\n", $allStyles[$ret['style_id_title']]['sty_css']);
+         $ret['style_subtitle'] = ($ret['style_id_subtitle'] == 0) ? "" : str_replace("<br>","\n", $allStyles[$ret['style_id_subtitle']]['sty_css']);
+         $ret['style_button']   = ($ret['style_id_button'] == 0) ? ""   : str_replace("<br>","\n", $allStyles[$ret['style_id_button']]['sty_css']);
+ 
+        $ret['style_title']     .= "\n" . $this->getVar('sld_style_title', 'e');
+        $ret['style_subtitle']  .= "\n" . $this->getVar('sld_style_subtitle', 'e');
+        $ret['style_button']    .= "\n" . $this->getVar('sld_style_button', 'e');
+//echo "<hr>Slides :<pre>" . print_r($ret, true ). "</pre><hr>";      
+//exit;  
         $ret['current_status'] = getCurrentStatusOfSlide($ret);
         return $ret;
     }

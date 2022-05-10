@@ -10,11 +10,11 @@
 				<th class="center"><{$smarty.const._AM_SLIDER_NAME}></th>
 				<th class="center width10"><{$smarty.const._AM_SLIDER_THEME_VERSION}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_TPL_SLIDER}></th>
-				<th class="center"><{$smarty.const._AM_SLIDER_THEME_XWATCH4E}></th>
+				<th class="center"><{$smarty.const._AM_SLIDER_THEME_XSWATCH4E}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_WHITE_CSS}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_DARK_CSS}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_SLIDER}></th>
-				<th class="center width10""><{$smarty.const._AM_SLIDER_theme_transition}></th>
+				<th class="center width10""><{$smarty.const._AM_SLIDER_THEME_TRANSITION}></th>
 				<th class="center width10""><{$smarty.const._AM_SLIDER_THEME_RANDOM}></th>
 				<th class="center width5"><{$smarty.const._AM_SLIDER_GENERER}></th>
 				<th class="center width5"><{$smarty.const._AM_SLIDER_FORM_ACTION}></th>
@@ -35,7 +35,7 @@
 				<td class='center'><{$theme.version}></td>
 				<td class='left'><{$theme.tpl_slider}></td>
 				<td class='center'>
-                    <{if $theme.isXwatch4E}>
+                    <{if $theme.isXswatch4E}>
                         <img src="<{xoModuleIcons16 green.gif}>" alt="" />
                     <{else}>
                         <img src="<{xoModuleIcons16 red.gif}>" alt="" />
@@ -45,7 +45,7 @@
 				<td class='left'><{$theme.darkCss}></td>
                 
 				<td class='center'>
-                    <{if $theme.isXwatch4E}>
+                    <{if $theme.isXswatch4E}>
                     <{if $theme.isSliderAllowed}>
 					    <a href="themes.php?op=allowed_slider&theme_id=<{$theme.id}>&theme_folder=<{$theme.folder}>&etat=0" title="<{$smarty.const._AM_SLIDER_THEME_DESACTIVER_SLIDER}>">           
                             <img src="<{xoModuleIcons16 green.gif}>" alt="" />
@@ -91,7 +91,9 @@
                 </td>
 				<td class="center  width5">
 					<a href="themes.php?op=edit&amp;theme_id=<{$theme.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> themes" /></a>
-					<{* pas besoin de supprimer
+					<a href="logo.php?op=logo-form&theme_id=<{$theme.id}>" title="<{$smarty.const._AM_SLIDER_THEME_LOGO}>"><img src="<{xoModuleIcons16 attach.png}>" alt="<{$smarty.const._AM_SLIDER_THEME_LOGO}> themes" /></a>
+					
+                    <{* pas besoin de supprimer
                     <a href="themes.php?op=delete&amp;theme_id=<{$theme.id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> themes" /></a>
                     *}>
                     <a href="themes.php?op=edit_mycss&amp;theme_id=<{$theme.id}>" title="<{$smarty.const._EDIT}>">

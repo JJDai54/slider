@@ -40,7 +40,7 @@ function force_rebuild_slider() {
 
 /**
  * Function generer_new_tpl_slider
- * @theme : dossier du theme xwatch4
+ * @theme : dossier du theme xswatch4
  * @return bool
  */
 function generer_new_tpl_slider($theme)
@@ -64,6 +64,7 @@ $themesHandler = $helper->getHandler('Themes');
     
     //recupe du theme actif
     $slides = $slidesHandler->getSlidesActifs($theme, ($random != 'j'));
+    
     $slide_Ids = array_keys($slides);    
     $newFlag = implode("|", $slide_Ids);
     $newFlag  = sld_getFlagPeriodicity($random, array_keys($slides));  
@@ -82,6 +83,8 @@ $themesHandler = $helper->getHandler('Themes');
     //---------------------------------------------------
     $template = "db:{$themeObj['tpl_slider']}";
     $allStyles = buildStyles($slides);
+// echo "slides : <hr><pre>" . print_r($slides, true) . "</pre><hr>";
+// exit;
     
 $sldOptions = array();
 $clignotement_name='flash_points';
@@ -137,7 +140,7 @@ function save_file_org_2_old($fullName, $keepOrg = false, $extOld = "_old"){
         }
     }
     
-    return $ret;
+    return true;
 }
 /**
  * reinitalise le fichier _old sauver avec save_file_org_2_old
@@ -171,6 +174,8 @@ function restaure_file_old_2_org($fullName, $keepOld = false, $extOld = "_old") 
 function buildStyles(&$slides){
     $bolOk = false;
     $tStyles = array();
+//echo "slides : <hr><pre>" . print_r($slides, true) . "</pre><hr>";
+//exit;
     
     foreach ($slides as $k=>$v){
 
@@ -200,13 +205,15 @@ function buildStyles(&$slides){
     
     }
     
-    if ($bolOk){
+    if ($bolOk || TRUE){
         $allStyles = "<style>\n" . implode("\n", $tStyles) . "</style>\n";
 
     }else{
         $allStyles = "";
     }
-    //echo "allStyles : <hr><pre><code>" . implode("\n", $tStyles) . "</code></pre><hr>";
+// echo "allStyles : <hr><pre><code>" . implode("\n", $tStyles) . "</code></pre><hr>";
+// echo "<hr>styles definis : <br>{$allStyles}<hr>";
+// exit;
     //return "allStyles : <hr><pre><code>" . implode("\n", $tStyles) . "</code></pre><hr>";
     return $allStyles; 
 }
@@ -251,13 +258,13 @@ function cleanThemeFolder($theme) {
     restaure_file_old_2_org($fullName, $keepOld = false, $extOld = "_old");
 
 /*
-    //theme de type xwatch4E
+    //theme de type xswatch4E
     $fullNameXW = XOOPS_ROOT_PATH . "/themes/{$theme}/tpl/" . 'xswatchCss.tpl';
     //if (file_exists($fullNameXW)) 
     restaure_file_old_2_org($fullNameXW);
 */
 
-    //nettoyage de caches
+    //nettoyage des caches
     Slider\ThemesHandler::cleanAllCaches($theme);          
     deleteSliderthemeFlag($theme);
     return $bolOk;
@@ -547,7 +554,7 @@ function saveTexte2File($fullName, $content, $mod = 0777){
    $noaccent = 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNnuuyNn';
    $texte = strtr($texte,$accent,$noaccent);
    
-   if ($replaceBlank) $texte = strtr($texte," ", $replaceBlank);
+   if ($replaceBlankBy) $texte = strtr($texte," ", $replaceBlankBy);
    return $texte;
    }
    
@@ -589,7 +596,7 @@ global $slidesHandler;
    /* *****************************
    
    * ****************************** */
-function getFormPeriodicity($caption, $name, $periodicite = 'j', $prefixConst = '_AM_'){
+function getFormPeriodicity($caption, $name, $periodicite = 'j', $prefixConst = '_CO_'){
 
  
     $selPeriodicite = new \XoopsFormSelect($caption, $name, $periodicite);
@@ -620,8 +627,9 @@ function getFormPeriodicity($caption, $name, $periodicite = 'j', $prefixConst = 
    /* *****************************
    
    * ****************************** */
-function getPeriodicityCaptions($prefixConst = '_AM_'){
-//echo "===>getPeriodicityCaptions :  prefixConst = {$prefixConst}<br>";    
+function getPeriodicityCaptions($prefixConst = '_CO_'){
+//echo "===>getPeriodicityCaptions :  prefixConst = {$prefixConst}<br>";   
+/*
     $tCaptions = array(
      _SLD_PERIODICITY_MAJ_NEVER       => constant($prefixConst . 'SLIDER_PERIODICITE_RND_NEVER'),
      _SLD_PERIODICITY_MAJ_RANDOM      => constant($prefixConst . 'SLIDER_PERIODICITE_RND_RANDOM'),
@@ -635,19 +643,43 @@ function getPeriodicityCaptions($prefixConst = '_AM_'){
      _SLD_PERIODICITY_MAJ_SEMESTER    => constant($prefixConst . 'SLIDER_PERIODICITE_RND_SEMESTER'),
      _SLD_PERIODICITY_MAJ_YEAR        => constant($prefixConst . 'SLIDER_PERIODICITE_RND_YEAR')
     );
+*/ 
 
+    $tCaptions = array(
+     _SLD_PERIODICITY_MAJ_NEVER       => _CO_SLIDER_PERIODICITE_RND_NEVER,
+     _SLD_PERIODICITY_MAJ_RANDOM      => _CO_SLIDER_PERIODICITE_RND_RANDOM,
+     _SLD_PERIODICITY_MAJ_MINUTE      => _CO_SLIDER_PERIODICITE_RND_MINUTE,
+     _SLD_PERIODICITY_MAJ_HOUR        => _CO_SLIDER_PERIODICITE_RND_HOUR,
+     _SLD_PERIODICITY_MAJ_DAY         => _CO_SLIDER_PERIODICITE_RND_DAY,
+     _SLD_PERIODICITY_MAJ_WEEK        => _CO_SLIDER_PERIODICITE_RND_WEEK,
+     _SLD_PERIODICITY_MAJ_MONTH       => _CO_SLIDER_PERIODICITE_RND_MONTH,
+     _SLD_PERIODICITY_MAJ_BIMONTLY    => _CO_SLIDER_PERIODICITE_RND_BIMONTHLY,
+     _SLD_PERIODICITY_MAJ_QUATER      => _CO_SLIDER_PERIODICITE_RND_QUATER,
+     _SLD_PERIODICITY_MAJ_SEMESTER    => _CO_SLIDER_PERIODICITE_RND_SEMESTER,
+     _SLD_PERIODICITY_MAJ_YEAR        => _CO_SLIDER_PERIODICITE_RND_YEAR
+    );
     return $tCaptions;
 }
 
    /* *****************************
    
    * ****************************** */
-function getPeriodicityCaption($key, $prefixConst = '_AM_'){
+function getPeriodicityCaption($key, $prefixConst = '_CO_'){
 //echo "===>getPeriodicityCaption :  prefixConst = {$prefixConst}<br>";
     $tPer = getPeriodicityCaptions($prefixConst);
     return($tPer[$key]);
 }
     
+   /* *****************************
+   
+   * ****************************** */
+function sld_echoArray($arr, $caption='', $color='green', $before='<hr>', $after=''){
+        $ret =  "<div style='color:{$color};'{$before}===>{$caption}<pre>"
+             . print_r($arr, true)
+             . "</pre>{$after}</div>";
+        echo $ret;
+}
+
 /* ***********************
 
 ************************** */
@@ -663,4 +695,36 @@ function isExpInFile($exp, $fullName, $root = XOOPS_ROOT_PATH){
     }
 
     return false;
+}
+
+
+/* *******************
+*
+********************** */
+function getCssParser($folder, $styleCss, $parse = true){
+    //$fileToParse = XOOPS_ROOT_PATH . "/themes/{$folder}/{$styleCss}/bootstrap.min.css";
+    $fileToParse = XOOPS_ROOT_PATH . "/themes/{$folder}/css/my_xoops.css";
+    //echo "{$fileToParse}<br>";
+    $css = new CSSParser($fileToParse, false);
+    //if ($parse) $css->parse(":root",  '@media');
+    if ($parse) $css->parse();
+    //echo $css->toString();
+    return $css;
+}
+
+/* ******
+*
+* ***** */
+function sld_getBlockInfo(){
+global $xoopsDB, $xoopsModule, $helper;
+//$xoopsModule   = XoopsModule::getByDirname($dirname);
+
+    $moduleId = $xoopsModule->getVar('mid');
+    $blkhandler = xoops_getHandler('block');
+    
+    $criteria = new \Criteria('mid', $moduleId, '=');
+    $blocks =  $blkhandler-> getList($criteria);
+//         $blocks = $blkhandler->getByModule($moduleId, $asobject = false, $id_as_key = true);
+//    echo "<hr>Liste des blocks du theme<pre>" . print_r($blocks, true) . "</pre><hr>";
+    return "<pre>" . print_r($blocks, true) . "</pre>";
 }

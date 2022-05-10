@@ -115,6 +115,7 @@ function localHeaderInfo(){
 global    $helper;
 $module_dir = basename(dirname(dirname(__FILE__)));
 
+    $mid = $helper->getModule()->getVar('mid');
     $license_url = $helper->getModule()->getInfo('license_url');
     $license_url = preg_match('%^(https?:)?//%', $license_url) ? $license_url : 'http://' . $license_url;
 
@@ -130,6 +131,8 @@ $module_dir = basename(dirname(dirname(__FILE__)));
     $html[] = $helper->getModule()->getInfo('version');
     $html[] = " - ";
     $html[] = $helper->getModule()->getInfo('module_status');
+    $html[] = " - ";
+    $html[] = "mid = {$mid}";
     $html[] = "</div>";
     
     

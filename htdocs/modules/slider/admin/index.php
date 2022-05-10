@@ -40,6 +40,9 @@ $adminObject->addInfoBox(_AM_SLIDER_STATISTICS);
 $statStr = implode("\n", $themesHandler->getStatics(_AM_SLIDER_THEMES_STATS2));
 $adminObject->addInfoBoxLine("<table>{$statStr}</table>");
 
+// InfoBox Statistics
+$adminObject->addInfoBox(_AM_SLIDER_BLOCKS_INFO);
+$adminObject->addInfoBoxLine(sld_getBlockInfo());
 /***********************************************/
 // traitements
 /*  a supprimer plus utiles, mais je grde en prévision

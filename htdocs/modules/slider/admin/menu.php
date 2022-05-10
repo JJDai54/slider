@@ -42,7 +42,12 @@ $adminmenu[] = [
     'icon' => 'assets/icons/32/style_css.png',
 ];
 $adminmenu[] = [
-    'title' => _MI_SLIDER_ADMENU3,
+    'title' => _MI_SLIDER_ADMENU5,
+    'link' => 'admin/styles.php',
+    'icon' => 'assets/icons/32/styles.png',
+];
+$adminmenu[] = [
+    'title' => _MI_SLIDER_FEEDBACK,
     'link' => 'admin/feedback.php',
     'icon' => $sysPathIcon32.'/mail_foward.png',
 ];

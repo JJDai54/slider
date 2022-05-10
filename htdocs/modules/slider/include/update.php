@@ -68,6 +68,14 @@ function xoops_module_update_slider($module, $prev_version = null)
             }
             
         }
+        
+        /* pour test
+        $name = "Slider_X_XX";
+        $f = $file_path . $name . ".php";
+        echo "<hr>{$f}<hr>";
+        require_once $f;
+        $cl = new $name($module, ['previousVersion' => $prev_version]);
+        */        
 /*
 echo "<hr><pre>" . print_r($files, true) . "</pre><hr>";
 exit;

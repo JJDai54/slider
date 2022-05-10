@@ -181,3 +181,19 @@ define('CO_SLIDER_TOTAL_OFFLINE', 'Offline');
 define('CO_SLIDER_TOTAL_PUBLISHED', 'Published');
 define('CO_SLIDER_TOTAL_REJECTED', 'Rejected');
 define('CO_SLIDER_TOTAL_SUBMITTED', 'Submitted');
+
+
+define('_CO_SLIDER_PERIODICITE_RND_NEVER', 'Jamais (Conseillé)');
+define('_CO_SLIDER_PERIODICITE_RND_RANDOM', 'Aléatoire à chaque rafraichissement de la page (Déconseillé)');
+define('_CO_SLIDER_PERIODICITE_RND_HOUR', 'Une fois par heure');
+define('_CO_SLIDER_PERIODICITE_RND_MINUTE', 'Une fois par minute');
+define('_CO_SLIDER_PERIODICITE_RND_DAY', 'Une fois par jour');
+define('_CO_SLIDER_PERIODICITE_RND_WEEK', 'Une fois par semaine');
+define('_CO_SLIDER_PERIODICITE_RND_MONTH', 'Une fois par mois');
+define('_CO_SLIDER_PERIODICITE_RND_BIMONTHLY', 'Une fois tous les deux mois');
+define('_CO_SLIDER_PERIODICITE_RND_QUATER', 'Une fois par trimestre');
+define('_CO_SLIDER_PERIODICITE_RND_SEMESTER', 'Une fois par semestre');
+define('_CO_SLIDER_PERIODICITE_RND_YEAR', 'Une fois par an');
+
+define('_CA_SLIDER_THEME_TRANSITION_VERTICAL', "Vertical");
+define('_CO_SLIDER_THEME_TRANSITION_HORIZONTAL', "Horizontal");
