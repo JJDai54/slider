@@ -30,6 +30,7 @@ $modPathIcon32   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons
 
 // Get instance of module
 $helper = \XoopsModules\Slider\Helper::getInstance();
+
 $slidesHandler = $helper->getHandler('Slides');
 $themesHandler = $helper->getHandler('Themes');
 $stylesHandler = $helper->getHandler('Styles');
