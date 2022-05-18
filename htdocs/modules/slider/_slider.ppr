@@ -312,7 +312,7 @@ Main=
 Selected=admin\about.php
 [admin\about.php]
 TopLine=117
-Caret=3,160
+Caret=1,133
 [admin\header.php]
 TopLine=1
 Caret=1,32
