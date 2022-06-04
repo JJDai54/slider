@@ -31,10 +31,12 @@ require __DIR__ . '/header.php';
 $op = Request::getCmd('op', 'list');
 // Request sld_id
 $sldId = Request::getInt('sld_id');
-
 global $xoopsConfig;
 $select_theme = Request::getString('select_theme',  $xoopsConfig['theme_set']);
-//echo "===>get select_theme = {$select_theme}<br>";      
+      
+//   $gp = array_merge($_GET, $_POST);
+//   echo "<hr>_GET/_POST<pre>" . print_r($gp, true) . "</pre><hr>";
+
 switch ($op) {
     case 'list':
     default:
@@ -59,19 +61,23 @@ switch ($op) {
         
                 
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
-        $slidesCount = $slidesHandler->getCountSlides();
         
         $criteria = new \CriteriaCompo();
-        $criteria->add(new \Criteria('sld_theme', $select_theme, '='));
+        //$criteria->add(new \Criteria('sld_theme', $select_theme, '='));
+        if($select_theme != ''){
+            $criteria->add(new \Criteria('sld_theme', "%|{$select_theme}|%", 'LIKE'));
+        }
+        
         if($periodicite != 0) $criteria->add(new \Criteria('sld_periodicity', $periodicite, "="));
         if($actif >= 0) $criteria->add(new \Criteria('sld_actif', $actif, "="));
         //$criteria->add(new \Criteria('length(sld_theme)','0','=', 'OR'));
         //$criteria->add(new \Criteria('sld_theme', '','=', 'OR'));
         
-        $criteria->add(new Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
+        //$criteria->add(new Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
    // public function __construct($column, $value = '', $operator = '=', $prefix = '', $function = '')
             
-        $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit,'sld_theme ASC, sld_weight ASC, sld_short_name');
+        $slidesCount = $slidesHandler->getCountSlides($criteria);
+        $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit,'sld_weight ASC, sld_theme ASC, sld_short_name');
         $GLOBALS['xoopsTpl']->assign('slides_count', $slidesCount);
         $GLOBALS['xoopsTpl']->assign('slider_url', SLIDER_URL);
         $GLOBALS['xoopsTpl']->assign('slider_upload_url', SLIDER_UPLOAD_URL);
@@ -111,6 +117,7 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         $sldThemeSelect->setExtra("onChange=\"document.theme_form.submit()\"");
         
 
+        $GLOBALS['xoopsTpl']->assign('select_theme', $select_theme);
         $GLOBALS['xoopsTpl']->assign('sldThemeSelect', $sldThemeSelect->render());
         $GLOBALS['xoopsTpl']->assign('current_DateTime', \formatTimestamp(time(), 'm'));
 
@@ -128,11 +135,16 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Form Create
         $slidesObj = $slidesHandler->create();
+//         $newWeigh = $slidesHandler->getMax("sld_weight", $select_theme, +10);
+//         $slidesObj->setVar('sld_weight', $newWeigh);
+//         echo "<hr>newWeigh = {$newWeigh}<hr>";
         $form = $slidesObj->getFormSlides($select_theme);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
         
     case 'save':
+//echo "<hr>Post : <pre>" . print_r($_POST, true ). "</pre><hr>";
+// exit;
         // Security Check
         if (!$GLOBALS['xoopsSecurity']->check()) {
             \redirect_header('slides.php', 3, \implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -143,7 +155,7 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
             $slidesObj = $slidesHandler->create();
         }
         // Set Vars
-        $slidesObj->setVar('sld_short_name', Request::getString('sld_short_name', ''));
+//        $slidesObj->setVar('sld_short_name', Request::getString('sld_short_name', ''));
         $slidesObj->setVar('sld_title', Request::getText('sld_title', ''));
         $slidesObj->setVar('sld_subtitle', Request::getText('sld_subtitle', ''));
         $slidesObj->setVar('sld_read_more', Request::getString('sld_read_more', ''));
@@ -160,8 +172,16 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         $slidesObj->setVar('sld_date_end', $slideDate_end);
         $slidesObj->setVar('sld_actif', Request::getInt('sld_actif', 0));
         $slidesObj->setVar('sld_periodicity', Request::getInt('sld_periodicity', 0));
-        $slidesObj->setVar('sld_theme', Request::getString('sld_theme', ''));
+        $themeArr = Request::getArray('sld_themeArr', array());
         
+        if(count($themeArr)>0){
+            sort($themeArr);
+            $slidesObj->setVar('sld_theme','|' .  implode('|', $themeArr) . '|');
+        }else{
+            $slidesObj->setVar('sld_theme','');
+        }
+// echo "<hr>sld_themeArr : <pre>" . print_r($themeArr, true ). "</pre><hr>";
+// echo '|' .  implode('|', Request::getArray('sld_themeArr', '')) . '|' . "<br>";        
         $slidesObj->setVar('sld_button_title', Request::getString('sld_button_title', ''));
         
         $slidesObj->setVar('sld_style_title', Request::getText('sld_style_title'));
@@ -174,7 +194,7 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         
         //-------------------------------------------------------
         // Set Var sld_image
-        $theme = Request::getString('sld_theme', '');
+//        $theme = Request::getString('sld_theme', '');
 //  echo "<hr><pre>" . print_r($_FILES, true ). "</pre><hr>";       
  ///       if($_FILES['sld_image']['error'] == 0){
 //            echo "===>Ok pour une image<br>";
@@ -186,6 +206,19 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
               $uploader = new \XoopsMediaUploader(SLIDER_UPLOAD_IMAGE_PATH . '/slides/', 
                                                           $helper->getConfig('mimetypes_image'), 
                                                           $helper->getConfig('maxsize_image'), null, null);
+              
+              //si le nom n'est pas renseigné on prend le nom du fichier image
+              $shortName = Request::getString('sld_short_name', '');
+              if($shortName == '') {
+                if ($filename == '') $filename = Request::getString('sld_image', '');
+                $posExt = strrpos($filename, '.');
+                $shortName = substr($filename, 0, $posExt);
+                $shortName = str_replace("_", " ", $shortName);
+                $slidesObj->setVar('sld_short_name', $shortName);
+              }else{
+                $slidesObj->setVar('sld_short_name', $shortName);                
+              }
+
               if ($uploader->fetchMedia($_POST['xoops_upload_file'][0])) {
                   $h= strlen($filename) - strrpos($filename, '.');   
                   $imgName = substr($filename,0,-$h);
@@ -204,7 +237,7 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
                       if ($maxwidth > 0 && $maxheight > 0) {
                           // Resize image
                           $imgHandler                = new Slider\Common\Resizer();
-                          $endFile = "{$theme}-{$savedFilename}" ;
+                          //$endFile = "{$theme}-{$savedFilename}" ;
                           
                           $imgHandler->sourceFile    = SLIDER_UPLOAD_IMAGE_PATH . "/slides/" . $savedFilename;
                           $imgHandler->endFile       = SLIDER_UPLOAD_IMAGE_PATH . "/slides/" . $savedFilename;
@@ -236,11 +269,14 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         //echo "===>{$fFlag}<br>";
             
         $bolOk = $slidesHandler->insert($slidesObj);
+//        exit;
         // Insert Data
         if ($bolOk) {
             if ('' !== $uploaderErrors) {
-                if ($themesHandler->isActif($theme)){
-                    generer_new_tpl_slider($theme);
+                foreach($themeArr AS $k=>$theme){
+                  if ($themesHandler->isActif($theme)){
+                      generer_new_tpl_slider($theme);
+                  }
                 }
                 //\force_rebuild_slider();
                 \redirect_header("slides.php?op=edit&sld_id=" . $sldId, 5, $uploaderErrors);
@@ -316,91 +352,12 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
         
     case 'weight':
         $sld_id = Request::getInt('sld_id', 0);
-         $sld_weight = Request::getInt('sld_weight', 0);
-         $sld_theme = Request::getString('sld_theme', '');
-         $action = Request::getString('sens', "asc") ;
-         switch ($action){
-            case 'up'; 
-              $sens =  '<';
-              $ordre = "DESC";
-              break;
-
-            case 'down'; 
-              $sens =  '>';
-              $ordre = "ASC";
-            break;
-
-            case 'first'; 
-              $sens =  '<';
-              $ordre = "ASC";
-            break;
-
-            case 'last'; 
-              $sens =  '>';
-              $ordre = "DESC";
-            break;
-         }
-         
-        $tbl = $xoopsDB->prefix("slider_slides");
-        $criteria = new \CriteriaCompo();
-        $criteria->add(new \Criteria('sld_theme', $select_theme));
-        $criteria->add(new \Criteria('sld_weight', $sld_weight, $sens));
-        $limit = 0;
-        $start = 0;
-        $slidesAll = $slidesHandler->getAllSlides($criteria, $start, $limit, "sld_weight {$ordre}, sld_short_name {$ordre}, sld_id");
-        if(count($slidesAll) == 0  ){
-                    \redirect_header("slides.php?op=list&sld_theme={$select_theme}", 0, "");
-        }
-        $key = array_key_first($slidesAll);
-//            echo "===> count = " . count($slidesAll) . "<br>key={$key}"; 
-        $slide = $slidesAll[$key]->getValuesSlides();
-        $sld_id2 = $slide['id'];
-        $sld_weight2 = $slide['weight'];
-        
-
-                
-                
-                
-         switch ($action){
-            case 'up'; 
-            case 'down'; 
-              $sql = "UPDATE {$tbl} SET sld_weight={$sld_weight2} WHERE sld_id={$sld_id}";
-              $xoopsDB->queryf($sql);
-              
-              $sql = "UPDATE {$tbl} SET sld_weight={$sld_weight} WHERE sld_id={$sld_id2}";
-              $xoopsDB->queryf($sql);
-            break;
-
-            case 'first'; 
-              $sld_weight2 -= 10;  
-              $sql = "UPDATE {$tbl} SET sld_weight={$sld_weight2} WHERE sld_id={$sld_id}";
-              $xoopsDB->queryf($sql);
-              
-              $sql = "SET @rank=0;";
-              $xoopsDB->queryf($sql);
-              
-              $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) WHERE sld_theme='{$sld_theme}' ORDER BY sld_weight ASC;";
-              $xoopsDB->queryf($sql);
-            break;
-
-            case 'last'; 
-              $sld_weight2 += 10;  
-              $sql = "UPDATE {$tbl} SET sld_weight={$sld_weight2} WHERE sld_id={$sld_id}";
-              $xoopsDB->queryf($sql);
-              
-              $sql = "SET @rank=0;";
-              $xoopsDB->queryf($sql);
-              
-              $sql = "update {$tbl} SET sld_weight = (@rank:=@rank+10) WHERE sld_theme='{$sld_theme}' ORDER BY sld_weight ASC;";
-              $xoopsDB->queryf($sql);
-            break;
-            
-         }
-
-        //permet le rafraissement de la page d'accueil    
-        deleteSliderthemeFlag($sld_theme);
-        \redirect_header("slides.php?op=list&sld_theme={$select_theme}", 0, "");
+        $action = Request::getString('sens', "asc") ;
+        $sld_theme = Request::getString('sld_theme', '');
+        $slidesHandler->updateWeight($sld_id, $action, $theme='');
+        \redirect_header("slides.php?op=list&select_theme={$select_theme}", 0, "");
         break;
+        //----------------------------------------------
         
     case 'update_periodicity'; 
         sld_updatePeriodicity($msg);

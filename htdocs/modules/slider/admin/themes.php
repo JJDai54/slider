@@ -201,11 +201,16 @@ include "uploader.php";
 		break;
         
 	case 'allowed_slider':
-        $etat   = Request::getInt('etat', 0);    
-        $bolOk = $themesHandler::set_allowed_slider($theme, $etat);
+        $allowed_slider   = Request::getInt('etat', 0);    
+        $bolOk = $themesHandler::set_allowed_slider($theme, $allowed_slider);
         \redirect_header('themes.php?op=list', 2, _AM_SLIDER_FORM_OK);
 		break;
         
+	case 'allowed_jumbotron':
+        $allowed_jumbotron  = Request::getInt('etat', 0);    
+        $bolOk = $themesHandler::set_allowed_jumbotron($theme, $allowed_jumbotron);
+        \redirect_header('themes.php?op=list', 2, _AM_SLIDER_FORM_OK);
+		break;
         
 	case 'generer_new_slider':
         $bolOk = generer_new_tpl_slider($theme);

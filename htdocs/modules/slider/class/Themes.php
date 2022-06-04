@@ -108,9 +108,9 @@ class Themes extends \XoopsObject
 		//$form->addElement($inpVersion, true);
         
     		// Form Select tpl_slider
-            $path = XOOPS_ROOT_PATH . "/modules/slider/templates/admin";
+            //$path = XOOPS_ROOT_PATH . "/modules/slider/templates/admin";
             //$listSldThemes = \XoopsLists::getFileListAsArray($path, "slider_theme_");
-            $listSldThemes = sld_getFilePrefixedBy($path, array("tpl"), "slider_theme_");    
+            $listSldThemes = sld_getFilePrefixedBy(SLIDER_THEMES_PATH, array("tpl"), "slider_theme_");    
     		$inpSldTheme = new \XoopsFormSelect(_AM_SLIDER_THEME_TPL_SLIDER, 'theme_tpl_slider', $this->getVar('theme_tpl_slider'));
             $inpSldTheme->setDescription(_AM_SLIDER_THEME_TPL_SLIDER_DESC);
             $inpSldTheme->addOptionArray($listSldThemes);   
@@ -172,7 +172,7 @@ class Themes extends \XoopsObject
                 case 'linear':
                     $name = "css[{$keyClass}][{$keyAttrinute}]";
                     $tColor = $css->get_explodeAtt($attribute['value'], $attribute['type']);
-sld_echoArray($tColor, 'linear');                    
+//sld_echoArray($tColor, 'linear');                    
                     $linearColor  = new \XoopsFormElementTray($caption, ''); 
                     //$inpColor = new \XoopsFormText($caption, $name, 80, 255, $attribute['value']);
                     //ça sert a rien mais ça corrigne un bug sur le prmier inpcolor, sans doute un tableau à corriger
@@ -362,6 +362,7 @@ sld_echoArray($tColor, 'linear');
 		$ret = $this->getValues($keys, $format, $maxDepth);
 		$ret['id']           = $this->getVar('theme_id');
 		$ret['folder']       = $this->getVar('theme_folder');
+		$ret['theme']        = $this->getVar('theme_folder');
 		$ret['tpl_slider']   = $this->getVar('theme_tpl_slider');
 		$ret['mycss']        = $this->getVar('theme_mycss');
 		$ret['transition']   = $this->getVar('theme_transition');
@@ -378,7 +379,8 @@ sld_echoArray($tColor, 'linear');
 		$ret['name']       = (isset($ini['Name'])) ? $ini['Name'] : '';
 		$ret['version']    = (isset($ini['Version'])) ? $ini['Version'] : '';
 		
-		$ret['isSliderAllowed'] = $this-> is_slider_allowed();
+		$ret['isSliderAllowed'] = $this->is_slider_allowed();
+		$ret['isJumbotronAllowed'] = $this->is_jumbotron_allowed();
         
 		$ret['isXswatch4E']      = $this->isXswatch4E();
         if($ret['isXswatch4E']){
@@ -392,8 +394,9 @@ if (!$slidesHandler){
     $helper = \XoopsModules\Slider\Helper::getInstance();
     $slidesHandler = $helper->getHandler('Slides');
  }       
-        $criteria = new \CriteriaCompo(new \Criteria("sld_theme", $ret['folder'], "="));
-        $criteria->add(new \Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
+        $criteria = new \CriteriaCompo(new \Criteria("sld_theme", "%|{$ret['theme'] }|%", "LIKE"));
+//         $criteria = new \CriteriaCompo(new \Criteria("sld_theme", $ret['folder'], "="));
+//         $criteria->add(new \Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
             
 		$ret['nbSlides']   = $slidesHandler->getCountSlides($criteria);
 //echo "theme_ini : <hr><pre>" . print_r($ini, true ). "</pre><hr>";
@@ -471,6 +474,7 @@ public function  getTransition() {
 
 
 
+ //-------------------------------------------------------------   
 
 public function is_slider_allowed()
 {
@@ -481,7 +485,15 @@ public function set_allowed_slider($enabled = true)
 {
     return ThemesHandler::set_allowed_slider($this->getVar('theme_folder'), $enabled);
 }
-    
+ //-------------------------------------------------------------   
+public function is_jumbotron_allowed()
+{
+    return ThemesHandler::is_jumbotron_allowed($this->getVar('theme_folder'));
+}
+public function set_allowed_jumbotron($enabled = true)
+{
+    return ThemesHandler::set_allowed_jumbotron($this->getVar('theme_folder'), $enabled);
+}
 
 
 } // ----- FIN DE LA CLASSE -----

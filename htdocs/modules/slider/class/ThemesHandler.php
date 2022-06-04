@@ -452,6 +452,22 @@ public static function updateCss_xswatch4E_x2510($theme, $newCSS){
 
 }
 
+/**
+ * Function is_slider_allowed
+ * @param  $theme : dossier du theme xswatch4
+ * @return bool
+ */
+public static function get_Path($theme, $fileName='')
+{
+    //------------------------------------------------
+    if($fileName != ''){
+        $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/{$fileName}"; 
+    }else{
+        $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}"; 
+    }
+
+    return $fullName;
+}
 
 /**
  * Function is_slider_allowed
@@ -463,8 +479,7 @@ public static function is_slider_allowed($theme)
     $line1a = '<{* un-comment to enable slider';
     $line1b = '<{* comment to un-enable slider *}>';
     //------------------------------------------------
-    $fileName = 'theme.tpl';
-    $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/{$fileName}"; 
+    $fullName = self::get_Path($theme, 'theme.tpl');
     if (is_readable($fullName)){
         $contents = \sld_loadTextFile($fullName);
         $pos = strpos($contents, $line1a);
@@ -504,8 +519,7 @@ public static function set_allowed_slider($theme, $enabled = true)
         $lieneEnd = $line2a; 
     }
     //------------------------------------------------
-    $fileName = 'theme.tpl';
-    $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/{$fileName}"; 
+    $fullName = self::get_Path($theme, 'theme.tpl');
     if (is_readable($fullName)){
         $contents = \sld_loadTextFile($fullName);
         $tLines = explode("\n", $contents);
@@ -522,7 +536,62 @@ public static function set_allowed_slider($theme, $enabled = true)
         saveTexte2File($fullName, $content, $mod = 0777);
     }    
 }
+
+/**
+ * Function is_jumbotron_allowed
+ * @param  $theme : dossier du theme xswatch4
+ * @return bool
+ */
+public static function is_jumbotron_allowed($theme)
+{
+    //$line1a = '<{include file="$theme_name/tpl/jumbotron.tpl"}>';
+    $line1b = '<{* <{include file="$theme_name/tpl/jumbotron.tpl"}> *}>';
+    //------------------------------------------------
+    $fullName = self::get_Path($theme, 'theme.tpl');
+    if (is_readable($fullName)){
+        $contents = \sld_loadTextFile($fullName);
+        $pos = strpos($contents, $line1b);
+        $bolOk = ($pos === false);
+    }else $bolOk = false;
     
+    return $bolOk;
+}
+    
+/* ********************
+ * Function set_allowed_jumbotron
+ * @param  $theme : dossier du theme xswatch4
+ * @return bool
+* ******************** */
+public static function set_allowed_jumbotron($theme, $enabled = true)
+{
+    $line1a = '<{include file="$theme_name/tpl/jumbotron.tpl"}>';
+    $line1b = '<{* <{include file="$theme_name/tpl/jumbotron.tpl"}> *}>';
+    if ($enabled){
+        $line2search = $line1a;
+        $line2replace = $line1b;
+    }else{
+        $line2search = $line1b;
+        $line2replace = $line1a;
+    }
+
+    //------------------------------------------------
+    $fullName = self::get_Path($theme, 'theme.tpl');
+    if (is_readable($fullName)){
+        $contents = \sld_loadTextFile($fullName);
+        //verifie l'état courant du fichier
+        $pos = strpos($contents, $line1b);
+        $isAllowed = ($pos === false);
+        if ($enabled && !$isAllowed){
+            $contents = str_replace($line1b, $line1a, $contents);
+        }elseif($isAllowed){
+            $contents = str_replace($line1a, $line1b, $contents);
+        }
+        //echo $contents;exit;
+
+        saveTexte2File($fullName, $contents, $mod = 0777);
+    }    
+    
+}
 
 /* ***********************
 

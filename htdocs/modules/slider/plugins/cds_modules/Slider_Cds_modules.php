@@ -40,9 +40,13 @@ public function getMainMenu(){
       $mainMenu['separateur_before']['url'] = "#";
       $mainMenu['separateur_before']['lib'] = "<hr>";
     
-      $module = 'lexikon';
+//       $module = 'lexikon';
+//       $mainMenu[$module]['url'] = $moduleUrl . $module;
+//       $mainMenu[$module]['lib'] = _MB_SLD_CDS_MODULES_LEXIKON;
+      
+      $module = 'glossaire';
       $mainMenu[$module]['url'] = $moduleUrl . $module;
-      $mainMenu[$module]['lib'] = _MB_SLD_CDS_MODULES_LEXIKON;
+      $mainMenu[$module]['lib'] = _MB_SLD_CDS_MODULES_GLOSSAIRE;
     
       $module = 'xoopsfaq';
       $mainMenu[$module]['url'] = $moduleUrl . $module;

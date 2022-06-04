@@ -75,8 +75,8 @@ __sql__;
 
 $id = 1;
 $sql = <<<__sql__
-INSERT INTO $tbl (sty_id,sty_name,sty_object,sty_css)
-values({$id},"Defaut - Titre ({$id})","","color:#496381;
+INSERT INTO $tbl (sty_id,sty_name,sty_css)
+values({$id},"Defaut - Titre ({$id})","color:#496381;
 background:#E1D6C9;
 opacity: 0.8;
 padding: 0px 25px 0px 25px;
@@ -89,8 +89,8 @@ __sql__;
 
 $id++;
 $sql = <<<__sql__
-INSERT INTO $tbl (sty_id,sty_name,sty_object,sty_css)
-values({$id},"Defaut - Sous-titre ({$id})","","color:#496381;
+INSERT INTO $tbl (sty_id,sty_name,sty_css)
+values({$id},"Defaut - Sous-titre ({$id})","color:#496381;
 background:#E1D6C9;
 opacity: 0.8;
 padding: 0px 25px 0px 25px;
@@ -103,8 +103,8 @@ __sql__;
 
 $id++;
 $sql = <<<__sql__
-INSERT INTO $tbl (sty_id,sty_name,sty_object,sty_css)
-values({$id},"Defaut - Bouton ({$id})","","color:#496381;
+INSERT INTO $tbl (sty_id,sty_name,sty_css)
+values({$id},"Defaut - Bouton ({$id})","color:#496381;
 background:#E1D6C9;
 opacity: 0.9;
 padding:25px;

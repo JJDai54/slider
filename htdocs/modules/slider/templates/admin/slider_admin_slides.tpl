@@ -1,11 +1,6 @@
 <!-- Header -->
 <{include file='db:slider_admin_header.tpl' }>
-<form id="theme_form"  name="theme_form" action="slides.php" method='get'>
-    <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}>
-    <{$smarty.const._AM_SLIDER_PERIODICITY}> : <{$sldPeriodicite}>
-    <{$smarty.const._AM_SLIDER_STATUS}> : <{$sldActif}>
-    <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
-</form>
+
 
 <STYLE>
 SPAN { FONT:bold 12 Arial; CURSOR:pointer }
@@ -13,6 +8,12 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
 
 
 <{if $slides_list}>
+    <form id="theme_form"  name="theme_form" action="slides.php" method='get'>
+        <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}>
+        <{$smarty.const._AM_SLIDER_PERIODICITY}> : <{$sldPeriodicite}>
+        <{$smarty.const._AM_SLIDER_STATUS}> : <{$sldActif}>
+        <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
+    </form>
     <table  id="slides_list"  name="slides_list" class='table table-bordered'>
         <thead>
             <tr class='head'>
@@ -39,7 +40,7 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                 <td class='left'> <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>"><{$slide.short_name}></a></td>
                 <{* <td class='left'><{$slide.title}></td> *}>
                 <{* <td class='center'><{$slide.description}></td> *}>
-                <td class='center'><{if $slide.theme <> ''}><{$slide.theme}><{else}><{$smarty.const._AM_SLIDER_ALL_THEMES}><{/if}></td>
+                <td class='left'><{if $slide.theme <> '' AND $slide.theme <> '||'}><{$slide.theme}><{else}><{$smarty.const._AM_SLIDER_ALL_THEMES}><{/if}></td>
                 
                 <{* ---------------- Arrows -------------------- *}>
                 <td class='center'>
@@ -47,11 +48,11 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                       <img src="<{$modPathIcon16}>/arrows/first-0.png" title="<{$smarty.const._AM_SLIDER_FIRST}>">
                       <img src="<{$modPathIcon16}>/arrows/up-0.png" title="<{$smarty.const._AM_SLIDER_UP}>">
                     <{else}>
-                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=first&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
+                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=first&select_theme=<{$select_theme}>&sld_weight=<{$slide.weight}>">
                       <img src="<{$modPathIcon16}>/arrows/first-1.png" title="<{$smarty.const._AM_SLIDER_FIRST}>">
                       </a>
                     
-                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=up&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
+                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=up&select_theme=<{$select_theme}>&sld_weight=<{$slide.weight}>">
                       <img src="<{$modPathIcon16}>/arrows/up-1.png" title="<{$smarty.const._AM_SLIDER_UP}>">
                       </a>
                     <{/if}>
@@ -65,11 +66,11 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                       <img src="<{$modPathIcon16}>/arrows/last-0.png" title="<{$smarty.const._AM_SLIDER_LAST}>">
                     <{else}>
                     
-                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=down&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
+                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=down&select_theme=<{$select_theme}>&sld_weight=<{$slide.weight}>">
                       <img src="<{$modPathIcon16}>/arrows/down-1.png" title="<{$smarty.const._AM_SLIDER_DOWN}>">
                       </a>
                  
-                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=last&sld_theme=<{$slide.theme}>&sld_weight=<{$slide.weight}>">
+                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=last&select_theme=<{$select_theme}>&sld_weight=<{$slide.weight}>">
                       <img src="<{$modPathIcon16}>/arrows/last-1.png" title="<{$smarty.const._AM_SLIDER_LAST}>">
                       </a>
                     <{/if}>
@@ -159,6 +160,6 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
 
 <script>
 tth_set_value('last_asc', true);
-tth_trierTableau('slides_list', 2, '1-2-3-4-5-6-7-8-9');  
+tth_trierTableau('slides_list', 4, '1-2-3-4-5-6-7-8-9');  
 </script>
 

@@ -26,7 +26,7 @@ if (!\defined('XOOPS_ICONS32_URL')) {
     define('XOOPS_ICONS32_URL', XOOPS_URL . '/Frameworks/moduleclasses/icons/32');
 }
 
-
+define('SLIDER_SHOW_TPL_NAME', 0);
 
 define('SLIDER_DIRNAME', 'slider');
 define('SLIDER_PATH', XOOPS_ROOT_PATH . '/modules/' . SLIDER_DIRNAME);
@@ -44,6 +44,8 @@ define('SLIDER_UPLOAD_IMAGE_URL', SLIDER_UPLOAD_URL . '/images');
 define('SLIDER_UPLOAD_SHOTS_PATH', SLIDER_UPLOAD_PATH . '/images/shots');
 define('SLIDER_UPLOAD_SHOTS_URL', SLIDER_UPLOAD_URL . '/images/shots');
 define('SLIDER_ADMIN', SLIDER_URL . '/admin/index.php');
+define('SLIDER_THEMES_PATH',SLIDER_PATH . "/templates/admin");
+
 $localLogo = SLIDER_IMAGE_URL . '/jjdai_logo.png';
 // Module Information
 $copyright = "<a href='http://jubile.fr' title='Origami du monde' target='_blank'><img src='" . $localLogo . "' alt='Origami du monde' /></a>";

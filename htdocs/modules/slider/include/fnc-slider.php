@@ -95,14 +95,19 @@ $sldOptions['clignotement_name'] = 'flash_points';
 $sldOptions['slider_transition'] = ($themeObj['transition']==1) ? 'vert' : '';
 $sldOptions['show_slider'] = 1; //$themeObj['']==1) ? 'vert' : '';    
 $sldOptions['show_jumbotron'] = 0; //$themeObj['']==1) ? 'vert' : '';    
-    
+//$myxoopsCss =  XOOPS_URL . "/themes/{$themeObj['folder']}/css/my_xoops.css";
+// define('SHOW_SLIDER', 1);
+// define('SHOW_JUMBOTRON', 0);
+
     $tpl = new \XoopsTpl();
+    $tpl->assign('myxoopsCss', XOOPS_URL . "/themes/{$themeObj['folder']}/css/my_xoops.css");
     $tpl->assign('slides', $slides);
     $tpl->assign('sldOptions', $sldOptions);
     
     $allSlides = $tpl->fetch($template);
     
-    $fSlide = XOOPS_ROOT_PATH . "/modules/slider/templates/admin/{$tpl_main}";
+    //$fSlide = XOOPS_ROOT_PATH . "/modules/slider/templates/admin/{$tpl_main}";
+    $fSlide = SLIDER_THEMES_PATH . "/{$tpl_main}";
     if (!is_readable($fSlide)) return false;
     $tplOrg = sld_loadTextFile($fSlide);
     
@@ -320,8 +325,11 @@ $moduleId = $xoopsModule->getVar('mid');
 function getWeightForNextSlide($theme) {
 global $xoopsDB;
 //$xoopsModule   = XoopsModule::getByDirname($dirname);
-
-    $sql = "SELECT max(sld_weight)+10 AS nextWeight FROM " . $xoopsDB->prefix('slider_slides') . " WHERE sld_theme = '{$theme}'";
+    if($theme == '' || $theme=='||'){
+      $sql = "SELECT max(sld_weight)+10 AS nextWeight FROM " . $xoopsDB->prefix('slider_slides');
+    }else{
+      $sql = "SELECT max(sld_weight)+10 AS nextWeight FROM " . $xoopsDB->prefix('slider_slides') . " WHERE sld_theme LIKE '%|{$theme}|%'";
+    }
     $rst = $xoopsDB->query($sql);
     $t = $xoopsDB->fetchArray($rst);
  

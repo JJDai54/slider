@@ -1,4 +1,14 @@
 ==============================================================
+2.22 [2022/06/04 18:00:00] - JJDai (jjdelalandre@orange.fr)
+==============================================================
+- Simplification de la fonction updateWeight
+- Onglet "Theme" Ajout du flag "jumbotron", permet de masquer ou d'afficher "qui sommes nous"
+- Gestion multi themes des slides, un slide peut être rataché à 1 ou plusieurs thèmes
+- Ajout du CSS "my_xoops.css" qui n'est pas inclus dans le thème xwatch4
+- Reprise du nom de l'image pour le nom du slide si celui n'est pas renseigné
+- Un peu de cosmétique
+
+==============================================================
 2.20 [2022/05/09 15:00:00] - JJDai (jjdelalandre@orange.fr)
 ==============================================================
 - Ajout de la table style pour remplacer les champs texte des styles css de la table slides
@@ -9,7 +19,7 @@
 ==============================================================
 2.18 [2022/04/06 15:00:00] - JJDai (jjdelalandre@orange.fr)
 ==============================================================
-- Correction da recherche des catégories dans la classe plugin
+- Correction de la  recherche des catégories dans la classe plugin
 
 ==============================================================
 2.08 [2021/07/24 15:00:00] - JJDai (jjdelalandre@orange.fr)

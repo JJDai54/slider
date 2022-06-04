@@ -25,12 +25,16 @@ $option [1] : position du menu : 0 = menu principal / 1 = sous-menu
 $option [2] : theme : 0 = xwatch / 1 = xbootstrap
 ****************** */
 $h = 0;
-define ('_SLIDER_BLOCK_MODULE'  , $h++);
-define ('_SLIDER_BLOCK_THEME'   , $h++);
-define ('_SLIDER_BLOCK_PARAMS'  , $h++);
-define ('_SLIDER_BLOCK_LEVEL'   , $h++);
-define ('_SLIDER_BLOCK_ORDER'   , $h++);
-
+define ('_SLIDER_BLOCK_MODULE'  , $h++); // dirname du module
+define ('_SLIDER_BLOCK_THEME'   , $h++); // type de theme : 0=slider_menu_xbootstrap_main.tpl / 1=slider_menu_xswatch4_main.tpl
+define ('_SLIDER_BLOCK_PARAMS'  , $h++); // Valeur binaire qui précise le contenu du menu 1=showMainMenu / 2=showCategories / 4=catIsSubmenu / 8=showAllCatLib / 16=showAdminmodule
+define ('_SLIDER_BLOCK_LEVEL'   , $h++); // 0=niveau de menu 0=Menu principal / 1=Sous-menu de niveau 1 / 2=sous-menu de niveau 2
+define ('_SLIDER_BLOCK_ORDER'   , $h++); // Defini l'ordre liste des items - options d'accès du module (accueil du module, nouveelle entrée, ...)
+/*
+<{block id=165 options="wggallery|0|7|1|0"}> 
+<{block id=165 options="quizmaker|0|3|1|0"}> 
+<{block id=165 options="xforms|0|3|1||0"}> 
+*/
 
 function b_slider_menu_manager_show($options)
 {

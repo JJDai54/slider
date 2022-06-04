@@ -20,20 +20,12 @@
  * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
+define("_MB_SLD_GLOSSAIRE_CAPTION", "Lexique");
+define("_MB_SLD_GLOSSAIRE_ALL_CAT", "Toutes les catégories");
+define("_MB_SLD_GLOSSAIRE_SUBMIT", "Soumettre une définition");
+define("_MB_SLD_GLOSSAIRE_REQUEST", "Sugérer une définition");
+define("_MB_SLD_GLOSSAIRE_SEARCH", "Chercher une définition");
+define("_MB_SLD_GLOSSAIRE_ADMIN", "Administration du module");
 
-// constantes qui doivent figurer systématiquemen dans les plugin avec le prefix qui va bien
-define("_MB_SLD_CDS_MODULES_CAPTION", "Menu ???");
-define("_MB_SLD_CDS_MODULES_SUBMENU_CAT", "Sous-menu ???");
-
-define("_MB_SLD_CDS_MODULES_LEXIKON", "Lexique");
-define("_MB_SLD_CDS_MODULES_GLOSSAIRE", "Glossaire");
-define("_MB_SLD_CDS_MODULES_XOOPSFAQ", "Foire aux questions");
-define("_MB_SLD_CDS_MODULES_FACEBOOK", "Facebook");
-define("_MB_SLD_CDS_MODULES_CONFINEMENT", "Forum du confinement");
-define("_MB_SLD_CDS_MODULES_CHGMENTIONS", "Mentions légales");
-define("_MB_SLD_CDS_MODULES_PARTENAIRE", "Devenez partenaire !");
-define("_MB_SLD_CDS_MODULES_XSITEMAP", "Plan du site");
-
-    
 
 ?>

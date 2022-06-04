@@ -148,9 +148,12 @@ global $xoopsConfig, $helper;
     $crSlidesActif->add(new \Criteria('sld_actif', 1, '='));
  
  
-    $crSlidesTheme = new \CriteriaCompo();    
-    $crSlidesTheme->add(new \Criteria('sld_theme', $theme, '='));
-    $crSlidesTheme->add(new \Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
+    $crSlidesTheme = new \CriteriaCompo();   
+    if ($theme != ''){
+        $crSlidesTheme->add(new \Criteria('sld_theme', "%|{$theme}|%", 'LIKE'));
+    } 
+//     $crSlidesTheme->add(new \Criteria('sld_theme', $theme, '='));
+//     $crSlidesTheme->add(new \Criteria('sld_theme',  0, '=', '', "LENGTH(sld_theme)" ), 'OR');
  
  
  
@@ -206,5 +209,96 @@ global $xoopsConfig, $helper;
     
     return $slides;
 }
+
+/* ******************************
+ * max weight
+ * renvoie la valeur maxmum d'un champ pour un idParent 
+ * *********************** */
+public function getMax($field = "sld_weight", $theme='', $offset = 0)
+
+{
+    $sql = "SELECT max({$field}) AS valueMax FROM {$this->table}";
+    if($theme != '') $sql .= " WHERE sld_theme LIKE '%|$theme|%';";
+    
+    $rst = $this->db->query($sql);
+    $arr = $this->db->fetchArray($rst);
+//        echo print_r($arr,true);
+    return $arr['valueMax'] + $offset;
+}
+
+
+/* ******************************
+ * init weight
+ * *********************** */
+public function incrementeWeight($theme='', $step = 10){
+ 
+ $fldWeight = 'sld_weight';
+
+    $sql = "SET @rank=-{$step};";
+    $result = $this->db->queryf($sql);
+
+    if ($theme == ''){
+        $sql = "update {$this->table} SET {$fldWeight} = {$step}+(@rank:=@rank+{$step}) ORDER BY {$fldWeight};";    
+    }else{
+        $sql = "update {$this->table} SET {$fldWeight} = {$step}+(@rank:=@rank+{$step}) WHERE sld_theme LIKE '%|{$theme}|%' ORDER BY {$fldWeight};";    
+    }
+    
+    $result = $this->db->queryf($sql);
+}
+/* ******************************
+ * Update weight
+ * *********************** */
+ public function updateWeight($key_id, $action, $theme=''){
+ $step = 10;
+ $fldWeight = 'sld_weight';
+ $fldId = 'sld_id';
+    
+    $this->incrementeWeight($theme, $step);
+
+    switch ($action){
+      case 'up'; 
+        $newWeight = "{$fldWeight} = {$fldWeight} - {$step} - 5";
+        break;
+    
+      case 'down'; 
+        $newWeight = "{$fldWeight} = {$fldWeight} + {$step} + 5";
+      break;
+    
+      case 'first'; 
+        $newWeight = "{$fldWeight}=-99999";
+      break;
+    
+      case 'last'; 
+        $newWeight = "{$fldWeight}=99999";
+      break;
+      
+    }
+    $sql = "update {$this->table} SET {$newWeight} WHERE {$fldId} = {$key_id};";    
+    $result = $this->db->queryf($sql);
+    
+    $this->incrementeWeight($theme, $step);
+    return true;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 } // ----- FIN DE LA CLASSE -----

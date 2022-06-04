@@ -89,7 +89,8 @@ define('_AM_SLIDER_CLEAN_DIR_DESC', "Rinitialise les fichiers 'slider.tpl' d'ori
 define('_AM_SLIDER_BLOCK', "Slider Block");
 define('_AM_SLIDER_BLOCK_DESC', "Active le block qui permet la mise à jour des slides");
 define('_AM_SLIDER_TRAITEMENTS', "Traitements");
-define('_AM_SLIDER_SLIDE_SHORT_NAME', "Nom court");
+define('_AM_SLIDER_SLIDE_SHORT_NAME', "Nom");
+define('_AM_SLIDER_SLIDE_SHORT_NAME_DESC', "Si le nom n'est pas renseigné, c'est le nom de l'image originale qui sera utilisé.");
 define('_AM_SLIDER_SLIDE_TITLE_DESC', "Titre principal affiché sur le slide");
 define('_AM_SLIDER_SUBTITLE_DESC', "Texte ou sous-titre affiché sur le slide");
 define('_AM_SLIDER_BUTTON_URL', "URL du bouton");
@@ -223,5 +224,17 @@ define('_AM_SLIDER_STYLE_NONE', "Aucun");
 define('_AM_SLIDER_STYLE_TITLE', "Style du titre");
 define('_AM_SLIDER_STYLE_SUBTITLE', "Style du sous-titre");
 define('_AM_SLIDER_STYLE_BUTTON', "Style du bouton");
+
+define('_AM_SLIDER_THEME_BACKCOLOR', "Couleur de fond du thème");
+define('_AM_SLIDER_THEME_BACKIMAGE', "Image de fond du thème");
+define('_AM_SLIDER_THEME_COLOR', "Couleur du texte");
+define('_AM_SLIDER_THEME_LINK_COLOR', "Couleur des liens");
+define('_AM_SLIDER_THEME_LINK_HOVER_COLOR', "Couleur de survol des liens");
+define('_AM_SLIDER_THEME_NAVBBAR_BACKCOLOR', "Couleur de la barre de menu");
+
+define('_AM_SLIDER_THEME_JUMBOTRON', "Jumbotron");
+define('_AM_SLIDER_THEME_DESACTIVER_JUMBOTRON', "Désactiver Jumbotron (A propos de nous)");
+define('_AM_SLIDER_THEME_ACTIVER_JUMBOTRON', "Activer Jumbotron (A propos de nous)");
+
 
 // ---------------- End ----------------

@@ -54,7 +54,7 @@ class Styles extends \XoopsObject
     {
         $this->initVar('sty_id', \XOBJ_DTYPE_INT);
         $this->initVar('sty_name', \XOBJ_DTYPE_TXTBOX);
-        $this->initVar('sty_object', \XOBJ_DTYPE_TXTBOX);
+//        $this->initVar('sty_object', \XOBJ_DTYPE_TXTBOX);
         $this->initVar('sty_css', \XOBJ_DTYPE_TXTAREA);
     }
 
@@ -148,7 +148,7 @@ class Styles extends \XoopsObject
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']        = $this->getVar('sty_id');
         $ret['name']      = $this->getVar('sty_name');
-        $ret['object']    = $this->getVar('sty_object');
+//        $ret['object']    = $this->getVar('sty_object');
         $ret['css']       = \strip_tags($this->getVar('sty_css', 'e'));
         $editorMaxchar = $helper->getConfig('editor_maxchar');
         $ret['css_short'] = $utility::truncateHtml($ret['css'], $editorMaxchar);

@@ -26,6 +26,7 @@ define("_MB_SLD_CDS_MODULES_CAPTION", "Menu ???");
 define("_MB_SLD_CDS_MODULES_SUBMENU_CAT", "Sous-menu ???");
 
 define("_MB_SLD_CDS_MODULES_LEXIKON", "Lexique");
+define("_MB_SLD_CDS_MODULES_GLOSSAIRE", "Glossaire");
 define("_MB_SLD_CDS_MODULES_XOOPSFAQ", "Foire aux questions");
 define("_MB_SLD_CDS_MODULES_FACEBOOK", "Facebook");
 define("_MB_SLD_CDS_MODULES_CONFINEMENT", "Forum du confinement");

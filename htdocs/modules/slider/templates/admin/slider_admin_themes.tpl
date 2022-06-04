@@ -14,6 +14,7 @@
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_WHITE_CSS}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_DARK_CSS}></th>
 				<th class="center"><{$smarty.const._AM_SLIDER_THEME_SLIDER}></th>
+				<th class="center"><{$smarty.const._AM_SLIDER_THEME_JUMBOTRON}></th>
 				<th class="center width10""><{$smarty.const._AM_SLIDER_THEME_TRANSITION}></th>
 				<th class="center width10""><{$smarty.const._AM_SLIDER_THEME_RANDOM}></th>
 				<th class="center width5"><{$smarty.const._AM_SLIDER_GENERER}></th>
@@ -60,6 +61,22 @@
                     <{/if}>
                 </td>
                 
+				<td class='center'>
+                    <{if $theme.isXswatch4E}>
+                    <{if $theme.isJumbotronAllowed}>
+					    <a href="themes.php?op=allowed_jumbotron&theme_id=<{$theme.id}>&theme_folder=<{$theme.folder}>&etat=0" title="<{$smarty.const._AM_SLIDER_THEME_DESACTIVER_JUMBOTRON}>">           
+                            <img src="<{xoModuleIcons16 green.gif}>" alt="" />
+                        </a>
+                    <{else}>
+					    <a href="themes.php?op=allowed_jumbotron&theme_id=<{$theme.id}>&theme_folder=<{$theme.folder}>&etat=1" title="<{$smarty.const._AM_SLIDER_THEME_ACTIVER_JUMBOTRON}>">           
+                            <img src="<{xoModuleIcons16 red.gif}>" alt="" />
+                        </a>
+                    <{/if}>
+                    <{else}>
+                            <img src="<{xoModuleIcons16 green_off.gif}>" alt="" />
+                    <{/if}>
+                </td>
+                
 				<td class='center'><{$theme.transition_caption}></td>
 				<td class='left'><{$theme.random_caption}></td>
 				<td class='center'>
@@ -89,6 +106,7 @@
                         <{/if}>
                     <{/if}>
                 </td>
+                
 				<td class="center  width5">
 					<a href="themes.php?op=edit&amp;theme_id=<{$theme.id}>" title="<{$smarty.const._EDIT}>"><img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> themes" /></a>
 					<a href="logo.php?op=logo-form&theme_id=<{$theme.id}>" title="<{$smarty.const._AM_SLIDER_THEME_LOGO}>"><img src="<{xoModuleIcons16 attach.png}>" alt="<{$smarty.const._AM_SLIDER_THEME_LOGO}> themes" /></a>

@@ -23,7 +23,7 @@ CREATE TABLE `slider_slides` (
   `sld_date_begin` INT(10) NOT NULL DEFAULT '0',
   `sld_date_end` INT(10) NOT NULL DEFAULT '0',
   `sld_actif` INT(1) NOT NULL DEFAULT '0',
-  `sld_theme` VARCHAR(100) NOT NULL DEFAULT '',
+  `sld_theme` VARCHAR(255) NOT NULL DEFAULT '',
   `sld_button_title` VARCHAR(80) NOT NULL ,
   `sld_style_title` TEXT NOT NULL ,
   `sld_style_subtitle` TEXT NOT NULL ,
@@ -61,8 +61,8 @@ CREATE TABLE `slider_styles` (
 
 ## ------------------------------------
 
-INSERT INTO slider_styles (sty_id,sty_name,sty_object,sty_css)
-values(1,"Defaut - Titre","","color:#496381;
+INSERT INTO slider_styles (sty_id,sty_name,sty_css)
+values(1,"Defaut - Titre","color:#496381;
 background:#E1D6C9;
 opacity: 0.8;
 padding: 0px 25px 0px 25px;
@@ -71,8 +71,8 @@ margin-left:250px;
 margin-right:250px;
 margin-bottom:15px;");
 
-INSERT INTO slider_styles (sty_id,sty_name,sty_object,sty_css)
-values(2,"Defaut - Sous-titre","","color:#496381;
+INSERT INTO slider_styles (sty_id,sty_name,sty_css)
+values(2,"Defaut - Sous-titre","color:#496381;
 background:#E1D6C9;
 opacity: 0.8;
 padding: 0px 25px 0px 25px;
@@ -81,8 +81,8 @@ margin-left:250px;
 margin-right:250px;
 margin-bottom:15px;");
 
-INSERT INTO slider_styles (sty_id,sty_name,sty_object,sty_css)
-values(3,"Defaut - Bouton","","color:#496381;
+INSERT INTO slider_styles (sty_id,sty_name,sty_css)
+values(3,"Defaut - Bouton","color:#496381;
 background:#E1D6C9;
 opacity: 0.9;
 padding:25px;
