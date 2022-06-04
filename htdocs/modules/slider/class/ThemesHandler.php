@@ -234,11 +234,11 @@ global $slidesHandler;
     $themesList = $this->getThemesAllowed();
     $stat = array();
     foreach ($themesList AS $key=>$theme){
-        $criteria = new \CriteriaCompo(new \Criteria("sld_theme", $key, "="));
+        $criteria = new \CriteriaCompo(new \Criteria("sld_theme", "%|{$key}|%", "LIKE"));
         //$criteria->add(new \Criteria("length(sld_theme)", 0, '='), 'OR');
         $criteria->add(new \Criteria("sld_theme", null, '='), 'OR');
         if ($tplString != ''){
-            $stat[$key] = sprintf($tplString,  $key, 
+            $stat[$key] = sprintf($tplString,  _AM_SLIDER_SLIDE_THEME, $key, 
                               $slidesHandler->getCountSlides($criteria),
                               count($slidesHandler->getSlidesActifs($theme,  false))) ; 
         }else{
@@ -246,6 +246,13 @@ global $slidesHandler;
         }
         
     }
+    
+
+    $stat['empty'] = "<tr><td colspan='3'><hr></td></tr>"; 
+    $key = _AM_SLIDER_ALL_SLIDES;
+    $stat[$key] = sprintf($tplString,  '', $key, 
+                      $slidesHandler->getCountSlides(),
+                      count($slidesHandler->getSlidesActifs('',  false))) ; 
     return $stat;
 }
 

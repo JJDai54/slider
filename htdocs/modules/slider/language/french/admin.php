@@ -194,7 +194,7 @@ define('_AM_SLIDER_PERIODICITE_RND_YEAR', 'Une fois par an');
 define('_AM_SLIDER_THEME_RANDOM', 'MAJ aléatoire');
 define('_AM_SLIDER_PURGER_SLIDES', "Purger le(s) %s slide(s) inutilisé(s)");
 define('_AM_SLIDER_THEMES_STATS1', "Thème %s : %s slide(s) défini(s) dont %s en cours");
-define('_AM_SLIDER_THEMES_STATS2', "<tr><td>Thème %s : </td><td>%s slide(s) défini(s)</td><td> dont %s en cours</td></tr>");
+define('_AM_SLIDER_THEMES_STATS2', "<tr><td>%s %s : </td><td>%s slide(s) défini(s)</td><td> dont %s en cours</td></tr>");
 define('_AM_SLIDER_THEME_XSWATCH4E', "xswatch 4E");
 define('_AM_SLIDER_THEME_SLIDER', "Slider");
 
@@ -235,6 +235,7 @@ define('_AM_SLIDER_THEME_NAVBBAR_BACKCOLOR', "Couleur de la barre de menu");
 define('_AM_SLIDER_THEME_JUMBOTRON', "Jumbotron");
 define('_AM_SLIDER_THEME_DESACTIVER_JUMBOTRON', "Désactiver Jumbotron (A propos de nous)");
 define('_AM_SLIDER_THEME_ACTIVER_JUMBOTRON', "Activer Jumbotron (A propos de nous)");
+define('_AM_SLIDER_ALL_SLIDES', "Total slides");
 
 
 // ---------------- End ----------------

@@ -1,3 +1,11 @@
+UPDATE `x251_slider_slides` 
+SET `sld_theme` = concat('|',`sld_theme`,'|');
+
+UPDATE `x251_slider_slides` 
+SET `sld_style_title`='',`sld_style_subtitle`='',`sld_style_button`=''
+
+----------------------------------------------------------------------
+
 <{* un-comment to enable slider
 <{if $xoops_page == "index"}>
     <{include file="$theme_name/tpl/slider.tpl"}>
