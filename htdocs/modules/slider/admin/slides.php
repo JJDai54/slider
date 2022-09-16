@@ -69,7 +69,13 @@ switch ($op) {
         }
         
         if($periodicite != 0) $criteria->add(new \Criteria('sld_periodicity', $periodicite, "="));
-        if($actif >= 0) $criteria->add(new \Criteria('sld_actif', $actif, "="));
+        
+        if($actif == 0 || $actif == 1) {
+            $criteria->add(new \Criteria('sld_actif', $actif, "="));
+        }elseif($actif == 2){
+            $criteria->add(getCriteriaOFCurrentStatus(), "AND");
+            
+        }
         //$criteria->add(new \Criteria('length(sld_theme)','0','=', 'OR'));
         //$criteria->add(new \Criteria('sld_theme', '','=', 'OR'));
         
@@ -107,9 +113,6 @@ $xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
 //         $sldThemeSelect = new \XoopsFormSelectTheme(_AM_SLIDER_SLIDE_SELECT_THEME, 'select_theme', $select_theme,1, true);        
 //         $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
 //         $sldThemeSelect->setExtra("onChange=\"document.theme_form.submit()\"");
-        
-        
-        
 
         $sldThemeSelect = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'select_theme', $select_theme);   
         $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        

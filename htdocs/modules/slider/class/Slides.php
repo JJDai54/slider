@@ -404,11 +404,22 @@ $perDate->addElement($sldDate_end);
         $ret['date_end']           = $this->getVar('sld_date_end');
         $ret['str_date_begin']         = \formatTimestamp($this->getVar('sld_date_begin'), 'm');
         $ret['str_date_end']           = \formatTimestamp($this->getVar('sld_date_end'), 'm');
+
         $ret['actif']              = (int)$this->getVar('sld_actif');
-        
         $ret['actif_yn']           = (int)$this->getVar('sld_actif') > 0 ? _YES : _NO;
+
         $ret['periodicity']        = (int)$this->getVar('sld_periodicity');
         $ret['periodicity_yn']     = (int)$this->getVar('sld_periodicity') > 0 ? _YES : _NO;
+        $ret['periodicity_title']     = ["",
+                                         _AM_SLIDER_PERIODICITE_ALWAYS,
+                                         _AM_SLIDER_PERIODICITE_FLOAT,
+                                         _AM_SLIDER_PERIODICITE_WEEK,
+                                         _AM_SLIDER_PERIODICITE_MONTH,
+                                         _AM_SLIDER_PERIODICITE_BIMONTHLY,
+                                         _AM_SLIDER_PERIODICITE_QUATER,
+                                         _AM_SLIDER_PERIODICITE_SEMESTER,
+                                         _AM_SLIDER_PERIODICITE_YEAR][$ret['periodicity']];
+
         $ret['theme']              = $this->getVar('sld_theme');
         $ret['image']              = trim($this->getVar('sld_image'));
         $fulName = SLIDER_UPLOAD_IMAGE_PATH. "/slides/" . $this->getVar('sld_image');

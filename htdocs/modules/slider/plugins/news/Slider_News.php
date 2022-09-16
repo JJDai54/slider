@@ -62,7 +62,7 @@ var $options = array(
             'fld_name'     => 'topic_title',
             'fld_weight'   => 'topic_weight',
             'permView'     => 'news_view',
-            'captionAll'   => _MB_SLD_NEWS_ALL_STORIES,
+            //'captionAll'   => _MB_SLD_NEWS_ALL_STORIES,
             'catPage'      => 'index.php',
             'catParamName' => 'storytopic');
 
@@ -71,6 +71,7 @@ var $options = array(
  *
  *********************** */   
     public function getMainMenu(){
+    $this->options['captionAll'] = _MB_SLD_NEWS_ALL_STORIES;
         $permsNames = $this->getPermsissionsNames();
         $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
           

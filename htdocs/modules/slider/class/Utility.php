@@ -339,16 +339,17 @@ public static function xoopsFormPeriodicite($caption, $name, $value, $descriptio
 * ***** */
 public static function xoopsFormActif($caption, $name, $value, $description="", $extra = null, $addAll=false){
 
-        $selPeriodicite = new \XoopsFormSelect($caption, $name, $value);
-            $selPeriodicite->setDescription (_AM_SLIDER_PERIODICITY_DESC);
-            if($addAll) $selPeriodicite->addOption(-1,  '(*)');
-            $selPeriodicite->addOption(0, _AM_SLIDER_INACTIF);
-            $selPeriodicite->addOption(1, _AM_SLIDER_ACTIF);
+        $selectForm = new \XoopsFormSelect($caption, $name, $value);
+            $selectForm->setDescription (_AM_SLIDER_PERIODICITY_DESC);
+            if($addAll) $selectForm->addOption(-1,  '(*)');
+            $selectForm->addOption(0, _AM_SLIDER_INACTIF);
+            $selectForm->addOption(1, _AM_SLIDER_ACTIF);
+            $selectForm->addOption(2, _AM_SLIDER_SLIDE_CURRENT_STATUS);
         if ($description)
-            $selPeriodicite->setDescription($description);
+            $selectForm->setDescription($description);
         if ($extra)
-           $selPeriodicite->setExtra($extra);
-        return $selPeriodicite;
+           $selectForm->setExtra($extra);
+        return $selectForm;
 }
     
 

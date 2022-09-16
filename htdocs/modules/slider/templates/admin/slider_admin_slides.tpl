@@ -6,14 +6,14 @@
 SPAN { FONT:bold 12 Arial; CURSOR:pointer }
 </STYLE>
 
+<form id="theme_form"  name="theme_form" action="slides.php" method='get'>
+    <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}>
+    <{$smarty.const._AM_SLIDER_PERIODICITY}> : <{$sldPeriodicite}>
+    <{$smarty.const._AM_SLIDER_STATUS}> : <{$sldActif}>
+    <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
+</form>
 
 <{if $slides_list}>
-    <form id="theme_form"  name="theme_form" action="slides.php" method='get'>
-        <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}>
-        <{$smarty.const._AM_SLIDER_PERIODICITY}> : <{$sldPeriodicite}>
-        <{$smarty.const._AM_SLIDER_STATUS}> : <{$sldActif}>
-        <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
-    </form>
     <table  id="slides_list"  name="slides_list" class='table table-bordered'>
         <thead>
             <tr class='head'>
@@ -92,15 +92,19 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                     <{/if}>
                 </td>
                 
-                <td class='center'>
+                <td class='left'>
                     <span style='visibility:hidden;'><{$slide.periodicity}></span>
-                    <{if $slide.periodicity == $smarty.const.PERIODICITY_ALWAYS }>
+                    <{$slide.periodicity}>-<img src="<{$modPathIcon16}>/periodicity-<{$slide.periodicity}>.png" title="">-<{$slide.periodicity_title}>
+                    
+<{*
+                    <{if $slide.periodicity == $smarty.const.PERIODICITY_ALWAYS}>
                         <img src="<{$modPathIcon16}>/periodicity-0.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_ALWAYS}>">
-                    <{elseif $slide.periodicity == $smarty.const.PERIODICITY_FLOAT }>
+                    <{elseif $slide.periodicity == $smarty.const.PERIODICITY_FLOAT}>
                         <img src="<{$modPathIcon16}>/periodicity-1.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_FLOAT}>">
                     <{else}>
                         <img src="<{$modPathIcon16}>/periodicity-2.png" title="<{$smarty.const._AM_SLIDER_PERIODICITE_CYCLIQUE}>">
                     <{/if}>
+*}>                    
                 </td>
                 
                 <td class='center'>

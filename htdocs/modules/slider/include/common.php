@@ -76,3 +76,4 @@ define ('_SLD_PERIODICITY_QUATER',   6); // trimestre
 define ('_SLD_PERIODICITY_SEMESTER', 7); // semestre
 define ('_SLD_PERIODICITY_YEAR',     8); // year
 
+define ('_SLD_SURCHARGE_CSS_FILLE_NAME', 'my_css.css'); //my_xoops

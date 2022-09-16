@@ -7,7 +7,7 @@
 - Ajout du CSS "my_xoops.css" qui n'est pas inclus dans le thème xwatch4
 - Reprise du nom de l'image pour le nom du slide si celui n'est pas renseigné
 - Un peu de cosmétique
-- Augmentation de la taille du champ "sld_theme" -> varchar(255)
+- Augmentation de la taille du champ "sld_theme" -> varchar(255) pour permettre l'affection multiple de thèmes
 
 ==============================================================
 2.20 [2022/05/09 15:00:00] - JJDai (jjdelalandre@orange.fr)

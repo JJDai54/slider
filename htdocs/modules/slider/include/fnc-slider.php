@@ -355,6 +355,32 @@ function getCurrentStatusOfSlide(&$slide) {
    return false;
 
 }
+/**
+ * renvoi l'état actuel d'un slide
+ * 
+ * @param bool $visible  nouveau status visible pour les blocks du module 
+ * @return bool 
+*/
+function getCriteriaOFCurrentStatus() {
+    $criteria = new \CriteriaCompo();
+    $criteria->add(new \Criteria('sld_actif', 1, "="));
+   
+   $crtPer = new \CriteriaCompo();   
+   $crtPer->add(new \Criteria('sld_periodicity', CONSTANTS::PERIODICITY_ALWAYS, "="));
+          
+   $now = time();
+   $crtDat = new \CriteriaCompo();   
+   $crtDat->add(new \Criteria('sld_date_begin', $now, "<"));
+   $crtDat->add(new \Criteria('sld_date_end', $now, ">"),"AND");
+    
+    $crt =  new \CriteriaCompo();  
+    $crt->add($crtPer);
+    $crt->add($crtDat,"OR");
+    
+    $criteria->add($crt, "AND");
+    return $criteria;
+
+}
 
 /**
 *
@@ -533,24 +559,21 @@ function sld_loadTextFile ($fullName){
 /**********************************************************************
  * 
  **********************************************************************/
-function saveTexte2File($fullName, $content, $mod = 0777){
+function saveTexte2File($fullName, $content, $mod = 0664){
   $fullName = str_replace('//', '/', $fullName);  
   
   //echo "\n<hr>saveTexte2File mode :{$mod}<br>{$fullName}<hr>\n";
   //buildPath(dirname($fullName));
   
+    chmod($fullName, 0777);
   
-      $fp = fopen ($fullName, "w");  
-      fwrite ($fp, $content);
-      fclose ($fp);
-      if ($mod <> 0000) {
-        //echo "<hr>saveTexte2File mode :{$mod}<br>{$fullName}<hr>";
-        chmod($fullName, $mod);
-      }
-  
-  
-  
-
+    $fp = fopen ($fullName, "w");  
+    fwrite ($fp, $content);
+    fclose ($fp);
+    if ($mod <> 0000) {
+      //echo "<hr>saveTexte2File mode :{$mod}<br>{$fullName}<hr>";
+      chmod($fullName, $mod);
+    }
 }
 
 /* ***********************

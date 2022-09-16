@@ -114,7 +114,7 @@
                     <{* pas besoin de supprimer
                     <a href="themes.php?op=delete&amp;theme_id=<{$theme.id}>" title="<{$smarty.const._DELETE}>"><img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> themes" /></a>
                     *}>
-                    <a href="themes.php?op=edit_mycss&amp;theme_id=<{$theme.id}>" title="<{$smarty.const._EDIT}>">
+                    <a href="themes.php?op=edit_mycss&amp;theme_id=<{$theme.id}>" title="<{$smarty.const._AM_SLIDER_EDIT_MYCSS}>">
                         <img src="<{xoModuleIcons16 view.png}>" alt="<{$smarty.const._AM_SLIDER_THEME_SURCHARGER}>" />
                     </a>
                     

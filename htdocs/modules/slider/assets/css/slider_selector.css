@@ -1,0 +1,59 @@
+
+/*
+ You may not change or alter any portion of this comment or credits
+ of supporting developers from this source code or any supporting source code
+ which is considered copyrighted (c) material of the original comment or credit authors.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*/
+
+/**
+ * slider - Slides management module for xoops
+ *
+ * @copyright      2020 XOOPS Project (https://xooops.org)
+ * @license        GPL 2.0 or later
+ * @package        slider
+ * @since          1.0
+ * @min_xoops      2.5.9
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
+ */
+ 
+@media only screen and (min-width: 600px) {
+
+.carousel-indicators-bis li {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    margin: 2px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px solid #f00;
+    border-radius: 20px;
+    
+     animation-duration: 12s;
+     animation-iteration-count: infinite;
+     transition: none;
+     animation-name: flash_points;
+
+}
+.carousel-indicators-bis .active {
+    width: 22px;
+    height: 32px;
+    max-width: 22px;
+    max-height: 32px;
+    margin: 0;
+    background-color: #0000ff;
+
+}
+
+@keyframes flash_points {
+      0% { opacity:1;background:white;}
+     25% {opacity:1;background:blue;}
+     50% { opacity:1;background:yellow;}
+     75% { opacity:1;background:green;}
+    100% { opacity:1;background:white;}
+}
+
+}

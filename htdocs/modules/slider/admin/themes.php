@@ -193,7 +193,7 @@ include "uploader.php";
         //$theme   = Request::getString('theme_folder', '');
         $mycss   = Request::getString('theme_mycss', '');
         
-        $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/css/my_css.css";
+        $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/css/" . _SLD_SURCHARGE_CSS_FILLE_NAME;
         saveTexte2File($fullName, $mycss);        
         
         \force_rebuild_slider();		

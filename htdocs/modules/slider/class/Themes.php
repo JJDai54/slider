@@ -89,8 +89,8 @@ class Themes extends \XoopsObject
         //$version = $this->getVar('theme_version');
         $themeIni = ThemesHandler::getThemesIni($theme);
         
-	//	$title = $this->isNew() ? \sprintf(_AM_SLIDER_THEME_ADD) : \sprintf(_AM_SLIDER_THEME_EDIT);
-		$title = \sprintf(_AM_SLIDER_THEME_EDIT, $theme) ;
+	//	$title = $this->isNew() ? \sprintf(_AM_SLIDER_THEME_ADD) : \sprintf(_AM_SLIDER_THEME_EDIT_MYCSS);
+		$title = \sprintf(_AM_SLIDER_THEME_EDIT_MYCSS, $theme) ;
 		// Get Theme Form
 		\xoops_load('XoopsFormLoader');
 		$form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
@@ -263,7 +263,7 @@ class Themes extends \XoopsObject
         //$version = $this->getVar('theme_version');
         $themeIni = ThemesHandler::getThemesIni($theme);
         
-	//	$title = $this->isNew() ? \sprintf(_AM_SLIDER_THEME_ADD) : \sprintf(_AM_SLIDER_THEME_EDIT);
+	//	$title = $this->isNew() ? \sprintf(_AM_SLIDER_THEME_ADD) : \sprintf(_AM_SLIDER_THEME_EDIT_MYCSS);
 		$title = \sprintf(_AM_SLIDER_THEME_LOGO, $theme) ;
 		// Get Theme Form
 		\xoops_load('XoopsFormLoader');
@@ -316,16 +316,16 @@ class Themes extends \XoopsObject
 			$action = $_SERVER['REQUEST_URI'];
 		}
 		$isAdmin = $GLOBALS['xoopsUser']->isAdmin($GLOBALS['xoopsModule']->mid());
+        $theme = $this->getVar('theme_folder');
+        $themeIni = ThemesHandler::getThemesIni($theme);
 		// Title
-		$title = $this->isNew() ? \sprintf(_AM_SLIDER_THEME_ADD) : \sprintf(_AM_SLIDER_THEME_EDIT);
+		$title = $this->isNew() ? \sprintf(_AM_SLIDER_THEME_ADD) : \sprintf(_AM_SLIDER_THEME_EDIT_MYCSS,$theme);
 		// Get Theme Form
 		\xoops_load('XoopsFormLoader');
 		$form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
 		$form->setExtra('enctype="multipart/form-data"');
 		// Form Text themeName
 
-        $theme = $this->getVar('theme_folder');
-        $themeIni = ThemesHandler::getThemesIni($theme);
 
         
         $form->addElement(new \XoopsFormHidden('theme_folder', $theme));
@@ -334,14 +334,14 @@ class Themes extends \XoopsObject
         $form->addElement(new \XoopsFormLabel(_AM_SLIDER_THEME_VERSION, $themeIni['Version']));
         
         //------------ STYLES mycss-------------------------------
-        $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/css/my_css.css";
+        $fullName = XOOPS_ROOT_PATH . "/themes/{$theme}/css/". _SLD_SURCHARGE_CSS_FILLE_NAME;
         $mycss = sld_loadTextFile($fullName);
 
  $stylTA = "style='width:600px';";  
  $nbLinesTA = 25;     
-        $inpMycss = new \XoopsFormTextArea(_AM_SLIDER_THEME_EDIT, 'theme_mycss',  $mycss, $nbLinesTA, 50);
+        $inpMycss = new \XoopsFormTextArea(\sprintf(_AM_SLIDER_THEME_EDIT_MYCSS,$theme), 'theme_mycss',  $mycss, $nbLinesTA, 50);
         $inpMycss->setExtra($stylTA);
-        $inpMycss->setDescription(_AM_SLIDER_THEME_EDIT_DESC);
+        $inpMycss->setDescription(_AM_SLIDER_THEME_EDIT_MYCSS_DESC);
         $form->addElement($inpMycss);
 
 		// To Save

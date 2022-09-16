@@ -98,7 +98,7 @@ define('_AM_SLIDER_SLIDE_READ_MORE_DESC', "Lien sur un article ou une page avec 
 define('_AM_SLIDER_SLIDE_PROCESSING_OK', "Traitement effectué");
 define('_AM_SLIDER_REFRESH_SLIDERS', "Rafraichir les sliders");
 define('_AM_SLIDER_REFRESH_SLIDERS_DESC', "Réinitialise tous les thèmes et force la reconstruction des sliders");
-define('_AM_SLIDER_SLIDE_CURRENT_STATUS', "Courant");
+define('_AM_SLIDER_SLIDE_CURRENT_STATUS', "En cours");
 define('_AM_SLIDER_UP', "Monter");
 define('_AM_SLIDER_DOWN', "Descendre");
 define('_AM_SLIDER_HIGHSLIDE_0', "<span style=\"color:red;\">Le framework \"<a href=\"http://highslide.com/\">Highslide</a>\" n'est pas installé.</span>");
@@ -123,7 +123,7 @@ define('_AM_SLIDER_PERIODICITY_DESC', "Défini la périodicité de renouvellement d
 define('_AM_SLIDER_PERIODICITE_ALWAYS', 'Toujours');
 define('_AM_SLIDER_PERIODICITE_FLOAT', 'Période flottante');
 define('_AM_SLIDER_PERIODICITE_CYCLIQUE', 'Période cyclique');
-define('_AM_SLIDER_PERIODICITE_WEEK', 'Toute les semaines');
+define('_AM_SLIDER_PERIODICITE_WEEK', 'Toutes les semaines');
 define('_AM_SLIDER_PERIODICITE_MONTH', 'Tous les mois');
 //define('_AM_SLIDER_PERIODICITE_BIMONTHLY', 'Une fois tous les deux mois');
 define('_AM_SLIDER_PERIODICITE_QUATER', 'Tous les trimestres');
@@ -164,7 +164,9 @@ define('_AM_SLIDER_THEME_TPL_SLIDER', "Template");
 define('_AM_SLIDER_THEME_TPL_SLIDER_DESC', "Template à utiliser pour la génération du slider.<br>utiliez \"slider_theme_xbootstrap_4.tpl\" pour les thèmes xbootstrap 4 (xswatch4)");
 define('_AM_SLIDER_FOLDER', "Dossier");
 define('_AM_SLIDER_THEMES_LIST', "Retour à la liste des thèmes");
-define('_AM_SLIDER_THEME_EDIT', "Edition du thème : %s");
+define('_AM_SLIDER_EDIT_MYCSS', "Edit mycss.css");
+define('_AM_SLIDER_THEME_EDIT_MYCSS', "Edition du fichier \"my_css.css\" du thème : %s");
+define('_AM_SLIDER_THEME_EDIT_MYCSS_DESC', "Permet de surcharger le style du thème.<br>Ce fichier est chargé après les CSS du thème");
 define('_AM_SLIDER_SLIDE_IMG_DESC', "Sélectionnez une image existante ou téléchargez une nouvelle image.<br>Laissez vide pour garder l'image existante.");
 define('_AM_SLIDER_IMG_UPLODED', "Images téléchargées : ");
 define('_AM_SLIDER_IMG_DELETED_1', "%s images inutilsées ont été suprimées.");

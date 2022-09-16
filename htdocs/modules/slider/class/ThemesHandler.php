@@ -350,7 +350,7 @@ public static function updateCss_xbootstrap($theme, $newCSS){
         //$name= substr($css2change,0,-4):
         $fSrc = $themePath . "/{$newCSS}/{$css2change}";
 //echo "{$fullName}<br>{$fSrc}<br>"; exit;        
-        if(is_readable($fullName) && is_readable($fSrc) && $css2change != "my_css.css"){
+        if(is_readable($fullName) && is_readable($fSrc) && $css2change != _SLD_SURCHARGE_CSS_FILLE_NAME){
           $content = "@import url(../{$newCSS}/{$css2change});";  
           saveTexte2File($fullName, $content, $mod = 0777);
         }
@@ -448,7 +448,7 @@ public static function updateCss_xswatch4E_x2510($theme, $newCSS){
         //$name= substr($css2change,0,-4):
         $fSrc = $themePath . "/{$newCSS}/{$css2change}";
 //echo "{$fullName}<br>{$fSrc}<br>"; exit;        
-        if(is_readable($fullName) && is_readable($fSrc) && $css2change != "my_css.css"){
+        if(is_readable($fullName) && is_readable($fSrc) && $css2change != _SLD_SURCHARGE_CSS_FILLE_NAME){
           $content = "@import url(../{$newCSS}/{$css2change});";  
           saveTexte2File($fullName, $content, $mod = 0777);
         }
@@ -484,7 +484,7 @@ public static function get_Path($theme, $fileName='')
 public static function is_slider_allowed($theme)
 {
     $line1a = '<{* un-comment to enable slider';
-    $line1b = '<{* comment to un-enable slider *}>';
+    $line1b = '<{* comment to disable slider *}>';
     //------------------------------------------------
     $fullName = self::get_Path($theme, 'theme.tpl');
     if (is_readable($fullName)){
@@ -510,8 +510,65 @@ public static function set_allowed_slider($theme, $enabled = true)
 <{/if}>
 *}>
 */
+    //ligne d'origine le silde est désactivé
     $line1a = '<{* un-comment to enable slider';
-    $line1b = '<{* comment to un-enable slider *}>';
+    $line2a = '*}>';
+    
+    //ligne de remplacement pour autoriser le slide
+    $line1b = '<{* comment to disable slider *}>';
+    $line2b = '<{* slider is not alowed *}>';        
+    
+    
+    if ($enabled){
+        $line2search1 = $line1a;
+        $line2search2 = $line2a;
+        $line2replace1 = $line1b;
+        $line2replace2 = $line2b;
+    }else{
+        $line2search1 = $line1b;
+        $line2search2 = $line2b;
+        $line2replace1 = $line1a;
+        $line2replace2 = $line2a;
+    }
+    
+    //------------------------------------------------
+    $fullName = self::get_Path($theme, 'theme.tpl');
+    if (is_readable($fullName)){
+        $contents = \sld_loadTextFile($fullName);
+        $tLines = explode("\n", $contents);
+$bolOk = false;
+        for($h = 0; $h < count($tLines); $h++){
+            if ($tLines[$h] == $line2search1){
+                $bolOk = true;
+                break;
+            }
+        }
+
+        if(!$bolOk) return false;
+        //---------------------------
+        $tLines[$h]   = $line2replace1;
+        $tLines[$h+4] = $line2replace2;   
+        //---------------------------
+        $content = implode("\n", $tLines);
+        saveTexte2File($fullName, $content, $mod = 0777);
+    }    
+}
+/* ********************
+ * Function set_allowed_slider
+ * @param  $theme : dossier du theme xswatch4
+ * @return bool
+* ******************** */
+public static function set_allowed_slider_old($theme, $enabled = true)
+{
+/*
+<{* un-comment to enable slider
+<{if $xoops_page == "index"}>
+    <{include file="$theme_name/tpl/slider.tpl"}>
+<{/if}>
+*}>
+*/
+    $line1a = '<{* un-comment to enable slider';
+    $line1b = '<{* comment to disable slider *}>';
     $line2a = '*}>';
     $line2b = '<{* slider is alowed *}>';
     

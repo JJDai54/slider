@@ -33,7 +33,7 @@ _slider
 			admin\uploader.php
 		-assets
 			-css
-				-admin
+				+admin
 					assets\css\admin\index.html
 					assets\css\admin\style.css
 				assets\css\index.html
@@ -103,14 +103,14 @@ _slider
 				assets\js\highslide.js
 				assets\js\index.html
 			assets\index.html
-		+blocks
+		-blocks
 			blocks\index.html
 			blocks\menu_extra.php
 			blocks\menu_manager.php
 			blocks\surcharge_theme.php
 			blocks\update_theme_slides.php
 			blocks\verif_slides_of_theme.php
-		+class
+		-class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -161,7 +161,7 @@ _slider
 			include\uninstall.php
 			include\update.php
 			include\xoops_version.inc.php
-		+language
+		-language
 			+english
 				-help
 					language\english\help\help.tpl
@@ -183,7 +183,7 @@ _slider
 				language\french\index.html
 				language\french\modinfo.php
 			language\index.html
-		+plugins
+		-plugins
 			-cds_modules
 				plugins\cds_modules\english.php
 				plugins\cds_modules\french.php
@@ -219,7 +219,7 @@ _slider
 				plugins\newbb\french.php
 				plugins\newbb\index.html
 				plugins\newbb\Slider_Newbb.php
-			-news
+			+news
 				plugins\news\english.php
 				plugins\news\french.php
 				plugins\news\index.html
@@ -309,71 +309,62 @@ _slider
 			versions\Slider_2_20.php
 		xoops_version.php
 [Open project files]
-0=class\Themes.php
-1=language\french\admin.php
-2=language\english\admin.php
-3=templates\admin\slider_admin_themes.tpl
-4=include\common.php
-5=templates\admin\slider_main-02.tpl
-6=include\fnc-slider.php
-7=templates\admin\slider_theme_xbootstrap_4.tpl
-8=admin\themes.php
-9=class\ThemesHandler.php
-10=class\Slides.php
-11=templates\admin\slider_admin_slides.tpl
-12=admin\slides.php
-13=class\SlidesHandler.php
-14=docs\todo.txt
-15=admin\index.php
+0=include\fnc-slider.php
+1=admin\slides.php
+2=class\Utility.php
+3=language\french\admin.php
+4=class\Slides.php
+5=templates\admin\slider_admin_slides.tpl
+6=include\common.php
+7=language\english\admin.php
+8=class\Themes.php
+9=templates\admin\slider_admin_themes.tpl
+10=docs\changelog.txt
+11=admin\header.php
+12=class\ThemesHandler.php
+13=admin\themes.php
 [Selected Project Files]
 Main=
 Selected=class\ThemesHandler.php
-[class\Themes.php]
-TopLine=369
-Caret=52,399
-[language\french\admin.php]
-TopLine=177
-Caret=47,197
-Mark1=1,241
-[language\english\admin.php]
-TopLine=177
-Caret=47,197
-[templates\admin\slider_admin_themes.tpl]
-TopLine=42
-Caret=53,66
-[include\common.php]
-TopLine=9
-Caret=19,33
-[templates\admin\slider_main-02.tpl]
-TopLine=1
-Caret=1,1
 [include\fnc-slider.php]
-TopLine=304
-Caret=97,329
-[templates\admin\slider_theme_xbootstrap_4.tpl]
-TopLine=9
-Caret=1,9
-[admin\themes.php]
-TopLine=178
-Caret=55,211
-[class\ThemesHandler.php]
-TopLine=222
-Caret=19,253
-[class\Slides.php]
-TopLine=135
-Caret=88,164
-[templates\admin\slider_admin_slides.tpl]
-TopLine=40
-Caret=94,73
+TopLine=342
+Caret=36,374
 [admin\slides.php]
-TopLine=185
-Caret=79,213
-[class\SlidesHandler.php]
-TopLine=123
-Caret=43,132
-[docs\todo.txt]
+TopLine=95
+Caret=17,123
+[class\Utility.php]
+TopLine=310
+Caret=67,330
+[language\french\admin.php]
+TopLine=147
+Caret=1,168
+[class\Slides.php]
+TopLine=399
+Caret=73,420
+[templates\admin\slider_admin_slides.tpl]
+TopLine=73
+Caret=23,97
+[include\common.php]
+TopLine=49
+Caret=49,79
+[language\english\admin.php]
+TopLine=147
+Caret=1,168
+[class\Themes.php]
+TopLine=317
+Caret=61,337
+[templates\admin\slider_admin_themes.tpl]
+TopLine=87
+Caret=127,117
+[docs\changelog.txt]
 TopLine=1
-Caret=1,3
-[admin\index.php]
-TopLine=15
-Caret=77,40
+Caret=111,10
+[admin\header.php]
+TopLine=1
+Caret=25,34
+[class\ThemesHandler.php]
+TopLine=431
+Caret=104,451
+[admin\themes.php]
+TopLine=176
+Caret=61,196

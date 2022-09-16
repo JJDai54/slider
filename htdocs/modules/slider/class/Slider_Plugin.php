@@ -74,7 +74,7 @@ function __construct ($moduleDirName){
             //return false;
         }
     }
-    //echo $fileinc . "<br>";
+    //echo '===>Fichier de langue -><br>' . $fileinc . "<br>";
     $ret = include_once $fileinc;
     //----------------------------------------------------------
     
