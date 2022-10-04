@@ -55,7 +55,7 @@ var $options = array(
             'fld_name'     => 'category_title',
             'fld_weight'   => 'category_order',
             'permView'     => 'xf_cats_consult',// xoopsfaq_cat_consult
-            'captionAll'   => _MB_SLD_XOOPSFAQ_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'index.php',
             'catParamName' => 'cat_id');
 
@@ -64,6 +64,7 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_XOOPSFAQ_ALL_CAT;
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array(); 

@@ -58,7 +58,7 @@ var $options = array(
             'fld_weight'   => '',
             'fld_active'   => '',
             'permView'     => 'category_access',
-            'captionAll'   => _MB_SLD_NEWBB_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'index.php',
             'catParamName' => 'cat');
             
@@ -67,6 +67,8 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_NEWBB_ALL_CAT;
+
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

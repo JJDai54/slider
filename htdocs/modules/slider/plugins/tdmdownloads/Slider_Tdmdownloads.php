@@ -55,8 +55,8 @@ var $options = array(
             'fld_pid'      => 'cat_pid',
             'fld_name'     => 'cat_title',
             'fld_weight'   => 'cat_weight',
-            'permView'     => 'tdmdownloads_view',
-            'captionAll'   => _MB_SLD_TDMDOWNLOADS_ALL_CAT,
+            'captionAll'   => 'tdmdownloads_view',
+//            'captionAll'   => _ALL,
             'catPage'      => 'search.php',
             'catParamName' => 'cat');
 
@@ -64,6 +64,7 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_TDMDOWNLOADS_ALL_CAT;
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $permsNames = $this->getPermsissionsNames();
     $mainMenu = array();

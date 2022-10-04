@@ -47,7 +47,7 @@ var $options = array(
             'fld_weight'   => '',
             'fld_active'   => '',
             'permView'     => '',
-            'captionAll'   => _MB_SLD_MEDIATHEQUE_ALL_TYPE_MEDIA,
+//            'captionAll'   => _ALL,
             'catPage'      => 'media.php',
             'catParamName' => 'type_media');
 */
@@ -58,6 +58,8 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_MEDIATHEQUE_ALL_TYPE_MEDIA;
+
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

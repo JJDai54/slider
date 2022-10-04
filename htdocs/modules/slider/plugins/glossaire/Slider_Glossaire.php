@@ -56,7 +56,7 @@ var $options = array(
             'fld_weight'   => 'weight',
             'fld_active'   => '',
             'permView'     => 'glossaire_view',
-            'captionAll'   => _MB_SLD_GLOSSAIRE_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'category.php',
             'catParamName' => 'categoryID');
             
@@ -65,6 +65,8 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_GLOSSAIRE_ALL_CAT;
+
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

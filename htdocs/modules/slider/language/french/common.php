@@ -195,5 +195,16 @@ define('_CO_SLIDER_PERIODICITE_RND_QUATER', 'Une fois par trimestre');
 define('_CO_SLIDER_PERIODICITE_RND_SEMESTER', 'Une fois par semestre');
 define('_CO_SLIDER_PERIODICITE_RND_YEAR', 'Une fois par an');
 
-define('_CA_SLIDER_THEME_TRANSITION_VERTICAL', "Vertical");
+define('_CO_SLIDER_THEME_TRANSITION_VERTICAL', "Vertical");
 define('_CO_SLIDER_THEME_TRANSITION_HORIZONTAL', "Horizontal");
+
+
+define('_CO_SLIDER_PERIODICITE_ALWAYS', 'Toujours');
+define('_CO_SLIDER_PERIODICITE_FLOAT', 'Période flottante');
+define('_CO_SLIDER_PERIODICITE_CYCLIQUE', 'Période cyclique');
+define('_CO_SLIDER_PERIODICITE_WEEK', 'Toutes les semaines');
+define('_CO_SLIDER_PERIODICITE_MONTH', 'Tous les mois');
+define('_CO_SLIDER_PERIODICITE_BIMONTHLY', 'Une fois tous les deux mois');
+define('_CO_SLIDER_PERIODICITE_QUATER', 'Tous les trimestres');
+define('_CO_SLIDER_PERIODICITE_SEMESTER', 'Une fois par semestre');
+define('_CO_SLIDER_PERIODICITE_YEAR', 'Tous les ans');

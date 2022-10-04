@@ -76,7 +76,7 @@ var $options = array(
             'fld_weight'   => 'form_order',
             'fld_active'   => 'form_active',
             'permView'     => 'xforms_form_access',
-            'captionAll'   => _MB_SLD_XFORMS_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'index.php',
             'catParamName' => 'form_id',
             'where_extra'  => '(form_begin=0 Or form_begin <= CURRENT_TIMESTAMP) AND (form_end=0 Or form_end >= CURRENT_TIMESTAMP)',            
@@ -88,6 +88,7 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_XFORMS_ALL_CAT;
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

@@ -45,7 +45,7 @@ var $options = array(
             'fld_weight'   => 'cat_weight',
             'fld_active'   => '',
             'permView'     => 'quizmaker_view_categories',
-            'captionAll'   => _MB_SLD_QUIZMAKER_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'categories.php',
             'catParamName' => 'cat_id');
             
@@ -54,6 +54,7 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_QUIZMAKER_ALL_CAT;
     $permsNames = $this->getPermsissionsNames(false);
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

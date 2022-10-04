@@ -76,7 +76,7 @@ var $options = array(
             'fld_weight'   => '',
             'fld_active'   => 'news_status',
             'permView'     => '',//xmnews_viewabstract //xmnews_viewnews
-            'captionAll'   => _MB_SLD_XMNEWS_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'article.php', //   index
             'catParamName' => 'news_id',
             'where_extra'  => 'news_cid IN (1)', //news_cid
@@ -92,6 +92,8 @@ function __construct ($moduleDirName){
  *********************** */   
 public function getMainMenu(){
 global $xoopsDB;
+$this->options['captionAll'] = _MB_SLD_XMNEWS_ALL_CAT;
+
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

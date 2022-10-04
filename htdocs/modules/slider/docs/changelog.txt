@@ -1,4 +1,9 @@
 ==============================================================
+2.24 [2022/10/04 18:00:00] - JJDai (jjdelalandre@orange.fr)
+==============================================================
+- Correction constante _ALL dans l'entete des plugin, application d'une valeur par defaut (_ALL) et affectation dans la fonction getMenu()
+
+==============================================================
 2.22 [2022/06/04 18:00:00] - JJDai (jjdelalandre@orange.fr)
 ==============================================================
 - Simplification de la fonction updateWeight

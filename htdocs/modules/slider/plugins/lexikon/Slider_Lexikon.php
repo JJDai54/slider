@@ -54,9 +54,9 @@ var $options = array(
             'fld_pid'      => '',
             'fld_name'     => 'name',
             'fld_weight'   => 'weight',
-            'fld_active'   => '',
+//            'captionAll'   => _ALL,
             'permView'     => 'lexikon_view',
-            'captionAll'   => _MB_SLD_LEXIKON_ALL_CAT,
+            'captionAll'   => ,
             'catPage'      => 'category.php',
             'catParamName' => 'categoryID');
             
@@ -65,6 +65,8 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_LEXIKON_ALL_CAT;
+
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

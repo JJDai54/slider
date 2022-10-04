@@ -76,7 +76,7 @@ var $options = array(
             'fld_weight'   => 'alb_weight',
             'fld_active'   => 'alb_state',
             'permView'     => 'wggallery_view',
-            'captionAll'   => _MB_SLD_WGGALLERY_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'gallery.php',
             'catParamName' => 'alb_id',
             'maxLevelPid'  => 0);
@@ -86,6 +86,8 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_WGGALLERY_ALL_CAT;
+
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

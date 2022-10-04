@@ -50,7 +50,7 @@ var $options = array(
             'fld_name'     => 'category_name',
             'fld_weight'   => 'category_weight',
             'permView'     => 'xmnews_viewabstract',
-            'captionAll'   => _MB_SLD_XMNEWS_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'index.php',
             'catParamName' => 'news_cid',
             'sepTitle'     => '-');
@@ -60,6 +60,7 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_XMNEWS_ALL_CAT;
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

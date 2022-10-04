@@ -46,7 +46,7 @@ var $options = array(
             'fld_weight'   => 'cat_weight',
             'fld_active'   => '',
             'permView'     => 'extcal_cat_view',
-            'captionAll'   => _MB_SLD_EXTCAL_ALL_CAT,
+//            'captionAll'   => _ALL,
             'catPage'      => 'view_calendar-month.php',
             'catParamName' => 'cat');
             
@@ -55,6 +55,8 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
+$this->options['captionAll'] = _MB_SLD_EXTCAL_ALL_CAT;
+
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
       

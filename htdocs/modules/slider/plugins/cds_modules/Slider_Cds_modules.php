@@ -26,7 +26,20 @@ use XoopsModules\Slider;
 
 class Slider_Cds_modules extends Slider_Plugin
 {
-var $options = array();
+
+var $options = array(
+            'table'        => '',   // Table de réféence pour la construction du menu, en général la catagorie
+            'fld_id'       => '',   // Nom du champ contenant l'id dans la table de référence
+            'fld_pid'      => '',   // [Nom du champ parent de l'id dans la table de référence] optionel
+            'fld_name'     => '',   // Nom du champ contenant le libellé dans la table de référence
+            'fld_weight'   => '',   // Nom du champ qui défini l'ordre d'affichage
+            'fld_active'   => '',   // [Si il existe le nom du champ actif/inactif]
+            'permView'     => '',   // nom de code pour les permissions ex: 'xforms_form_access',
+            'captionAll'   => _ALL, // Valeur par défaut, a modifier dans le plugin éventuellement (fichiers de langue du plugin)
+            'catPage'      => '',   // Nom de la page a appeler quand on clique sur un item du menu ex : 'index.php'
+            'catParamName' => '',   // Nom du paramettre à ajouter dans l'appel sur clique, il sera suivi de l'id de l'item au moment du clique ex : form_id
+            'where_extra'  => ''    // [Filtre a ajouter dans la clause WHHERE ] optionel, ex (form_begin=0 Or form_begin <= CURRENT_TIMESTAMP) AND (form_end=0 Or form_end >= CURRENT_TIMESTAMP)',            
+            'sepTitle'     => '');  //][Separateur pour pour les titres composés dans certains modules] optionel
 
     
  /* ********************

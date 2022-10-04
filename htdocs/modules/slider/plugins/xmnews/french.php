@@ -21,7 +21,7 @@
  */
 
 // constantes qui doivent figurer systématiquemen dans les plugin avec le prefix qui va bien
-define("_MB_SLD_XMNEWS_CAPTION", "Quisommes nous ?");
+define("_MB_SLD_XMNEWS_CAPTION", "Qui sommes nous ?");
 define("_MB_SLD_XMNEWS_SUBMENU_CAT", "Tous les articles");
 
 define("_MB_SLD_XMNEWS_ALL_CAT", "Tous les catégories");
