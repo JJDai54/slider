@@ -328,9 +328,11 @@ function getCatItems(&$options = null){
         //---------------------------------------------
         //$options['moduleDirName'] = $this->moduleDirName;        
         
+        //transformation du tableau de variables en variables nommées
         foreach($this->options AS $key=>$value){
             $$key = $value;
         }
+        //La table des categories n'est pas renseignée alors return un tableau vide
         if(!$table) return array();
         //--------------------------------------------------------
         $asPid = '';
@@ -358,6 +360,9 @@ function getCatItems(&$options = null){
         if (isset($permView) && $permView != ''){
             $perm_ids = $this->getPermissionsIds($permView);
             if (count($perm_ids) > 0) $permsOK = true;
+            else return array();
+        }else{
+            //return array();
         }    
 // if ($this->mid==37){
 // echo "<hr>options [2] <pre>" . print_r($this->options, true) . "</pre><hr>";        
@@ -393,11 +398,13 @@ function getCatItems(&$options = null){
         */
         //---------------------------------------------------
         $result = $xoopsDB->query($sql);
-//        if ($table == 'tdmdownloads_cat')
-// if ($this->mid==37){
-// echo "<hr>{$this->mid}<br>{$sql}- {$table} <pre>" . print_r($result, true) . "</pre><hr>";
-// exit;
-// }        
+/*
+ //if ($this->mid==42){
+ echo "<hr>{$this->mid}<br>{$sql}- {$table} <pre>" . print_r($result, true) . "</pre><hr>";
+if ($table == 'creaquiz_categories'){          //tdmdownloads_cat
+ exit;
+ }        
+*/
         if($this->showAllCatLib){
             $catItems = array();
                 $t['id'] = -1;

@@ -22,7 +22,7 @@
 
 // constantes qui doivent figurer systématiquemen dans les plugin avec le prefix qui va bien
 define("_MB_SLD_WGGALLERY_CAPTION", "Gallerie");
-define("_MB_SLD_WGGALLERY_SUBMENU_CAT", "Toutes les catégories");
+define("_MB_SLD_WGGALLERY_SUBMENU_CAT", "Toutes les catégories d'albums");
 
 define("_MB_SLD_WGGALLERY_ALL_CAT", "Toutes les catégories");
 define("_MB_SLD_WGGALLERY_MANAGE_ALBUMS","Gérer les albums");    

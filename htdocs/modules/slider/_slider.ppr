@@ -27,17 +27,22 @@ _slider
 			admin\logo.php
 			admin\menu.php
 			admin\slides.php
+			admin\slides-delete.php
+			admin\slides-list.php
+			admin\slides-new.php
+			admin\slides-save.php
 			admin\styles.php
 			admin\themes.php
 			admin\traitements.php
 			admin\uploader.php
 		-assets
 			-css
-				+admin
+				-admin
 					assets\css\admin\index.html
 					assets\css\admin\style.css
 				assets\css\index.html
 				assets\css\multilevelmenu.css
+				assets\css\slider_selector.css
 				assets\css\style.css
 				assets\css\surcharge-theme.css
 			-icons
@@ -63,6 +68,12 @@ _slider
 					assets\icons\16\periodicity-0.png
 					assets\icons\16\periodicity-1.png
 					assets\icons\16\periodicity-2.png
+					assets\icons\16\periodicity-3.png
+					assets\icons\16\periodicity-4.png
+					assets\icons\16\periodicity-5.png
+					assets\icons\16\periodicity-6.png
+					assets\icons\16\periodicity-7.png
+					assets\icons\16\periodicity-8.png
 					assets\icons\16\retour.png
 					assets\icons\16\retour-1.png
 					assets\icons\16\retour-2.png
@@ -142,7 +153,7 @@ _slider
 			config\icons.php
 			config\index.html
 			config\paths.php
-		+docs
+		-docs
 			docs\array-xbootstrap.php
 			docs\changelog.txt
 			docs\credits.txt
@@ -151,7 +162,7 @@ _slider
 			docs\license.txt
 			docs\readme.txt
 			docs\todo.txt
-		+include
+		-include
 			include\common.php
 			include\config-my_xoops-css.php
 			include\fnc-slider.php
@@ -161,8 +172,8 @@ _slider
 			include\uninstall.php
 			include\update.php
 			include\xoops_version.inc.php
-		+language
-			+english
+		-language
+			-english
 				-help
 					language\english\help\help.tpl
 					language\english\help\index.html
@@ -172,7 +183,7 @@ _slider
 				language\english\feedback.php
 				language\english\index.html
 				language\english\modinfo.php
-			+french
+			-french
 				-help
 					language\french\help\help.tpl
 					language\french\help\index.html
@@ -183,23 +194,28 @@ _slider
 				language\french\index.html
 				language\french\modinfo.php
 			language\index.html
-		+plugins
+		-plugins
 			-cds_modules
 				plugins\cds_modules\english.php
 				plugins\cds_modules\french.php
 				plugins\cds_modules\index.html
 				plugins\cds_modules\Slider_Cds_modules.php
-			+cds_xmnews
+			-cds_xmnews
 				plugins\cds_xmnews\english.php
 				plugins\cds_xmnews\french.php
 				plugins\cds_xmnews\index.html
 				plugins\cds_xmnews\Slider_Cds_xmnews.php
+			+creaquiz
+				plugins\creaquiz\english.php
+				plugins\creaquiz\french.php
+				plugins\creaquiz\index.html
+				plugins\creaquiz\Slider_Creaquiz.php
 			-extcal
 				plugins\extcal\english.php
 				plugins\extcal\french.php
 				plugins\extcal\index.html
 				plugins\extcal\Slider_Extcal.php
-			-glossaire
+			+glossaire
 				plugins\glossaire\english.php
 				plugins\glossaire\french.php
 				plugins\glossaire\index.html
@@ -219,7 +235,7 @@ _slider
 				plugins\newbb\french.php
 				plugins\newbb\index.html
 				plugins\newbb\Slider_Newbb.php
-			+news
+			-news
 				plugins\news\english.php
 				plugins\news\french.php
 				plugins\news\index.html
@@ -234,7 +250,7 @@ _slider
 				plugins\tdmdownloads\french.php
 				plugins\tdmdownloads\index.html
 				plugins\tdmdownloads\Slider_Tdmdownloads.php
-			-wggallery
+			+wggallery
 				plugins\wggallery\english.php
 				plugins\wggallery\french.php
 				plugins\wggallery\index.html
@@ -259,7 +275,7 @@ _slider
 			preloads\autoloader.php
 			preloads\core.php
 			preloads\index.html
-		+sql
+		-sql
 			sql\index.html
 			sql\mysql.sql
 		+templates
@@ -309,82 +325,42 @@ _slider
 			versions\Slider_2_20.php
 		xoops_version.php
 [Open project files]
-0=language\french\admin.php
-1=language\french\common.php
-2=class\Slides.php
-3=plugins\xforms\Slider_Xforms.php
-4=plugins\cds_xmnews\Slider_Cds_xmnews.php
-5=plugins\xoopsfaq\Slider_Xoopsfaq.php
-6=plugins\xmnews\Slider_Xmnews.php
-7=plugins\wggallery\Slider_Wggallery.php
-8=plugins\tdmdownloads\Slider_Tdmdownloads.php
-9=plugins\quizmaker\Slider_Quizmaker.php
-10=plugins\news\Slider_News.php
-11=plugins\newbb\Slider_Newbb.php
-12=plugins\mediatheque\Slider_Mediatheque.php
-13=plugins\lexikon\Slider_Lexikon.php
-14=plugins\glossaire\Slider_Glossaire.php
-15=plugins\extcal\Slider_Extcal.php
-16=plugins\cds_modules\Slider_Cds_modules.php
-17=docs\changelog.txt
-18=xoops_version.php
+0=admin\slides-list.php
+1=admin\slides.php
+2=templates\admin\slider_admin_slides.tpl
+3=templates\slider_menu_xswatch4_main-old.tpl
+4=admin\slides-save.php
+5=class\Slides.php
+6=admin\slides-new.php
+7=blocks\verif_slides_of_theme.php
+8=class\SlidesHandler.php
 [Selected Project Files]
 Main=
-Selected=xoops_version.php
-[language\french\admin.php]
-TopLine=104
-Caret=1,132
-[language\french\common.php]
-TopLine=176
-Caret=12,210
-[class\Slides.php]
-TopLine=395
-Caret=45,421
-[plugins\xforms\Slider_Xforms.php]
-TopLine=71
-Caret=38,79
-[plugins\cds_xmnews\Slider_Cds_xmnews.php]
-TopLine=68
-Caret=38,79
-[plugins\xoopsfaq\Slider_Xoopsfaq.php]
-TopLine=47
-Caret=1,58
-[plugins\xmnews\Slider_Xmnews.php]
-TopLine=43
-Caret=38,53
-[plugins\wggallery\Slider_Wggallery.php]
-TopLine=69
-Caret=38,79
-[plugins\tdmdownloads\Slider_Tdmdownloads.php]
-TopLine=47
-Caret=51,58
-[plugins\quizmaker\Slider_Quizmaker.php]
-TopLine=37
-Caret=38,48
-[plugins\news\Slider_News.php]
-TopLine=54
-Caret=38,65
-[plugins\newbb\Slider_Newbb.php]
-TopLine=50
-Caret=38,61
-[plugins\mediatheque\Slider_Mediatheque.php]
-TopLine=41
-Caret=38,50
-[plugins\lexikon\Slider_Lexikon.php]
-TopLine=48
-Caret=38,57
-[plugins\glossaire\Slider_Glossaire.php]
-TopLine=48
-Caret=38,59
-[plugins\extcal\Slider_Extcal.php]
-TopLine=38
-Caret=38,49
-[plugins\cds_modules\Slider_Cds_modules.php]
+Selected=class\SlidesHandler.php
+[admin\slides-list.php]
+TopLine=9
+Caret=1,29
+[admin\slides.php]
 TopLine=16
-Caret=1,35
-[docs\changelog.txt]
-TopLine=1
-Caret=1,5
-[xoops_version.php]
-TopLine=11
-Caret=38,30
+Caret=37,43
+[templates\admin\slider_admin_slides.tpl]
+TopLine=9
+Caret=18,9
+[templates\slider_menu_xswatch4_main-old.tpl]
+TopLine=51
+Caret=1,7
+[admin\slides-save.php]
+TopLine=147
+Caret=54,167
+[class\Slides.php]
+TopLine=286
+Caret=17,311
+[admin\slides-new.php]
+TopLine=18
+Caret=70,35
+[blocks\verif_slides_of_theme.php]
+TopLine=47
+Caret=1,67
+[class\SlidesHandler.php]
+TopLine=299
+Caret=105,329

@@ -21,7 +21,7 @@
  */
 
 define("_MB_SLD_WGGALLERY_CAPTION", "Gallerie");
-define("_MB_SLD_WGGALLERY_ALL_CAT", "Toutes les catégories");
+define("_MB_SLD_WGGALLERY_ALL_CAT", "Toutes les catégories d'albums");
 define("_MB_SLD_WGGALLERY_MANAGE_ALBUMS","Gérer les albums");    
 define("_MB_SLD_WGGALLERY_NEW_ALBUM","Nouvel album");    
 define("_MB_SLD_WGGALLERY_SEARCH_IMG","Chercher des images");    

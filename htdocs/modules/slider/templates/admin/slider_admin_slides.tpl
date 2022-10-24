@@ -6,14 +6,14 @@
 SPAN { FONT:bold 12 Arial; CURSOR:pointer }
 </STYLE>
 
+<{if $slides_list OR !$form}>
 <form id="theme_form"  name="theme_form" action="slides.php" method='get'>
-    <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$sldThemeSelect}>
-    <{$smarty.const._AM_SLIDER_PERIODICITY}> : <{$sldPeriodicite}>
-    <{$smarty.const._AM_SLIDER_STATUS}> : <{$sldActif}>
+    <{$smarty.const._AM_SLIDER_SLIDE_THEME}> : <{$xfTheme}>
+    <{$smarty.const._AM_SLIDER_PERIODICITY}> : <{$xfPeriodicity}>
+    <{$smarty.const._AM_SLIDER_STATUS}> : <{$xfActif}>
     <{$smarty.const._AM_SLIDER_CURRENT_DATE}> : <{$current_DateTime}>
 </form>
 
-<{if $slides_list}>
     <table  id="slides_list"  name="slides_list" class='table table-bordered'>
         <thead>
             <tr class='head'>
@@ -37,7 +37,9 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
             <{foreach item=slide from=$slides_list name=slider}>
             <tr class='<{cycle values='odd, even'}>'>
                 <td class='center'><{$slide.id}></td>
-                <td class='left'> <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>"><{$slide.short_name}></a></td>
+                <td class='left'>
+                    <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>&<{$paramsList}>" title="<{$smarty.const._EDIT}>"><{$slide.short_name}></a>
+                </td>
                 <{* <td class='left'><{$slide.title}></td> *}>
                 <{* <td class='center'><{$slide.description}></td> *}>
                 <td class='left'><{if $slide.theme <> '' AND $slide.theme <> '||'}><{$slide.theme}><{else}><{$smarty.const._AM_SLIDER_ALL_THEMES}><{/if}></td>
@@ -48,11 +50,11 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                       <img src="<{$modPathIcon16}>/arrows/first-0.png" title="<{$smarty.const._AM_SLIDER_FIRST}>">
                       <img src="<{$modPathIcon16}>/arrows/up-0.png" title="<{$smarty.const._AM_SLIDER_UP}>">
                     <{else}>
-                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=first&select_theme=<{$select_theme}>&sld_weight=<{$slide.weight}>">
+                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=first&sld_weight=<{$slide.weight}>&<{$paramsList}>">
                       <img src="<{$modPathIcon16}>/arrows/first-1.png" title="<{$smarty.const._AM_SLIDER_FIRST}>">
                       </a>
                     
-                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=up&select_theme=<{$select_theme}>&sld_weight=<{$slide.weight}>">
+                      <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=up&sld_weight=<{$slide.weight}>&<{$paramsList}>">
                       <img src="<{$modPathIcon16}>/arrows/up-1.png" title="<{$smarty.const._AM_SLIDER_UP}>">
                       </a>
                     <{/if}>
@@ -66,11 +68,11 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
                       <img src="<{$modPathIcon16}>/arrows/last-0.png" title="<{$smarty.const._AM_SLIDER_LAST}>">
                     <{else}>
                     
-                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=down&select_theme=<{$select_theme}>&sld_weight=<{$slide.weight}>">
+                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=down&sld_weight=<{$slide.weight}>&<{$paramsList}>">
                       <img src="<{$modPathIcon16}>/arrows/down-1.png" title="<{$smarty.const._AM_SLIDER_DOWN}>">
                       </a>
                  
-                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=last&select_theme=<{$select_theme}>&sld_weight=<{$slide.weight}>">
+                    <a href="slides.php?op=weight&sld_id=<{$slide.id}>&sens=last&sld_weight=<{$slide.weight}>&<{$paramsList}>">
                       <img src="<{$modPathIcon16}>/arrows/last-1.png" title="<{$smarty.const._AM_SLIDER_LAST}>">
                       </a>
                     <{/if}>
@@ -136,7 +138,7 @@ SPAN { FONT:bold 12 Arial; CURSOR:pointer }
 
                
                 <td class="center  width5">
-                    <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._EDIT}>">
+                    <a href="slides.php?op=edit&amp;sld_id=<{$slide.id}>&<{$paramsList}>" title="<{$smarty.const._EDIT}>">
                        <img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}> slides" /></a>
                     <a href="slides.php?op=delete&amp;sld_id=<{$slide.id}>" title="<{$smarty.const._DELETE}>">
                        <img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}> slides" /></a>

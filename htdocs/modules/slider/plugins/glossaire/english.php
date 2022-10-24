@@ -21,7 +21,7 @@
  */
 
 define("_MB_SLD_GLOSSAIRE_CAPTION", "Lexique");
-define("_MB_SLD_GLOSSAIRE_ALL_CAT", "Toutes les catégories");
+define("_MB_SLD_GLOSSAIRE_ALL_CAT", "Toutes les catégories de quiz");
 define("_MB_SLD_GLOSSAIRE_SUBMIT", "Soumettre une définition");
 define("_MB_SLD_GLOSSAIRE_REQUEST", "Sugérer une définition");
 define("_MB_SLD_GLOSSAIRE_SEARCH", "Chercher une définition");

@@ -230,17 +230,17 @@ public function getMax($field = "sld_weight", $theme='', $offset = 0)
 /* ******************************
  * init weight
  * *********************** */
-public function incrementeWeight($theme='', $step = 10){
+public function incrementeWeight($inpTheme='', $step = 10){
  
  $fldWeight = 'sld_weight';
 
     $sql = "SET @rank=-{$step};";
     $result = $this->db->queryf($sql);
 
-    if ($theme == ''){
+    if ($inpTheme == ''){
         $sql = "update {$this->table} SET {$fldWeight} = {$step}+(@rank:=@rank+{$step}) ORDER BY {$fldWeight};";    
     }else{
-        $sql = "update {$this->table} SET {$fldWeight} = {$step}+(@rank:=@rank+{$step}) WHERE sld_theme LIKE '%|{$theme}|%' ORDER BY {$fldWeight};";    
+        $sql = "update {$this->table} SET {$fldWeight} = {$step}+(@rank:=@rank+{$step}) WHERE sld_theme LIKE '%|{$inpTheme}|%' ORDER BY {$fldWeight};";    
     }
     
     $result = $this->db->queryf($sql);
@@ -248,12 +248,12 @@ public function incrementeWeight($theme='', $step = 10){
 /* ******************************
  * Update weight
  * *********************** */
- public function updateWeight($key_id, $action, $theme=''){
+ public function updateWeight_new($key_id, $action, $select_theme='', $inpPeriodicity = 0, $inpActif = 0){
  $step = 10;
  $fldWeight = 'sld_weight';
  $fldId = 'sld_id';
     
-    $this->incrementeWeight($theme, $step);
+    $this->incrementeWeight($inpTheme, $step);
 
     switch ($action){
       case 'up'; 
@@ -276,12 +276,67 @@ public function incrementeWeight($theme='', $step = 10){
     $sql = "update {$this->table} SET {$newWeight} WHERE {$fldId} = {$key_id};";    
     $result = $this->db->queryf($sql);
     
-    $this->incrementeWeight($theme, $step);
+    $this->incrementeWeight($inpTheme, $step);
     return true;
  }
 
+/* ******************************
+ * Update weight
+ * *********************** */
+ public function updateWeight($key_id, $action, $inpTheme=''){
+ $step = 10;
+ $fldWeight = 'sld_weight';
+ $fldId = 'sld_id';
+    
+    $this->incrementeWeight($inpTheme, $step);
 
+    switch ($action){
+      case 'up'; 
+        $newWeight = "{$fldWeight} = {$fldWeight} - {$step} - 5";
+        break;
+    
+      case 'down'; 
+        $newWeight = "{$fldWeight} = {$fldWeight} + {$step} + 5";
+      break;
+    
+      case 'first'; 
+        $newWeight = "{$fldWeight}=-99999";
+      break;
+    
+      case 'last'; 
+        $newWeight = "{$fldWeight}=99999";
+      break;
+      
+    }
+    $sql = "update {$this->table} SET {$newWeight} WHERE {$fldId} = {$key_id};";    
+    $result = $this->db->queryf($sql);
+    
+    $this->incrementeWeight($inpTheme, $step);
+    return true;
+ }
 
+/* ***
+
+*** */
+function getAdminlistCriteria($inpTheme='', $inpPeriodicity = 0, $inpActif = 0){
+        
+        $criteria = new \CriteriaCompo();
+        //$criteria->add(new \Criteria('sld_theme', $inpTheme, '='));
+        if($inpTheme != ''){
+            $criteria->add(new \Criteria('sld_theme', "%|{$inpTheme}|%", 'LIKE'));
+        }
+        
+        if($inpPeriodicity != 0) $criteria->add(new \Criteria('sld_periodicity', $inpPeriodicity, "="));
+        
+        if($inpActif == 0 || $inpActif == 1) {
+            $criteria->add(new \Criteria('sld_actif', $inpActif, "="));
+        }elseif($inpActif == 2){
+            $criteria->add(getCriteriaOFCurrentStatus(), "AND");
+            
+        }
+        //echo $criteria->renderWhere() . "<hr>";
+        return $criteria;            
+}
 
 
 

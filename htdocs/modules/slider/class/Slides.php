@@ -90,7 +90,7 @@ class Slides extends \XoopsObject
      * @param bool $action
      * @return \XoopsThemeForm
      */
-    public function getFormSlides($SelectedTheme, $action = false)
+    public function getFormSlides($SelectedTheme, $action = false, $params)
     {
         global $stylesHandler;
         
@@ -111,6 +111,7 @@ class Slides extends \XoopsObject
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
         
+
        
         // ********** Image **************
         // Form Image sldImage
@@ -288,26 +289,26 @@ class Slides extends \XoopsObject
         }
 //global $themesHandler;
 $themesHandler = $helper->getHandler('Themes');
-//         $sldThemeSelect = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'sld_theme', $theme);   
-//         $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
-//         $sldThemeSelect->addOptionArray($themesHandler->getThemesAllowed(true));   
-//         $form->addElement($sldThemeSelect);
+//         $xfTheme = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'sld_theme', $theme);   
+//         $xfTheme->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
+//         $xfTheme->addOptionArray($themesHandler->getThemesAllowed(true));   
+//         $form->addElement($xfTheme);
 
 
-        $sldThemeSelect = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'sld_themeArr', $themeARR,5,true); 
-        $sldThemeSelect->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
-        $sldThemeSelect->setValue($themeARR);
-        $sldThemeSelect->addOptionArray($themesHandler->getThemesAllowed(false));   
-        $form->addElement($sldThemeSelect);
+        $xfTheme = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'sld_themeArr', $themeARR,5,true); 
+        $xfTheme->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
+        $xfTheme->setValue($themeARR);
+        $xfTheme->addOptionArray($themesHandler->getThemesAllowed(false));   
+        $form->addElement($xfTheme);
           
 //echo "<hr>Themes : {$theme} - <pre>" . print_r($theme, true ). "</pre><hr>";        
     //public function __construct($caption, $name, $value = null, $size = 1, $multiple = false)
         //----------------------------------------------------        
 /*
-        $sldThemeSelect = new \XoopsFormSelect(_AM_SLIDER_THEME, 'sld_theme', $this->getVar('sld_theme'));
-        $sldThemeSelect->addOption('', _NONE);
+        $xfTheme = new \XoopsFormSelect(_AM_SLIDER_THEME, 'sld_theme', $this->getVar('sld_theme'));
+        $xfTheme->addOption('', _NONE);
         $langArray = \XoopsLists::getLangList();
-        $sldThemeSelect->addOptionArray($langArray);
+        $xfTheme->addOptionArray($langArray);
 */  
         // Form Text sldWeight
         $sldWeight = $this->isNew() ? getWeightForNextSlide($SelectedTheme) : $this->getVar('sld_weight');
@@ -373,9 +374,16 @@ $perDate->addElement($sldDate_end);
         //--------------------------------------------------------------------------------
         $form->insertBreak("<tr><th colspan='2'>" . '' . "</th><tr>");
 
+        foreach($params AS $name=>$value){
+            $form->addElement(new \XoopsFormHidden($name, $value));
+            //echo "{$name}={$value}<br>";
+        }
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));
         $form->addElement(new \XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
+
+        
+        
         return $form;
     }
 
