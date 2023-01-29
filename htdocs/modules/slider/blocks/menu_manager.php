@@ -18,36 +18,54 @@
  */
 
 // defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
-/* ***************
-function b_slider_menu_manager_show
-$option [0] : nom du module
-$option [1] : position du menu : 0 = menu principal / 1 = sous-menu
-$option [2] : theme : 0 = xwatch / 1 = xbootstrap
-****************** */
-$h = 0;
-define ('_SLIDER_BLOCK_MODULE'  , $h++); // dirname du module
-define ('_SLIDER_BLOCK_THEME'   , $h++); // type de theme : 0=slider_menu_xbootstrap_main.tpl / 1=slider_menu_xswatch4_main.tpl
-define ('_SLIDER_BLOCK_PARAMS'  , $h++); // Valeur binaire qui précise le contenu du menu 1=showMainMenu / 2=showCategories / 4=catIsSubmenu / 8=showAllCatLib / 16=showAdminmodule
-define ('_SLIDER_BLOCK_LEVEL'   , $h++); // 0=niveau de menu 0=Menu principal / 1=Sous-menu de niveau 1 / 2=sous-menu de niveau 2
-define ('_SLIDER_BLOCK_ORDER'   , $h++); // Defini l'ordre liste des items - options d'accès du module (accueil du module, nouveelle entrée, ...)
-/*
-<{block id=165 options="wggallery|0|7|1|0"}> 
-<{block id=165 options="quizmaker|0|3|1|0"}> 
-<{block id=165 options="xforms|0|3|1||0"}> 
-*/
 
-function b_slider_menu_manager_show($options)
-{
-global $xoopsDB, $xoTheme;
-/* exemple d'implementation dans nav_menu.tpl
+/* ***************
+$option [0] : dirname du module
+$option [1] : 0 par default : Choix du termplate (slider_menu_xswatch4_main , slider_menu_xbootstrap_main, ...)
+$option [2] : Valeur binaire qui précise le contenu du menu 
+                1  = showMainMenu    : Affiche le titre du menu principal; a utiliser si ce module fait partie du menu principal de niveau 0
+                2  = showCategories  : affiche les catégories en fonction des permissions
+                4  = catIsSubmenu    : Affiche les catégories dans un sous menu de niveau +1
+                8  = showAllCatLib   : affiche le menu "toutes les catégories" en tête de liste du menu ou sou-menu
+                16 = showHrBefore    : ajoute une separation avant le bloc
+                32 = showAdminmodule
+            exemple 
+                3 = showMainMenu + showCategories
+                7 = showMainMenu + showCategories + catIsSubmenu
+                22 = showMainMenu + showCategories + catIsSubmenu + showHrBefore
+                
+$option [3] : // niveau de menu 
+                0 = Menu principal
+                1 = Sous-menu de niveau 1
+                2 = sous-menu de niveau 2
+$option [4] : Defini l'ordre liste des items - options d'accès du module (accueil du module, nouveelle entrée, ...)
+                0 = $mainMenu, [$tSep], $catItems
+                1 = $catItems, [$tSep], $mainMenu
+
+ - exemple d'implementation dans nav_menu.tpl
         <!-- ====================== JJDai - Menu ==================== -->
         <{block id=165 options="cds_xmnews|0|3|0|1"}>   
         <{block id=165 options="news|0|3|0|0"}>   
         <{block id=165 options="extcal|0|3|0|0"}> 
         <{block id=165 options="tdmdownloads|0|3|0|0"}>
+        <{block id=165 options="wggallery|0|7|1|0"}> 
+        <{block id=165 options="quizmaker|0|3|1|0"}> 
+        <{block id=165 options="xforms|0|3|1||0"}> 
         <!-- ====================== JJDai - Extra ==================== -->
+****************** */
 
+$h = 0;
+define ('_SLIDER_BLOCK_MODULE'  , $h++); // dirname du module
+define ('_SLIDER_BLOCK_THEME'   , $h++); // type de theme : 0=slider_menu_xbootstrap_main.tpl / 1=slider_menu_xswatch4_main.tpl
+define ('_SLIDER_BLOCK_PARAMS'  , $h++); // Valeur binaire qui précise le contenu du menu 1=showMainMenu / 2=showCategories / 4=catIsSubmenu / 8=showAllCatLib / 16=showAdminmodule
+define ('_SLIDER_BLOCK_LEVEL'   , $h++); // 0=niveau de menu 0=Menu principal / 1=Sous-menu de niveau 1 / 2=sous-menu de niveau 2
+define ('_SLIDER_BLOCK_ORDER'   , $h++); // Defini l'ordre liste des items - options d'accès du module (accueil du module, nouvelle entrée, ...)
+/*
 */
+
+function b_slider_menu_manager_show($options)
+{
+global $xoopsDB, $xoTheme;
     //echo "<hr>Block options<pre>" . print_r($options, true) . "</pre><hr>";
     
     //verification de l'existance du plugin pour le module passé en parametre
@@ -83,7 +101,8 @@ include_once(XOOPS_ROOT_PATH . "/modules/slider/plugins/{$module}/{$clsName}.php
     $sldPlugin->showCategories  = ((($showingOptions &  2) != 0) || $showingOptions == 0);
     $sldPlugin->catIsSubmenu    = ((($showingOptions &  4) != 0) || $showingOptions == 0);
     $sldPlugin->showAllCatLib   = ((($showingOptions &  8) != 0) || $showingOptions == 0);
-    $sldPlugin->showAdminmodule = ((($showingOptions & 16) != 0) || $showingOptions == 0);
+    $sldPlugin->showHrBefore    = ((($showingOptions & 16) != 0) || $showingOptions == 0);
+    $sldPlugin->showAdminmodule = ((($showingOptions & 32) != 0) || $showingOptions == 0);
 
     
                                                    

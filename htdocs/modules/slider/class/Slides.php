@@ -90,7 +90,7 @@ class Slides extends \XoopsObject
      * @param bool $action
      * @return \XoopsThemeForm
      */
-    public function getFormSlides($SelectedTheme, $action = false, $params)
+    public function getFormSlides($SelectedTheme, $action = false, $params=null)
     {
         global $stylesHandler;
         
@@ -373,10 +373,11 @@ $perDate->addElement($sldDate_end);
 //---------------------------------------------------        
         //--------------------------------------------------------------------------------
         $form->insertBreak("<tr><th colspan='2'>" . '' . "</th><tr>");
-
+        if($params){
         foreach($params AS $name=>$value){
             $form->addElement(new \XoopsFormHidden($name, $value));
             //echo "{$name}={$value}<br>";
+        }
         }
         // To Save
         $form->addElement(new \XoopsFormHidden('op', 'save'));

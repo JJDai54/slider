@@ -54,7 +54,7 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
-$this->options['captionAll'] = _MB_SLD_CREAQUIZ_ALL_CAT;
+$this->options['captionAll'] = _MB_SLD_CREAQUIZ_ALL_CAT; //libellé spécifique au module
     $permsNames = $this->getPermsissionsNames(false);
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $mainMenu = array();

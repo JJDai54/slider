@@ -64,7 +64,7 @@ switch ($op) {
         $GLOBALS['xoopsTpl']->assign('buttons', $adminObject->displayButton('left'));
         // Get Form
         $slidesObj = $slidesHandler->get($sldId);
-        $form = $slidesObj->getFormSlides($inpTheme,false,$paramsArr);
+        $form = $slidesObj->getFormSlides($inpTheme,false);
         $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
 

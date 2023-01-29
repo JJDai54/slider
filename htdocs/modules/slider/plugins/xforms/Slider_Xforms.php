@@ -79,10 +79,20 @@ var $options = array(
 //            'captionAll'   => _ALL,
             'catPage'      => 'index.php',
             'catParamName' => 'form_id',
-            'where_extra'  => '(form_begin=0 Or form_begin <= CURRENT_TIMESTAMP) AND (form_end=0 Or form_end >= CURRENT_TIMESTAMP)',            
+            //'where_extra'  => '(form_begin=0 Or form_begin <= now()) AND (form_end=0 Or form_end >= now())',            
+            'where_extra'  => '(form_begin=0 Or  TIMESTAMP(now()) >= form_begin) AND (form_end=0 Or TIMESTAMP(now()) <= form_end)',            
             'sepTitle'     => '');
 
 
+ /* ********************
+ *
+ *********************** */   
+public function getClauseExtra(){
+    $now = time();
+    $clause = "(form_begin=0 Or '{$now}' >= form_begin) AND (form_end=0 Or '{$now}' <= form_end)";  
+    return $clause;
+
+}
     
  /* ********************
  *

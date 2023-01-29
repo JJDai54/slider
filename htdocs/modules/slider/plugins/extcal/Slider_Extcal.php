@@ -76,9 +76,6 @@ $this->options['captionAll'] = _MB_SLD_EXTCAL_ALL_CAT;
     
         $mainMenu['search']['url'] = $moduleUrl . "/view_search.php";
         $mainMenu['search']['lib'] = _MB_SLD_EXTCAL_SEARCH_EVENT;
-    
-        $mainMenu['location']['url'] = $moduleUrl . "/location-list.php";
-        $mainMenu['location']['lib'] = _MB_SLD_EXTCAL_LOCATIONS;
 
 
     //$permHandler = Extcal\Perm::getHandler();
@@ -87,6 +84,9 @@ $this->options['captionAll'] = _MB_SLD_EXTCAL_ALL_CAT;
           $mainMenu['submit']['url'] = $moduleUrl . "/view_new-event.php";
           $mainMenu['submit']['lib'] = _MB_SLD_EXTCAL_SUBMIT_EVENT;
         }
+    
+        $mainMenu['location']['url'] = $moduleUrl . "/location-list.php";
+        $mainMenu['location']['lib'] = _MB_SLD_EXTCAL_LOCATIONS;
     
     return $mainMenu;
 

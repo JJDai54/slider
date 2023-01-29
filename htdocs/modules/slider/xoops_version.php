@@ -26,7 +26,7 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => _MI_SLIDER_NAME,
-    'version'             => 2.24,
+    'version'             => 2.26,
     'release_date'        => '2022/10/04',
     'release'             => '',
     'module_status'       => 'Beta 1',

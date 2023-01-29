@@ -20,7 +20,7 @@
  * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
-define("_MB_SLD_XFORMS_CAPTION", "Formulaires");
+define("_MB_SLD_XFORMS_CAPTION", "Contactez-nous");
 define("_MB_SLD_XFORMS_ALL_CAT", "Tous les formulaires");
 define("_MB_SLD_XFORMS_ADMIN", "Administration du module");
 

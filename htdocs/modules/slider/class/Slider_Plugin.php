@@ -79,6 +79,15 @@ function __construct ($moduleDirName){
     //----------------------------------------------------------
     
 }
+
+
+ /* ********************
+ *
+ *********************** */   
+public function getClauseExtra(){
+    return $this->options['where_extra'];  
+}
+
 /* *************************************
 *
 * ************************************** */
@@ -97,34 +106,57 @@ public function getMenu(){
     $tSep['sep1']['url'] = '#';
     $tSep['sep1']['lib'] = "<hr>";
     
+    //defini l'ordre d'affichage des block options du modules (new, search, ;;;) et liste des catégories
     if ($this->order == 0){
         if(count($catItems) > 0) {
           if ($this->catIsSubmenu){
-            $block['main'][] = array_merge($mainMenu, $catItems);
+            $finalMenu = array_merge($mainMenu, $catItems);
           }else{
-
-            $block['main'][] = array_merge($mainMenu, $tSep, $catItems);
+            $sep = (count($mainMenu) > 0) ? $tSep : array();
+            $finalMenu = array_merge($mainMenu, $sep, $catItems);
           }
         }else{
-            $block['main'][] = $mainMenu ;
+            $finalMenu = $mainMenu ;
         }
         
     }else{
         if(count($catItems) > 0) {
           if ($this->catIsSubmenu){
-            $block['main'][] = array_merge($catItems, $mainMenu);
+            $finalMenu = array_merge($catItems, $mainMenu);
           }else{
-            $block['main'][] = array_merge($catItems, $tSep, $mainMenu);
+            $sep = (count($mainMenu) > 0) ? $tSep : array();
+            $finalMenu = array_merge($catItems, $sep, $mainMenu);
           }
         }else{
-            if(count($mainMenu) > 0) $block['main'][] = $mainMenu;
+            if(count($mainMenu) > 0) $finalMenu = $mainMenu;
         }
     }
+    //--------------------------------------------------------    
+    if ($this->showHrBefore) {
+        $block['main'][] = array_merge($tSep, $finalMenu);
+    }else{
+        $block['main'][] = $finalMenu;
+    }
+    //--------------------------------------------------
+
+    
     //------------------------------------------------------------------------------------    
 //         if ($this->moduleDirName == 'mediatheque')
 //         echo "<hr>{$this->mid} - {$this->moduleDirName} - {$table} <pre>" . print_r($block, true) . "</pre><hr>";
     return $block;
 }
+/* *************************************
+*
+* ************************************** */
+// public function getMenuHr(){
+//         //global $xoopsDB;
+//     $block = array();      
+//     $tSep['sep1']['url'] = '#';
+//     $tSep['sep1']['lib'] = "<hr>";
+//     
+//     $block['main'][] =  $tSep;
+//     return $block;
+// }
 
 /* *************************************
 *
@@ -218,7 +250,8 @@ public function getPermissionsIds($gperm_name)
 
        $permsNamesUnique = array_unique($permsNames);
        if ($show)
-            echo "<hr>Noms des permissions du user pour le module {$this->moduleDirName}<pre>" . print_r($permsNamesUnique, true) . "</pre><hr>";
+            echo "<hr>Noms des permissions du user pour le module {$this->moduleDirName}<pre>" 
+                 . print_r($permsNamesUnique, true) . "</pre><hr>";
        
        if ($this->showAdminmodule){
          if ($this->isPermAdmin()) $permsNamesUnique[] = "admin"; 
@@ -373,7 +406,11 @@ function getCatItems(&$options = null){
         //-------------------------------------
         $tWheres = array();
         if ($permsOK) $tWheres[] = "{$fld_id} in (" . implode(',', $perm_ids) . ")";
-        if (isset($where_extra) && $where_extra != '' ) $tWheres[] = $where_extra; 
+        //if (isset($where_extra) && $where_extra != '' ) $tWheres[] = $where_extra; 
+
+        $where_extra = $this->getClauseExtra(); 
+        if ($where_extra) $tWheres[] = $where_extra; 
+        //if (isset($where_extra) && $where_extra != '' ) $tWheres[] = $this->getClauseExtra(); 
         
         if (count($tWheres) > 0) {
             $where = " WHERE " . implode(' AND ', $tWheres) ;
@@ -385,17 +422,6 @@ function getCatItems(&$options = null){
         $sql = "SELECT {$fld_id}, {$asPid}{$fld_pid}, {$fld_name}, {$asWeight}{$fld_weight}, {$asActive}{$fld_active}"
              . " FROM " . $xoopsDB->prefix($table) . $where
              . " ORDER BY {$fld_pid},{$fld_weight},{$fld_name}";
-        //on ne renvoie que les categories 
-//         $sql = "SELECT {$fld_id}, {$asPid}{$fld_pid}, {$fld_name}, {$asWeight}{$fld_weight}, {$asActive}{$fld_active}"
-//              . " FROM " . $xoopsDB->prefix($table) 
-//              . (($permsOK) ? " WHERE {$fld_id} in (" . implode(',', $perm_ids) . ")" : '')
-//              . " ORDER BY {$fld_pid},{$fld_weight},{$fld_name}";
-// 
-        /*
-        $sql = "SELECT {$fld_id}, {$asPid}{$fld_pid}, {$fld_name}, {$asWeight}{$fld_weight} FROM " . $xoopsDB->prefix($table)
-             . (($permsOK) ? " WHERE {$fld_id} in (" . implode(',', $perm_ids) . ")" : '')
-             . " ORDER BY {$fld_pid},{$fld_weight},{$fld_name}";
-        */
         //---------------------------------------------------
         $result = $xoopsDB->query($sql);
 /*
@@ -405,6 +431,7 @@ if ($table == 'creaquiz_categories'){          //tdmdownloads_cat
  exit;
  }        
 */
+        //ajoute "toutes les categories" en tête de liste
         if($this->showAllCatLib){
             $catItems = array();
                 $t['id'] = -1;
@@ -424,7 +451,7 @@ if ($table == 'creaquiz_categories'){          //tdmdownloads_cat
               
               $item = array();
               $item['id'] = $id;
-              $item['lib'] = $this->parse_title($topic[$fld_name], $sepTitle);
+              $item['lib'] = $this->parse_title($topic[$fld_name], $sepTitle) ;
               $item['url'] = $url . $id;
               //----------------------------------------
               

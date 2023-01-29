@@ -22,18 +22,18 @@
 
 // constantes qui doivent figurer systématiquemen dans les plugin avec le prefix qui va bien
 define("_MB_SLD_EXTCAL_CAPTION", "planning");
-define("_MB_SLD_EXTCAL_SUBMENU_CAT", "Événnements par categories");
+define("_MB_SLD_EXTCAL_SUBMENU_CAT", "Événements par catégories");
 
 define("_MB_SLD_EXTCAL_ALL_CAT", "Tous les articles");
 
-define("_MB_SLD_EXTCAL_PLANNING","Planing");    
+define("_MB_SLD_EXTCAL_PLANNING","Planning");    
 define("_MB_SLD_EXTCAL_VIEW_MONTH","Calendrier mensuel");    
 define("_MB_SLD_EXTCAL_VIEW_MONTH_LIST","Liste mensuelle");    
 define("_MB_SLD_EXTCAL_VIEW_WEEK_LIST","Liste hebdomadaire");    
-define("_MB_SLD_EXTCAL_SEARCH_EVENT","Chercher un évènnement");    
+define("_MB_SLD_EXTCAL_SEARCH_EVENT","Chercher un évènement");    
 define("_MB_SLD_EXTCAL_LOCATIONS","Lieux");    
-define("_MB_SLD_EXTCAL_SUBMIT_EVENT","Soumettre un évènnement");    
-define("_MB_SLD_EXTCAL_APPROVE_EVENT","approuver un évènnement");    
+define("_MB_SLD_EXTCAL_SUBMIT_EVENT","Soumettre un évènement");    
+define("_MB_SLD_EXTCAL_APPROVE_EVENT","Approuver un évènement");    
 
 
 ?>

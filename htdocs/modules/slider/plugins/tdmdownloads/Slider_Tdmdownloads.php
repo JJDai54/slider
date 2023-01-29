@@ -64,13 +64,14 @@ var $options = array(
  *
  *********************** */   
 public function getMainMenu(){
-$this->options['captionAll'] = _MB_SLD_TDMDOWNLOADS_ALL_CAT;
+$this->options['captionAll'] = _MB_SLD_TDMDOWNLOADS_ALL_CAT; //libellé spécifique au module
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
     $permsNames = $this->getPermsissionsNames();
     $mainMenu = array();
-    
+/*
     $mainMenu['index']['url'] = $moduleUrl . "/index.php";
     $mainMenu['index']['lib'] = _MB_SLD_TDMDOWNLOADS_ALL_CAT;
+*/    
     
     $mainMenu['search']['url'] = $moduleUrl . "/search.php";
     $mainMenu['search']['lib'] = _MB_SLD_TDMDOWNLOADS_SEARCH;

@@ -17,7 +17,7 @@ Extensions=*.*
 [Project tree]
 _slider
 	+slider
-		+admin
+		-admin
 			admin\about.php
 			admin\feedback.php
 			admin\footer.php
@@ -109,12 +109,12 @@ _slider
 				assets\images\slide-temp-01.jpg
 				assets\images\slide-temp-01.png
 				assets\images\slide-temp-01.svg
-			-js
+			+js
 				assets\js\functions.js
 				assets\js\highslide.js
 				assets\js\index.html
 			assets\index.html
-		-blocks
+		+blocks
 			blocks\index.html
 			blocks\menu_extra.php
 			blocks\menu_manager.php
@@ -194,7 +194,7 @@ _slider
 				language\french\index.html
 				language\french\modinfo.php
 			language\index.html
-		-plugins
+		+plugins
 			-cds_modules
 				plugins\cds_modules\english.php
 				plugins\cds_modules\french.php
@@ -210,7 +210,7 @@ _slider
 				plugins\creaquiz\french.php
 				plugins\creaquiz\index.html
 				plugins\creaquiz\Slider_Creaquiz.php
-			-extcal
+			+extcal
 				plugins\extcal\english.php
 				plugins\extcal\french.php
 				plugins\extcal\index.html
@@ -240,12 +240,12 @@ _slider
 				plugins\news\french.php
 				plugins\news\index.html
 				plugins\news\Slider_News.php
-			-quizmaker
+			+quizmaker
 				plugins\quizmaker\english.php
 				plugins\quizmaker\french.php
 				plugins\quizmaker\index.html
 				plugins\quizmaker\Slider_Quizmaker.php
-			-tdmdownloads
+			+tdmdownloads
 				plugins\tdmdownloads\english.php
 				plugins\tdmdownloads\french.php
 				plugins\tdmdownloads\index.html
@@ -255,7 +255,7 @@ _slider
 				plugins\wggallery\french.php
 				plugins\wggallery\index.html
 				plugins\wggallery\Slider_Wggallery.php
-			-xforms
+			+xforms
 				plugins\xforms\english.php
 				plugins\xforms\french.php
 				plugins\xforms\index.html
@@ -302,7 +302,6 @@ _slider
 			templates\index.html
 			templates\slider_menu_xbootstrap_main.tpl
 			templates\slider_menu_xswatch4_main.tpl
-			templates\slider_menu_xswatch4_main-old.tpl
 		-testdata
 			-english
 				testdata\english\index.html
@@ -315,7 +314,7 @@ _slider
 			testdata\index.php
 			testdata\slider.tpl
 			testdata\slider-old.tpl
-		-versions
+		+versions
 			versions\index.html
 			versions\Slider_2_02.php
 			versions\Slider_2_03.php
@@ -325,42 +324,22 @@ _slider
 			versions\Slider_2_20.php
 		xoops_version.php
 [Open project files]
-0=admin\slides-list.php
-1=admin\slides.php
-2=templates\admin\slider_admin_slides.tpl
-3=templates\slider_menu_xswatch4_main-old.tpl
-4=admin\slides-save.php
-5=class\Slides.php
-6=admin\slides-new.php
-7=blocks\verif_slides_of_theme.php
-8=class\SlidesHandler.php
+0=plugins\creaquiz\Slider_Creaquiz.php
+1=class\Slider_Plugin.php
+2=plugins\xforms\Slider_Xforms.php
+3=plugins\cds_modules\Slider_Cds_modules.php
 [Selected Project Files]
 Main=
-Selected=class\SlidesHandler.php
-[admin\slides-list.php]
-TopLine=9
-Caret=1,29
-[admin\slides.php]
-TopLine=16
-Caret=37,43
-[templates\admin\slider_admin_slides.tpl]
-TopLine=9
-Caret=18,9
-[templates\slider_menu_xswatch4_main-old.tpl]
-TopLine=51
-Caret=1,7
-[admin\slides-save.php]
-TopLine=147
-Caret=54,167
-[class\Slides.php]
-TopLine=286
-Caret=17,311
-[admin\slides-new.php]
-TopLine=18
-Caret=70,35
-[blocks\verif_slides_of_theme.php]
-TopLine=47
-Caret=1,67
-[class\SlidesHandler.php]
-TopLine=299
-Caret=105,329
+Selected=class\Slider_Plugin.php
+[plugins\creaquiz\Slider_Creaquiz.php]
+TopLine=31
+Caret=59,57
+[class\Slider_Plugin.php]
+TopLine=388
+Caret=40,412
+[plugins\xforms\Slider_Xforms.php]
+TopLine=59
+Caret=84,92
+[plugins\cds_modules\Slider_Cds_modules.php]
+TopLine=21
+Caret=1,41

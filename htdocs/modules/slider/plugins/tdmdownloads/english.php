@@ -29,7 +29,7 @@ define("_MB_SLD_TDMDOWNLOADS_ALL_CAT", "Tous les téléchargements");
 define("_MB_SLD_TDMDOWNLOADS_SUBMIT", "Soumettre un téléchargement");
 define("_MB_SLD_TDMDOWNLOADS_DOWNLOADS", "Téléchargements");
 define("_MB_SLD_TDMDOWNLOADS_TOPICS_INDEX", "Index des catégories");
-define("_MB_SLD_TDMDOWNLOADS_SEARCH", "Rechercher un téléchargements");
+define("_MB_SLD_TDMDOWNLOADS_SEARCH", "Rechercher un téléchargement");
 define("_MB_SLD_TDMDOWNLOADS_APPROVE_DOWNLOADS","Valider les téléchargements en attente d'approbation");    
 
 ?>

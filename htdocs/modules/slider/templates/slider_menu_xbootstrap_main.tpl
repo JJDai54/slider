@@ -10,7 +10,7 @@
 
     <{foreach from=$block.main key=kMenuList item=menuList}>
        
-        <{if $kMenuList > 0 AND $block.module.level == 0}><{/if}>
+        <{* <{if $kMenuList > 0 AND $block.module.level == 0}><{/if}> *}>
         <{foreach from=$menuList key=kItemMenu item=itemMenu}>
             <{if !empty($itemMenu.submenu) }>
               <li class="dropdown-submenu">
