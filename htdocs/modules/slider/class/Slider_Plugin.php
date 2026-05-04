@@ -25,6 +25,9 @@
  * @author       Mamba <mambax7@gmail.com>
  * @since        
  */
+//define('SLIDER_HR_GREY', "<hr style='height:1px;background:#D4D4D4;margin:0px;'>");
+define('SLIDER_HR_GREY', "<hr style='margin:0px; border: 0;height: 3px;background-image: linear-gradient(to right, rgba(191, 191, 191, 0), rgba(128, 128, 128, 0.75), rgba(191, 191, 191, 0));'>");
+define('SLIDER_HR_RED', "<hr style='margin:0px; border: 0;height: 3px;background-image: linear-gradient(to right, rgba(191, 191, 191, 0), red, rgba(191, 191, 191, 0));'>");
 
 //use XoopsModules\Slider;
 include_once XOOPS_ROOT_PATH . "/kernel/module.php";
@@ -50,13 +53,14 @@ var $groupIds = array();
 var $gIds = '';
 //var $level = '';
 
-var $showAllCatLib = false;
-var $showCategories = false;
-var $showMainMenu = false;
+var $showAllCatLib   = false;
+var $showCategories  = false;
+var $showMainMenu    = false;
 var $showAdminmodule = false;
-var $order = 0;
-var $catIsSubmenu = true;
-var $showHrBefore  = false;
+var $order           = 0;
+var $catIsSubmenu    = true;
+var $showHrBefore    = false;
+var $showHrAfter     = false;
 //var $params = array();
 
 function __construct ($moduleDirName){
@@ -104,8 +108,7 @@ public function getMenu(){
     }else{
         $catItems = $this->getcatItems();
     }
-    $tSep['sep1']['url'] = '#';
-    $tSep['sep1']['lib'] = "<hr>";
+    $tSep['sep1'] = ['url'=>'#', 'lib'=>SLIDER_HR_GREY] ;
     
     //defini l'ordre d'affichage des block options du modules (new, search, ;;;) et liste des catégories
     if ($this->order == 0){
@@ -137,6 +140,10 @@ public function getMenu(){
         $block['main'][] = array_merge($tSep, $finalMenu);
     }else{
         $block['main'][] = $finalMenu;
+    }
+    //--------------------------------------------------------    
+    if ($this->showHrAfter) {
+        $block['main'][] = $tSep;
     }
     //--------------------------------------------------
 
@@ -290,8 +297,6 @@ public function getPermissionsIds($gperm_name)
          $perms = $grouppermHandler->getObjects($criteria, true);
          $ret = array();
             
-            
-            
         foreach (array_keys($perms) as $i) {
             $t = array();
             $t['gperm_id']      =  $perms[$i]->getVar('gperm_id');
@@ -340,7 +345,7 @@ function parse_title($title, $sep = '-') {
       return $title;
 }
 
-/****************
+/***ÿ ** ?? *****
  * 
         $options['table'] = 'news_topics';
         $options['fld_id'] = 'topic_id';

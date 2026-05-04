@@ -35,14 +35,14 @@ function xoops_module_uninstall_slider(\XoopsModule $module)
 
     $moduleDirName      = \basename(\dirname(__DIR__));
     $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
-    /** @var Slider\Helper $helper */
-    $helper = Slider\Helper::getInstance();
+    /** @var Slider\Helper $sliderHelper */
+    $sliderHelper = Slider\Helper::getInstance();
 
     /** @var Slider\Utility $utility */
     $utility = new Slider\Utility();
 
     $success = true;
-    $helper->loadLanguage('admin');
+    $sliderHelper->loadLanguage('admin');
 
     //------------------------------------------------------------------
     // réinitialise tous les themes si besoin

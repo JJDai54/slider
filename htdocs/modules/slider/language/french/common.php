@@ -198,7 +198,6 @@ define('_CO_SLIDER_PERIODICITE_RND_YEAR', 'Une fois par an');
 define('_CO_SLIDER_THEME_TRANSITION_VERTICAL', "Vertical");
 define('_CO_SLIDER_THEME_TRANSITION_HORIZONTAL', "Horizontal");
 
-
 define('_CO_SLIDER_PERIODICITE_ALWAYS', 'Toujours');
 define('_CO_SLIDER_PERIODICITE_FLOAT', 'Période flottante');
 define('_CO_SLIDER_PERIODICITE_CYCLIQUE', 'Période cyclique');

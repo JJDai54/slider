@@ -23,7 +23,7 @@ namespace XoopsModules\Slider;
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use XoopsModules\Slider;
@@ -88,7 +88,7 @@ class Styles extends \XoopsObject
      */
     public function getFormStyles($action = false)
     {
-        $helper = \XoopsModules\Slider\Helper::getInstance();
+        $sliderHelper = \XoopsModules\Slider\Helper::getInstance();
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
@@ -143,14 +143,14 @@ class Styles extends \XoopsObject
      */
     public function getValuesStyles($keys = null, $format = null, $maxDepth = null)
     {
-        $helper  = \XoopsModules\Slider\Helper::getInstance();
+        $sliderHelper  = \XoopsModules\Slider\Helper::getInstance();
         $utility = new \XoopsModules\Slider\Utility();
         $ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']        = $this->getVar('sty_id');
         $ret['name']      = $this->getVar('sty_name');
 //        $ret['object']    = $this->getVar('sty_object');
         $ret['css']       = \strip_tags($this->getVar('sty_css', 'e'));
-        $editorMaxchar = $helper->getConfig('editor_maxchar');
+        $editorMaxchar = $sliderHelper->getConfig('editor_maxchar');
         $ret['css_short'] = $utility::truncateHtml($ret['css'], $editorMaxchar);
         return $ret;
     }

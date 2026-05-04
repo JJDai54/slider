@@ -76,8 +76,8 @@ class Helper extends \Xmf\Module\Helper
         }
         /** @var \XoopsMySQLDatabase $db */
         $db     = \XoopsDatabaseFactory::getDatabaseConnection();
-        $helper = self::getInstance();
-        $ret    = new $class($db, $helper);
+        $sliderHelper = self::getInstance();
+        $ret    = new $class($db, $sliderHelper);
         $this->addLog("Getting handler '{$name}'");
 
         return $ret;

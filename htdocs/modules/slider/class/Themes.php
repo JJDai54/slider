@@ -20,7 +20,7 @@ namespace XoopsModules\Slider;
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use XoopsModules\Slider;
@@ -78,7 +78,7 @@ class Themes extends \XoopsObject
 	 */
 	public function getFormThemes($action = false)
 	{
-		$helper = \XoopsModules\Slider\Helper::getInstance();
+		$sliderHelper = \XoopsModules\Slider\Helper::getInstance();
 		if (!$action) {
 			$action = $_SERVER['REQUEST_URI'];
 		}
@@ -230,7 +230,7 @@ class Themes extends \XoopsObject
     		$form->addElement($inpTransition);
 
 //             //------------ STYLES mycss-------------------------------
-//             $mycss = ($isNew) ? $helper->getConfig('slider_style_button') : $this->getVar('sld_style_button', 'e');
+//             $mycss = ($isNew) ? $sliderHelper->getConfig('slider_style_button') : $this->getVar('sld_style_button', 'e');
 //             $inputSytleButton = new \XoopsFormTextArea(_AM_SLIDER_SLIDE_STYLE_BUTTON, 'sld_style_button',  $css, $nbLinesTA, 60);
 //             $inputSytleButton->setExtra($stylTA);
 //             $inputSytleButton->setDescription(_AM_SLIDER_SLIDE_STYLE_BUTTON_DESC);
@@ -252,7 +252,7 @@ class Themes extends \XoopsObject
 	 */
 	public function getFormLogo($action = false)
 	{
-		$helper = \XoopsModules\Slider\Helper::getInstance();
+		$sliderHelper = \XoopsModules\Slider\Helper::getInstance();
 		if (!$action) {
 			$action = $_SERVER['REQUEST_URI'];
 		}
@@ -311,7 +311,7 @@ class Themes extends \XoopsObject
 	 */
 	public function getFormMyCss($action = false)
 	{
-		$helper = \XoopsModules\Slider\Helper::getInstance();
+		$sliderHelper = \XoopsModules\Slider\Helper::getInstance();
 		if (!$action) {
 			$action = $_SERVER['REQUEST_URI'];
 		}
@@ -367,7 +367,11 @@ class Themes extends \XoopsObject
 		$ret['mycss']        = $this->getVar('theme_mycss');
 		$ret['transition']   = $this->getVar('theme_transition');
 		//$ret['transition']   = $this->getTransition();
+        if(defined('_CO_SLIDER_THEME_TRANSITION_VERTICAL')){
 		$ret['transition_caption'] = ($ret['transition'] == 1) ? _CO_SLIDER_THEME_TRANSITION_VERTICAL : _CO_SLIDER_THEME_TRANSITION_HORIZONTAL ;
+        }else{
+		$ret['transition_caption'] = '';
+        }
 		$ret['random']       = $this->getVar('theme_random');
 		$ret['random_caption'] = getPeriodicityCaption($ret['random'], '_AM_');
 		
@@ -391,8 +395,8 @@ class Themes extends \XoopsObject
             $ret['darkCss']   = '';
         }
 if (!$slidesHandler){
-    $helper = \XoopsModules\Slider\Helper::getInstance();
-    $slidesHandler = $helper->getHandler('Slides');
+    $sliderHelper = \XoopsModules\Slider\Helper::getInstance();
+    $slidesHandler = $sliderHelper->getHandler('Slides');
  }       
         $criteria = new \CriteriaCompo(new \Criteria("sld_theme", "%|{$ret['theme'] }|%", "LIKE"));
 //         $criteria = new \CriteriaCompo(new \Criteria("sld_theme", $ret['folder'], "="));

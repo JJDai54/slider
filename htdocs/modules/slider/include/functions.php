@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 /**
@@ -88,10 +88,10 @@ function sliderMetaDescription($content)
 function slider_RewriteUrl($module, $array, $type = 'content')
 {
     $comment = '';
-    $helper = \XoopsModules\Slider\Helper::getInstance();
-    $slidesHandler = $helper->getHandler('slides');
-    $lenght_id = $helper->getConfig('lenght_id');
-    $rewrite_url = $helper->getConfig('rewrite_url');
+    $sliderHelper = \XoopsModules\Slider\Helper::getInstance();
+    $slidesHandler = $sliderHelper->getHandler('slides');
+    $lenght_id = $sliderHelper->getConfig('lenght_id');
+    $rewrite_url = $sliderHelper->getConfig('rewrite_url');
 
     if (0 != $lenght_id) {
         $id = $array['content_id'];
@@ -176,9 +176,9 @@ function slider_RewriteUrl($module, $array, $type = 'content')
 function slider_Filter($url, $type = '') {
 
     // Get regular expression from module setting. default setting is : `[^a-z0-9]`i
-    $helper = \XoopsModules\Slider\Helper::getInstance();
-    $slidesHandler = $helper->getHandler('slides');
-    $regular_expression = $helper->getConfig('regular_expression');
+    $sliderHelper = \XoopsModules\Slider\Helper::getInstance();
+    $slidesHandler = $sliderHelper->getHandler('slides');
+    $regular_expression = $sliderHelper->getConfig('regular_expression');
 
     $url = \strip_tags($url);
     $url .= \preg_replace("`\[.*\]`U", '', $url);

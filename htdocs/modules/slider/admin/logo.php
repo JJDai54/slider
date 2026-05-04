@@ -17,7 +17,7 @@
  * @package        xbootstrap
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use Xmf\Request;
@@ -75,8 +75,8 @@ include_once XOOPS_ROOT_PATH . '/class/uploader.php';
 
         $uploaderErrors = '';
         $uploader = new \XoopsMediaUploader($f['folder'] , 
-                                            $helper->getConfig('mimetypes_image'), 
-                                            $helper->getConfig('maxsize_image'), null, null);
+                                            $sliderHelper->getConfig('mimetypes_image'), 
+                                            $sliderHelper->getConfig('maxsize_image'), null, null);
     
         $uf = $_FILES['logo'];
 //sld_echoArray($uf, 'upload', 'green');

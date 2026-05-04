@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use Xmf\Request;
@@ -37,7 +37,7 @@ $inpTheme = Request::getString('inpTheme',  $xoopsConfig['theme_set']);
 $inpPeriodicity = Request::getInt('inpPeriodicity', '0');  
 $inpActif = Request::getInt('inpActif', -1);  
 $start = Request::getInt('start', 0);
-$limit = Request::getInt('limit', $helper->getConfig('adminpager'));
+$limit = Request::getInt('limit', $sliderHelper->getConfig('adminpager'));
 
 //$params = array( $$inpPeriodicity => $inpPeriodicity,  $$inpActif => $inpActif,  $$start => $start,  $$limit => $limit );     
 $params = array( 'inptheme' => $inpTheme, 'inpPeriodicity' => $inpPeriodicity,  'inpActif' => $inpActif,  'start' => $start,  'limit' => $limit );     

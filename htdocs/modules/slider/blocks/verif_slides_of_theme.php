@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use XoopsModules\Slider;
@@ -35,12 +35,12 @@ include_once XOOPS_ROOT_PATH . '/modules/slider/include/common.php';
  */
 function b_slider_verif_slides_of_theme_show($options)
 {
-global $xoopsConfig, $helper;
-    $helper      = Helper::getInstance();
+global $xoopsConfig, $sliderHelper;
+    $sliderHelper      = Helper::getInstance();
     $theme = $xoopsConfig['theme_set'];
     $block = array();
-    $themesHandler = $helper->getHandler('Themes');
-    $slidesHandler = $helper->getHandler('Slides');
+    $themesHandler = $sliderHelper->getHandler('Themes');
+    $slidesHandler = $sliderHelper->getHandler('Slides');
     
     $themeObj = $themesHandler->getThemeByName($theme);
     //--------------------------------------------------

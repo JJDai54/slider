@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 /*
 CREATE TABLE `quizmaker_categories` (
@@ -44,9 +44,9 @@ var $options = array(
             'fld_name'     => 'cat_name',
             'fld_weight'   => 'cat_weight',
             'fld_active'   => '',
-            'permView'     => 'quizmaker_view_categories',
+            'permView'     => 'quizmaker_view_cats',
 //            'captionAll'   => _ALL,
-            'catPage'      => 'categories.php',
+            'catPage'      => 'quiz.php',
             'catParamName' => 'cat_id');
             
         

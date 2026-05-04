@@ -1,15 +1,15 @@
 <?php
 //$f['folder']  = SLIDER_UPLOAD_IMAGE_PATH . '/slides/'; 
 $f['folder']  = XOOPS_ROOT_PATH . "/themes/{$theme}/css/images";
-$f['maxwidth']  = (int)$helper->getConfig('maxwidth_image'); 
-$f['maxheight']  = (int)$helper->getConfig('maxheight_image'); 
+$f['maxwidth']  = (int)$sliderHelper->getConfig('maxwidth_image'); 
+$f['maxheight']  = (int)$sliderHelper->getConfig('maxheight_image'); 
 ///////////////////////////////////////
 if (!is_dir($f['folder'])) mkdir($f['folder'], 0774);
 include_once XOOPS_ROOT_PATH . '/class/uploader.php';
     $uploaderErrors = '';
     $uploader = new \XoopsMediaUploader($f['folder'] , 
-                                        $helper->getConfig('mimetypes_image'), 
-                                        $helper->getConfig('maxsize_image'), null, null);
+                                        $sliderHelper->getConfig('mimetypes_image'), 
+                                        $sliderHelper->getConfig('maxsize_image'), null, null);
     
     foreach($_POST['xoops_upload_file'] AS $index => $ufName){ //$upload_file_name
         $uf = $_FILES[$ufName];

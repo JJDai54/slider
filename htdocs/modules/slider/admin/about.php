@@ -18,13 +18,13 @@ namespace XoopsModules\Slider;
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 use XoopsModules\Slider;
 use XoopsModules\Slider\Helper;
 use XoopsModules\Slider\Constants;
 require  'header.php';
-$helper = \XoopsModules\Slider\Helper::getInstance();
+$sliderHelper = \XoopsModules\Slider\Helper::getInstance();
 $templateMain = 'slider_admin_about.tpl';
 
 define('_AM_JJD_DESCRIPTION','zzzzz');
@@ -112,10 +112,10 @@ function contribution(){
  * 
  * ****************************** */
 function localHeaderInfo(){
-global $helper;
-//$helper = \XoopsModules\Slider\Helper::getInstance();
+global $sliderHelper;
+//$sliderHelper = \XoopsModules\Slider\Helper::getInstance();
 $module_dir = basename(dirname(dirname(__FILE__)));
-$module = $helper->getModule();
+$module = $sliderHelper->getModule();
 
     $mid = $module->getVar('mid');
     $license_url = $module->getInfo('license_url');
@@ -156,10 +156,10 @@ $module = $helper->getModule();
  * 
  * ****************************** */
 function moduleInfo(){
-global $helper;
-//$helper = \XoopsModules\Slider\Helper::getInstance();
+global $sliderHelper;
+//$sliderHelper = \XoopsModules\Slider\Helper::getInstance();
 $module_dir = basename(dirname(dirname(__FILE__)));
-$module = $helper->getModule();
+$module = $sliderHelper->getModule();
 
     
   $lines = array();

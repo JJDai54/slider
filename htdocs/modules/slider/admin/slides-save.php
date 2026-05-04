@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use Xmf\Request;
@@ -87,8 +87,8 @@ use XoopsModules\Slider\Utility;
               $imgNameDef     = Request::getString('sld_short_name');
               $uploaderErrors = '';
               $uploader = new \XoopsMediaUploader(SLIDER_UPLOAD_IMAGE_PATH . '/slides/', 
-                                                          $helper->getConfig('mimetypes_image'), 
-                                                          $helper->getConfig('maxsize_image'), null, null);
+                                                          $sliderHelper->getConfig('mimetypes_image'), 
+                                                          $sliderHelper->getConfig('maxsize_image'), null, null);
               
               //si le nom n'est pas renseigné on prend le nom du fichier image
               $shortName = Request::getString('sld_short_name', '');
@@ -115,8 +115,8 @@ use XoopsModules\Slider\Utility;
                       $uploaderErrors = $uploader->getErrors();
                   } else {
                       $savedFilename = $uploader->getSavedFileName();
-                      $maxwidth  = (int)$helper->getConfig('maxwidth_image');
-                      $maxheight = (int)$helper->getConfig('maxheight_image');
+                      $maxwidth  = (int)$sliderHelper->getConfig('maxwidth_image');
+                      $maxheight = (int)$sliderHelper->getConfig('maxheight_image');
                       if ($maxwidth > 0 && $maxheight > 0) {
                           // Resize image
                           $imgHandler                = new Slider\Common\Resizer();

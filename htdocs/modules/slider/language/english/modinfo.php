@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 include_once 'common.php';
@@ -88,16 +88,46 @@ define('_MI_SLIDER_DISQUS_COMMENTS', 'Disqus comments');
 define('_MI_SLIDER_DISQUS_COMMENTS_DESC', 'Allow Disqus comments in the single page');
 
 // JJDai
-define('_AM_SLIDER_RANDOM_SLIDER', 'slider_update_tpl');
-\define ('_ MI_SLIDER_UPDATE_THEME_DESC', 'Slider.tpl update block for the current theme');
+define('_MI_SLIDER_RANDOM_SLIDER', 'slider_update_tpl');
+define('_MI_SLIDER_RANDOM_SLIDER_DESC', 'Slider.tpl update block for the current theme');
 
-\define ('_ MI_SLIDER_HIGHSLIDE', 'Framework "highslide"');
-\define ('_ MI_SLIDER_HIGHSLIDE_DESC', "Framework installation folder <a href=\"http://highslide.com/\">Highslide</a>");
+define('_MI_SLIDER_HIGHSLIDE', 'Framework "highslide"');
+define('_MI_SLIDER_HIGHSLIDE_DESC', "Framework installation folder <a href=\"http://highslide.com/\">Highslide</a>");
 
 define('_MI_SLIDER_REBUILD', 'Rebuild the template of slides');
 define('_MI_SLIDER_REBUILD_DESC', "Force template reconstruction, to be used during development. <br> Leave 'No' in production");
 
 define('_MI_SLIDER_EXTRA', 'Extra (CSS & HTML)');
 define('_MI_SLIDER_EXTRA_DESC', "CSS or HTML code added after the list of slides in the \"tpl / slider.tpl \" file <br> This code is only displayed on the home page like the slides <br> It allows you to add a or elements that will appear on all slides, for example a logo with an external link.");
+
+
+define('_MI_STYLE_POINTS', "Style des points de navigation");
+define('_MI_STYLE_POINTS_DESC', "Permet de surcharger le style des points de navigation qui sont parfois peu visible sur certains slide");
+define('_MI_STYLE_POINTS_FLASH', "Style de clignotement");
+define('_MI_STYLE_POINTS_FLASH_DESC', "Permet d'ajouer un clignotement sur les points de navigation.");
+define('_MI_STYLE_POINTS_ACTIVE', "Style du point actif de navigation");
+define('_MI_STYLE_POINTS_ACTIVE_DESC', "Permet de surcharger le style du point actif de navigation qui sont parfois peu visible sur certains slide");
+
+define('_MI_STYLE_TITLE', "Style du titre");
+define('_MI_STYLE_TITLE_DESC', "Permet de surcharger le style par défaut du titre des slides");
+
+define('_MI_STYLE_SUBTITLE', "Style du sous-titre");
+define('_MI_STYLE_SUBTITLE_DESC', "Permet de surcharger le style par défaut du sous-titre des slides");
+
+define('_MI_STYLE_BUTTON', "Style du bouton");
+define('_MI_STYLE_BUTTON_DESC', "Permet de surcharger le style par défaut du bouton des slides");
+
+define('_MI_SLIDER_VERIF_SLIDES_OF_THEME', "Slider - Slides courants");
+define('_MI_SLIDER_VERIF_SLIDES_OF_THEME_DESC', "Verifie la liste des slides en cours");
+
+define('_MI_SLIDER_ADMENU4', "Thèmes");
+define('_MI_SLIDER_ADMENU5', "Styles");
+
+define('_MI_SLIDER_MENU_MANAGER', "Slider menu manager");
+define('_MI_SLIDER_MENU_MANAGER_DESC', "Bloc de gestion des mesnus du bandeau pour xbootstrap et xwatch4");
+
+define('_MI_SLIDER_SURCHARGE_THEME', "// Sucharge du theme");
+define('_MI_SLIDER_SURCHARGE_THEME_DESC', "Permet de surcharger certains attributs du thème comme la couleur de fond, ...");
+
 // ---------------- End ----------------
 

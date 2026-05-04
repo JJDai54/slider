@@ -29,6 +29,7 @@ $option [2] : Valeur binaire qui précise le contenu du menu
                 8  = showAllCatLib   : affiche le menu "toutes les catégories" en tête de liste du menu ou sou-menu
                 16 = showHrBefore    : ajoute une separation avant le bloc
                 32 = showAdminmodule
+                64 = showHrAfter     : ajoute une separation après le bloc
             exemple 
                 3 = showMainMenu + showCategories
                 7 = showMainMenu + showCategories + catIsSubmenu
@@ -38,7 +39,7 @@ $option [3] : // niveau de menu
                 0 = Menu principal
                 1 = Sous-menu de niveau 1
                 2 = sous-menu de niveau 2
-$option [4] : Defini l'ordre liste des items - options d'accès du module (accueil du module, nouveelle entrée, ...)
+$option [4] : Defini l'ordre liste des items - options d'accès du module (accueil du module, nouvelle entrée, ...)
                 0 = $mainMenu, [$tSep], $catItems
                 1 = $catItems, [$tSep], $mainMenu
 
@@ -103,6 +104,7 @@ include_once(XOOPS_ROOT_PATH . "/modules/slider/plugins/{$module}/{$clsName}.php
     $sldPlugin->showAllCatLib   = ((($showingOptions &  8) != 0) || $showingOptions == 0);
     $sldPlugin->showHrBefore    = ((($showingOptions & 16) != 0) || $showingOptions == 0);
     $sldPlugin->showAdminmodule = ((($showingOptions & 32) != 0) || $showingOptions == 0);
+    $sldPlugin->showHrAfter     = ((($showingOptions & 64) != 0) || $showingOptions == 0);
 
     
                                                    

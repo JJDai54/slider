@@ -146,13 +146,13 @@ class Utility
     }
 
     /**
-     * @param \Xmf\Module\Helper $helper
+     * @param \Xmf\Module\Helper $sliderHelper
      * @param array|null         $options
      * @return \XoopsFormDhtmlTextArea|\XoopsFormEditor
      */
-    public static function getEditor($helper = null, $options = null)
+    public static function getEditor($sliderHelper = null, $options = null)
     {
-        /** @var Slider\Helper $helper */
+        /** @var Slider\Helper $sliderHelper */
         if (null === $options) {
             $options           = [];
             $options['name']   = 'Editor';
@@ -163,13 +163,13 @@ class Utility
             $options['height'] = '400px';
         }
 
-        $isAdmin = $helper->isUserAdmin();
+        $isAdmin = $sliderHelper->isUserAdmin();
 
         if (\class_exists('XoopsFormEditor')) {
             if ($isAdmin) {
-                $descEditor = new \XoopsFormEditor(\ucfirst($options['name']), $helper->getConfig('editorAdmin'), $options, $nohtml = false, $onfailure = 'textarea');
+                $descEditor = new \XoopsFormEditor(\ucfirst($options['name']), $sliderHelper->getConfig('editorAdmin'), $options, $nohtml = false, $onfailure = 'textarea');
             } else {
-                $descEditor = new \XoopsFormEditor(\ucfirst($options['name']), $helper->getConfig('editorUser'), $options, $nohtml = false, $onfailure = 'textarea');
+                $descEditor = new \XoopsFormEditor(\ucfirst($options['name']), $sliderHelper->getConfig('editorUser'), $options, $nohtml = false, $onfailure = 'textarea');
             }
         } else {
             $descEditor = new \XoopsFormDhtmlTextArea(\ucfirst($options['name']), $options['name'], $options['value'], '100%', '100%');
@@ -258,7 +258,7 @@ var hasSelected = false; var selectBox = myform.item[A][amount];for (i = 0; i < 
  * 
  ****************************************************************************/
 public static function include_highslide($options = null){
-  Global $xoTheme,$helper, $xoopsModuleConfig;
+  Global $xoTheme,$sliderHelper, $xoopsModuleConfig;
 
   //$xoTheme->addScript('browse.php?jquery/jquery.js');
 //	$xoTheme->addScript(XOOPS_URL . '/browse.php?Frameworks/jquery/jquery.js');  
@@ -266,7 +266,7 @@ public static function include_highslide($options = null){
 //   $xoTheme->addStylesheet('browse.php?Frameworks/zoom/highslide.css');
 //   $xoTheme->addScript('browse.php?Frameworks/zoom/highslide.js');
 
-//$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $helper->getConfig('highslide');  
+//$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $sliderHelper->getConfig('highslide');  
 $highslide = XOOPS_URL . "/Frameworks/" . $xoopsModuleConfig['highslide'];  
 //echo "===>highslide : <hr>{$highslide}<hr>";  
 

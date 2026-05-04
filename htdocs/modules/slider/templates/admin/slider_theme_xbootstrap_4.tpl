@@ -63,7 +63,7 @@
 
                 <{if $slide.read_more != ''}>
                 <p><a <{if $slide.style_button_name <> ''}>id="<{$slide.style_button_name}>"<{/if}> href="<{$slide.read_more}>" class="btn btn-large btn-primary" target='_blank'>
-                  <{if $slide.button_title <> ''}><{$slide.button_title}><{else}><{$smarty.const._CO_THEME_READMORE}><{/if}>
+                  <span inert><{if $slide.button_title <> ''}><{$slide.button_title}><{else}><{$smarty.const._CO_THEME_READMORE}><{/if}></span>
                 </a></p>
                 <{/if}>                             
 

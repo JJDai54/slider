@@ -9,35 +9,35 @@ Array
                 (
                     [id] => -1
                     [lib] => Tous les articles
-                    [url] => https://oritheque.fr/modules/news/index.php?storytopic=
+                    [url] => https://origami4.jubile.fr/modules/news/index.php?storytopic=
                 )
 
             [0] => Array
                 (
                     [id] => 0
                     [lib] => Actualités
-                    [url] => https://oritheque.fr/modules/news/index.php?storytopic=1
+                    [url] => https://origami4.jubile.fr/modules/news/index.php?storytopic=1
                 )
 
             [1] => Array
                 (
                     [id] => 1
                     [lib] => Portraits
-                    [url] => https://oritheque.fr/modules/news/index.php?storytopic=2
+                    [url] => https://origami4.jubile.fr/modules/news/index.php?storytopic=2
                 )
 
         )
 
     [module] => Array
         (
-            [url] => https://oritheque.fr/modules/news
+            [url] => https://origami4.jubile.fr/modules/news
             [lib] => Actualités
             [nbMainMenu] => 5
         )
 
     [search] => Array
         (
-            [url] => https://oritheque.fr/modules/news/index.php?storytopic=
+            [url] => https://origami4.jubile.fr/modules/news/index.php?storytopic=
             [lib] => Tous les articles
         )
 
@@ -45,31 +45,31 @@ Array
         (
             [submit] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/submit.php
+                    [url] => https://origami4.jubile.fr/modules/news/submit.php
                     [lib] => Soumettre un article
                 )
 
             [approve] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/admin/index.php?op=newarticle
+                    [url] => https://origami4.jubile.fr/modules/news/admin/index.php?op=newarticle
                     [lib] => Valider les articles en attente d''approbation
                 )
 
             [topicsIndex] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/topics_directory.php
+                    [url] => https://origami4.jubile.fr/modules/news/topics_directory.php
                     [lib] => Index des catégories
                 )
 
             [archives] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/archive.php
+                    [url] => https://origami4.jubile.fr/modules/news/archive.php
                     [lib] => Archives
                 )
 
             [whoswho] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/whoswho.php
+                    [url] => https://origami4.jubile.fr/modules/news/whoswho.php
                     [lib] => Annuaire des auteurs
                 )
 
@@ -111,31 +111,31 @@ Array
         (
             [submit] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/submit.php
+                    [url] => https://origami4.jubile.fr/modules/news/submit.php
                     [lib] => _MB_NEWS_SUBMIT
                 )
 
             [approve] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/admin/index.php?op=newarticle
+                    [url] => https://origami4.jubile.fr/modules/news/admin/index.php?op=newarticle
                     [lib] => _MB_NEWS_APPROVE_STORYES
                 )
 
             [topicsIndex] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/topics_directory.php
+                    [url] => https://origami4.jubile.fr/modules/news/topics_directory.php
                     [lib] => _MB_NEWS_TOPICS_INDEX
                 )
 
             [archives] => Array
                 (
-                    [url] => https://oritheque.fr/modules/newsarchive.php
+                    [url] => https://origami4.jubile.fr/modules/newsarchive.php
                     [lib] => _MB_NEWS_ARCHIVES
                 )
 
             [whoswho] => Array
                 (
-                    [url] => https://oritheque.fr/modules/news/whoswho.php
+                    [url] => https://origami4.jubile.fr/modules/news/whoswho.php
                     [lib] => _MB_NEWS_WHOS_WHO
                 )
 

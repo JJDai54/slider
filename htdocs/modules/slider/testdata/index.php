@@ -26,9 +26,9 @@ $op = \Xmf\Request::getCmd('op', '');
 $moduleDirName      = \basename(\dirname(__DIR__));
 $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 
-$helper = Slider\Helper::getInstance();
+$sliderHelper = Slider\Helper::getInstance();
 // Load language files
-$helper->loadLanguage('common');
+$sliderHelper->loadLanguage('common');
 
 switch ($op) {
     case 'load':

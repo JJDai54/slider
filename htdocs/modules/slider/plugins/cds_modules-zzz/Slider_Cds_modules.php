@@ -64,7 +64,7 @@ public function getMainMenu(){
       $mainMenu[$module]['url'] = $moduleUrl . $module;
       $mainMenu[$module]['lib'] = _MB_SLD_CDS_MODULES_XOOPSFAQ;
     
-      $mainMenu['Facebook']['url'] = "https://www.facebook.com/profile.php?id=61584450072053";
+      $mainMenu['Facebook']['url'] = "https://www.facebook.com/Conseil-Des-Sages-De-Sainte-Genevi%C3%A8ve-Des-Bois-120796678500074/";
       $mainMenu['Facebook']['lib'] = _MB_SLD_CDS_MODULES_FACEBOOK;
     
       //$mainMenu['confinement']['url'] = $moduleUrl .  "newbb/viewtopic.php?topic_id=2";

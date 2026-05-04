@@ -5,7 +5,7 @@
 
 jQuery(document).ready(function(){
       //$("#block_slides").parent().children('h4:first').html('');
-      //$("#block_slides").parent().hide();
+      $("#block_slides").parent().hide();
 });
 
 //alert("masquage du titre");

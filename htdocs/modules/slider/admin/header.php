@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 include \dirname(\dirname(\dirname(__DIR__))) . '/include/cp_header.php';
 include_once \dirname(__DIR__) . '/include/common.php';
@@ -29,15 +29,15 @@ $modPathIcon16   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons
 $modPathIcon32   = SLIDER_URL . '/' . $GLOBALS['xoopsModule']->getInfo('modicons32');
 
 // Get instance of module
-$helper = \XoopsModules\Slider\Helper::getInstance();
+$sliderHelper = \XoopsModules\Slider\Helper::getInstance();
 
-$slidesHandler = $helper->getHandler('Slides');
-$themesHandler = $helper->getHandler('Themes');
-$stylesHandler = $helper->getHandler('Styles');
+$slidesHandler = $sliderHelper->getHandler('Slides');
+$themesHandler = $sliderHelper->getHandler('Themes');
+$stylesHandler = $sliderHelper->getHandler('Styles');
 $allStyles = null;
 
 $myts = MyTextSanitizer::getInstance();
-//echo "<hr>"  . $helper->getConfig('highslide') . "<hr>";
+//echo "<hr>"  . $sliderHelper->getConfig('highslide') . "<hr>";
 // 
 if (!isset($xoopsTpl) || !\is_object($xoopsTpl)) {
     include_once XOOPS_ROOT_PATH . '/class/template.php';

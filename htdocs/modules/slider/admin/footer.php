@@ -17,10 +17,10 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 if (isset($templateMain)) {
-    $GLOBALS['xoopsTpl']->assign('maintainedby', $helper->getConfig('maintainedby'));
+    $GLOBALS['xoopsTpl']->assign('maintainedby', $sliderHelper->getConfig('maintainedby'));
     $GLOBALS['xoopsTpl']->display("db:{$templateMain}");
 }
 

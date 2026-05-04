@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 /*
@@ -94,9 +94,20 @@ public function getMainMenu(){
 global $xoopsDB;
 $this->options['captionAll'] = _MB_SLD_XMNEWS_ALL_CAT;
 
+    $mainMenu = array();
+
+    //ajout du trombinoscope
+    $moduleUrl = XOOPS_URL . "/modules/trombinoscope/" ;
+    $tTrombi = array();
+    $tTrombi['url'] = $moduleUrl . 'members.php';
+    $tTrombi['lib'] = "Trombinoscope";
+    $mainMenu[] = $tTrombi;
+    
+    $mainMenu[] = ['url'=>'#', 'lib'=>SLIDER_HR_GREY] ;
+    //------------------------------------------------------------
+
     $permsNames = $this->getPermsissionsNames();
     $moduleUrl = XOOPS_URL . "/modules/" . $this->moduleDirName;
-    $mainMenu = array();
 
     $lstCats = "3,4,5";
     $tblCats = $xoopsDB->prefix("xmnews_category");

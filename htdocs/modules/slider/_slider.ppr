@@ -18,7 +18,7 @@ Extensions=*.*
 [Project tree]
 _slider
 	+slider
-		+admin
+		-admin
 			admin\about.php
 			admin\feedback.php
 			admin\footer.php
@@ -173,8 +173,8 @@ _slider
 			include\uninstall.php
 			include\update.php
 			include\xoops_version.inc.php
-		-language
-			-english
+		+language
+			+english
 				-help
 					language\english\help\help.tpl
 					language\english\help\index.html
@@ -241,7 +241,7 @@ _slider
 				plugins\news\french.php
 				plugins\news\index.html
 				plugins\news\Slider_News.php
-			-quizmaker
+			+quizmaker
 				plugins\quizmaker\english.php
 				plugins\quizmaker\french.php
 				plugins\quizmaker\index.html
@@ -276,11 +276,11 @@ _slider
 			preloads\autoloader.php
 			preloads\core.php
 			preloads\index.html
-		+sql
+		-sql
 			sql\index.html
 			sql\mysql.sql
 		+templates
-			+admin
+			-admin
 				templates\admin\index.html
 				templates\admin\slider_admin_about.tpl
 				templates\admin\slider_admin_footer.tpl
@@ -294,7 +294,7 @@ _slider
 				templates\admin\slider_main-02.tpl
 				templates\admin\slider_theme_xbootstrap_3.tpl
 				templates\admin\slider_theme_xbootstrap_4.tpl
-			-blocks
+			+blocks
 				templates\blocks\index.html
 				templates\blocks\slider_block_slides_of_theme.tpl
 				templates\blocks\slider_block_update_theme_slides.tpl
@@ -315,7 +315,7 @@ _slider
 			testdata\index.php
 			testdata\slider.tpl
 			testdata\slider-old.tpl
-		+versions
+		-versions
 			versions\index.html
 			versions\Slider_2_02.php
 			versions\Slider_2_03.php
@@ -325,130 +325,5 @@ _slider
 			versions\Slider_2_20.php
 		xoops_version.php
 [Open project files]
-0=class\Slider_Plugin.php
-1=templates\slider_menu_xswatch4_main.tpl
-2=templates\blocks\slider_menu_manager.tpl
-3=plugins\cds_modules\Slider_Cds_modules.php
-4=class\ThemesHandler.php
-5=admin\themes.php
-6=templates\admin\slider_admin_themes.tpl
-7=admin\slides.php
-8=Nouveau1.tpl
-9=admin\menu.php
-10=templates\admin\slider_theme_xbootstrap_4.tpl
-11=language\french\common.php
-12=include\common.php
-13=include\functions.php
-14=blocks\menu_manager.php
-15=class\Constants.php
-16=class\Helper.php
-17=class\SlidesHandler.php
-18=class\Styles.php
-19=templates\admin\slider_admin_about.tpl
-20=templates\admin\slider_admin_index.tpl
-21=templates\blocks\slider_block_update_theme_slides.tpl
-22=templates\blocks\slider_block_slides_of_theme.tpl
-23=plugins\wggallery\french.php
-24=plugins\wggallery\english.php
-25=templates\admin\slider_admin_slides.tpl
-26=versions\Slider_2_02.php
-27=xoops_version.php
-28=admin\about.php
-29=plugins\xoopsfaq\Slider_Xoopsfaq.php
-30=docs\array-xbootstrap.php
 [Selected Project Files]
 Main=
-Selected=xoops_version.php
-[class\Slider_Plugin.php]
-TopLine=30
-Caret=6,59
-[templates\slider_menu_xswatch4_main.tpl]
-TopLine=1
-Caret=18,33
-[templates\blocks\slider_menu_manager.tpl]
-TopLine=1
-Caret=1,5
-[plugins\cds_modules\Slider_Cds_modules.php]
-TopLine=9
-Caret=24,35
-[class\ThemesHandler.php]
-TopLine=331
-Caret=3,331
-[admin\themes.php]
-TopLine=45
-Caret=12,45
-[templates\admin\slider_admin_themes.tpl]
-TopLine=85
-Caret=6,113
-[admin\slides.php]
-TopLine=1
-Caret=1,1
-[Nouveau1.tpl]
-TopLine=1
-Caret=34,8
-[admin\menu.php]
-TopLine=2
-Caret=1,22
-[templates\admin\slider_theme_xbootstrap_4.tpl]
-TopLine=33
-Caret=54,86
-[language\french\common.php]
-TopLine=162
-Caret=13,214
-[include\common.php]
-TopLine=1
-Caret=1,22
-[include\functions.php]
-TopLine=10
-Caret=1,29
-[blocks\menu_manager.php]
-TopLine=86
-Caret=17,104
-[class\Constants.php]
-TopLine=1
-Caret=1,1
-[class\Helper.php]
-TopLine=9
-Caret=1,1
-[class\SlidesHandler.php]
-TopLine=11
-Caret=1,1
-[class\Styles.php]
-TopLine=23
-Caret=1,1
-[templates\admin\slider_admin_about.tpl]
-TopLine=1
-Caret=3,29
-[templates\admin\slider_admin_index.tpl]
-TopLine=1
-Caret=10,8
-[templates\blocks\slider_block_update_theme_slides.tpl]
-TopLine=1
-Caret=7,18
-[templates\blocks\slider_block_slides_of_theme.tpl]
-TopLine=1
-Caret=41,8
-[plugins\wggallery\french.php]
-TopLine=1
-Caret=1,31
-[plugins\wggallery\english.php]
-TopLine=1
-Caret=1,28
-[templates\admin\slider_admin_slides.tpl]
-TopLine=41
-Caret=113,72
-[versions\Slider_2_02.php]
-TopLine=1
-Caret=32,17
-[xoops_version.php]
-TopLine=18
-Caret=51,36
-[admin\about.php]
-TopLine=12
-Caret=28,30
-[plugins\xoopsfaq\Slider_Xoopsfaq.php]
-TopLine=1
-Caret=70,20
-[docs\array-xbootstrap.php]
-TopLine=3
-Caret=30,12

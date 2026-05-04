@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 include_once 'common.php';
@@ -86,9 +86,10 @@ define('_MI_SLIDER_FACEBOOK_COMMENTS', 'Commentaires Facebook');
 define('_MI_SLIDER_FACEBOOK_COMMENTS_DESC', 'Autoriser les commentaires Facebook dans une seule page');
 define('_MI_SLIDER_DISQUS_COMMENTS', 'Disqus comments');
 define('_MI_SLIDER_DISQUS_COMMENTS_DESC', 'Autoriser les commentaires Disqus dans la page unique');
+
 // JJDai
-define('_AM_SLIDER_RANDOM_SLIDER', 'Slider - Aléatoire');
-define('_AM_SLIDER_RANDOM_SLIDER_DESC', 'Block de mise jour aléatoire');
+define('_MI_SLIDER_RANDOM_SLIDER', 'Slider - Aléatoire');
+define('_MI_SLIDER_RANDOM_SLIDER_DESC', 'Block de mise jour aléatoire');
 
 define('_MI_SLIDER_HIGHSLIDE', 'Framework "highslide"');
 define('_MI_SLIDER_HIGHSLIDE_DESC', "Dossier d'installation du framework <a href=\"http://highslide.com/\">Highslide</a>");

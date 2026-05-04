@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use XoopsModules\Slider;
@@ -25,6 +25,7 @@ use XoopsModules\Slider\Helper;
 use XoopsModules\Slider\Constants;
 
 include_once XOOPS_ROOT_PATH . '/modules/slider/include/common.php';
+include_once XOOPS_ROOT_PATH . '/modules/slider/class/Helper.php';
 
 /**
  * Function show block
@@ -33,14 +34,16 @@ include_once XOOPS_ROOT_PATH . '/modules/slider/include/common.php';
  */
 function b_slider_update_theme_slides_show($options)
 {
-global $xoopsConfig, $helper;
+global $xoopsConfig, $sliderHelper;
 //exit;
-    $helper      = Helper::getInstance();
+//    $sliderHelper      = Helper::getInstance();
+    $sliderHelper = \XoopsModules\Slider\Helper::getInstance();
+    
     //recupe du theme actif
     $theme = $xoopsConfig['theme_set'];
     $block = array();
-    $themesHandler = $helper->getHandler('Themes');
-    $slidesHandler = $helper->getHandler('Slides');
+    $themesHandler = $sliderHelper->getHandler('Themes');
+    $slidesHandler = $sliderHelper->getHandler('Slides');
     
     $themeObj = $themesHandler->getThemeByName($theme);
     $hideBlock = 1;
@@ -65,7 +68,7 @@ global $xoopsConfig, $helper;
    
     
     //--------------------------------------------------------------
-    $forceRebuild = $helper->getConfig('forceRebuildSlides');
+    $forceRebuild = $sliderHelper->getConfig('forceRebuildSlides');
     //$criteria = new \criteria("theme_actif")
     $bolOk = build_new_tpl($slides, $theme, $periodicite, $forceRebuild);
     $block['generation'] = ($bolOk) ? _MB_SLIDER_TPL_OK : _MB_SLIDER_TPL_NOT_OK;
@@ -91,13 +94,13 @@ function b_slider_update_theme_slides_edit($options)
  * 
  **********************************************************************/
 function build_new_tpl($slides, $theme, $periodicite, $forceRebuild = false){
-global $helper, $themesHandler;
+global $sliderHelper, $themesHandler;
 
 
 //echo "<hr>slides<pre>" . print_r($slides, true) . "</pre><hr>"; exit("build_new_tpl");   
 //exit;
     //$themeVersion = sld_getThemesVersion($theme);
-    $themesHandler = $helper->getHandler('Themes');
+    $themesHandler = $sliderHelper->getHandler('Themes');
     $dbTheme = $themesHandler->getThemeByName($theme);
     
     // generation du fichier de flag pour eviter de reconstruire à chaque connexion utilisateur   

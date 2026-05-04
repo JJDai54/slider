@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
  
@@ -50,7 +50,7 @@ define('SLIDER_THEMES_PATH',SLIDER_PATH . "/templates/admin");
 
 $localLogo = SLIDER_IMAGE_URL . '/jjdai_logo.png';
 // Module Information
-$copyright = "<a href='https://xoopsfr.kiolo.fr>' title='Origami du monde' target='_blank'><img src='" . $localLogo . "' alt='Origami du monde' /></a>";
+$copyright = "<a href='http://jubile.fr' title='Origami du monde' target='_blank'><img src='" . $localLogo . "' alt='Origami du monde' /></a>";
 include_once XOOPS_ROOT_PATH . '/class/xoopsrequest.php';
 include_once SLIDER_PATH . '/include/functions.php';
 include_once SLIDER_PATH . '/include/fnc-slider.php';

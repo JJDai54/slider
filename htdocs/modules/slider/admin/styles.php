@@ -33,7 +33,7 @@ require __DIR__ . '/header.php';
 $op = Request::getCmd('op', 'list');
 $styId = Request::getInt('sty_id');
 $start = Request::getInt('start', 0);
-$limit = Request::getInt('limit', $helper->getConfig('adminpager'));
+$limit = Request::getInt('limit', $sliderHelper->getConfig('adminpager'));
 $GLOBALS['xoopsTpl']->assign('start', $start);
 $GLOBALS['xoopsTpl']->assign('limit', $limit);
 

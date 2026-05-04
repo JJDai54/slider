@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 // 
@@ -33,7 +33,7 @@ $modversion = [
     'description'         => _MI_SLIDER_DESC,
     'author'              => 'JJDai',
     'author_mail'         => 'jjdelalandre@orange.fr',
-    'author_website_url'  => 'https://xoopsfr.kiolo.fr>',
+    'author_website_url'  => 'http://jubile.fr',
     'author_website_name' => 'Origami du monde',
     'credits'             => 'XOOPS Development Team',
     'license'             => 'GPL 2.0 or later',
@@ -104,8 +104,8 @@ $modversion['tables'] = [
 // ------------------- Blocks ------------------- //
 $modversion['blocks'][] = [
     'file'        => 'update_theme_slides.php',
-    'name'        => _AM_SLIDER_RANDOM_SLIDER,
-    'description' => _AM_SLIDER_RANDOM_SLIDER_DESC,
+    'name'        => _MI_SLIDER_RANDOM_SLIDER,
+    'description' => _MI_SLIDER_RANDOM_SLIDER_DESC,
     'show_func'   => 'b_slider_update_theme_slides_show',
     'edit_func'   => 'b_slider_update_theme_slides_edit', 
     'template'    => 'slider_block_update_theme_slides.tpl',

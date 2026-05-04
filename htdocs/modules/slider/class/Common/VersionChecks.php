@@ -86,13 +86,13 @@ trait VersionChecks
     /**
      * compares current module version with latest GitHub release
      * @static
-     * @param \Xmf\Module\Helper $helper
+     * @param \Xmf\Module\Helper $sliderHelper
      * @param string|null        $source
      * @param string|null        $default
      *
      * @return string|array info about the latest module version, if newer
      */
-    public static function checkVerModule($helper, $source = 'github', $default = 'master')
+    public static function checkVerModule($sliderHelper, $source = 'github', $default = 'master')
     {
         $moduleDirName      = \basename(\dirname(\dirname(__DIR__)));
         $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
@@ -126,7 +126,7 @@ trait VersionChecks
                         $latestVersion = \str_replace('_', '', \mb_strtolower($latestVersion));
                         $latestVersion = \str_replace('final', '', \mb_strtolower($latestVersion));
                     }
-                    $moduleVersion = ($helper->getModule()->getInfo('version') . '_' . $helper->getModule()->getInfo('module_status'));
+                    $moduleVersion = ($sliderHelper->getModule()->getInfo('version') . '_' . $sliderHelper->getModule()->getInfo('module_status'));
                     //"PHP-standardized" version
                     $moduleVersion = \str_replace(' ', '', \mb_strtolower($moduleVersion));
                     //                    $moduleVersion = '1.0'; //for testing only

@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 
@@ -82,7 +82,7 @@ foreach (\array_keys($folder) as $i) {
 
 $adminObject->addConfigBoxLine('');
 global $xoopsModuleConfig;
-//$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $helper->getConfig('highslide');  
+//$highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $sliderHelper->getConfig('highslide');  
 $highslide = XOOPS_ROOT_PATH . "/Frameworks/" . $xoopsModuleConfig['highslide'];  
 //echo "===>highslide : <hr>{$highslide}<hr>";                           
     $adminObject->addConfigBoxLine($highslide, 'folder');
@@ -106,7 +106,7 @@ if (is_dir($trierTableauHTML)){
 // Render Index
 $GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('index.php'));
 // Test Data
-if ($helper->getConfig('displaySampleButton')) {
+if ($sliderHelper->getConfig('displaySampleButton')) {
     \xoops_loadLanguage('admin/modulesadmin', 'system');
     include_once \dirname(__DIR__) . '/testdata/index.php';
     $adminObject->addItemButton(\constant('CO_SLIDER_ADD_SAMPLEDATA'), '__DIR__ . /../../testdata/index.php?op=load', 'add');

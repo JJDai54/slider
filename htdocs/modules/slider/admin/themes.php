@@ -17,7 +17,7 @@
  * @package        xbootstrap
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use Xmf\Request;
@@ -52,7 +52,7 @@ switch ($op) {
 		// Define Stylesheet
 		$GLOBALS['xoTheme']->addStylesheet($style, null);
 		$start = Request::getInt('start', 0);
-		$limit = Request::getInt('limit', $helper->getConfig('adminpager'));
+		$limit = Request::getInt('limit', $sliderHelper->getConfig('adminpager'));
 		$templateMain = 'slider_admin_themes.tpl';
 		$GLOBALS['xoopsTpl']->assign('navigation', $adminObject->displayNavigation('themes.php'));
         

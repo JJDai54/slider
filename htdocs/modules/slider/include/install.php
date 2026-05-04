@@ -57,17 +57,17 @@ function xoops_module_install_slider(\XoopsModule $module)
 {
     require \dirname(__DIR__) . '/preloads/autoloader.php';
 
-    /** @var Slider\Helper $helper */ 
+    /** @var Slider\Helper $sliderHelper */ 
     /** @var Slider\Utility $utility */
     /** @var Common\Configurator $configurator */
-    $helper       = Slider\Helper::getInstance();
+    $sliderHelper       = Slider\Helper::getInstance();
     $utility      = new Slider\Utility();
     $configurator = new Common\Configurator();
 
     // Load language files
-    $helper->loadLanguage('admin');
-    $helper->loadLanguage('modinfo');
-    $helper->loadLanguage('common');
+    $sliderHelper->loadLanguage('admin');
+    $sliderHelper->loadLanguage('modinfo');
+    $sliderHelper->loadLanguage('common');
 
     //  ---  CREATE FOLDERS ---------------
     if ($configurator->uploadFolders && \is_array($configurator->uploadFolders)) {

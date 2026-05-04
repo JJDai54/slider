@@ -17,7 +17,7 @@
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use XoopsModules\Slider;
@@ -45,13 +45,13 @@ function force_rebuild_slider() {
  */
 function generer_new_tpl_slider($theme)
 {
-global $xoopsConfig, $helper, $slidesHandler, $themesHandler;
+global $xoopsConfig, $sliderHelper, $slidesHandler, $themesHandler;
 //echo "===>generer_new_tpl_slider : theme ={$theme}<br>";
     
     if (is_null($slidesHandler)) {
-$helper = \XoopsModules\Slider\Helper::getInstance();
-$slidesHandler = $helper->getHandler('Slides');
-$themesHandler = $helper->getHandler('Themes');
+$sliderHelper = \XoopsModules\Slider\Helper::getInstance();
+$slidesHandler = $sliderHelper->getHandler('Slides');
+$themesHandler = $sliderHelper->getHandler('Themes');
     }
     
     $themeObj = $themesHandler->getThemeByName($theme);
@@ -88,9 +88,9 @@ $themesHandler = $helper->getHandler('Themes');
     
 $sldOptions = array();
 $clignotement_name='flash_points';
-$sldOptions['slider_style_points'] = $helper->getConfig('slider_style_points') . "\n animation-name: {$clignotement_name};\n";
-$sldOptions['slider_style_point_active'] = $helper->getConfig('slider_style_point_active');
-$sldOptions['slider_style_clignotement'] = $helper->getConfig('slider_style_clignotement');
+$sldOptions['slider_style_points'] = $sliderHelper->getConfig('slider_style_points') . "\n animation-name: {$clignotement_name};\n";
+$sldOptions['slider_style_point_active'] = $sliderHelper->getConfig('slider_style_point_active');
+$sldOptions['slider_style_clignotement'] = $sliderHelper->getConfig('slider_style_clignotement');
 $sldOptions['clignotement_name'] = 'flash_points';
 $sldOptions['slider_transition'] = ($themeObj['transition']==1) ? 'vert' : '';
 $sldOptions['show_slider'] = 1; //$themeObj['']==1) ? 'vert' : '';    
@@ -114,7 +114,7 @@ $sldOptions['show_jumbotron'] = 0; //$themeObj['']==1) ? 'vert' : '';
     // sauvegarde du nouveau tpl/slide.tpl
     $tplOrg = str_replace ("__SLIDES__", $allSlides, $tplOrg);
     $tplOrg = str_replace ("__STYLES__", $allStyles, $tplOrg);
-    $tplOrg = str_replace ("__EXTRA__", $helper->getConfig('slider-extra'), $tplOrg);
+    $tplOrg = str_replace ("__EXTRA__", $sliderHelper->getConfig('slider-extra'), $tplOrg);
     saveTexte2File($fullName, $tplOrg, $mod = 0777);    
     
     //-------------------------------------------------
@@ -305,7 +305,7 @@ function deleteSliderthemeFlag($theme) {
  * @return null
 */
 function setBlockSliderVisible($visible = true) {
-global $xoopsDB, $xoopsModule, $helper;
+global $xoopsDB, $xoopsModule, $sliderHelper;
 //$xoopsModule   = XoopsModule::getByDirname($dirname);
 $intVisible = ($visible) ? 1 : 0;
 $moduleId = $xoopsModule->getVar('mid');
@@ -387,7 +387,7 @@ function getCriteriaOFCurrentStatus() {
 */
 function sld_getFlagPeriodicity($periodicite, $slidesIds)
 {
-global $xoopsConfig, $helper;
+global $xoopsConfig, $sliderHelper;
     //recupe du theme actif
     $theme = $xoopsConfig['theme_set'];
     $ids = "";
@@ -675,7 +675,7 @@ function getPeriodicityCaptions($prefixConst = '_CO_'){
      _SLD_PERIODICITY_MAJ_YEAR        => constant($prefixConst . 'SLIDER_PERIODICITE_RND_YEAR')
     );
 */ 
-
+if (defined('_CO_SLIDER_PERIODICITE_RND_NEVER')){
     $tCaptions = array(
      _SLD_PERIODICITY_MAJ_NEVER       => _CO_SLIDER_PERIODICITE_RND_NEVER,
      _SLD_PERIODICITY_MAJ_RANDOM      => _CO_SLIDER_PERIODICITE_RND_RANDOM,
@@ -689,6 +689,9 @@ function getPeriodicityCaptions($prefixConst = '_CO_'){
      _SLD_PERIODICITY_MAJ_SEMESTER    => _CO_SLIDER_PERIODICITE_RND_SEMESTER,
      _SLD_PERIODICITY_MAJ_YEAR        => _CO_SLIDER_PERIODICITE_RND_YEAR
     );
+}else{
+    $tCaptions = array();
+}
     return $tCaptions;
 }
 
@@ -698,7 +701,11 @@ function getPeriodicityCaptions($prefixConst = '_CO_'){
 function getPeriodicityCaption($key, $prefixConst = '_CO_'){
 //echo "===>getPeriodicityCaption :  prefixConst = {$prefixConst}<br>";
     $tPer = getPeriodicityCaptions($prefixConst);
-    return($tPer[$key]);
+    if(isset($tPer[$key])){
+        return $tPer[$key];
+    }else{
+        return '???';
+    }
 }
     
    /* *****************************
@@ -747,7 +754,7 @@ function getCssParser($folder, $styleCss, $parse = true){
 *
 * ***** */
 function sld_getBlockInfo(){
-global $xoopsDB, $xoopsModule, $helper;
+global $xoopsDB, $xoopsModule, $sliderHelper;
 //$xoopsModule   = XoopsModule::getByDirname($dirname);
 
     $moduleId = $xoopsModule->getVar('mid');

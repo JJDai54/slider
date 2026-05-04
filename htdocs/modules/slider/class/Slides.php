@@ -20,7 +20,7 @@ namespace XoopsModules\Slider;
  * @package        slider
  * @since          1.0
  * @min_xoops      2.5.9
- * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<https://xoopsfr.kiolo.fr>>
+ * @author         JJDai - Email:<jjdelalandre@orange.fr> - Website:<http://jubile.fr>
  */
 
 use XoopsModules\Slider;
@@ -94,12 +94,12 @@ class Slides extends \XoopsObject
     {
         global $stylesHandler;
         
-        $helper  = \XoopsModules\Slider\Helper::getInstance();
+        $sliderHelper  = \XoopsModules\Slider\Helper::getInstance();
         $utility = new \XoopsModules\Slider\Utility();
         $allStyles = $stylesHandler->getListKeyName(true);
         
         $isNew = $this->isNew();
-        $helper = \XoopsModules\Slider\Helper::getInstance();
+        $sliderHelper = \XoopsModules\Slider\Helper::getInstance();
         if (!$action) {
             $action = $_SERVER['REQUEST_URI'];
         }
@@ -136,7 +136,7 @@ class Slides extends \XoopsObject
         }
 
         //Selection d'un image locale dans l'explorateur
-        $upload_size = $helper->getConfig('maxsize_image'); 
+        $upload_size = $sliderHelper->getConfig('maxsize_image'); 
         $inpLoadImg = new \XoopsFormFile(_AM_SLIDER_SLIDE_TO_LOAD, 'sld_image', $upload_size);
 //        $inpLoadImg->setExtra('accept="image/png, image/jpeg, image/gif"');
 
@@ -180,9 +180,9 @@ class Slides extends \XoopsObject
         // Form Editor DhtmlTextArea sldDescription
         $editorConfigs = [];
         if ($isAdmin) {
-            $editor = $helper->getConfig('editor_admin');
+            $editor = $sliderHelper->getConfig('editor_admin');
         } else {
-            $editor = $helper->getConfig('editor_user');
+            $editor = $sliderHelper->getConfig('editor_user');
         }
         
         $editorConfigs['name'] = 'sld_subtitle';
@@ -201,7 +201,7 @@ class Slides extends \XoopsObject
         $inpStyleIdTitle = new \XoopsFormSelect('', 'sld_style_id_title', $styleIdTitle);   
         $inpStyleIdTitle->addoptionArray($allStyles);
         
-        //$css = ($isNew) ? $helper->getConfig('slider_style_title') : $this->getVar('sld_style_title', 'e');
+        //$css = ($isNew) ? $sliderHelper->getConfig('slider_style_title') : $this->getVar('sld_style_title', 'e');
         $inputStyleTxtTitle = new \XoopsFormTextArea('', 'sld_style_title', $this->getVar('sld_style_title', 'e'), $nbLinesTA, 60);
         $inputStyleTxtTitle->setExtra($stylTA);
         
@@ -290,7 +290,7 @@ class Slides extends \XoopsObject
             //if(count($themeARR)==0) $themeARR = array($SelectedTheme);
         }
 //global $themesHandler;
-$themesHandler = $helper->getHandler('Themes');
+$themesHandler = $sliderHelper->getHandler('Themes');
 //         $xfTheme = new \XoopsFormSelect(_AM_SLIDER_SLIDE_SELECT_THEME, 'sld_theme', $theme);   
 //         $xfTheme->setDescription(_AM_SLIDER_SLIDE_SELECT_THEME_DESC);        
 //         $xfTheme->addOptionArray($themesHandler->getThemesAllowed(true));   
@@ -400,14 +400,14 @@ $perDate->addElement($sldDate_end);
     public function getValuesSlides($keys = null, $format = null, $maxDepth = null)
     {
     global $stylesHandler;
-        $helper  = \XoopsModules\Slider\Helper::getInstance();
+        $sliderHelper  = \XoopsModules\Slider\Helper::getInstance();
         $utility = new \XoopsModules\Slider\Utility();
         //$ret = $this->getValues($keys, $format, $maxDepth);
         $ret['id']                 = $this->getVar('sld_id');
         $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['title']              = $this->getVar('sld_title');
         $ret['subtitle']        = $this->getVar('sld_subtitle', 'e');
-        //$editorMaxchar             = $helper->getConfig('editor_maxchar');
+        //$editorMaxchar             = $sliderHelper->getConfig('editor_maxchar');
         $ret['read_more']          = $this->getVar('sld_read_more');
         $ret['short_name']         = $this->getVar('sld_short_name');
         $ret['weight']             = $this->getVar('sld_weight');
@@ -421,6 +421,7 @@ $perDate->addElement($sldDate_end);
 
         $ret['periodicity']        = (int)$this->getVar('sld_periodicity');
         $ret['periodicity_yn']     = (int)$this->getVar('sld_periodicity') > 0 ? _YES : _NO;
+        if(defined('')){
         $ret['periodicity_title']     = ["",
                                          _CO_SLIDER_PERIODICITE_ALWAYS,
                                          _CO_SLIDER_PERIODICITE_FLOAT,
@@ -430,6 +431,9 @@ $perDate->addElement($sldDate_end);
                                          _CO_SLIDER_PERIODICITE_QUATER,
                                          _CO_SLIDER_PERIODICITE_SEMESTER,
                                          _CO_SLIDER_PERIODICITE_YEAR][$ret['periodicity']];
+        }else{
+        $ret['periodicity_title']     = array();
+        }
 
         $ret['theme']              = $this->getVar('sld_theme');
         $ret['image']              = trim($this->getVar('sld_image'));
@@ -449,8 +453,8 @@ $perDate->addElement($sldDate_end);
         $ret['style_id_title']     = $this->getVar('sld_style_id_title');
         $ret['style_id_subtitle']  = $this->getVar('sld_style_id_subtitle');
         $ret['style_id_button']    = $this->getVar('sld_style_id_button');
-global $allStyles, $helper;
-if (!isset($stylesHandler)) $stylesHandler = $helper->getHandler('Styles');
+global $allStyles, $sliderHelper;
+if (!isset($stylesHandler)) $stylesHandler = $sliderHelper->getHandler('Styles');
 
 
 if (!isset($allStyles))
